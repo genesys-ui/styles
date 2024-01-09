@@ -1,0 +1,41 @@
+// ---------------- VARIABLES - INLINE MESSAGE - COMPONENTS ----------------- //
+
+
+// Size - Variables - Utils - InlineMessage
+
+$inline-message-trigger-size-list: xs, sm, md, lg;
+
+// Status - Variables - Utils - InlineMessage
+
+$inline-message-panel-status-list: base, success, error, warning, help, info;
+$inline-message-panel-status-map: (
+  base: (
+    border-color: $cmp-inline-message-color-border-base,
+    icon-color: $cmp-inline-message-color-border-base,
+  ),
+  success: (
+    border-color: $cmp-inline-message-color-border-success,
+    icon-color: $cmp-inline-message-color-border-success,
+    background-color: $alias-color-background-feedback-success-weaker,
+  ),
+  warning: (
+    border-color: $cmp-inline-message-color-border-warning,
+    icon-color: $cmp-inline-message-color-border-warning,
+    background-color: $alias-color-background-feedback-warning-weaker,
+  ),
+  error: (
+    border-color: $cmp-inline-message-color-border-error,
+    icon-color: $cmp-inline-message-color-border-error,
+    background-color: $alias-color-background-feedback-error-weaker,
+  ),
+  help: (
+    border-color: $cmp-inline-message-color-border-help,
+    icon-color: $cmp-inline-message-color-border-help,
+    background-color: $alias-color-background-feedback-help-weaker,
+  ),
+  info: (
+    border-color: $cmp-inline-message-color-border-info,
+    icon-color: $cmp-inline-message-color-border-info,
+    background-color: $alias-color-background-feedback-info-weaker,
+  ),
+);

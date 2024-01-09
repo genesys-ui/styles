@@ -1,0 +1,22 @@
+// --------------------- SELECTORS - UTILS - FUNCTIONS ---------------------- //
+
+
+/// Returns the typical selector of a state depending on whether it has a parent
+//  or not
+/// @param {Selector} $parent - Optional - The parent selector
+/// @return {String} $state - The state selector
+
+@function get-selector($parent: null, $state) {
+  $selectors-map: (
+    disabled: '&:disabled, &[disabled], &[aria-disabled="true"]#{if($parent, ', &#{$parent}--disabled', '')}',
+    not-disabled: '&:not(:disabled):not([disabled]):not([aria-disabled="true"])#{if($parent, ':not(#{$parent}--disabled)', '')}',
+    hovered: '&:hover#{if($parent, ', &#{$parent}--hovered', '')}',
+    focused: '&:focus, &:focus-within#{if($parent, ', &#{$parent}--focused', '')}',
+    focused-visible: '&:focus-visible#{if($parent, ', &#{$parent}--focused-visible', '')}',
+    pressed: '&:active#{if($parent, ', &#{$parent}--pressed', '')}',
+    selected: '&[aria-selected="true"]#{if($parent, ', &#{$parent}--selected', '')}',
+    expanded: '&[aria-expanded="true"]#{if($parent, ', &#{$parent}--expanded', '')}',
+  );
+
+  @return map-get($selectors-map, $state);
+}

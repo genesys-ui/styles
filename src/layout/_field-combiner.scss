@@ -1,0 +1,70 @@
+// ----------------------- FIELD COMBINER - COMPONENT ----------------------- //
+
+
+.field-combiner {
+
+  @mixin remove-border-radius($position: right) {
+    @if ($position == all) {
+      border-radius: 0;
+    } @else {
+      border-top-#{$position}-radius: 0 !important;
+      border-bottom-#{$position}-radius: 0 !important;
+    }
+  }
+
+  display: inline-flex;
+  z-index: 2;
+
+  // First child - Field combiner
+
+  > :first-child {
+    @include remove-border-radius;
+
+    &:not(.input) .input,
+    &:not(.select) .select {
+      @include remove-border-radius;
+    }
+  }
+
+  > .button:first-child::before,
+  > .icon-button:first-child::before {
+    @include remove-border-radius;
+  }
+
+  // Last child - Field combiner
+
+  > :last-child {
+    @include remove-border-radius(left);
+
+    &:not(.input) .input,
+    &:not(.select) .select {
+      @include remove-border-radius(left);
+    }
+  }
+
+  > .button:last-child::before,
+  > .icon-button:last-child::before {
+    @include remove-border-radius(left);
+  }
+
+  // Components between first and last - Field combiner
+
+  > :not(:first-child):not(:last-child) {
+    @include remove-border-radius(all);
+  }
+
+  > :not(.button):not(.icon-button) + :not(.button):not(.icon-button) {
+    margin-left: -1px;
+  }
+
+  // zIndex states - Field combiner
+
+  > * {
+    z-index: 0;
+
+    &:hover:not(:focus),
+    &:focus {
+      z-index: 1;
+    }
+  }
+}

@@ -1,0 +1,173 @@
+// ---------------- FIELD CONTROL - COMPONENTS - VARIABLES ------------------ //
+
+
+// SIZE - FIELD CONTROL - COMPONENTS - VARIABLES ---------------------------- //
+
+$field-control-size-list: sm, md, lg;
+
+$field-control-size-map: (
+  sm: (
+    height: $alias-fields-size-height-sm,
+    padding-hor: $alias-fields-space-padding-hor-sm,
+  ),
+  md: (
+    height: $alias-fields-size-height-md,
+    padding-hor: $alias-fields-space-padding-hor-md,
+  ),
+  lg: (
+    height: $alias-fields-size-height-lg,
+    padding-hor: $alias-fields-space-padding-hor-lg,
+  ),
+);
+
+
+// SIZE WIDTH - FIELD CONTROL - COMPONENTS - VARIABLES ---------------------- //
+
+$field-control-size-width-list: xxs, xs, sm, md, lg, xl, wide;
+
+$field-control-size-width-map: (
+  xxs: $alias-fields-size-width-xxs,
+  xs: $alias-fields-size-width-xs,
+  sm: $alias-fields-size-width-sm,
+  md: $alias-fields-size-width-md,
+  lg: $alias-fields-size-width-lg,
+  xl: $alias-fields-size-width-xl,
+  wide: $alias-fields-size-width-wide,
+);
+
+
+// COLOR - FIELD CONTROL - COMPONENTS - VARIABLES --------------------------- //
+
+$field-control-color-list: base, error, success, warning;
+
+$field-control-color-map: (
+  background: (
+    base: (
+      enabled: $alias-fields-color-background-base-enabled,
+      readonly: $alias-fields-color-background-base-readonly,
+      checked: $alias-fields-color-background-base-checked,
+    ),
+    error: (
+      enabled: $alias-fields-color-background-error-enabled,
+      readonly: $alias-fields-color-background-error-readonly,
+      checked: $alias-fields-color-background-error-checked,
+    ),
+    success: (
+      enabled: $alias-fields-color-background-success-enabled,
+      readonly: $alias-fields-color-background-success-readonly,
+      checked: $alias-fields-color-background-success-checked,
+    ),
+    warning: (
+      enabled: $alias-fields-color-background-warning-enabled,
+      readonly: $alias-fields-color-background-warning-readonly,
+      checked: $alias-fields-color-background-warning-checked,
+    ),
+  ),
+  text: (
+    base: (
+      placeholder: $alias-fields-color-text-base-placeholder,
+      enabled: $alias-fields-color-text-base-enabled,
+      hovered: $alias-fields-color-text-base-hovered,
+      focused: $alias-fields-color-text-base-focused,
+      readonly: $alias-fields-color-text-base-readonly,
+      checked: $alias-fields-color-text-base-checked,
+      unchecked: $alias-fields-color-text-base-unchecked,
+    ),
+    error: (
+      placeholder: $alias-fields-color-text-error-placeholder,
+      enabled: $alias-fields-color-text-error-enabled,
+      hovered: $alias-fields-color-text-error-hovered,
+      focused: $alias-fields-color-text-error-focused,
+      readonly: $alias-fields-color-text-error-readonly,
+      checked: $alias-fields-color-text-error-checked,
+      unchecked: $alias-fields-color-text-error-unchecked,
+    ),
+    success: (
+      placeholder: $alias-fields-color-text-success-placeholder,
+      enabled: $alias-fields-color-text-success-enabled,
+      hovered: $alias-fields-color-text-success-hovered,
+      focused: $alias-fields-color-text-success-focused,
+      readonly: $alias-fields-color-text-success-readonly,
+      checked: $alias-fields-color-text-success-checked,
+      unchecked: $alias-fields-color-text-success-unchecked,
+    ),
+    warning: (
+      placeholder: $alias-fields-color-text-warning-placeholder,
+      enabled: $alias-fields-color-text-warning-enabled,
+      hovered: $alias-fields-color-text-warning-hovered,
+      focused: $alias-fields-color-text-warning-focused,
+      readonly: $alias-fields-color-text-warning-readonly,
+      checked: $alias-fields-color-text-warning-checked,
+      unchecked: $alias-fields-color-text-warning-unchecked,
+    ),
+  ),
+  border: (
+    base: (
+      enabled: $alias-fields-color-border-base-enabled,
+      hovered: $alias-fields-color-border-base-hovered,
+      focused: $alias-fields-color-border-base-focused,
+      readonly: $alias-fields-color-border-base-readonly,
+      checked: $alias-fields-color-border-base-checked,
+    ),
+    error: (
+      enabled: $alias-fields-color-border-error-enabled,
+      hovered: $alias-fields-color-border-error-hovered,
+      focused: $alias-fields-color-border-error-focused,
+      readonly: $alias-fields-color-border-error-readonly,
+      checked: $alias-fields-color-border-error-checked,
+    ),
+    success: (
+      enabled: $alias-fields-color-border-success-enabled,
+      hovered: $alias-fields-color-border-success-hovered,
+      focused: $alias-fields-color-border-success-focused,
+      readonly: $alias-fields-color-border-success-readonly,
+      checked: $alias-fields-color-border-success-checked,
+    ),
+    warning: (
+      enabled: $alias-fields-color-border-warning-enabled,
+      hovered: $alias-fields-color-border-warning-hovered,
+      focused: $alias-fields-color-border-warning-focused,
+      readonly: $alias-fields-color-border-warning-readonly,
+      checked: $alias-fields-color-border-warning-checked,
+    ),
+  )
+);
+
+
+// SIZE - CHECKBOX & RADIO - FIELD CONTROL - COMPONENTS - VARIABLES --------- //
+
+$check-radio-size-map: (
+  common: (
+    sm: (
+      square: $alias-fields-size-square-sm,
+    ),
+    md: (
+      square: $alias-fields-size-square-md,
+    ),
+    lg: (
+      square: $alias-fields-size-square-lg,
+    ),
+  ),
+  check: (
+    sm: (
+      marker: $cmp-checkbox-control-marker-size-square-sm,
+    ),
+    md: (
+      marker: $cmp-checkbox-control-marker-size-square-md,
+    ),
+    lg: (
+      marker: $cmp-checkbox-control-marker-size-square-lg,
+    ),
+  ),
+  radio: (
+    sm: (
+      marker: $cmp-checkbox-control-marker-size-square-sm,
+    ),
+    md: (
+      marker: $cmp-radio-control-marker-size-square-md,
+    ),
+    lg: (
+      marker: $cmp-radio-control-marker-size-square-lg,
+    ),
+  ),
+);

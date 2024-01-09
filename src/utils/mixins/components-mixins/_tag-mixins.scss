@@ -1,0 +1,41 @@
+// ----------------------- TAGS - COMPONENTS - MIXINS ----------------------- //
+
+
+// DEFAULT STYLES - TAGS - COMPONENTS - MIXINS ------------------------------ //
+
+@mixin tag-base {
+  @include inline-flex(null, center, center);
+  position: relative;
+  overflow: hidden;
+  flex: 0 0 auto;
+  height: $cmp-tag-size-height-md;
+  width: fit-content;
+  border-radius: $cmp-tag-shape-border-radius;
+  padding: 0 $cmp-tag-space-padding-hor-md;
+  background-color: $cmp-tag-color-background-secondary;
+  color: $cmp-tag-color-text-secondary;
+  font-size: $alias-typo-font-size-body-sm;
+  white-space: nowrap;
+}
+
+
+// COLOR STYLES - TAGS - COMPONENTS - MIXINS -------------------------------- //
+
+@mixin tag-color($color-scheme: blend-dark) {
+  background-color: map-deep-get($tag-color-scheme-type-map, $color-scheme, bg);
+  color: map-deep-get($tag-color-scheme-type-map, $color-scheme, color);
+}
+
+
+// SIZE STYLES - TAGS - COMPONENTS - MIXINS --------------------------------- //
+
+@mixin tag-size($size: md ) {
+  height: map-deep-get($tag-size-map, $size, height);
+  padding: map-deep-get($tag-size-map, $size, padding);
+  font-size: map-deep-get($tag-size-map, $size, font-size);
+
+  &__icon {
+    margin-right: map-deep-get($tag-size-map, $size, icon-spacing);
+    font-size: map-deep-get($tag-size-map, $size, icon-size);
+  }
+}

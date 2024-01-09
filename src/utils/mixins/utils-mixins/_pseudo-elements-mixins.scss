@@ -1,0 +1,22 @@
+// -------------------- PSEUDO ELEMENTS - UTILS - MIXINS -------------------- //
+
+
+// ELEMENT STYLES - PSEUDO - UTILS - MIXINS --------------------------------- //
+
+@mixin pseudo-element($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+
+// OVERLAY STYLES - PSEUDO - UTILS - MIXINS --------------------------------- //
+
+@mixin pseudo-overlay($display: block, $pos: absolute, $content: '') {
+  @include pseudo-element($display, $pos, $content);
+  transition: background-color ease .15s;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}

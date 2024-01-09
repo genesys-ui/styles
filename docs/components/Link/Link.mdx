@@ -1,0 +1,97 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./Link.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+
+<Meta of={Stories} />
+
+# Link
+
+## Base
+
+This is the most basic version of the component and its default appearance.
+
+<Canvas of={Stories.Basic} />
+
+## Modifiers
+
+This section includes the variants or modifiers that change the appearance of
+the base component.
+
+### Sizes
+
+There are four sizes available: `xs`, `sm`, `md` (by default) and `lg`.
+
+<Canvas of={Stories.Sizes} />
+
+### States
+
+The following states affect this component: `disabled`, `hover`, `focus`,
+`focus-visible` and `active`.
+
+#### Disabled
+
+It is possible to get the disabled state with the modifier class `link--disabled`,
+the `disabled` attribute or the `aria-disabled` attribute. For accessibility
+reasons we recommend always adding only the last one: `aria-disabled="true"`.
+
+<Canvas of={Stories.Disabled} />
+
+#### Hover, focus, focus-visible and active
+
+We can get the same visual styles as pseudo classes `:hover`, `:focus`,
+and `:focus-visible` with modifier classes.
+
+<Canvas of={Stories.States} />
+
+### Color scheme
+
+Each Link color scheme is for a specific purpose, there are a hierarchy and
+usage limitations.
+
+#### Low hierarchy
+
+There are `base` (by default) and `inverse`. The `base` variant is the default
+color scheme and `inverse` must be used when it has a colored surface as
+background.
+
+<Canvas of={Stories.LowHierarchy} />
+
+#### Status
+
+There are five status: `error`, `help`, `info`, `success` and `warning`.
+
+<Canvas of={Stories.Status} />
+
+## Overview of CSS classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".link",
+      description: "Assign the basic styles for the Link component.",
+      type: "block",
+      restrictions: "a",
+    },
+    {
+      selector: ".link--xs, .link--sm, .link--md, .link--lg",
+      description: "Assign size styles.",
+      type: "modifier",
+      restrictions: "a",
+    },
+    {
+      selector:
+        ".link--disabled, .link--hovered, .link--focused, .link--focused-visible",
+      description: "Assign state styles.",
+      type: "modifier",
+      restrictions: "a",
+    },
+    {
+      selector:
+        ".link--base, .link--inverse, .link--error, .link--help, .link--info, .link--success, .link--warning",
+      description: "Assign color scheme styles.",
+      type: "modifier",
+      restrictions: "a",
+    },
+  ]}
+/>

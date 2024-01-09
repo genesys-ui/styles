@@ -1,0 +1,172 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./Button.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+
+<Meta of={Stories} />
+
+# Button
+
+## Base
+
+This is the button without any specific content and without adding any modifier class:
+
+<Canvas of={Stories.Basic} />
+
+## Elements
+
+Below are some elements that can be added to the base component:
+
+### Text
+
+The button text must always be wrapped with text element (`.button__text`) for
+state styles to work properly :
+
+<Canvas of={Stories.Basic} />
+
+### Icon
+
+If you wish, you can add an icon (`.button__icon`) to visually reinforce the
+action of the button:
+
+<Canvas of={Stories.Icon} />
+
+## Modifiers
+
+### Sizes
+
+Those are the different sizes defined for the button adding a modifier class:
+
+<Canvas of={Stories.Sizes} />
+
+### Full width
+
+The button can fit the full width of a parent:
+
+<Canvas of={Stories.FullWidth} />
+
+### Icon
+
+#### Icon bold
+
+You can add an element modifier to make an icon more bold.
+
+<Canvas of={Stories.BoldIcon} />
+
+#### Icon position
+
+Also, you can add modifiers to manage the icon position: left (by default) or
+right.
+
+<Canvas of={Stories.IconPosition} />
+
+### Color scheme
+
+We can get multiple color scheme for the Button. Each one has been created with
+a specific purpose, there is a hierarchy and there are limitations for using them.
+
+#### High hierarchy
+
+We have `accent-high` and `accent` on the top of the hierarchy. The first one is used usually
+only once by page; it's the main action of the page or functionality. The second one can be used
+several times by page, but usually it's the main action of a block.
+
+<Canvas of={Stories.HighHierarchy} />
+
+#### Low hierarchy
+
+We have `neutral`, `quiet`, `blend-base` and `blend-inverse` on the bottom of the hierarchy.
+The first one is used when the action is not the main of the block. The second one when
+the action is not important, there is a neutral one for the main block, or we don't want
+to add too much color to the context. The two last ones are used when the button has a
+colored surface as background.
+
+<Canvas of={Stories.LowHierarchy} />
+
+#### Status
+
+We have `error`, `success`, `warning`, `info` and `help` and they are used as the main action in status contexts: error,
+success, warning... etc.
+
+<Canvas of={Stories.Status} />
+
+### States
+
+We can apply several states for the Button, so we can get multiple combinations of variants and states. The most common
+states are `disabled`, `focused`, `hovered`... etc.
+
+#### Disabled
+
+We can get the disabled state visual styles by the modifier class `button--disabled`, the `disabled` attribute or the
+`aria-disabled` attribute. For accessibility reasons we recommend always adding
+only the last one: `aria-disabled="true"`.
+
+<Canvas of={Stories.Disabled} />
+
+#### Hovered, focused and pressed
+
+We can get the same visual styles as pseudo classes `:hover`, `:focus` and `:active` with modifier classes.
+
+<Canvas of={Stories.BasicStates} />
+
+#### Expanded and selected
+
+When the button is expanded o selected we get specific visual styles with modifier classes or aria attributes.
+
+<Canvas of={Stories.AdvancedStates} />
+
+## Overview of CSS classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".button",
+      description:
+        "Assign the basic styles to convert the element into a button",
+      type: "block",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".button--sm, .button--md, .button--lg",
+      description:
+        "Assign the size styles to the button: height, padding, font-size... etc.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector:
+        ".button--accent-high, .button--accent, .button--neutral, .button--quiet, .button--blend-base, .button--blend-inverse, .button--error, .button--success, .button--warning, .button--info, .button--help",
+      description:
+        "They assign the shape and color styles to the button: background-color, color... etc.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector:
+        ".button--hovered, .button--focused, .button--pressed, .button--disabled, .button--expanded, .button--selected",
+      description:
+        "They assign the shape and color styles to the button related with its states.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".button--wide",
+      description: "It makes the button to fit the full width f its parent.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".button__icon",
+      description: "The styles for an icon when it's a button's child.",
+      type: "element",
+      restrictions: "i, span",
+    },
+    {
+      selector: ".button__icon--left, .button__icon--right",
+      description:
+        "If the button's icon child is positioned to the left or to the right of the text.",
+      type: "element modifier",
+      restrictions: "i, span",
+    },
+  ]}
+/>

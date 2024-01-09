@@ -1,0 +1,108 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./BoxMessage.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+
+<Meta of={Stories} />
+
+# BoxMessage
+
+## Base
+
+This is the most basic version of the component and its default appearance,
+normally used with status info.
+
+<Canvas of={Stories.Basic} />
+
+## Elements
+
+Below are some elements that can be added to the base component:
+
+### Content
+
+It is possible to add content in order to add more information related to the
+notification:
+
+<Canvas of={Stories.Content} />
+
+### Close button
+
+It is possible to add a remove case icon button
+([see IconButton](https://engineering.pages.devotools.com/libraries/design/dali/?path=/docs/components-iconbutton-html-css--page))
+to close the BoxMessage:
+
+<Canvas of={Stories.CloseButton} />
+
+### Buttons
+
+It is possible to add some buttons at the end of the BoxMessage to carry out
+whatever action is needed:
+
+<Canvas of={Stories.Buttons} />
+
+## Modifiers
+
+This section includes the variants or modifiers that change the appearance of
+the base component.
+
+### Color scheme
+
+The BoxMessage color scheme only affects to its status.
+
+#### Status
+
+There are five status: `error`, `help`, `info`, `success` and `warning`.
+
+<Canvas of={Stories.Status} />
+
+## Overview of CSS classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".box-message",
+      description: "Assign the basic styles for the BoxMessage block.",
+      type: "block",
+      restrictions: "div",
+    },
+    {
+      selector: ".box-message",
+      description: "Assign the basic styles for the BoxMessage block.",
+      type: "block",
+      restrictions: "div",
+    },
+    {
+      selector: ".box-message__title",
+      description: "Assign the styles for the title element.",
+      type: "element",
+      restrictions: "h5",
+    },
+    {
+      selector: "Assign the styles for the content element.",
+      description: "Ass",
+      type: "element",
+      restrictions: "div",
+    },
+    {
+      selector: ".box-message__remove-button",
+      description: "Assign the styles for the close button element.",
+      type: "element",
+      restrictions: "button",
+    },
+    {
+      selector: ".box-message__buttons",
+      description: "Assign the styles for the buttons element.",
+      type: "element",
+      restrictions: "div",
+    },
+    {
+      selector:
+        ".box-message--error, .box-message--help, .box-message--info, .box-message--success, .box-message--warning",
+      description:
+        "Assign color styles related to component status: background-color, border-color, etc. These classes must be applied to the block element.",
+      type: "modifier",
+      restrictions: "div",
+    },
+  ]}
+/>
+,

@@ -1,0 +1,35 @@
+// ------------------- VARIABLES - VALIDATION - COMPONENTS ------------------ //
+
+
+// STATUS - VARIABLES - VALIDATION ------------------------------------------ //
+
+$validation-status-list: error, warning, success;
+
+
+// SIZE - VARIABLES - VALIDATION -------------------------------------------- //
+
+$validation-size-list: xxs, xs, sm, md, lg;
+
+$validation-size-map: (
+  xxs: (
+    icon-font-size: 1rem,
+    gap-size: xxs,
+  ),
+  xs: (
+    icon-font-size: 1.2rem,
+    gap-size: xxs,
+  ),
+  sm: (
+    icon-font-size: 1.4rem,
+    gap-size: xs,
+  ),
+  md: (
+    icon-font-size: 1.6rem,
+    gap-size: xs,
+  ),
+  lg: (
+    icon-font-size: 1.8rem,
+    gap-size: xs,
+  ),
+);
+

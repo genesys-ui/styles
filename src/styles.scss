@@ -1,0 +1,86 @@
+//----------------------------------------------------------------------------//
+//                                    DALI                                    //
+//----------------------------------------------------------------------------//
+
+/**
+* 7-1 PATTERN: 7 FOLDERS, 1 FILE.
+* Basically, you have all your partials stuffed into 7 different folders, and a
+* single file at the root level (usually named main.scss) which imports them all
+* to be compiled into a CSS stylesheet.
+* More info: https://sass-guidelin.es/#the-7-1-pattern
+*/
+
+
+// ---------------------------------- GENESYS ------------------------------- //
+
+@import "../node_modules/@devoinc/genesys-brand-devo/dist/light/scss/tokens.sass.alias.scss";
+@import "../node_modules/@devoinc/genesys-brand-devo/dist/light/scss/tokens.sass.cmp.scss";
+
+
+// ---------------------------- UTILS OR ABSTRACTS -------------------------- //
+
+@import "utils/variables";
+@import "utils/functions";
+@import "utils/mixins";
+@import "utils/spacing"; // TODO Where is this?
+
+
+// --------------------------------- VENDORS -------------------------------- //
+
+@import "vendors/animate";
+@import "vendors/bootstrap-grid";
+@import "vendors/select2";
+@import "vendors/custom-vendors/select2-custom";
+
+
+// ----------------------------------- BASE --------------------------------- //
+
+// The following styles exist in the Dali project. It is commented here to avoid
+// the problem with the routes in Dali's storybook.
+
+//@import "../base/reset";
+//@import "../base/fonts";
+//@import "../base/icons";
+//@import "../base/typography";
+//@import "../base/base";
+
+
+// -------------------------------- COMPONENTS ------------------------------ //
+
+@import "components/badge";
+@import "components/box-message";
+@import "components/button";
+@import "components/checkbox";
+@import "components/chip";
+@import "components/decorator-bar";
+@import "components/helper";
+@import "components/icon-button";
+@import "components/inline-message";
+@import "components/input";
+@import "components/label";
+@import "components/link";
+@import "components/loader";
+@import "components/modal";
+@import "components/overlay";
+@import "components/radio";
+@import "components/select";
+@import "components/stepper";
+@import "components/table";
+@import "components/tabs";
+@import "components/tags";
+@import "components/textarea";
+@import "components/toast";
+@import "components/upload-files";
+@import "components/validation";
+
+
+// ---------------------------------- LAYOUT -------------------------------- //
+
+@import "layout/app-bar";
+@import "layout/field-combiner";
+@import "layout/form";
+@import "layout/grid";
+@import "layout/panel";
+@import "layout/separator";
+
+

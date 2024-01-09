@@ -1,0 +1,37 @@
+// ---------------------- SPACING - LAYOUT ---------------------- //
+
+
+@each $spacing-prop in $spacing-props {
+  @each $direction in $directions {
+    @each $size in $spacing-size-list {
+      .#{$spacing-prop}-#{$direction}--#{$size} {
+        #{$spacing-prop}-#{$direction}:  map-get($spacing-size-map, $size);
+      }
+    }
+  }
+}
+
+@each $size in $spacing-size-list {
+  .#{$docs-prefix}-gap--#{$size} {
+    gap: map-get($spacing-size-map, $size);
+  }
+}
+
+@each $size in $spacing-size-list {
+  $parent: #{$docs-prefix}-spacer;
+
+  .#{$parent}--#{$size} {
+    &.#{$parent}--ver {
+      padding-bottom: map-get($spacing-size-map, $size);
+    }
+
+    &.#{$parent}--hor {
+      padding-right: map-get($spacing-size-map, $size);
+    }
+  }
+}
+
+
+
+
+

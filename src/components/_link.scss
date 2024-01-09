@@ -1,0 +1,36 @@
+// ---------------------------- LINK - COMPONENT ---------------------------- //
+
+
+.link {
+  $parent: &;
+
+  // Default - Styles - Link
+
+  @include typography(link); // md size by default
+  @include link($parent);
+
+
+  // MODIFIERS - LINK ------------------------------------------------------- //
+
+  // underlined
+
+  &--underlined {
+    text-decoration: underline;
+  }
+
+  // Size - Modifier - Link
+
+  @each $size in $typography-link-size-list {
+    &--#{$size} {
+      @include typography(link, $size);
+    }
+  }
+
+  // Color - Modifier - Link
+
+  @each $color-scheme in $link-color-scheme-list {
+    &--#{$color-scheme} {
+      @include link-color($parent, $color-scheme);
+    }
+  }
+}

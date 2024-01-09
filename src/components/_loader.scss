@@ -1,0 +1,439 @@
+// --------------------------- LOADER - COMPONENTS -------------------------- //
+
+
+.loader {
+  $parent: &;
+
+  $loader-size-list: xs, sm, md, lg, xl;
+  $loader-size-map: (
+    xs: (
+      spinner-square: 2rem,
+      logo-height: 2.9rem,
+      logo-width: 5rem,
+      custom-font-size: 3rem,
+    ),
+    sm: (
+      spinner-square: 2.4rem,
+      logo-height: 3.6rem,
+      logo-width: 6rem,
+      custom-font-size: 3.8rem,
+    ),
+    md: (
+      spinner-square: 2.8rem,
+      logo-height: 4.2rem,
+      logo-width: 7rem,
+      custom-font-size: 4.6rem,
+    ),
+    lg: (
+      spinner-square: 3.2rem,
+      logo-height: 4.9rem,
+      logo-width: 8rem,
+      custom-font-size: 5.4rem,
+    ),
+    xl: (
+      spinner-square: 4.4rem,
+      logo-height: 5.4rem,
+      logo-width: 4.4rem,
+      custom-font-size: 6.2rem,
+    ),
+  );
+
+  $loader-color-list: light, dark;
+  $loader-color-map: (
+    light: (
+      spinner-circle-stroke: $cmp-loader-spinner-color-background-light,
+      spinner-circle-stroke-animated: $cmp-loader-spinner-animated-stroke-color-background-light,
+      logo-even-path-fill: $cmp-loader-logo-even-path-color-background-light,
+      logo-odd-path-fill: $cmp-loader-logo-odd-path-color-background-light,
+      custom-icon: $light-color
+    ),
+    dark: (
+      spinner-circle-stroke: $cmp-loader-spinner-color-background-dark,
+      spinner-circle-stroke-animated: $cmp-loader-spinner-animated-stroke-color-background-dark,
+      logo-even-path-fill: $cmp-loader-logo-even-path-color-background-dark,
+      logo-odd-path-fill: $cmp-loader-logo-odd-path-color-background-dark,
+      custom-icon: $logo-secondary-color
+    ),
+  );
+
+
+  // BACKGROUND - LOADER ---------------------------------------------------- //
+
+  &-background {
+
+    // Multiple and Adjacent - Loader
+
+    & + & {
+      visibility: hidden;
+      opacity: 0;
+
+      #{$parent}-icon {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+  }
+
+
+  // ICON - LOADER ---------------------------------------------------------- //
+
+  &-icon {
+    $parentIcon: &;
+
+    transition: opacity 0.3s ease 0.2s;
+
+    // Types - Icon - Loader
+
+    &--spinner {
+      .spinner-svg {
+        position: relative;
+        animation: rotation-animation 2s linear infinite;
+
+        &__circle {
+          position: relative;
+          stroke-linecap: round;
+
+          &--animated {
+            transform-origin: center;
+            animation: dash-spinner-animation 1.5s ease-in-out infinite;
+          }
+        }
+      }
+    }
+
+    // Sizes - Icon - Loader
+
+    @each $size in $loader-size-list {
+      &--#{$size} {
+        &#{$parentIcon}--spinner .spinner-svg {
+          $square: map-deep-get($loader-size-map, $size, "spinner-square");
+          @include size($square, $square);
+        }
+
+        &#{$parentIcon}--logo {
+          $height: map-deep-get($loader-size-map, $size, "logo-height");
+          $width: map-deep-get($loader-size-map, $size, "logo-width");
+
+          @include size($height, $width);
+
+          .devo-logo-svg {
+            @include size($height, $width);
+          }
+        }
+
+        &#{$parentIcon}--custom {
+          font-size: map-deep-get($loader-size-map, $size, "custom-font-size");
+        }
+      }
+    }
+
+    // Themes - Icon - Loader
+
+    @each $color in $loader-color-list {
+      &--#{$color} {
+        &#{$parentIcon}--spinner .spinner-svg {
+          &__circle {
+            stroke: map-deep-get($loader-color-map, $color, "spinner-circle-stroke");
+
+            &--animated {
+              stroke: map-deep-get($loader-color-map, $color, "spinner-circle-stroke-animated");
+            }
+          }
+        }
+
+        &#{$parentIcon}--logo {
+          .devo-logo-svg__path {
+            &--even {
+              fill: map-deep-get($loader-color-map, $color, "logo-even-path-fill");
+            }
+
+            &--odd {
+              fill: map-deep-get($loader-color-map, $color, "logo-odd-path-fill");
+            }
+          }
+        }
+
+        &#{$parentIcon}--custom {
+          color: map-deep-get($loader-color-map, $color, "custom-icon");
+        }
+      }
+    }
+
+    // Themes - Spinner - Loader
+
+    &--light-trans {
+      &#{$parentIcon}--spinner .spinner-svg__circle {
+        stroke: rgba(255, 255, 255, 0.6);
+
+        &--animated {
+          stroke: rgba(255, 255, 255, 0.9);
+        }
+      }
+    }
+
+    &--dark-trans {
+      &#{$parentIcon}--spinner .spinner-svg__circle {
+        stroke: rgba(0, 0, 0, 0.4);
+
+        &--animated {
+          stroke: rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
+
+
+    // ANIMATIONS - ICON - LOADER  ------------------------------------------ //
+
+    // Data Flow - Animation - Loader
+
+    &--flow {
+      .devo-logo-svg {
+        overflow: visible;
+
+        .devo-logo-svg__group {
+          animation: speed-scale-animation 1.5s ease infinite;
+          transform-origin: 50% 50%;
+          transform-box: fill-box;
+
+          .devo-logo-svg__path {
+            animation: speed-translate-animation 1.5s ease infinite,
+            speed-opacity-animation 1.5s ease infinite;
+          }
+
+          &:nth-child(1) {
+            animation-delay: 0.1s;
+
+            .devo-logo-svg__path {
+              animation-delay: 0.1s;
+            }
+          }
+
+          &:nth-child(2) {
+            animation-delay: 0s;
+
+            .devo-logo-svg__path {
+              animation-delay: 0s;
+            }
+          }
+
+          &:nth-child(3) {
+            animation-delay: 0.2s;
+
+            .devo-logo-svg__path {
+              animation-delay: 0.2s;
+            }
+          }
+
+          &:nth-child(4) {
+            animation-delay: 0.1s;
+
+            .devo-logo-svg__path {
+              animation-delay: 0.1s;
+            }
+          }
+
+          &:nth-child(5) {
+            animation-delay: 0.3s;
+
+            .devo-logo-svg__path {
+              animation-delay: 0.3s;
+            }
+          }
+
+          &:nth-child(6) {
+            animation-delay: 0.2s;
+
+            .devo-logo-svg__path {
+              animation-delay: 0.2s;
+            }
+          }
+
+          &:nth-child(7) {
+            animation-delay: 0.35s;
+
+            .devo-logo-svg__path {
+              animation-delay: 0.35s;
+            }
+          }
+
+          &:nth-child(8) {
+            animation-delay: 0.25s;
+
+            .devo-logo-svg__path {
+              animation-delay: 0.25s;
+            }
+          }
+        }
+      }
+    }
+
+    // Bounce Dot - Animation - Loader
+
+    &--bounce-dot {
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 10%;
+        left: 34.9%;
+        width: 9px;
+        height: 3.5px;
+        background-color: $light-color;
+        filter: blur(2.75px) opacity(80%);
+        animation: bounce-dot-shadow-animation ease 0.5s alternate infinite;
+        transform-origin: 50% center;
+      }
+
+      .devo-logo-svg {
+        overflow: visible;
+
+        &__group:first-child {
+          animation: bounce-dot-translate-animation ease 0.5s alternate infinite;
+
+          .devo-logo-svg__path {
+            animation: bounce-dot-scale-animation ease 0.5s alternate infinite;
+            transform-origin: 50% 50%;
+            transform-box: fill-box;
+          }
+        }
+      }
+    }
+
+    // Rubber Band - Animation - Loader
+
+    &--rubber-band {
+      animation: rubberBand linear 1s infinite;
+    }
+
+    // Bounce - Animation - Loader
+
+    &--bounce {
+      animation: bounce linear 1s infinite;
+    }
+
+    // Tada - Animation - Loader
+
+    &--tada {
+      animation: tada linear 1s infinite;
+    }
+
+    // Pulse - Animation - Loader
+
+    &--heart-beat {
+      animation: heartBeat linear 1s infinite;
+    }
+
+    // Shake - Animation - Loader
+
+    &--shake {
+      animation: shake linear 1s infinite;
+    }
+
+    // Swing - Animation - Loader
+
+    &--swing {
+      animation: swing linear 1s infinite;
+      transform-origin: top center;
+    }
+
+    // Wobble - Animation - Loader
+
+    &--wobble {
+      animation: wobble linear 1s infinite;
+    }
+
+    // Jello - Animation - Loader
+
+    &--jello {
+      animation: jello linear 1s infinite;
+    }
+  }
+}
+
+
+// SPECIFIC ANIMATIONS - DEVO LOGO LOADER - LOADER -------------------------- //
+
+// Dash Spinner - Animation - Loader
+
+@keyframes dash-spinner-animation {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
+}
+// Data Flow - Animation - Loader
+
+@keyframes speed-opacity-animation {
+  0% {
+    opacity: 0;
+  }
+  20%, 80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes speed-translate-animation {
+  0% {
+    transform: translateX(-150px);
+  }
+  20%, 80% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(150px);
+  }
+}
+
+@keyframes speed-scale-animation {
+  0% {
+    transform: scale(1.5, 0.5) skewX(-10deg);
+  }
+  20%, 80% {
+    transform: scale(1, 1) skewX(0);
+  }
+  100% {
+    transform: scale(1.5, .5) skewX(-10deg);
+  }
+}
+
+// Bounce Dot - Animation - Loader
+
+@keyframes bounce-dot-scale-animation {
+  0% {
+    transform: scale(2, 0.8);
+  }
+  35% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes bounce-dot-translate-animation {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-46%);
+  }
+}
+
+@keyframes bounce-dot-shadow-animation {
+  0% {
+    transform: scale(1.4, 1.2);
+  }
+  100% {
+    transform: scale(.6, 0.3);
+  }
+}

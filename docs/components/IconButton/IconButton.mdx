@@ -1,0 +1,218 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./IconButton.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+
+<Meta of={Stories} />
+
+# Icon Button
+
+## Base
+
+This is the Icon Button without adding any modifier class. You always have to include an icon as a child.
+
+<Canvas of={Stories.Basic} />
+
+## Modifiers
+
+### Sizes
+
+Those are the different sizes defined for the Icon Button adding a modifier class (`--xs`, `--sm`...).
+
+<Canvas of={Stories.Sizes} />
+
+### Full width
+
+The Icon Button can fit the full width of a parent (`--is-wide`).
+
+<Canvas of={Stories.FullWidth} />
+
+### Circular
+
+The Icon Button can be circular (`--circular`).
+
+<Canvas of={Stories.Circular} />
+
+### Bold icon
+
+you can get a bold icon with a class modifier (`--bold`).
+
+<Canvas of={Stories.BoldIcon} />
+
+### Color scheme
+
+We can get several color scheme for the Icon Button. Each one has been created
+with a specific purpose, there is a hierarchy and there are limitations for
+using them.
+
+#### High hierarchy
+
+We have `accent-high` and `accent` on the top of the hierarchy. The first one is used usually
+only once by page; it's the main action of the page or functionality. The second one can be used
+several times by page, but usually it's the main action of a block.
+
+<Canvas of={Stories.HighHierarchy} />
+
+#### Low hierarchy
+
+We have `neutral`, `quiet`, `blend-base` and `blend-inverse` on the bottom of the hierarchy.
+The first one is used when the action is not the main of the block. The second one when
+the action is not important, there is a neutral one for the main block, or we don't want
+to add too much color to the context. The two last ones are used when the Icon Button has a
+colored surface as background.
+
+<Canvas of={Stories.LowHierarchy} />
+
+#### Status
+
+We have `error`, `success`, `warning`, `info` and `help` and they are used as the main action in status contexts: error,
+success, warning... etc.
+
+<Canvas of={Stories.Status} />
+
+### States
+
+We can apply several states for the Icon Button, so we can get multiple combinations of variants and states. The most common
+states are `disabled`, `focused`, `hovered`... etc.
+
+#### Disabled
+
+We can get the disabled state visual styles by the modifier class `icon-button--disabled`, the `disabled` attribute or the
+`aria-disabled` attribute. For accessibility reasons we recommend always adding
+only the last one: `aria-disabled="true"`.
+
+<Canvas of={Stories.Disabled} />
+
+#### Hovered, focused and pressed
+
+We can get the same visual styles as pseudo classes `:hover`, `:focus` and `:active` with modifier classes
+(`--hovered`, `--focused`, `--pressed`).
+
+<Canvas of={Stories.BasicStates} />
+
+#### Expanded and selected
+
+When the Icon Button is expanded o selected we get specific visual styles with modifier classes or aria attributes.
+
+<Canvas of={Stories.AdvancedStates} />
+
+## Cases
+
+The Icon Button has several cases with little nuances based in a specific modifier classes.
+The size and other modifier classes (`--sm`, `--error`, `--disabled`... etc.) can be used together
+with the case modifier class.
+
+### Icon Button Status
+
+It's used usually as a trigger of an Inline Message block.
+Each status use a specific icon as in the examples.
+
+<Canvas of={Stories.CaseStatus} />
+
+### Icon Button Close
+
+It's used usually as a close button for a Modal, InlineMessage, Toast... etc.
+You don't have to include an icon as a child because it's included by ::after pseudo-element.
+
+<Canvas of={Stories.CaseClose} />
+
+### Icon Button Collapse
+
+It's used usually as a button to collapse/uncollapse content blocks as in an Accordion or expandable content.
+You don't have to include an icon as a child because it's included by ::after pseudo-element.
+
+<Canvas of={Stories.CaseCollapse} />
+
+### Icon Button Remove
+
+It's used usually as a button to remove content blocks as in a Select multiple or filter chips.
+You don't have to include an icon as a child because it's included by ::after pseudo-element.
+
+<Canvas of={Stories.CaseRemove} />
+
+## Overview of CSS classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".icon-button",
+      description:
+        "Assign the basic styles to convert the element into an Icon Button",
+      type: "block",
+      restrictions: "button, a",
+    },
+    {
+      selector:
+        ".icon-button--xs, .icon-button--sm, .icon-button--md, .icon-button--lg",
+      description:
+        "Assign the size styles to the button: height, padding, font-size... etc.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector:
+        ".icon-button--accent-high, .icon-button--accent, .icon-button--neutral, .icon-button--quiet, .icon-button--blend-base,.icon-button--blend-inverse, .icon-button--error, .icon-button--success, .icon-button--warning, .icon-button--info, .icon-button--help",
+      description:
+        "They assign the shape and color styles to the button: background-color, color... etc.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector:
+        ".icon-button--hovered, .icon-button--focused, .icon-button--pressed, .icon-button--disabled, .icon-button--expanded, .icon-button--selected",
+      description:
+        "They assign the shape and color styles to the button related with its states.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".icon-button--is-wide",
+      description: "It makes the button to fit the full width of its parent.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".icon-button--bold",
+      description: "It makes the button icon bold.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".icon-button--circular",
+      description: "It makes the button circular.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".icon-button--status",
+      description: "They assign the shape and color styles to the status case.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".icon-button--close",
+      description: "They assign the shape and color styles to the close case.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".icon-button--remove",
+      description: "They assign the shape and color styles to the remove case.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".icon-button--collapse",
+      description:
+        "They assign the shape and color styles to the collapse case.",
+      type: "modifier",
+      restrictions: "button, a",
+    },
+    {
+      selector: ".icon-button__icon",
+      description: "The styles for the button's icon child.",
+      type: "element",
+      restrictions: "i, span",
+    },
+  ]}
+/>

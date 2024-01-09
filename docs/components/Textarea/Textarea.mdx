@@ -1,0 +1,119 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./Textarea.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+import {
+  FORM_FIELD_CLASS_VARIANTS,
+  HELPER_CLASS_VARIANTS,
+  LABEL_CLASS_VARIANTS,
+  VALIDATION_CLASS_VARIANTS,
+} from "../../constants";
+
+<Meta of={Stories} />
+
+# Textarea
+
+## Base
+
+This is the most basic version of the component and its default appearance.
+
+<Canvas of={Stories.Basic} />
+
+## Hidden label
+
+We can get a textarea field with the label hidden, but still accessible, adding the modifier `--hide` to the label.
+We use 'screen-readers only' styles to hide the label, so it's still accessible to the assistive technologies.
+
+<Canvas of={Stories.HiddenLabel} />
+
+## With Helper
+
+We can add a helper message below the textarea control with extra info about how to fill the field.
+
+If the helper message is very long or there is relative information to the field,
+then we can use a 'read more' link at the end of the helper. This link can trigger
+a floating contextual message (as InlineMessage) or link to another page with the info.
+
+<Canvas of={Stories.Helper} />
+
+## With Validation
+
+The modifier classes for different statuses are `--error`, `--success` and `--warning`. You have to apply the modifiers
+to each child: `textarea--error`, `validation--error`... etc.
+
+### Docked Validation
+
+We can add a validation message below the textarea control with the info about the validation state.
+The validation message must always replace the helper message in case there was one.
+
+If the validation message is very long or there is relative extra information
+to fill the field correctly, then we can use a 'read more' link at the end of the validation.
+This link can trigger a floating contextual message (as InlineMessage) or link to another page with the info.
+
+<Canvas of={Stories.DockedValidation} />
+
+## Modifiers
+
+### Size
+
+Three sizes available: `--sm`, `--md` and `--lg`. You have to apply the modifiers to each
+child: `label--sm`, `select--sm`, `helper--sm`... etc.
+
+<Canvas of={Stories.Sizes} />
+
+### Status
+
+Three statuses available: `--error`, `--success` and `--warning`. You have to apply the modifiers to each
+child: `input--error`, `validation--error`... etc.
+
+<Canvas of={Stories.Status} />
+
+### Required
+
+If you want to inform that the textarea is a required field you have to add the modifier `--required` to the `label`.
+For accessibility reasons you should add the attribute `required` to the textarea control.
+
+<Canvas of={Stories.Required} />
+
+### Disabled
+
+If you want to make the field disabled you have to add the attribute `disabled` to the textarea control:
+
+<Canvas of={Stories.Disabled} />
+
+### Readonly
+
+If you want to make the field readonly you have to add the attribute `readonly` to the textarea control.
+You can add only `readonly` or `readonly="true"`.
+
+<Canvas of={Stories.Readonly} />
+
+## Overview of CSS classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".textarea",
+      description: "Assign the basic styles to the textarea control",
+      type: "block",
+      restrictions: "textarea",
+    },
+    {
+      selector: ".textarea--sm, .textarea--md, .textarea--lg",
+      description:
+        "Assign the size styles: height, padding, font-size, etc. to the form control",
+      type: "modifier",
+      restrictions: "textarea",
+    },
+    {
+      selector: ".textarea--error, .textarea--success, .textarea--warning",
+      description: "Assign status styles.",
+      type: "modifier",
+      restrictions: "textarea",
+    },
+    ...FORM_FIELD_CLASS_VARIANTS,
+    ...LABEL_CLASS_VARIANTS,
+    ...VALIDATION_CLASS_VARIANTS,
+    ...HELPER_CLASS_VARIANTS,
+  ]}
+/>

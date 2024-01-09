@@ -1,0 +1,93 @@
+// ---------------------------- SPACING - UTILS ----------------------------- //
+
+
+@function getModifier($size, $side) {
+  $modifier: #{$size};
+  @if ($side != all) {
+    $modifier: #{$side}-#{$size};
+  }
+  @return #{$modifier};
+}
+
+
+// COMPONENT - SPACING - UTILS ---------------------------------------------- //
+
+// Margin - Modifier - CMP (Component)
+// Examples:
+// Margin Top XL: margin-cmp--top-xl
+// Margin horizontal (both sides) SM: margin-cmp--hor-sm
+// Margin (all sides) XS: margin-cmp--xs
+
+.margin-cmp {
+  @each $side in $spacing-side-list {
+    @each $size in $spacing-size-list {
+      &--#{getModifier($size, $side)} {
+        @include spacing(margin, $side, $size, component);
+      }
+    }
+  }
+}
+
+// Padding - Modifier - CMP (Component)
+// Examples:
+// Padding Left MD: padding-cmp--left-md
+// Padding vertical (both sides) XS: padding-cmp--ver-xs
+// Padding (all sides) XL: padding-cmp--xl
+.padding-cmp {
+  @each $side in $spacing-side-list {
+    @each $size in $spacing-size-list{
+      &--#{getModifier($size, $side)} {
+        @include spacing(padding, $side, $size, component);
+      }
+    }
+  }
+}
+
+// Gap - Modifier - CMP (Component)
+// Examples:
+// Gap md: gap-cmp--md
+
+.gap-cmp {
+  @each $size in $spacing-size-list{
+    &--#{$size} {
+      @include spacing($property: gap, $size: $size, $type: component);
+    }
+  }
+}
+
+
+// LAYOUT - SPACING - UTILS ------------------------------------------------- //
+
+// Margin - Layout - Spacing
+
+.margin-ly {
+  @each $side in $spacing-side-list {
+    @each $size in $spacing-size-list {
+      &--#{getModifier($size, $side)} {
+        @include spacing(margin, $side, $size, layout);
+      }
+    }
+  }
+}
+
+// Padding - Layout - Spacing
+
+.padding-ly {
+  @each $side in $spacing-side-list {
+    @each $size in $spacing-size-list {
+      &--#{getModifier($size, $side)} {
+        @include spacing(padding, $side, $size, layout);
+      }
+    }
+  }
+}
+
+// Gap - Layout - Spacing
+
+.gap-ly {
+  @each $size in $spacing-size-list{
+    &--#{$size} {
+      @include spacing($property: gap, $size: $size, $type: layout);
+    }
+  }
+}

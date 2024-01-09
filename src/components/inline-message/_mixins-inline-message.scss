@@ -1,0 +1,28 @@
+// ------------------ MIXINS - INLINE MESSAGE - COMPONENTS ------------------ //
+
+
+// Status styles - Mixin - Utils - InlineMessage
+
+@mixin get-inline-message-panel-status-styles($status, $parent) {
+  $positions-list: top, bottom, left, right;
+
+  #{$parent}__inner-wrapper::before {
+    background-color: map-deep-get($inline-message-panel-status-map, $status, border-color);
+  }
+
+  @each $position in $positions-list {
+    &[data-popper-placement^='#{$position}'] #{$parent}__arrow {
+      border-#{$position}-color: map-deep-get($inline-message-panel-status-map, $status, border-color);
+    }
+  }
+
+  &#{$parent}--draggable {
+    @if ($status != base) {
+      background-color: map-deep-get($inline-message-panel-status-map, $status, background-color);
+    }
+
+    #{$parent}__title::before {
+      color: map-deep-get($inline-message-panel-status-map, $status, icon-color);
+    }
+  }
+}

@@ -1,0 +1,48 @@
+// ------------------------ ICONS - BASE - VARIABLES ------------------------ //
+
+
+// STATUS - ICONS - BASE - VARIABLES ---------------------------------------- //
+
+$icon-status-list: error, help, info, success, warning;
+
+$icon-status-map: (
+  error: (
+    bordered: $gi-error_warning_danger_stop,
+    filled: $gi-error_warning_danger_stop_filled,
+  ),
+  help: (
+    bordered: $gi-about_question_faq_help,
+    filled: $gi-about_question_faq_help_filled,
+  ),
+  info: (
+    bordered: $gi-info_round,
+    filled: $gi-info_round_filled,
+  ),
+  success: (
+    bordered: $gi-check_ok_rounded,
+    filled: $gi-check_ok_rounded_filled,
+  ),
+  warning: (
+    bordered: $gi-attention_error_alert_caution,
+    filled: $gi-attention_error_alert_caution_filled,
+  ),
+);
+
+
+// SIZE - ICONS - BASE - VARIABLES ------------------------------------------ //```
+
+$icon-size-list: xxxs, xxxs, xxs, xs, sm, md, lg, xl, xxl, xxxl, xxxxl;
+
+$icon-size-map: (
+  xxxxs: $alias-typo-font-size-icon-xxxxs,
+  xxxs: $alias-typo-font-size-icon-xxxs,
+  xxs: $alias-typo-font-size-icon-xxs,
+  xs: $alias-typo-font-size-icon-xs,
+  sm: $alias-typo-font-size-icon-sm,
+  md: $alias-typo-font-size-icon-md,
+  lg: $alias-typo-font-size-icon-lg,
+  xl: $alias-typo-font-size-icon-xl,
+  xxl: $alias-typo-font-size-icon-xxl,
+  xxxl: $alias-typo-font-size-icon-xxxl,
+  xxxxl: $alias-typo-font-size-icon-xxxxl,
+);

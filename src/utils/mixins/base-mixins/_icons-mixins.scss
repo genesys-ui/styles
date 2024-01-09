@@ -1,0 +1,16 @@
+// ------------------------- ICONS - BASE - MIXINS -------------------------- //
+
+
+// ICON FONT - ICONS - BASE - MIXINS ---------------------------------------- //
+
+@mixin icon-font($font: $icon-font) {
+  font-family: $font, sans-serif;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

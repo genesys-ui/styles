@@ -1,0 +1,15 @@
+// ----------------------- DECORATOR BAR - COMPONENT ------------------------ //
+
+
+.decorator-bar {
+  &--hor {
+    @include size($cmp-decorator-bar-shape-stroke, 100%);
+    background-image: linear-gradient(to right, $cmp-decorator-bar-color-background);
+  }
+
+  &,
+  &--ver {
+    @include size(100%, $cmp-decorator-bar-shape-stroke);
+    background-image: linear-gradient(to bottom, $cmp-decorator-bar-color-background);
+  }
+}

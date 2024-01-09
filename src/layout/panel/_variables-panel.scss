@@ -1,0 +1,64 @@
+// ----------------------- VARIABLES - PANEL - LAYOUT ----------------------- //
+
+
+// LIST SIZE - VARIABLES - PANEL -------------------------------------------- //
+
+$panel-size-list: xs, sm, md;
+
+
+// MAP SIZE - VARIABLES - PANEL --------------------------------------------- //
+
+$panel-size-map: (
+  xs: (
+    header-padding: $cmp-panel-header-space-padding-xs,
+    header-action-spacing: $cmp-panel-header-action-space-margin-left-xs,
+    header-append-spacing: $cmp-panel-header-append-space-margin-left-xs,
+    header-icon-spacing: $cmp-panel-header-icon-space-margin-right-xs,
+    header-icon-height: $cmp-panel-header-icon-size-height-xs,
+    header-icon-font-size: $cmp-panel-header-icon-typo-font-size-xs,
+    header-title: h6,
+    header-subtitle: xs,
+    header-legend-spacing: $cmp-panel-header-legend-space-margin-left-xs,
+    header-legend-height: $cmp-panel-header-legend-size-height-xs,
+    content-margin: $cmp-panel-content-space-margin-xs,
+    content-padding: $cmp-panel-content-space-padding-xs,
+    footer-padding: $cmp-panel-footer-space-padding-xs,
+    footer-action-spacing: $cmp-panel-footer-action-space-margin-left-xs,
+    footer-append-spacing: $cmp-panel-footer-append-space-margin-left-xs,
+  ),
+  sm: (
+    header-padding: $cmp-panel-header-space-padding-sm,
+    header-action-spacing: $cmp-panel-header-action-space-margin-left-sm,
+    header-append-spacing: $cmp-panel-header-append-space-margin-left-sm,
+    header-icon-spacing: $cmp-panel-header-icon-space-margin-right-sm,
+    header-icon-height: $cmp-panel-header-icon-size-height-sm,
+    header-icon-font-size: $cmp-panel-header-icon-typo-font-size-sm,
+    header-title: h5,
+    header-subtitle: sm,
+    header-legend-spacing: $cmp-panel-header-legend-space-margin-left-sm,
+    header-legend-height: $cmp-panel-header-legend-size-height-sm,
+    content-margin: $cmp-panel-content-space-margin-sm,
+    content-padding: $cmp-panel-content-space-padding-sm,
+    footer-padding: $cmp-panel-footer-space-padding-sm,
+    footer-action-spacing: $cmp-panel-footer-action-space-margin-left-sm,
+    footer-append-spacing: $cmp-panel-footer-append-space-margin-left-sm,
+
+  ),
+  md: (
+    header-padding: $cmp-panel-header-space-padding-md,
+    header-action-spacing: $cmp-panel-header-action-space-margin-left-md,
+    header-append-spacing: $cmp-panel-header-append-space-margin-left-md,
+    header-icon-spacing: $cmp-panel-header-icon-space-margin-right-md,
+    header-icon-height: $cmp-panel-header-icon-size-height-md,
+    header-icon-font-size: $cmp-panel-header-icon-typo-font-size-md,
+    header-title: h4,
+    header-subtitle: md,
+    header-legend-spacing: $cmp-panel-header-legend-space-margin-left-md,
+    header-legend-height: $cmp-panel-header-legend-size-height-md,
+    content-margin: $cmp-panel-content-space-margin-md,
+    content-padding: $cmp-panel-content-space-padding-md,
+    footer-padding: $cmp-panel-footer-space-padding-md,
+    footer-action-spacing: $cmp-panel-footer-action-space-margin-left-md,
+    footer-append-spacing: $cmp-panel-footer-append-space-margin-left-md,
+  )
+);

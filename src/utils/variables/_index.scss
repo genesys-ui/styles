@@ -1,0 +1,41 @@
+// --------------------------- VARIABLES - UTILS ---------------------------- //
+
+
+// Icons - Variables
+
+// TODO What is for?
+// @import "../../../node_modules/@devo/genesys/lib/assets/scss/base/icons/lt-icon/lt-icon-variables";
+@import "../../../node_modules/@devoinc/genesys-icons/dist/gi-variables";
+@import "../../../node_modules/@devoinc/genesys-icons/dist/gi-styles";
+// @import "../../../node_modules/@devo/genesys/lib/assets/scss/utils/variables";
+
+// Base - Variables
+
+@import "./base-variables/color-variables";
+@import "./base-variables/fonts-variables";
+@import "./base-variables/icons-variables";
+@import "./base-variables/typography-variables";
+
+// Utils - Variables
+
+@import "./utils-variables/breakpoints-variables";
+@import "./utils-variables/paths-variables";
+@import "./utils-variables/spacing-variables";
+
+// Components - Variables
+
+@import "./components-variables/badge-variables";
+@import "./components-variables/button-variables";
+@import "./components-variables/chip-variables";
+@import "./components-variables/decorator-bar-variables";
+@import "./components-variables/field-variables";
+@import "./components-variables/icon-button-variables";
+@import "./components-variables/link-variables";
+@import "./components-variables/overlay-variables";
+@import "./components-variables/separator-variables";
+@import "./components-variables/tag-variables";
+
+// Layout - Variables
+
+@import "./layout-variables/elevation-variables";
+@import "./layout-variables/grid-variables";

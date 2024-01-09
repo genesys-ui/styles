@@ -1,0 +1,55 @@
+// ----------------- TRIGGER - INLINE MESSAGE - COMPONENTS ------------------ //
+
+
+#{$inline-message}__trigger {
+  @import "./variables-inline-message";
+
+  $parent: &;
+
+  &-wrapper {
+    @include inline-flex(null, center);
+    cursor: pointer;
+  }
+
+  &-title,
+  &-subtitle {
+    @include spacing(margin, left, xxs, component);
+    @include typography($ignore-props: font-weight);
+    font-weight: 700;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &-title {
+    @include text-color($color: strong);
+  }
+
+  &-subtitle {
+    @include text-color($color: weak);
+  }
+
+
+  // MODIFIERS - TRIGGER - INLINE MESSAGE ----------------------------------- //
+
+  // Sizes - Trigger - Inline Message
+
+  @each $size in $inline-message-trigger-size-list {
+    &--#{$size} {
+     & ~ #{$parent}-title,
+     & ~ #{$parent}-subtitle {
+        @include typography($type: body, $size: $size, $ignore-props: font-weight);
+      }
+    }
+  }
+
+
+  // CASES OF USE - TRIGGER - INLINE MESSAGE -------------------------------- //
+
+  &--linq {
+    @include spacing(margin, left, xs, component);
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+}

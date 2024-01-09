@@ -1,0 +1,79 @@
+// ----------------------- NEW - SELECT - COMPONENTS ------------------------ //
+
+
+.select {
+
+  // Default styles - Select
+
+  @include field-control-select;
+
+
+  // ELEMENTS - SELECT ------------------------------------------------------ //
+
+  // Dropdown - Element - Select
+
+  &__dropdown {
+    @include dropdown-menu-container;
+    display: none;
+    position: absolute;
+    top: calc(100% + calc(#{$alias-space-cmp-xxs} / 2));
+    left: 0;
+    padding: $alias-space-cmp-xxs;
+
+    ul {
+      @include menu-list($height: 16rem);
+      @include scrollbars($size: sm);
+      min-width: 100%;
+
+      li {
+        @include menu-item;
+      }
+    }
+  }
+
+
+  // MODIFIERS - SELECT ------------------------------------------------------ //
+
+  // Size - Modifier - Select
+
+  @each $size in $field-control-size-list {
+    &--#{$size} {
+      @include field-control-size($size);
+
+      $spacing: null;
+      $arrow-position: null;
+      @if($size == sm) {
+        $spacing: 2.2rem;
+        $arrow-position: .4rem;
+      } @else if($size == md) {
+        $spacing: 2.6rem;
+        $arrow-position: .6rem;
+      } @else {
+        $spacing: 3rem;
+        $arrow-position: .8rem;
+      }
+
+      padding-right: $spacing;
+
+      &::before {
+        right: $arrow-position;
+      }
+    }
+  }
+
+  // Size width - Modifier - Select
+  // Examples:
+  // select--width-xl
+  // select--min-width-xs
+  // select--max-width-sm
+
+  @include field-control-size-width($is-select: true);
+
+  // Status - Modifier - Select
+
+  @each $status in $field-control-color-list {
+    &--#{$status} {
+      @include field-control-color($status);
+    }
+  }
+}

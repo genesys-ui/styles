@@ -1,0 +1,60 @@
+// ---------------------- BADGE - COMPONENTS - MIXINS ----------------------- //
+
+
+// BADGE BASE STYLES - COMPONENTS - MIXINS ---------------------------------- //
+
+@mixin badge-base {
+  position: relative;
+  flex: 0 0 auto;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  overflow: hidden;
+  border-radius: $cmp-badge-shape-border-radius;
+  padding: 0 $cmp-badge-space-padding-hor;
+  font-weight: bold;
+}
+
+
+// BADGE SIZE STYLES - COMPONENTS - MIXINS ---------------------------------- //
+
+@mixin badge-size($size: md, $has-icon: false, $is-empty: false) {
+  $content-eval: has-content;
+  $fs-eval: font-size;
+
+  @if ($is-empty and not $has-icon) {
+    $content-eval: is-empty;
+  }
+  @if ($has-icon) {
+    $fs-eval: icon-font-size;
+  }
+
+  min-width: map-deep-get($badge-size-map, $content-eval, $size, min-width);
+  height: map-deep-get($badge-size-map, $content-eval, $size, height);
+  font-size: map-deep-get($badge-size-map, common, $size, $fs-eval);
+}
+
+
+// BADGE COLOR STYLES - COMPONENTS - MIXINS --------------------------------- //
+
+@mixin badge-color($color-scheme: neutral, $is-empty: false) {
+  $content-eval: has-content;
+
+  @if ($is-empty) {
+    $content-eval: is-empty;
+  }
+
+  background-color: map-deep-get($badge-color-scheme-type-map, $color-scheme, $content-eval, bg);
+  color: map-deep-get($badge-color-scheme-type-map, $color-scheme, color);
+}
+
+@mixin badge-color-inverse($color-scheme: neutral, $is-empty: false) {
+  $content-eval: has-content;
+
+  @if ($is-empty) {
+    $content-eval: is-empty;
+  }
+
+  background-color: map-deep-get($badge-color-scheme-type-map, $color-scheme, color);
+  color: map-deep-get($badge-color-scheme-type-map, $color-scheme, $content-eval, bg);
+}

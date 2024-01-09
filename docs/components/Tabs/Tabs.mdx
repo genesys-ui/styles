@@ -1,0 +1,146 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./Tabs.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+
+<Meta of={Stories} />
+
+# Tabs
+
+## Base
+
+This is the most basic version of the component and its default appearance.
+
+<Canvas of={Stories.Basic} />
+
+## Modifiers
+
+### Is contained
+
+When we want to differentiate the tabs from other blocks (e.g. when we use tabs
+as secondary navigation, below te AppBar) we can get a more emphasized styles,
+adding the modifier `tabs__container--contained` to the container.
+
+<Canvas of={Stories.Contained} />
+
+### Is primary
+
+To get a primary color scheme Tabs we only have to add the modifier `tabs__marker--primary` to
+the tabs marker (the line below the active tab).
+
+<Canvas of={Stories.Primary} />
+
+### Wide
+
+To fill the whole space available of the parent you have to add to each `TabsItem` the modifier `tabs__item--wide`.
+
+<Canvas of={Stories.Wide} />
+
+### Sizes
+
+We can get the different sizes adding to the `tabs__item` and `tabs__link` elements
+the modifiers `tabs__item--sm`, `tabs__item--md`... etc.
+
+<Canvas of={Stories.Sizes} />
+
+## Elements
+
+### TabsItem
+
+This is the most basic version of the component and its default appearance.
+
+<Canvas of={Stories.TabsItemBase} />
+
+#### With icon
+
+An icon can be added at the beginning to visually reinforce the Tab meaning. It
+requires an 'xs' margin between icon and text (`.margin-cmp--right-xs`).
+
+<Canvas of={Stories.TabsItemIcon} />
+
+#### With remove button
+
+A 'remove' IconButton can be added at the end to close the tab. It requires an
+'xs' margin between text and button (`.margin-cmp--left-xs`).
+
+<Canvas of={Stories.TabsItemRemove} />
+
+### With icon and remove button
+
+Both components can be combined:
+
+<Canvas of={Stories.TabsItemIconAndRemove} />
+
+## Overview of CSS classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".tabs__container",
+      description: "Assign the basic styles for the Tabs",
+      type: "block",
+      restrictions: "nav",
+    },
+    {
+      selector: ".tabs__container--contained",
+      description: "Adjust the container background-color",
+      type: "modifier",
+      restrictions: "nav",
+    },
+    {
+      selector: ".tabs__content",
+      description: "Assign the basic styles for the Tabs inner elements",
+      type: "block",
+      restrictions: "ul",
+    },
+    {
+      selector: ".tabs__marker",
+      description: "Assign the basic styles for the Tabs inner elements",
+      type: "block",
+      restrictions: "div",
+    },
+    {
+      selector: ".tabs__marker--primary",
+      description: "Adjust the marker background-color",
+      type: "modifier",
+      restrictions: "div",
+    },
+    {
+      selector: ".tabs__item",
+      description:
+        "Assign the basic styles to convert the element into a TabsItem",
+      type: "block",
+      restrictions: "li",
+    },
+    {
+      selector: ".tabs__item--sm, .tabs__item--md, .tabs__item--lg",
+      description: "Assign the size styles: height, padding, font-size, etc.",
+      type: "modifier",
+      restrictions: "li",
+    },
+    {
+      selector: ".tabs__item--wide",
+      description: "To fill the whole space available of its parent",
+      type: "modifier",
+      restrictions: "li",
+    },
+    {
+      selector: ".tabs__link",
+      description: "Assign the basic styles to the TabsItem inner anchor",
+      type: "block",
+      restrictions: "a",
+    },
+    {
+      selector: ".tabs__link--sm, .tabs__link--md, .tabs__link--lg",
+      description: "Assign the size styles: height, padding, font-size, etc.",
+      type: "modifier",
+      restrictions: "a",
+    },
+    {
+      selector: ".tabs__link--active, .tabs__link--disabled",
+      description: "Assign the status styles: background-color, color, etc.",
+      type: "modifier",
+      restrictions: "a",
+    },
+  ]}
+/>

@@ -1,0 +1,61 @@
+// ----------------------- CHIP - COMPONENTS - MIXINS ----------------------- //
+
+
+// BASE STYLES - CHIP - COMPONENTS - MIXINS --------------------------------- //
+
+@mixin get-chip-base-styles {
+  @include inline-flex(null, center, center);
+  position: relative;
+  animation: background-color ease $cmp-chip-mutation-transition-duration,
+    color ease $cmp-chip-mutation-transition-duration,
+    box-shadow ease $cmp-chip-mutation-transition-duration;
+  border-radius: $cmp-chip-shape-border-radius;
+  font-weight: $cmp-chip-label-typo-font-weight;
+  letter-spacing: $cmp-chip-label-typo-letter-spacing;
+  text-transform: $cmp-chip-label-typo-text-transform;
+}
+
+
+// COLOR STYLES - CHIP - COMPONENTS - MIXINS -------------------------------- //
+
+@mixin get-chip-color-styles($state: enabled) {
+  background-color: map-deep-get($chip-color-map, bg, $state);
+  color: map-deep-get($chip-color-map, text, $state);
+}
+
+
+// SIZE STYLES - CHIP - COMPONENTS - MIXINS --------------------------------- //
+
+@mixin get-chip-size-styles($size: md) {
+  height: map-deep-get($chip-size-map, $size, "height");
+  min-width: map-deep-get($chip-size-map, $size, "min-width");
+  padding: 0 map-deep-get($chip-size-map, $size, "padding");
+}
+
+
+// ELEMENT STYLES - CHIP - COMPONENTS - MIXINS ------------------------------ //
+
+@mixin get-chip-label-styles($size: md) {
+  font-size: map-deep-get($chip-size-map, $size, "font-size");
+  line-height: map-deep-get($chip-size-map, $size, "line-height");
+}
+
+@mixin get-chip-remove-button-styles($size: md) {
+  margin-right: calc((#{map-deep-get($chip-size-map, $size, "padding")} - 0.4rem) * -1);
+  margin-left: map-deep-get($chip-size-map, $size, "icon-spacing");
+}
+
+@mixin get-chip-icon-styles($size: "md") {
+  font-size: map-deep-get($chip-size-map, $size, "icon-font-size");
+
+  &,
+  &--left {
+    margin-left: map-deep-get($chip-size-map, $size, "icon-offset");
+    margin-right: map-deep-get($chip-size-map, $size, "icon-spacing");
+  }
+
+  &--right {
+    margin-left: map-deep-get($chip-size-map, $size, "icon-spacing");
+    margin-right: map-deep-get($chip-size-map, $size, "icon-offset");
+  }
+}

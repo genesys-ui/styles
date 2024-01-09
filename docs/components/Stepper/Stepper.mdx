@@ -1,0 +1,91 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./Stepper.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+
+<Meta of={Stories} />
+
+# Stepper
+
+## Base
+
+This is the most basic version of the component and its default appearance.
+
+<Canvas of={Stories.Basic} />
+
+## Modifiers
+
+### Sizes
+
+Three sizes available: 'sm', 'md' and 'lg':
+
+<Canvas of={Stories.Sizes} />
+
+### Items status
+
+Four statuses available:
+
+- **Completed**: default `stepper__item` modifier and `badge--sucess`
+
+<Canvas of={Stories.StatusCompleted} />
+
+- **Current**: `stepper__item--active` modifier and `badge--secondary badge--is-inverse`
+
+<Canvas of={Stories.StatusCurrent} />
+
+- **Pending**: default `stepper__item` modifier and `badge--neutral`
+
+<Canvas of={Stories.StatusPending} />
+
+- **Disabled**: `stepper__item--disabled` modifier and `badge--neutral`
+
+<Canvas of={Stories.StatusDisabled} />
+
+## Overview of CSS classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".stepper",
+      description: "Assign the basic styles for the Stepper",
+      type: "block",
+      restrictions: "ol",
+    },
+    {
+      selector: ".stepper--sm, .stepper--md, .stepper--lg",
+      description: "Adjust the container and items styles for each size",
+      type: "modifier",
+      restrictions: "ol",
+    },
+    {
+      selector: ".stepper__item",
+      description: "Assign the basic styles for the Stepper items",
+      type: "block",
+      restrictions: "li",
+    },
+    {
+      selector: ".stepper__item--active, .stepper__item--disabled",
+      description: "Adjust the items styles for each variant",
+      type: "modifier",
+      restrictions: "li",
+    },
+    {
+      selector: ".stepper__separator",
+      description: "Assign the styles for the items separator",
+      type: "block",
+      restrictions: "i",
+    },
+    {
+      selector: ".stepper__hidden-status",
+      description: "Assign the styles for the screen readers status label",
+      type: "block",
+      restrictions: "span",
+    },
+    {
+      selector: ".stepper__label",
+      description: "Adjust the styles for the items labels",
+      type: "block",
+      restrictions: "span",
+    },
+  ]}
+/>

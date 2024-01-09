@@ -1,0 +1,66 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./Label.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+import { LABEL_CLASS_VARIANTS } from "../../constants";
+
+<Meta of={Stories} />
+
+# Label
+
+## Base
+
+This is the most basic version of the component and its default appearance.
+We recommend use the `label` HTML tag only when it has the 'for' attribute
+in pair with a field control or when it acts as a wrapper of it. In these last
+cases the cursor changes to pointer.
+
+<Canvas of={Stories.Basic} />
+
+## Modifiers
+
+This section includes the variants or modifiers that change the appearance of
+the base component.
+
+### Sizes
+
+There are several sizes available: `xxs`, `xs`, `sm`, `md` (by default), `lg` and `xl`.
+
+<Canvas of={Stories.Sizes} />
+
+### Wrapper
+
+Sometimes, the label can be the wrapper for both the form control and the label
+text, so that the two are associated implicitly. In these cases, you can use the
+modifier class `.label--wrapper`, if necessary in combination with position
+modifiers.
+
+<Canvas of={Stories.Wrapper} />
+
+### States
+
+This component is only affected by the `required` state.
+
+#### Required
+
+This component adds a `*` to visually indicate that the field is required, as
+you can see below:
+
+<Canvas of={Stories.Required} />
+
+### Truncate
+
+In cases where you want to add ellipses to the text you can do it as follows:
+
+<Canvas of={Stories.Truncate} />
+
+### Hide
+
+If you want to hide some label as _Screen readers only_, you can add the following class:
+`.label--hide`.
+
+<Canvas of={Stories.Hide} />
+
+## Overview of CSS classes
+
+<ClassesTable classVariants={[...LABEL_CLASS_VARIANTS]} />

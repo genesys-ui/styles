@@ -1,0 +1,58 @@
+// -------------------------- BADGE - COMPONENTS ---------------------------- //
+
+
+.badge {
+  $parent: &;
+
+
+  // DEFAULT STYLES - BADGE ------------------------------------------------- //
+
+  @include badge-base;
+  @include badge-size;
+  @include badge-color;
+
+
+  // MODIFIERS - BADGE ------------------------------------------------------ //
+
+  @each $size in $badge-size-list {
+    &--#{$size} {
+      @include badge-size($size, false, false);
+    }
+  }
+
+  @each $color-scheme in $badge-color-scheme-list {
+    &--#{$color-scheme} {
+      @include badge-color($color-scheme, false);
+
+      &#{$parent}--is-inverse {
+        @include badge-color-inverse($color-scheme, false);
+      }
+    }
+  }
+
+  &--is-empty {
+    @include badge-size($is-empty: true);
+    @include badge-color($is-empty: true);
+    padding: 0;
+
+    @each $size in $badge-size-list {
+      &#{$parent}--#{$size} {
+        @include badge-size($size, false, true);
+      }
+    }
+
+    @each $color-scheme in $badge-color-scheme-list {
+      &#{$parent}--#{$color-scheme} {
+        @include badge-color($color-scheme, true);
+      }
+    }
+  }
+
+  &--has-icon {
+    @each $size in $badge-size-list {
+      &#{$parent}--#{$size} {
+        @include badge-size($size, true, false);
+      }
+    }
+  }
+}

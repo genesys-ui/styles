@@ -1,0 +1,275 @@
+// ------------------------ NEW - TABLE - COMPONENTS ------------------------ //
+
+
+.table {
+  @import "./variables-table";
+
+  $parent: &;
+
+
+  // ELEMENTS - TABLE ------------------------------------------------------- //
+
+  // Header - Element - Table
+
+  &__header {
+    @include flex(null, stretch);
+    border-bottom: solid $cmp-table-head-row-shape-border-size-md
+      $cmp-table-head-row-color-background-after-base;
+    background-color: $cmp-table-head-color-background;
+
+    #{$parent}__cell {
+      @include flex(null, center);
+      @include text-color(heading);
+      font-weight: 700;
+    }
+  }
+
+  // Body - Element - Table
+
+  &__body {
+    background-color: $cmp-table-body-color-background;
+  }
+
+  // Row - Element - Table
+
+  &__row {
+    @include flex(null, center);
+    position: relative;
+    border-radius: $cmp-table-row-shape-border-radius-default;
+    background-color: $cmp-table-row-color-background-odd-base;
+
+    &::before {
+      @include pseudo-overlay;
+      border-radius: $cmp-table-row-shape-border-radius-default;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      background-color: $cmp-table-cell-color-background-backdrop-hovered-strong;
+    }
+
+    &:not(#{$parent}__row--selected):hover #{$parent}__cell--actions {
+      opacity: 1;
+    }
+
+    &--selected {
+      background-color: $cmp-table-row-color-background-odd-selected;
+    }
+
+    &--align-ver-top {
+      align-items: flex-start;
+    }
+  }
+
+  // Cell - Element - Table
+
+  &__cell {
+    @include text-color;
+    flex-shrink: 0;
+    font-size: $cmp-table-cell-wrapper-typo-font-size-md;
+
+    &--align {
+      &-hor-center {
+        text-align: center;
+      }
+
+      &-ver-center {
+        @include flex(null, center);
+      }
+    }
+
+    &--children-space-between {
+      @include flex(null, center);
+      @include spacing($property: gap, $size: xs, $type: component);
+
+      >:first-child {
+        flex: 1;
+      }
+
+      >:last-child {
+        flex-shrink: 0;
+      }
+
+      &#{$parent}__cell--truncate {
+        min-width: 0;
+
+        #{$parent}__cell-text {
+          @include truncate;
+        }
+      }
+    }
+
+    &--grow {
+      flex: 1;
+    }
+
+    &--truncate:not(#{$parent}__cell--children-space-between) {
+      @include truncate;
+    }
+
+    &--actions {
+      @include flex(null, center, flex-end);
+      @include spacing($property: gap, $size: xs, $type: component);
+      flex: 0 0 auto;
+      margin-left: auto;
+
+      #{$parent}__row:not(#{$parent}__row--selected) & {
+        opacity: $cmp-table-cell-quick-actions-shape-opacity;
+      }
+
+      .icon-button:not(:disabled):hover::before,
+      .icon-button:not(:disabled).icon-button--hovered::before {
+        background-color: transparent;
+      }
+    }
+
+    @each $size in $table-cell-size-width-list {
+      &--width-#{$size} {
+        width: map-get($table-cell-size-width-map, $size);
+      }
+
+      &--min-width-#{$size} {
+        min-width: map-get($table-cell-size-width-map, $size);
+      }
+
+      &--max-width-#{$size} {
+        max-width: map-get($table-cell-size-width-map, $size);
+      }
+    }
+  }
+
+
+  // MODIFIERS - TABLE ------------------------------------------------------ //
+
+  // Density - Modifier - Table
+
+  &,
+  &--default {
+    #{$parent}__header {
+      height: $cmp-table-head-size-height-default;
+    }
+
+    #{$parent}__row:not(#{$parent}__row--no-height) {
+      height: $cmp-table-row-size-height-default-md;
+    }
+
+    #{$parent}__cell {
+      padding: $cmp-table-cell-space-padding-ver-default-base
+        $cmp-table-cell-space-padding-hor-default;
+    }
+  }
+
+  &--compact {
+    #{$parent}__header {
+      height: $cmp-table-head-size-height-compact;
+    }
+
+    #{$parent}__row:not(#{$parent}__row--no-height) {
+      height: $cmp-table-row-size-height-compact-md;
+    }
+
+    #{$parent}__cell {
+      padding: $cmp-table-cell-space-padding-ver-compact-base
+        $cmp-table-cell-space-padding-hor-compact;
+    }
+  }
+
+  &--comfortable {
+    #{$parent}__header {
+      height: $cmp-table-head-size-height-comfortable;
+    }
+
+    #{$parent}__row:not(#{$parent}__row--no-height) {
+      height: $cmp-table-row-size-height-comfortable-md;
+    }
+
+    #{$parent}__cell {
+      padding: $cmp-table-cell-space-padding-ver-comfortable-base
+        $cmp-table-cell-space-padding-hor-comfortable;
+    }
+  }
+
+  // Striped - Modifier - Table
+
+  &--striped #{$parent}__row {
+    &:nth-child(even) {
+      background-color: $cmp-table-row-color-background-even-base;
+    }
+
+    &:nth-child(odd) {
+      background-color: $cmp-table-row-color-background-odd-base;
+    }
+
+    &--selected {
+      &:nth-child(even) {
+        background-color: $cmp-table-row-color-background-even-selected;
+      }
+
+      &:nth-child(odd) {
+        background-color: $cmp-table-row-color-background-odd-selected;
+      }
+    }
+  }
+
+  // Cells grow - Modifier - Table
+
+  &--cells-grow #{$parent}__cell {
+    flex: 1;
+  }
+
+  // Rows draggable - Modifier - Table
+
+  &--rows-draggable {
+    $draggable-icon-width: .4rem;
+
+    #{$parent}__header::after {
+      content: "";
+      order: -1;
+      width: $draggable-icon-width;
+    }
+
+    #{$parent}__row {
+      padding-left: $draggable-icon-width;
+      cursor: move;
+
+      &::after {
+        @include icon-font;
+        @include text-color($color: weak);
+        position: absolute;
+        left: 0;
+        align-self: center;
+        content: $gi-row_drag_drop;
+        width: $draggable-icon-width;
+        font-size: 1.8rem;
+        visibility: hidden;
+        opacity: 0;
+        transition: all .3s ease;
+      }
+
+      &:hover::after {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+// STICKY - TABLE ----------------------------------------------------------- //
+
+.table-wrapper {
+  &--sticky {
+    @include scrollbars;
+    @include height(auto, null, 100%);
+    flex: 1;
+    overflow-y: auto;
+
+    .table__header {
+      @include elevation(sticky-bottom);
+      box-shadow: $cmp-table-head-elevation-box-shadow;
+      z-index: 1;
+      position: sticky;
+      top: 0;
+    }
+  }
+}

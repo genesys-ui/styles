@@ -1,0 +1,253 @@
+// ---------------------- BADGE - COMPONENTS - VARIABLES -------------------- //
+
+
+// SIZE - BADGE - COMPONENTS - VARIABLES ------------------------------------ //
+
+$badge-size-list: sm, md, lg;
+
+$badge-size-map: (
+  common: (
+    sm: (
+      font-size: $cmp-badge-typo-font-size-sm,
+      icon-font-size: $cmp-badge-icon-size-square-sm,
+    ),
+    md: (
+      font-size: $cmp-badge-typo-font-size-md,
+      icon-font-size: $cmp-badge-icon-size-square-md,
+    ),
+    lg: (
+      font-size: $cmp-badge-typo-font-size-lg,
+      icon-font-size: $cmp-badge-icon-size-square-lg,
+    ),
+  ),
+  is-empty: (
+    sm: (
+      min-width: $cmp-badge-size-square-is-empty-sm,
+      height: $cmp-badge-size-square-is-empty-sm,
+    ),
+    md: (
+      min-width: $cmp-badge-size-square-is-empty-md,
+      height: $cmp-badge-size-square-is-empty-md,
+    ),
+    lg: (
+      min-width: $cmp-badge-size-square-is-empty-lg,
+      height: $cmp-badge-size-square-is-empty-lg,
+    ),
+  ),
+  has-content: (
+    sm: (
+      min-width: $cmp-badge-size-square-has-content-sm,
+      height: $cmp-badge-size-square-has-content-sm,
+    ),
+    md: (
+      min-width: $cmp-badge-size-square-has-content-md,
+      height: $cmp-badge-size-square-has-content-md,
+    ),
+    lg: (
+      min-width: $cmp-badge-size-square-has-content-lg,
+      height: $cmp-badge-size-square-has-content-lg,
+    ),
+  ),
+);
+
+
+// COLOR SCHEME TYPE - BADGE - COMPONENTES - VARIABLES ---------------------- //
+
+$badge-color-scheme-list:
+  primary, secondary,
+  neutral, blend-inverse, blend-base,
+  error, help, info, success, warning,
+  data-blue, data-bronze, data-dusk, data-green, data-indigo, data-magenta,
+  data-purple, data-red, data-sky, data-slate, data-teal;
+
+$badge-color-scheme-type-map: (
+  primary: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-primary,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-primary,
+    ),
+    color: $cmp-badge-color-text-primary,
+  ),
+  secondary: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-secondary,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-secondary,
+    ),
+    color: $cmp-badge-color-text-secondary,
+  ),
+  neutral: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-neutral,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-neutral,
+    ),
+    color: $cmp-badge-color-text-neutral,
+  ),
+  blend-base: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-blend-base,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-blend-base,
+    ),
+    color: $cmp-badge-color-text-blend-base,
+  ),
+  blend-inverse: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-blend-inverse,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-blend-inverse,
+    ),
+    color: $cmp-badge-color-text-blend-inverse,
+  ),
+  error: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-error,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-error,
+    ),
+    color: $cmp-badge-color-text-error,
+  ),
+  success: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-success,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-success,
+    ),
+    color: $cmp-badge-color-text-success,
+  ),
+  warning: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-warning,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-warning,
+    ),
+    color: $cmp-badge-color-text-warning,
+  ),
+  help: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-help,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-help,
+    ),
+    color: $cmp-badge-color-text-help,
+  ),
+  info: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-info,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-info,
+    ),
+    color: $cmp-badge-color-text-info,
+  ),
+  data-blue: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-blue,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-blue,
+    ),
+    color: $cmp-badge-color-text-data-blue,
+  ),
+  data-bronze: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-bronze,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-bronze,
+    ),
+    color: $cmp-badge-color-text-data-bronze,
+  ),
+  data-dusk: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-dusk,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-dusk,
+    ),
+    color: $cmp-badge-color-text-data-dusk,
+  ),
+  data-green: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-green,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-green,
+    ),
+    color: $cmp-badge-color-text-data-green,
+  ),
+  data-indigo: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-indigo,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-indigo,
+    ),
+    color: $cmp-badge-color-text-data-indigo,
+  ),
+  data-magenta: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-magenta,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-magenta,
+    ),
+    color: $cmp-badge-color-text-data-magenta,
+  ),
+  data-purple: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-purple,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-purple,
+    ),
+    color: $cmp-badge-color-text-data-purple,
+  ),
+  data-red: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-red,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-red,
+    ),
+    color: $cmp-badge-color-text-data-red,
+  ),
+  data-sky: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-sky,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-sky,
+    ),
+    color: $cmp-badge-color-text-data-sky,
+  ),
+  data-slate: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-slate,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-slate,
+    ),
+    color: $cmp-badge-color-text-data-slate,
+  ),
+  data-teal: (
+    is-empty: (
+      bg: $cmp-badge-color-background-is-empty-data-teal,
+    ),
+    has-content: (
+      bg: $cmp-badge-color-background-has-content-data-teal,
+    ),
+    color: $cmp-badge-color-text-data-teal,
+  ),
+);

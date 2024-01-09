@@ -1,0 +1,49 @@
+// ----------------------- RESPONSIVE - UTILS - MIXINS ---------------------- //
+
+
+// RESPOND ABOVE - RESPONSIVE - UTILS - MIXINS ------------------------------ //
+
+@mixin respond-above($breakpoint) {
+  @if (map-has-key($breakpoints-map, $breakpoint)) {
+    $breakpoint-value: map-get($breakpoints-map, $breakpoint);
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+
+// RESPOND BELLOW - RESPONSIVE - UTILS - MIXINS ----------------------------- //
+
+@mixin respond-below($breakpoint) {
+  @if (map-has-key($breakpoints-map, $breakpoint)) {
+    $breakpoint-value: map-get($breakpoints-map, $breakpoint);
+    @media (max-width: ($breakpoint-value - 1)) {
+      @content;
+    }
+  } @else {
+    @warn 'Invalid breakpoint: #{$breakpoint}.';
+  }
+}
+
+
+// RESPOND BETWEEN - RESPONSIVE - UTILS - MIXINS ---------------------------- //
+
+@mixin respond-between($lower, $upper) {
+  @if (map-has-key($breakpoints-map, $lower) and map-has-key($breakpoints-map, $upper)) {
+    $lower-breakpoint: map-get($breakpoints-map, $lower);
+    $upper-breakpoint: map-get($breakpoints-map, $upper);
+    @media (min-width: $lower-breakpoint) and (max-width: ($upper-breakpoint - 1)) {
+      @content;
+    }
+  } @else {
+    @if ((map-has-key($breakpoints-map, $lower) == false)) {
+      @warn 'Your lower breakpoint was invalid: #{$lower}.';
+    }
+    @if ((map-has-key($breakpoints-map, $upper) == false)) {
+      @warn 'Your upper breakpoint was invalid: #{$upper}.';
+    }
+  }
+}

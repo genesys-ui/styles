@@ -1,0 +1,382 @@
+// ------------------ FORM ELEMENTS - COMPONENTS - MIXINS ------------------- //
+
+
+// DISABLED - COMPONENTS - MIXINS ------------------------------------------- //
+
+@mixin disabled-field {
+  opacity: 0.4;
+  cursor: not-allowed;
+  user-select: none;
+}
+
+
+// INPUT PLACEHOLDER - COMPONENTS - MIXINS ---------------------------------- //
+
+@mixin placeholder($args...) {
+  &::-webkit-input-placeholder {
+    @include _apply-props($args, color, font-size, letter-spacing, text-transform);
+  }
+
+  &::-moz-placeholder {
+    @include _apply-props($args, color, font-size, letter-spacing, text-transform);
+  }
+
+  &:-ms-input-placeholder {
+    @include _apply-props($args, color, font-size, letter-spacing, text-transform);
+  }
+
+  &:-moz-placeholder {
+    @include _apply-props($args, color, font-size, letter-spacing, text-transform);
+  }
+}
+
+
+// INPUT, TEXTAREA AND SELECT COMMON - COMPONENTS - MIXINS ------------------ //
+
+@mixin field-control-typo($size: md, $props: null, $ignore-props: null) {
+  @if index($field-control-size-list, $size) != null {
+    @include typography(body, $size, $props, $ignore-props);
+  } @else {
+    @warn 'Size `#{$size}` is not in $field-control-size-list list.';
+  }
+}
+
+@mixin field-control-base {
+  appearance: none;
+  transition: all $alias-fields-mutation-transition-duration ease-in-out;
+  border: solid $alias-fields-shape-border-size-base;
+  border-radius: $alias-shape-border-radius-md;
+  box-sizing: border-box;
+
+  &:disabled,
+  &.disabled {
+    @include disabled-field;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+@mixin field-control-size($size: md) {
+  @include field-control-typo($size);
+  height: map-deep-get($field-control-size-map, $size, height);
+  padding: 0 map-deep-get($field-control-size-map, $size, padding-hor);
+}
+
+@mixin field-control-size-width($is-select: false) {
+  @each $size in $field-control-size-width-list {
+    &--width-#{$size} {
+      width: map-get($field-control-size-width-map, $size);
+
+      @if ($is-select) {
+        & + .select2-container {
+          width: map-get($field-control-size-width-map, $size);
+        }
+      }
+    }
+
+    &--min-width-#{$size} {
+      min-width: map-get($field-control-size-width-map, $size);
+
+      @if ($is-select) {
+        & + .select2-container {
+          min-width: map-get($field-control-size-width-map, $size);
+        }
+      }
+    }
+
+    &--max-width-#{$size} {
+      max-width: map-get($field-control-size-width-map, $size);
+
+      @if ($is-select) {
+        & + .select2-container {
+          max-width: map-get($field-control-size-width-map, $size);
+        }
+      }
+    }
+  }
+}
+
+@mixin field-control-color (
+  $status: base,
+  $apply-read-only: true,
+  $field-bg-color: map-deep-get($field-control-color-map, background, $status, enabled),
+  $field-bg-color-readonly: map-deep-get($field-control-color-map, background, $status, readonly),
+  $field-border-color-enabled: map-deep-get($field-control-color-map, border, $status, enabled),
+  $field-border-color-hovered: map-deep-get($field-control-color-map, border, $status, hovered),
+  $field-border-color-readonly: map-deep-get($field-control-color-map, border, $status, readonly),
+  $field-color-placeholder: map-deep-get($field-control-color-map, text, $status, placeholder),
+  $field-color-enabled: map-deep-get($field-control-color-map, text, $status, enabled),
+  $field-color-hovered: map-deep-get($field-control-color-map, text, $status, hovered),
+  $field-color-focused: map-deep-get($field-control-color-map, text, $status, focused),
+  $field-color-readonly: map-deep-get($field-control-color-map, text, $status, readonly),
+) {
+  @include placeholder($field-color-placeholder);
+  border-color: $field-border-color-enabled;
+  background-color: $field-bg-color;
+  color: $field-color-enabled;
+
+  @if ($apply-read-only) {
+    &[readonly]:not(:disabled) {
+      border-color: $field-border-color-readonly;
+      background-color: $field-bg-color-readonly;
+      color: $field-color-readonly;
+    }
+
+    &:not([readonly]) {
+      &:not(:disabled):hover {
+        border-color: $field-border-color-hovered;
+      }
+
+      &:not(:disabled):focus,
+      &:not(:disabled):focus-visible {
+        box-shadow: $alias-elevation-box-shadow-base-focused;
+        color: $field-color-focused;
+      }
+    }
+  } @else {
+    &:not(:disabled):hover {
+      border-color: $field-border-color-hovered;
+    }
+
+    &:not(:disabled):focus,
+    &:not(:disabled):focus-visible {
+      box-shadow: $alias-elevation-box-shadow-base-focused;
+      outline: none;
+      color: $field-color-focused;
+    }
+  }
+}
+
+
+// INPUT - COMPONENTS - MIXINS ---------------------------------------------- //
+
+@mixin field-control-input(
+  $size: md,
+  $status: base,
+  $apply-read-only: true,
+) {
+  @include field-control-base;
+  @include field-control-size($size);
+  @include field-control-color($status, $apply-read-only);
+}
+
+
+// SELECT - COMPONENTS - MIXINS --------------------------------------------- //
+
+@mixin field-control-select(
+  $size: md,
+  $status: base,
+  $apply-read-only: false,
+) {
+  @include field-control-base;
+  @include field-control-size($size);
+  @include field-control-color($status, $apply-read-only);
+  @include inline-flex(null, center);
+  position: relative;
+  padding-right: 2.6rem;
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDI1LjMuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkNhcGFfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDI3IDI3IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNyAyNzsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8cGF0aCBkPSJNMTMuNSwxNi44Yy0wLjIsMC0wLjMtMC4xLTAuNS0wLjJsLTUtNWMtMC4yLTAuMi0wLjItMC43LDAtMWMwLjItMC4yLDAuMy0wLjIsMC41LTAuMnMwLjMsMC4xLDAuNSwwLjJsNC41LDQuNWw0LjUtNC41CgljMC4yLTAuMiwwLjMtMC4yLDAuNS0wLjJjMC4yLDAsMC4zLDAuMSwwLjUsMC4yYzAuMiwwLjIsMC4yLDAuNywwLDFsLTUsNUMxMy44LDE2LjcsMTMuNywxNi44LDEzLjUsMTYuOEwxMy41LDE2LjhMMTMuNSwxNi44eiIvPgo8L3N2Zz4K');
+  background-repeat: no-repeat;
+  background-position: right center;
+
+  &[multiple] {
+    height: auto;
+    padding: $alias-space-cmp-xxs;
+
+    &:before {
+      content: none;
+    }
+
+    option {
+      @include menu-item;
+      @include flex(row, center);
+    }
+  }
+}
+
+
+// TEXTAREA - COMPONENTS - MIXINS ------------------------------------------- //
+
+@mixin field-control-textarea-size($size: md) {
+  $field-control-height: map-deep-get($field-control-size-map, $size, height);
+  $field-control-lh: map-deep-get($typography-map, body, $size, line-height);
+  $ver-padding: calc((#{$field-control-height} - #{$field-control-lh}) / 2);
+
+  @include field-control-size($size);
+  min-height: calc((#{$field-control-lh} * 3) + (#{$ver-padding} * 2) + (#{$alias-fields-shape-border-size-base} * 2));
+  padding-top: $ver-padding;
+  padding-bottom: $ver-padding;
+}
+
+@mixin field-control-textarea(
+  $size: md,
+  $status: base,
+  $apply-read-only: true,
+  $resize: vertical,
+) {
+  @include field-control-input($size, $status, $apply-read-only);
+  @include field-control-textarea-size($size);
+  resize: $resize;
+}
+
+
+// CHECKBOX AND RADIO COMMON - COMPONENTS - MIXINS -------------------------- //
+
+@mixin field-control-checkbox-radio-common-base {
+  flex: 0 0 auto;
+  margin: 0;
+  position: relative;
+  -webkit-appearance: none;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: all $alias-fields-mutation-transition-duration ease-in-out;
+  border-style: solid;
+  border-width: $alias-fields-shape-border-size-check;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+
+  &.disabled,
+  &:disabled {
+    @include disabled-field;
+    background-clip: padding-box;
+  }
+
+  &:not(:disabled):focus-visible {
+    box-shadow: $alias-elevation-box-shadow-base-focused;
+  }
+}
+
+@mixin field-control-checkbox-radio-common-size($size: md) {
+  $square: #{map-deep-get($check-radio-size-map, common, $size, square)};
+
+  @include size($square, $square);
+  line-height: $square;
+}
+
+@mixin field-control-checkbox-radio-common-color($status: base) {
+  border-color: map-deep-get($field-control-color-map, border, $status, enabled);
+  background-color: map-deep-get($field-control-color-map, background, $status, enabled);
+
+  &.disabled,
+  &:disabled {
+    &:not(:checked) {
+      background-color: map-deep-get($field-control-color-map, border, $status, enabled);
+      border-color: map-deep-get($field-control-color-map, border, $status, enabled);
+    }
+  }
+
+  &:not(:checked):not(:disabled):hover,
+  &:not(:checked):not(:disabled):focus,
+  &:not(:checked):not(:disabled):active {
+    border-color: map-deep-get($field-control-color-map, border, $status, hovered);
+  }
+}
+
+@mixin field-control-checkbox-radio-common($size: md, $status: base) {
+  @include field-control-checkbox-radio-common-base;
+  @include field-control-checkbox-radio-common-size($size);
+  @include field-control-checkbox-radio-common-color($status);
+}
+
+
+// RADIO - COMPONENTS - MIXINS ---------------------------------------------- //
+
+@mixin field-control-radio-base {
+  $border-radius: $cmp-radio-control-shape-border-radius;
+
+  border-radius: $border-radius;
+
+  &::after {
+    content: "";
+    transition: color ease-in-out $alias-fields-mutation-transition-duration;
+    border-radius: $border-radius;
+    background-color: transparent;
+  }
+}
+
+@mixin field-control-radio-size($size: md) {
+  $marker-size: #{map-deep-get($check-radio-size-map, radio, $size, marker)};
+
+  @include field-control-checkbox-radio-common-size($size);
+
+  &::after {
+    @include size($marker-size);
+  }
+}
+
+@mixin field-control-radio-color($status: base) {
+  &:checked {
+    border-color: map-deep-get($field-control-color-map, background, $status, checked);
+
+    &::after {
+      background-color: map-deep-get($field-control-color-map, background, $status, checked);;
+    }
+  }
+}
+
+@mixin field-control-radio($size: md, $status: base) {
+  @include field-control-checkbox-radio-common($size, $status);
+  @include field-control-radio-base;
+  @include field-control-radio-size($size);
+  @include field-control-radio-color($status);
+}
+
+
+// CHECKBOX - COMPONENTS - MIXINS ------------------------------------------- //
+
+@mixin field-control-checkbox-base($is-mixed: false) {
+  border-radius: $cmp-checkbox-control-shape-border-radius;
+
+  &::after {
+    @include icon-font;
+    content: $gi-check_thick;
+    transition: color ease-in-out $alias-fields-mutation-transition-duration;
+    font-weight: bold;
+    color: transparent;
+  }
+
+  @if ($is-mixed) {
+    &::after {
+      height: $cmp-checkbox-control-marker-size-height-mixed;
+    }
+  }
+}
+
+@mixin field-control-checkbox-size($size: md) {
+  @include field-control-checkbox-radio-common-size($size);
+
+  &::after {
+    font-size: map-deep-get($check-radio-size-map, check, $size, marker);
+  }
+}
+
+@mixin field-control-checkbox-color($status: base) {
+  &:checked {
+    background-color: map-deep-get($field-control-color-map, background, $status, checked);
+    border-color: map-deep-get($field-control-color-map, background, $status, checked);
+
+    &::after {
+      color: map-deep-get($field-control-color-map, text, $status, checked);
+    }
+  }
+}
+
+@mixin field-control-checkbox($size: md, $status: base, $is-mixed: false) {
+  @include field-control-checkbox-radio-common($size, $status);
+  @include field-control-checkbox-base($is-mixed);
+  @include field-control-checkbox-size($size);
+  @include field-control-checkbox-color($status);
+}

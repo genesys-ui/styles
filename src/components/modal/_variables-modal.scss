@@ -1,0 +1,67 @@
+// --------------------- MODAL - VARIABLES - COMPONENTS --------------------- //
+
+
+// LIST COLOR SCHEME - MODAL - VARIABLES ------------------------------------ //
+
+$modal-status-list: success, help, info, warning, error;
+
+
+// MAP COLOR BG HEADER - MODAL - VARIABLES ---------------------------------- //
+
+$modal-status-map: (
+  success: (
+    header-bg-color: $cmp-dialog-header-color-background-success,
+    icon-bg-color: $cmp-dialog-header-icon-color-background-success,
+  ),
+  help: (
+    header-bg-color: $cmp-dialog-header-color-background-help,
+    icon-bg-color: $cmp-dialog-header-icon-color-background-help,
+  ),
+  info: (
+    header-bg-color: $cmp-dialog-header-color-background-info,
+    icon-bg-color: $cmp-dialog-header-icon-color-background-info,
+  ),
+  error: (
+    header-bg-color: $cmp-dialog-header-color-background-error,
+    icon-bg-color: $cmp-dialog-header-icon-color-background-error,
+  ),
+  warning: (
+    header-bg-color: $cmp-dialog-header-color-background-warning,
+    icon-bg-color: $cmp-dialog-header-icon-color-background-warning,
+  ),
+);
+
+
+// ----------------------- VARIABLES - MODAL - LAYOUT ----------------------- //
+
+
+// LIST SIZE - VARIABLES - MODAL -------------------------------------------- //
+
+$modal-size-list: sm , md, lg, xl, full;
+
+
+// MAP SIZE - VARIABLES - MODAL --------------------------------------------- //
+
+$modal-size-map: (
+  sm: (
+    max-width: $cmp-modal-size-max-width-sm,
+    min-height: $cmp-modal-size-min-height-sm,
+  ),
+  md: (
+    max-width: $cmp-modal-size-max-width-md,
+    min-height: $cmp-modal-size-min-height-md,
+  ),
+  lg: (
+    max-width: $cmp-modal-size-max-width-lg,
+    min-height: $cmp-modal-size-min-height-lg,
+  ),
+  xl: (
+    max-width: $cmp-modal-size-max-width-xl,
+    min-height: $cmp-modal-size-min-height-xl,
+  ),
+  full: (
+    max-width: $cmp-modal-size-max-width-full,
+    min-height: $cmp-modal-size-min-height-full,
+    height: $cmp-modal-size-height-full,
+  )
+)

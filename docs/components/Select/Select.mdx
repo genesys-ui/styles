@@ -1,0 +1,194 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./Select.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+import {
+  FORM_FIELD_CLASS_VARIANTS,
+  HELPER_CLASS_VARIANTS,
+  LABEL_CLASS_VARIANTS,
+  VALIDATION_CLASS_VARIANTS,
+} from "../../constants";
+
+<Meta of={Stories} />
+
+# Select
+
+## Base
+
+This is the most basic version of the component and its default appearance.
+
+<Canvas of={Stories.Basic} />
+
+## Hidden label
+
+We can get an Select field with the label hidden, but still accessible, adding the modifier `--hide` to the label.
+We use 'screen-readers only' styles to hide the label, so it's still accessible to the assistive technologies.
+
+<Canvas of={Stories.HiddenLabel} />
+
+## With Helper
+
+We can add a helper message below the select control with extra info about how to fill the field.
+
+In small contexts: toolbar, filters... etc. or because of design needs, the helper
+has to be rendered as an InlineMessage component: the helper button next to the label,
+triggering a contextual floating message. In this case, we need to wrap the button
+inside the label block and add to this last the modifier `--wrapper`.
+
+If the helper message is very long or there is relative information to the field,
+then we can use a 'read more' link at the end of the helper. This link can trigger
+a floating contextual message (as InlineMessage) or link to another page with the info.
+For the floating way you have to use a status and two sizes smaller icon button than
+the Select size (E.g. If the Select is 'md' size, then the icon-button has to be 'xs' size).
+
+<Canvas of={Stories.Helper} />
+
+## With Validation
+
+The modifier classes for different statuses are `--error`, `--success` and `--warning`. You have to apply the modifiers
+to each child: `select--error`, `validation--error`... etc.
+
+### Docked Validation
+
+We can add a validation message below the select control with the info about the validation state.
+The validation message must always replace the helper message in case there was one.
+
+If the validation message is very long or there is relative extra information
+to fill the field correctly, then we can use a 'read more' link at the end of the validation.
+This link can trigger a floating contextual message (as InlineMessage) or link to another page with the info.
+
+<Canvas of={Stories.DockedValidation} />
+
+### Floating Validation
+
+In small contexts: toolbar, filters... etc. or because of design needs, the validation
+has to be rendered as InlineMessage components: the button next to the select control
+and triggering a contextual floating message. We need to wrap the select control and the
+trigger button with an element with the class `input-wrapper`.
+
+For this floating way you have to use a status and two sizes smaller icon button than
+the Select size (E.g. If the Select is 'md' size, then the icon-button has to be 'xs' size).
+
+<Canvas of={Stories.FloatingValidation} />
+
+## Modifiers
+
+### Size
+
+Three sizes available: `--sm`, `--md` and `--lg`. You have to apply the modifiers to each
+child: `label--sm`, `select--sm`, `helper--sm`... etc.
+
+<Canvas of={Stories.Sizes} />
+
+### Select control width
+
+It's possible to assign a pre-defined select control width to adapt the field to the expected filled data.
+If your select expects to be filled with a two digits number at most, then its width must be smaller than
+another one which expects the subject of an email message.
+
+There are several pre-defined widths available: `--xxs-width`, `--xs-width`... `--xl-width` and the class
+attribute value must be added to the select control, not to the field wrapper.
+
+The width only affects to the select control, not to the label, helper... or any element else.
+If you need a specific width for the whole field, then you have to wrap it with a layout component.
+
+By default, the select field fits the full width of its parent.
+
+<Canvas of={Stories.Width} />
+
+### Status
+
+Three statuses available: `--error`, `--success` and `--warning`. You have to apply the modifiers to each
+child: `input--error`, `validation--error`... etc.
+
+<Canvas of={Stories.Status} />
+
+### Hor
+
+We can get the label to the left of the select with the `--hor` modifier.
+We only should use this way when the select is rendered in a small contexts
+as a toolbar or filter block.
+
+The helper and the validation have to be rendered
+as InlineMessage components: the helper button next to the label and the
+validation one next to the select control and triggering a contextual floating message.
+
+In the helper case, we need to wrap the button inside the label block and add to this last
+the modifier `--wrapper`.
+
+<Canvas of={Stories.Horizontal} />
+
+### Required
+
+If you want to inform that the select is a required field you have to add the modifier `--required` to the `label`.
+For accessibility reasons you should add the attribute `required` to the select control.
+
+<Canvas of={Stories.Required} />
+
+### Disabled
+
+If you want to make the field disabled you have to add the attribute `disabled` to the select control:
+
+<Canvas of={Stories.Disabled} />
+
+### Readonly
+
+The select control has no `readonly` attribute, so we recommend to use instead an input with the same value
+as the selected option. It's possible to assign the same readonly styles as input to the select, but you need
+to assign it the `disabled` attribute to avoid opening the options, so the final value of the field
+wouldn't be accessible, while in the `readonly` input would be.
+
+<Canvas of={Stories.Readonly} />
+
+## Cases
+
+### Multiple
+
+If the select control has the `multiple` attribute, then it's possible to select more than one option
+at the same time. The behavior is different so the styles must be different too.
+
+<Canvas of={Stories.CaseMultiple} />
+
+## Overview of CSS classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".select",
+      description: "Assign the basic styles to the select control",
+      type: "block",
+      restrictions: "select",
+    },
+    {
+      selector: ".select--sm, .select--md, .select--lg",
+      description:
+        "Assign the size styles: height, padding, font-size, etc. to the form control",
+      type: "modifier",
+      restrictions: "select",
+    },
+    {
+      selector: ".select--error, .select--success, .select--warning",
+      description: "Assign status styles.",
+      type: "modifier",
+      restrictions: "select",
+    },
+    {
+      selector: ".input-wrapper",
+      description:
+        "Assign the distribution styles to the wrapper of select and validation button",
+      type: "block",
+      restrictions: "div, span",
+    },
+    {
+      selector:
+        ".input--xxs-width, .input--xs-width, .input--sm-width, .input--md-width, .input--lg-width, .input--xl-width",
+      description: "Assign a pre-defined width to the select control.",
+      type: "modifier",
+      restrictions: "select",
+    },
+    ...FORM_FIELD_CLASS_VARIANTS,
+    ...LABEL_CLASS_VARIANTS,
+    ...VALIDATION_CLASS_VARIANTS,
+    ...HELPER_CLASS_VARIANTS,
+  ]}
+/>

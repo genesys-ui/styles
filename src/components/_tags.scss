@@ -1,0 +1,36 @@
+// --------------------- NEW STYLE - TAGS - COMPONENTS ---------------------- //
+
+
+.tag {
+
+  // Default styles - Tags
+
+  @include tag-base;
+
+
+  // ELEMENTS - TAGS -------------------------------------------------------- //
+
+  &-group {
+    @include flex(null, null, null, wrap);
+    @include spacing($property: gap, $size: xs, $type: component);
+  }
+
+
+  // MODIFIERS - TAGS ------------------------------------------------------- //
+
+  // Size - Modifier - Tags
+
+  @each $size in $tag-size-list {
+    &--#{$size} {
+      @include tag-size($size);
+    }
+  }
+
+  // Color Scheme - Modifier - Tags
+
+  @each $color-scheme in $tag-color-scheme-list {
+    &--#{$color-scheme} {
+      @include tag-color($color-scheme);
+    }
+  }
+}

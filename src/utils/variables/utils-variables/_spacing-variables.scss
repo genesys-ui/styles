@@ -1,0 +1,46 @@
+// ---------------------- SPACING - UTILS - VARIABLES ----------------------- //
+
+
+// SIDE - SPACING - UTILS - VARIABLES --------------------------------------- //
+
+$spacing-side-list: top, right, bottom, left, hor, ver, all;
+
+
+// SIZE - SPACING - UTILS - VARIABLES --------------------------------------- //
+
+$spacing-size-list: xxs, xs, sm, md, lg, xl;
+
+$spacing-size-map: (
+  xxs: (
+    component: $alias-space-cmp-xxs,
+    layout: $alias-space-layout-xxs,
+  ),
+  xs: (
+    component: $alias-space-cmp-xs,
+    layout: $alias-space-layout-xs,
+  ),
+  sm: (
+    component: $alias-space-cmp-sm,
+    layout: $alias-space-layout-sm,
+  ),
+  md: (
+    component: $alias-space-cmp-md,
+    layout: $alias-space-layout-md,
+  ),
+  lg: (
+    component: $alias-space-cmp-lg,
+    layout: $alias-space-layout-lg,
+  ),
+  xl: (
+    component: $alias-space-cmp-xl,
+    layout: $alias-space-layout-xl,
+  ),
+  xxl: (
+    component: $alias-space-cmp-xxl,
+    layout: $alias-space-layout-xxl,
+  ),
+  xxxl: (
+    component: $alias-space-cmp-xxxl,
+    layout: $alias-space-layout-xxxl,
+  )
+);

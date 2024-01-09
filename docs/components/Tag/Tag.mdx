@@ -1,0 +1,100 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./Tag.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+
+<Meta of={Stories} />
+
+# Tag
+
+## Base
+
+This is the Tag without any specific content and without adding any modifier class:
+
+<Canvas of={Stories.Basic} />
+
+## Modifiers
+
+### Sizes
+
+Those are the different sizes defined for the Tag adding a modifier class:
+
+<Canvas of={Stories.Sizes} />
+
+### Has icon
+
+It's possible to add an icon, but always to the left of the text.
+It requires an 'xs' margin between icon and text (`.margin-cmp--right-xs`).
+
+<Canvas of={Stories.Icon} />
+
+### Color scheme
+
+Each tag color scheme is for a specific purpose, there are a hierarchy and usage
+limitations.
+
+#### Brand
+
+The main branded colors `primary` and `secondary` are usually used in corporate contexts.
+
+<Canvas of={Stories.ColorSchemeBrand} />
+
+#### Neutral
+
+The `neutral` variant is used when the tag has not to be prominent.
+The `blend-base` and `blend-inverse` are used when the tag has a
+colored surface as background.
+
+<Canvas of={Stories.ColorSchemeNeutral} />
+
+#### Status
+
+There are five status: `error`, `help`, `info`, `success` and `warning`.
+These colors usually are used to inform about a specific context.
+
+<Canvas of={Stories.ColorSchemeStatus} />
+
+#### Data visualization
+
+These variants extend the available colors to improve data visualization.
+
+<Canvas of={Stories.ColorSchemeData} />
+
+## Group
+
+If you need to show more tha one tag at the same time, you should use
+the block component `tag-group`. It adds styles for spacing, wrap... etc.
+
+<Canvas of={Stories.ColorSchemeStatus} />
+
+## Overview of CSS Classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".tag",
+      description: "Assign the basic styles to convert the element into a Tag",
+      type: "block",
+      restrictions: "span, div",
+    },
+    {
+      selector: ".tag--sm, .tag--md, .tag--lg",
+      description: "Assign the size styles: height, padding, font-size, etc.",
+      type: "modifier",
+      restrictions: "span, div",
+    },
+    {
+      selector:
+        ".tag--primary, .tag--secondary, .tag--neutral, .tag--blend-base, .tag--blend-inverse, .tag--error, .tag--success, .tag--warning, .tag--info, .tag--help, .tag--data-blue, .tag--data-bronze, .tag--data-dusk, .tag--data-green, .tag--data-indigo, .tag--data-magenta, .tag--data-purple, .tag--data-red, .tag--data-sky, .tag--data-slate, .tag--data-teal",
+      description: "Assign the color styles: background-color, color, etc.",
+      type: "modifier",
+      restrictions: "span, div",
+    },
+    {
+      selector: ".tag-group",
+      description: "Assign the styles to distribute multiple Tags in a group.",
+      type: "block",
+      restrictions: "span, div",
+    },
+  ]}
+/>

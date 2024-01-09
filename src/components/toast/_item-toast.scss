@@ -1,0 +1,248 @@
+// ----------------------- ITEM - TOAST - COMPONENTS ------------------------ //
+
+
+#{$toast}__item {
+  @import "./utils-toast";
+
+  $parent: &;
+
+  @include elevation(pop-out);
+  width: 50rem;
+  background-color: $cmp-toast-color-background-default;
+
+
+  // ELEMENTS - ITEM - TOAST ---------------------------------------------- //
+
+  // Header - Element - Item - Toast
+
+  #{$toast}__header {
+    $title-size: h5;
+    $title-line-height: map-deep-get($typography-map, heading, $title-size, line-height);
+
+    display: flex;
+    padding: $cmp-toast-header-space-padding-default;
+
+    #{$toast}__icon {
+      @include inline-flex(null, center, center);
+      @include size($title-line-height, $cmp-toast-header-icon-size-width);
+      flex-shrink: 0;
+      margin-right: $cmp-toast-header-icon-space-margin-right;
+      font-size: $cmp-toast-header-icon-typo-font-size-md;
+
+      &::before {
+        @include icon-font;
+      }
+    }
+
+    #{$toast}__heading {
+      flex: 1;
+
+      #{$toast}__title {
+        @include typography(heading, $title-size);
+        @include text-color(heading);
+        @include truncate(2);
+      }
+
+      #{$toast}__subtitle {
+        @include typography(heading, h6);
+        @include text-color(heading, weak);
+        margin-top: $cmp-toast-header-subtitle-space-margin-top;
+      }
+    }
+
+    #{$toast}__collapse-btn::after {
+      transition: transform 0.15s ease;
+    }
+
+    #{$toast}__close-btn {
+      flex-shrink: 0;
+      margin-top: calc(-1 * (#{$cmp-button-size-height-xs} - #{$title-line-height}) / 2);
+    }
+  }
+
+  // Content - Element - Item - Toast
+
+  #{$toast}__content {
+    @include scrollbars;
+    @include typography;
+    @include text-color;
+    padding: $cmp-toast-content-space-padding-default;
+    word-break: break-word;
+    overflow-y: auto;
+  }
+
+  // Footer - Element - Item - Toast
+
+  #{$toast}__footer {
+    @include flex(null, center);
+    padding: $cmp-toast-footer-space-padding-default;
+
+    #{$toast}__actions {
+      @include flex(null, center);
+      gap: $cmp-toast-footer-actions-space-gap;
+      margin-left: auto;
+
+      #{$toast}__action:first-child {
+        margin-left: $cmp-toast-footer-actions-space-margin-left;
+      }
+    }
+  }
+
+  // Progress bar - Element - Item - Toast
+
+  #{$toast}__progress-bar {
+    $border-radius: map-deep-get($elevation-map, pop-out, border-radius);
+
+    @include size($cmp-toast-progress-bar-size-height, 100%);
+    position: relative;
+    overflow: hidden;
+    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    background-color: $cmp-toast-progress-bar-track-color-background;
+
+    span {
+      @include position(0, null, 0, 0);
+      position: absolute;
+      width: 0;
+    }
+  }
+
+  // Counter - Element - Item - Toast
+
+  #{$toast}__counter {
+    $position: calc(-1 * #{$cmp-badge-size-square-has-content-lg} / 2);
+
+    @include position($position, null, null, $position);
+    position: absolute;
+    box-shadow: $cmp-toast-counter-elevation-box-shadow;
+
+    &--show {
+      animation: showCounterAnimation ease 0.5s;
+      animation-fill-mode: both;
+    }
+
+    &--increase {
+      animation: rubberBand linear 1s;
+    }
+  }
+
+
+  // MODIFIERS - ITEM - TOAST ---------------------------------------------- //
+
+  // Content has scroll - Modifier - Item - Toast
+
+  &--scroll {
+    #{$toast}__content {
+      margin: $cmp-toast-content-space-margin-scroll;
+      padding: $cmp-toast-content-space-padding-scroll;
+    }
+
+    #{$toast}__footer {
+      @include elevation(sticky-top);
+      padding: $cmp-toast-footer-space-padding-scroll;
+    }
+
+    &:not(#{$parent}--collapse) {
+      #{$toast}__header {
+        @include elevation(sticky-bottom);
+      }
+    }
+  }
+
+  // Has collapsable content - Modifier - Item - Toast
+
+  &--collapse {
+    #{$toast}__header {
+      align-items: center;
+      padding: $cmp-toast-header-space-padding-collapse;
+
+      &--subtitle {
+        #{$toast}__icon,
+        #{$toast}__close-btn {
+          align-self: flex-start;
+        }
+      }
+    }
+
+    &:not(#{$parent}--scroll) {
+      #{$toast}__content {
+        padding: $cmp-toast-content-space-padding-collapse;
+      }
+    }
+  }
+
+  &--collapse-active {
+    #{$toast}__header {
+      @include elevation(sticky-bottom);
+    }
+
+    #{$toast}__collapse-btn::after {
+      transform: rotate(180deg);
+    }
+  }
+
+  // Status - Modifier - Item - Toast
+
+  @each $status in $toast-status-list {
+    &--#{$status} {
+      #{$toast}__icon {
+        color: map-deep-get($toast-status-map, $status, icon-text-color);
+
+        &::before {
+          content: icon-status($status);
+        }
+      }
+
+      #{$toast}__progress-bar {
+        span {
+          background-color: map-deep-get($toast-status-map, $status, progress-bar-bg-color);
+        }
+      }
+    }
+  }
+
+  // Bold - Modifier - Item - Toast
+
+  &--bold {
+    @each $status in $toast-status-list {
+      &#{$parent}--#{$status} {
+        background-color: map-deep-get($toast-status-map, $status, bg-color);
+      }
+    }
+  }
+
+  // Visibility - Modifier - Item - Toast
+
+  &--show {
+    animation: bounceInDown linear 1s;
+    transition: none;
+
+    #{$toast}__list--bottom-left &,
+    #{$toast}__list--bottom-center &,
+    #{$toast}__list--bottom-right & {
+      animation: bounceInUp linear 1s;
+    }
+  }
+
+  &--hide {
+    animation: bounceOutUp linear 1s forwards;
+
+    #{$toast}__list--bottom-left &,
+    #{$toast}__list--bottom-center &,
+    #{$toast}__list--bottom-right & {
+      animation: bounceOutDown linear 1s forwards;
+    }
+
+    #{$toast}__list--bottom-left & ~ #{$parent}--show,
+    #{$toast}__list--bottom-center & ~ #{$parent}--show,
+    #{$toast}__list--bottom-right & ~ #{$parent}--show {
+      transform: translate3d(0, calc(100% + #{$cmp-toast-list-space}), 0);
+      transition: transform 0.5s ease 0.5s;
+    }
+
+    & ~ #{$parent}--show {
+      transform: translate3d(0, calc(-100% - #{$cmp-toast-list-space}), 0);
+      transition: transform 0.5s ease 0.5s;
+    }
+  }
+}

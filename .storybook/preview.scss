@@ -1,0 +1,16 @@
+// The specific styles for docs
+@import "assets/styles/preview/preview.scss";
+
+// The genesys-styles scss. We need to wrap these styles to avoid doc styles affect to the components
+@import "../src/styles.scss";
+
+// because the storybook source code is rendered using the same class name 'tag'
+pre .tag {
+  display: inline;
+  background-color: transparent;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  font-size: inherit;
+}

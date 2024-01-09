@@ -1,0 +1,134 @@
+import { Meta, Canvas } from "@storybook/blocks";
+
+import * as Stories from "./Badge.stories";
+import { ClassesTable } from "../../../components/ClassesTable";
+
+<Meta of={Stories} />
+
+# Badge
+
+## Base
+
+This is the most basic version of the component and its default appearance.
+
+<Canvas of={Stories.Basic} />
+
+## Modifiers
+
+### Sizes
+
+Three sizes available: 'sm', 'md' and 'lg':
+
+<Canvas of={Stories.Sizes} />
+
+### Has icon
+
+Choose between icons, text, or empty. Is not expected to use with mixed content.
+
+<Canvas of={Stories.Icon} />
+
+### Is empty
+
+<Canvas of={Stories.IsEmpty} />
+
+### Color scheme
+
+Each Badge color scheme is for a specific purpose, there are a hierarchy and usage
+limitations.
+
+#### High hierarchy
+
+The main Branded colors `primary` and `secondary` are on the top of the
+hierarchy. The `primary` variant is used usually only once by page. The
+`secondary` variants can be used several times by page.
+
+<Canvas of={Stories.ColorSchemeHighHierarchy} />
+
+#### Low hierarchy
+
+The `neutral`, `blend-base` and `blend-inverse` variants are on the bottom of
+the hierarchy.
+
+The `neutral` variant is used when the element is not the main of
+the block. The `blend-base` and `blend-inverse` are used when the badge has a
+colored surface as background.
+
+<Canvas of={Stories.ColorSchemeLowHierarchy} />
+
+#### Status
+
+There are five status: `error`, `help`, `info`, `success` and `warning`.
+
+<Canvas of={Stories.Status} />
+
+#### Data visualization
+
+These variants extend the available colors to improve data visualization. There
+are six variants: `blue`, `green`, `orange`, `purple`, `red` and `yellow`.
+
+<Canvas of={Stories.DataVisualization} />
+
+### Is inverse
+
+This modifier swaps background colors.
+
+#### High hierarchy
+
+<Canvas of={Stories.InverseHighHierarchy} />
+
+#### Low hierarchy
+
+<Canvas of={Stories.InverseLowHierarchy} />
+
+#### Status
+
+<Canvas of={Stories.InverseStatus} />
+
+#### Data visualization
+
+<Canvas of={Stories.InverseDataVisualization} />
+
+## Overview of CSS classes
+
+<ClassesTable
+  classVariants={[
+    {
+      selector: ".badge",
+      description:
+        "Assign the basic styles to convert the element into a Badge",
+      type: "block",
+      restrictions: "span, div",
+    },
+    {
+      selector: ".badge--sm, .badge--md, .badge--lg",
+      description: "Assign the size styles: height, padding, font-size, etc.",
+      type: "modifier",
+      restrictions: "span, div",
+    },
+    {
+      selector: "badge--has-icon",
+      description: "Adjust any other variation when content is an icon",
+      type: "modifier",
+      restrictions: "span, div",
+    },
+    {
+      selector: "badge--is-empty",
+      description: "Adjust any other variation when content is empty",
+      type: "modifier",
+      restrictions: "span, div",
+    },
+    {
+      selector:
+        ".badge--primary, .badge--secondary, .badge--neutral, .badge--blend-base, .badge--blend-inverse, .badge--error, .badge--success, .badge--warning, .badge--info, .badge--help, .badge--blue, .badge--green, .badge--orange, .badge--purple, .badge--red, .badge--yellow",
+      description: "Assign the color styles: background-color, color, etc.",
+      type: "modifier",
+      restrictions: "span, div",
+    },
+    {
+      selector: "badge--is-inverse",
+      description: "Swaps background colors",
+      type: "modifier",
+      restrictions: "span, div",
+    },
+  ]}
+/>

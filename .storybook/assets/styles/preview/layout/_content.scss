@@ -1,0 +1,14 @@
+// ---------------------- CONTENT - LAYOUT ---------------------- //
+
+#storybook-docs .sbdocs-wrapper {
+  $parent: &;
+  justify-content: flex-start;
+  padding: 4rem 2rem 4rem 6rem;
+
+  .sbdocs-content {
+    max-width: var(--dds-max-width-md);
+  }
+}
+
+
+

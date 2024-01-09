@@ -1,0 +1,10 @@
+// ----------------------- ELEVATION - LAYOUT - MIXINS ----------------------- //
+
+
+// STYLES - ELEVATION - LAYOUT - MIXINS ------------------------------------- //
+
+@mixin elevation($elevation: 'raised') {
+  z-index: map-deep-get($elevation-map, $elevation, "z-index");
+  box-shadow: map-deep-get($elevation-map, $elevation, "box-shadow");
+  border-radius: map-deep-get($elevation-map, $elevation, "border-radius");
+}

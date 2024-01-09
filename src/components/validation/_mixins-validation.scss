@@ -1,0 +1,36 @@
+// -------------------- MIXINS - VALIDATION - COMPONENTS -------------------- //
+
+
+@mixin validation-size($size: md) {
+  $gap-size: map-deep-get($validation-size-map, $size, gap-size);
+
+  @include typography(body, $size);
+  @include spacing($property: gap, $size: $gap-size, $type: component);
+
+  &::before {
+    font-size: map-deep-get($validation-size-map, $size, icon-font-size);
+    height: map-deep-get($typography-map, body, $size, line-height);
+  }
+}
+
+@mixin validation-status($status) {
+  @if ($status != base) {
+    @if ($status == error) {
+      @include text-color-status($status);
+    } @else {
+      @include text-color($color: weak);
+    }
+
+    &::before {
+      @include text-color-status($status);
+      content: icon-status($status);
+
+      @if ($status == warning) {
+        @include text-color-status(warning-weak);
+      }
+    }
+  } @else {
+    @include text-color($color: weak);
+  }
+}
+

@@ -1,0 +1,13 @@
+// -------------------------- HELPER - COMPONENTS -------------------------- //
+
+
+.helper {
+  @include typography;
+  color: $cmp-helper-color-text-base;
+
+  @each $size in xxs, xs, sm, md, lg {
+    &--#{$size} {
+      @include typography(body, $size);
+    }
+  }
+}

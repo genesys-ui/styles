@@ -1,0 +1,246 @@
+// ------------------------- ICON BUTTON - COMPONENTS ---------------------------- //
+
+
+.icon-button {
+  $parent: &;
+  $disabled-selector: get-selector($parent, disabled);
+  $expanded-selector: get-selector($parent, expanded);
+  $focused-selector: get-selector($parent, focused);
+  $focused-visible-selector: get-selector($parent, focused-visible);
+  $hovered-selector: get-selector($parent, hovered);
+  $not-disabled-selector: get-selector($parent, not-disabled);
+  $pressed-selector: get-selector($parent, pressed);
+
+  // Reset - Button
+
+  @include button-reset;
+
+  // Default styles - Icon Button
+
+  @include get-button-base-styles($parent);
+  @include get-button-type-styles($parent); // neutral type
+  @include get-icon-button-size-styles($parent); // md size
+
+
+  // ELEMENTS - ICON BUTTON ------------------------------------------------- //
+
+  // Icon - Elements - Icon Button
+
+  &__icon {
+    position: relative;
+    pointer-events: none;
+  }
+
+  // Arrow - Elements - Icon Button (Go to docs)
+
+  &__arrow {
+    position: absolute;
+    font-weight: bold;
+    transform: rotate(45deg);
+    transition: all 0.2s ease;
+  }
+
+
+  // MODIFIERS - ICON BUTTON ------------------------------------------------ //
+
+  // Type - Modifier - Icon Button
+
+  @each $type in $button-type-list {
+    &--#{$type} {
+      @include get-button-type-styles($parent, $type);
+    }
+  }
+
+  // Size - Modifier - Icon Button
+
+  @each $size in $icon-button-size-list {
+    &--#{$size} {
+      @include get-icon-button-size-styles($parent, $size);
+    }
+  }
+
+  // Wide - Modifier - Icon Button
+
+  &--wide {
+    width: 100%;
+  }
+
+  // Circular - Modifier - Icon Button
+
+  &--circular {
+    border-radius: $cmp-button-shape-border-radius-full;
+
+    &::before {
+      border-radius: $cmp-button-shape-border-radius-full;
+    }
+  }
+
+  // Status - Modifier - Icon Button
+
+  &--status {
+    border-radius: $cmp-button-shape-border-radius-full;
+
+    &::before {
+      border-radius: $cmp-button-shape-border-radius-full;
+    }
+
+    @each $type in $icon-button-status-type-list {
+      &#{$parent}--#{$type} {
+        background-color: map-deep-get($icon-button-status-color-bg-type-map, $type, "enabled");
+        color: map-deep-get($icon-button-status-color-text-type-map, $type, "enabled");
+
+        #{$not-disabled-selector} {
+          #{$hovered-selector} {
+            background-color: map-deep-get($icon-button-status-color-bg-type-map, $type, "hovered");
+            color: map-deep-get($icon-button-status-color-text-type-map, $type, "hovered")
+          }
+
+          #{$focused-selector},
+          #{$focused-visible-selector} {
+            background-color: map-deep-get($icon-button-status-color-bg-type-map, $type, "focused");
+            color: map-deep-get($icon-button-status-color-text-type-map, $type, "focused")
+          }
+
+          #{$pressed-selector} {
+            background-color: map-deep-get($icon-button-status-color-bg-type-map, $type, "pressed");
+            color: map-deep-get($icon-button-status-color-text-type-map, $type, "pressed");
+          }
+
+          #{$expanded-selector} {
+            background-color: map-deep-get($icon-button-status-color-bg-type-map, $type, "expanded");
+            color: map-deep-get($icon-button-status-color-text-type-map, $type, "expanded");
+          }
+        }
+
+        #{$disabled-selector} {
+          background-color: map-deep-get($icon-button-status-color-bg-type-map, $type, "disabled");
+          color: map-deep-get($icon-button-status-color-text-type-map, $type, "disabled");
+        }
+      }
+    }
+  }
+
+  // Bold - Modifier - Icon Button
+
+  &--bold {
+    #{$parent}__icon {
+      font-weight: bold;
+    }
+  }
+
+  // Remove - Modifier - Icon Button
+
+  &--remove {
+    @include get-button-type-styles($parent, blend-base);
+    border-radius: $cmp-button-shape-border-radius-full;
+
+    &::before {
+      border-radius: $cmp-button-shape-border-radius-full;
+    }
+
+    &::after {
+      @include icon-font;
+      position: relative;
+      content: $gi-exit_close;
+      font-weight: bold;
+    }
+  }
+
+  // Close - Modifier - Icon Button
+
+  &--close {
+    @include get-button-type-styles($parent, blend-base);
+    border-radius: $cmp-button-shape-border-radius-full;
+    background-color: transparent;
+
+    &::before {
+      border-radius: $cmp-button-shape-border-radius-full;
+    }
+
+    &::after {
+      @include icon-font;
+      position: relative;
+      content: $gi-exit_close;
+      font-weight: bold;
+    }
+  }
+
+  // Collapse - Modifier - Icon Button
+
+  &--collapse {
+    @include get-button-type-styles($parent, blend-base);
+    border-radius: $cmp-button-shape-border-radius-full;
+
+    &::before {
+      border-radius: $cmp-button-shape-border-radius-full;
+    }
+
+    &::after {
+      @include icon-font;
+      position: relative;
+      content: $gi-arrow_down;
+      font-weight: bold;
+    }
+
+    &#{$parent}--expanded::after {
+      content: $gi-arrow_up;
+    }
+  }
+
+  // Dropdown - Modifier - Icon Button
+
+  &--dropdown {
+    @include get-button-type-styles($parent, blend-base);
+
+    &::after {
+      @include icon-font;
+      content: $gi-arrow_down_fat;
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+
+  // Sort - Modifier - Icon Button
+
+  &--sort {
+    #{$parent}__icon {
+      &::before,
+      &::after {
+        @include flex(null, center, center);
+        @include size(100%);
+        @include icon-font;
+        transition: opacity 0.3s ease;
+        position: absolute;
+        left: 0;
+        right: 0;
+      }
+
+      &::before {
+        content: $gi-sort_asc_carets;
+      }
+
+      &::after {
+        content: $gi-sort_desc_carets;
+      }
+    }
+
+    &#{$parent}--sort-asc #{$parent}__icon::before,
+    &#{$parent}--sort-desc #{$parent}__icon::after {
+      opacity: .25;
+    }
+  }
+
+
+  // CASES OF USE - ICON BUTTON --------------------------------------------- //
+
+  &:not(:disabled) {
+    .inline-message__trigger-wrapper:hover & {
+      &::before {
+        background-color: $alias-color-background-action-backdrop-base-hovered;
+      }
+    }
+  }
+}

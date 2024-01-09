@@ -1,0 +1,117 @@
+// --------------------------- NEW - FORM - LAYOUT -------------------------- //
+
+
+.form {
+  $parent: &;
+  $form-spacing: map-deep-get($spacing-size-map, md, component);
+
+  @include flex(column);
+  gap: $form-spacing;
+
+
+  // ELEMENTS - FORM -------------------------------------------------------- //
+
+  // Title and legend - Element - Form
+
+  &__title,
+  &__legend {
+    @include flex(null, center);
+    @include typography(heading, h6);
+    @include text-color(heading, base);
+    height: map-deep-get($typography-map, heading, h6, line-height);
+
+    &--required {
+      @include label-required;
+    }
+  }
+
+  &__legend {
+    @include spacing(margin, bottom, xs, component);
+    padding: 0;
+    background: none;
+
+    &--label {
+      @include label;
+    }
+  }
+
+  // Group - Element - Form
+
+  &__group {
+    display: flex;
+    gap: $form-spacing;
+    $gap-compensation: calc(#{$form-spacing} / 2);
+
+    &:not(:first-child) {
+      #{$parent}__legend:not(legend):not(#{$parent}__legend--label) {
+        margin-top: $gap-compensation;
+        margin-bottom: calc(#{$gap-compensation} * -1);
+      }
+
+      legend#{$parent}__legend:not(#{$parent}__legend--label) {
+        margin-bottom: $form-spacing;
+        transform: translateY($gap-compensation);
+      }
+    }
+
+    &,
+    &--ver {
+      flex-direction: column;
+    }
+
+    &--hor {
+      flex-direction: row;
+
+      &#{$parent}__group--align-ver {
+        &-center {
+          align-items: center;
+        }
+
+        &-bottom {
+          align-items: flex-end;
+        }
+      }
+    }
+
+    &--children-grow {
+      > #{$parent}__group,
+      > #{$parent}__field {
+        flex: 1;
+      }
+    }
+
+    &--grow {
+      flex: 1;
+    }
+
+    &--boxed {
+      @include border-separator($side: all, $radius-size: lg);
+      @include spacing(padding, all, md);
+      @include spacing(padding, top, sm);
+    }
+
+    @each $size in xs, sm {
+      &--gap-#{$size} {
+        @include spacing($property: gap, $size: $size, $type: component);
+      }
+    }
+  }
+
+  // Field - Element - Form
+
+  &__field {
+    @include flex(column);
+    @include spacing($property: gap, $size: xxs, $type: component);
+    position: relative;
+
+    &--grow {
+      flex: 1;
+    }
+
+    &--hor {
+      @include spacing($property: gap, $size: xs, $type: component);
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+}

@@ -1,0 +1,228 @@
+// ---------------------- BUTTON - COMPONENTS - MIXINS ---------------------- //
+
+
+// BUTTON PSEUDO BACKDROP - COMPONENTS - MIXINS ----------------------------- //
+
+@mixin button-pseudo-backdrop(
+  $parent: '.button',
+  $has-before-icon: false,
+  $border-radius: $cmp-button-shape-border-radius-medium,
+  $apply-states: false,
+) {
+  $hovered-selector: get-selector($parent, hovered);
+  $focused-selector: get-selector($parent, focused);
+  $pressed-selector: get-selector($parent, pressed);
+
+  position: relative;
+
+  &::before {
+    @include pseudo-overlay(
+      $display: if($has-before-icon, flex, block),
+      $content: if($has-before-icon, null, "")
+    );
+    transition: background-color ease $cmp-button-mutation-transition-duration;
+    overflow: hidden;
+    border-radius: $border-radius;
+    background-color: transparent;
+
+    @if ($has-before-icon) {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  @if($apply-states) {
+    #{$hovered-selector} {
+      &::before {
+        background-color: $alias-color-background-action-backdrop-base-hovered;
+      }
+    }
+
+    #{$focused-selector} {
+      &::before {
+        background-color: $alias-color-background-action-backdrop-base-focused;
+      }
+    }
+
+    #{$pressed-selector} {
+      &::before {
+        background-color: $alias-color-background-action-backdrop-base-pressed;
+      }
+    }
+  }
+}
+
+
+// BUTTON RESET - COMPONENTS - MIXINS --------------------------------------- //
+
+@mixin button-reset {
+  @include font-smoothing(inherit, inherit);
+  padding: 0;
+  width: auto;
+  color: inherit;
+  font: inherit;
+  text-transform: inherit;
+  letter-spacing: inherit;
+  line-height: normal;
+  background-color: transparent;
+  border: none;
+  overflow: visible;
+  cursor: pointer;
+  appearance: none;
+}
+
+
+// BASE BUTTON STYLES - COMPONENTS - MIXINS --------------------------------- //
+
+@mixin get-button-base-styles(
+  $parent: '.button',
+  $is-circular: false,
+  $has-before-icon: false,
+  $has-bold-icon: false,
+) {
+  @include inline-flex(null, center, center, null);
+  $border-radius: $cmp-button-shape-border-radius-medium;
+
+  @if $is-circular {
+    $border-radius: $cmp-button-shape-border-radius-full;
+  }
+  position: relative;
+  flex-shrink: 0;
+  border: none;
+  border-radius: $border-radius;
+  transition: background-color $cmp-button-mutation-transition-duration ease,
+              color $cmp-button-mutation-transition-duration ease,
+              width $cmp-button-mutation-transition-duration ease;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+
+  @include button-pseudo-backdrop($parent, $has-before-icon, $border-radius, false);
+
+  @if $has-bold-icon {
+    &::before,
+    [class*=#{$icon-class-prefix}] {
+      font-weight: bold;
+    }
+  }
+}
+
+
+// SIZE BUTTON STYLES - COMPONENTS - MIXINS --------------------------------- //
+
+@mixin get-button-size-styles($size: "md") {
+  height: map-deep-get($button-size-map, $size, "height");
+  min-width: map-deep-get($button-size-map, $size, "min-width");
+  padding: 0 map-deep-get($button-size-map, $size, "padding");
+  font-size: map-deep-get($button-size-map, $size, "font-size");
+  line-height: map-deep-get($button-size-map, $size, "line-height");
+  font-weight: map-deep-get($button-size-map, $size, "font-weight");
+}
+
+@mixin get-button-icon-element-size-styles($size: "md") {
+  font-size: map-deep-get($button-size-map, $size, "icon-font-size");
+
+  &,
+  &--left {
+    margin-left: map-deep-get($button-size-map, $size, "icon-offset");
+    margin-right: map-deep-get($button-size-map, $size, "icon-spacing");
+  }
+
+  &--right {
+    margin-left: map-deep-get($button-size-map, $size, "icon-spacing");
+    margin-right: map-deep-get($button-size-map, $size, "icon-offset");
+  }
+}
+
+
+// TYPE BUTTON STYLES - COMPONENTS - MIXINS --------------------------------- //
+
+@mixin get-button-type-styles($parent: null, $type: neutral, $has-before-icon: false) {
+  $disabled-selector: get-selector($parent, disabled);
+  $not-disabled-selector: get-selector($parent, not-disabled);
+  $hovered-selector: get-selector($parent, hovered);
+  $focused-selector: get-selector($parent, focused);
+  $focused-visible-selector: get-selector($parent, focused-visible);
+  $pressed-selector: get-selector($parent, pressed);
+  $expanded-selector: get-selector($parent, expanded);
+  $selected-selector: get-selector($parent, selected);
+
+  background-color: map-deep-get($button-color-bg-type-map, $type, "enabled");
+  color: map-deep-get($button-color-text-type-map, $type, "enabled");
+  fill: map-deep-get($button-color-text-type-map, $type, "enabled");
+
+  @if $type == quiet and $has-before-icon == false {
+    &::before {
+      display: none;
+    }
+  }
+
+  #{$not-disabled-selector} {
+    #{$hovered-selector} {
+      background-color: map-deep-get($button-color-bg-type-map, $type, "hovered");
+      color: map-deep-get($button-color-text-type-map, $type, "hovered");
+      fill: map-deep-get($button-color-text-type-map, $type, "hovered");
+
+      &::before {
+        background-color: $alias-color-background-action-backdrop-base-hovered;
+      }
+    }
+
+    #{$focused-selector} {
+      background-color: map-deep-get($button-color-bg-type-map, $type, "focused");
+      color: map-deep-get($button-color-text-type-map, $type, "focused");
+      fill: map-deep-get($button-color-text-type-map, $type, "focused");
+
+      &::before {
+        background-color: $alias-color-background-action-backdrop-base-focused;
+      }
+    }
+
+    #{$focused-visible-selector} {
+      box-shadow: $alias-elevation-box-shadow-base-focused;
+      outline: none;
+    }
+
+    #{$pressed-selector} {
+      background-color: map-deep-get($button-color-bg-type-map, $type, "pressed");
+      color: map-deep-get($button-color-text-type-map, $type, "pressed");
+      fill: map-deep-get($button-color-text-type-map, $type, "pressed");
+
+      &::before {
+        background-color: $alias-color-background-action-backdrop-base-pressed;
+      }
+    }
+
+    #{$expanded-selector} {
+      background-color: map-deep-get($button-color-bg-type-map, $type, "expanded");
+      color: map-deep-get($button-color-text-type-map, $type, "expanded");
+      fill: map-deep-get($button-color-text-type-map, $type, "expanded");
+    }
+
+    #{$selected-selector} {
+      background-color: map-deep-get($button-color-bg-type-map, $type, "selected");
+      color: map-deep-get($button-color-text-type-map, $type, "selected");
+      fill: map-deep-get($button-color-text-type-map, $type, "selected");
+
+      &::before {
+        display: block;
+      }
+    }
+
+    @if $parent {
+      &#{$parent}--activated {
+        background-color: map-deep-get($button-color-bg-type-map, $type, "activated");
+        color: map-deep-get($button-color-text-type-map, $type, "activated");
+        fill: map-deep-get($button-color-text-type-map, $type, "activated");
+      }
+    }
+  }
+
+  #{$disabled-selector} {
+    @include disabled-field;
+    background-color: map-deep-get($button-color-bg-type-map, $type, "disabled");
+    color: map-deep-get($button-color-text-type-map, $type, "disabled");
+    fill: map-deep-get($button-color-text-type-map, $type, "disabled");
+  }
+}

@@ -1,0 +1,79 @@
+// -------------------- MIXINS - MAIN MENU - COMPONENTS --------------------- //
+
+
+// BUTTON - MIXIN - MAIN MENU ----------------------------------------------- //
+
+@mixin main-menu-button($size: md, $is-quiet: false) {
+  $disabled-selector: get-selector($state: disabled);
+  $not-disabled-selector: get-selector($state: not-disabled);
+  $hover-selector: get-selector($state: hovered);
+  $focus-selector: get-selector($state: focused);
+
+  @include get-button-base-styles;
+  @include get-button-size-styles($size);
+  background-color: if($is-quiet, transparent, $cmp-main-menu-button-color-background);
+  color: $cmp-main-menu-button-color-text-enabled;
+
+  &::before {
+    display: none;
+  }
+
+  #{$not-disabled-selector} {
+    #{$hover-selector},
+    #{$focus-selector} {
+      background-color: if($is-quiet, $cmp-main-menu-button-color-background, rgba($cmp-main-menu-button-color-background, .24));
+      color: $cmp-main-menu-button-color-text-hovered;
+    }
+  }
+}
+
+
+// ICON BUTTON - MIXIN - MAIN MENU ------------------------------------------ //
+
+@mixin main-menu-icon-button($size: md, $is-quiet: false) {
+  @include main-menu-button($size, $is-quiet);
+  @if $size == xs {
+    @include size($cmp-button-size-height-xs);
+    font-size: 1.2rem;
+  } @else if $size == sm {
+    @include size($cmp-button-size-height-sm);
+    font-size: 1.4rem;
+  } @else if $size == lg {
+    @include size($cmp-button-size-height-lg);
+    font-size: 1.8rem;
+  } @else {
+    @include size($cmp-button-size-height-md);
+    font-size: 1.6rem;
+  }
+  padding: 0;
+  min-width: auto;
+  font-weight: normal;
+}
+
+
+// FIXED BUTTON - MIXIN - MAIN MENU ----------------------------------------- //
+
+@mixin main-menu-fixed-button($size: sm) {
+  @include main-menu-icon-button($size);
+  position: absolute;
+  top: calc(#{$cmp-main-menu-logo-wrapper-size-height} / 2 - #{$cmp-button-size-height-sm} / 2);
+  right: $cmp-main-menu-space-base;
+  z-index: 1;
+}
+
+
+// FIELD - MIXIN - MAIN MENU ------------------------------------------------ //
+
+@mixin main-menu-field-control($size: md) {
+  @include field-control-base;
+  @include field-control-size($size);
+  @include field-control-color(
+    $apply-read-only: false,
+    $field-bg-color: $cmp-main-menu-field-color-background,
+    $field-border-color-enabled: $cmp-main-menu-field-color-border-enabled,
+    $field-border-color-hovered: $cmp-main-menu-field-color-border-hovered,
+    $field-color-placeholder: $cmp-main-menu-field-color-text-placeholder,
+    $field-color-enabled: $cmp-main-menu-field-color-text-enabled,
+    $field-color-focused: $cmp-main-menu-field-color-text-focused,
+  );
+}

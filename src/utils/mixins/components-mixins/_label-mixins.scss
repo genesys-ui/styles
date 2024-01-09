@@ -1,0 +1,22 @@
+// ---------------------- LABEL - COMPONENTS - MIXINS ----------------------- //
+
+
+// STYLES - LABEL - COMPONENTS - MIXINS ------------------------------------- //
+
+@mixin label($size: md) {
+  @include typography(body, $size);
+  @include text-color(body, strong);
+  flex-shrink: 0;
+  width: fit-content;
+}
+
+
+// REQUIRED - LABEL - COMPONENTS - MIXINS ----------------------------------- //
+
+@mixin label-required {
+  &::before {
+    @include text-color-status(info-weak);
+    @include spacing(margin, right, xxs, component);
+    content: '*'
+  }
+}

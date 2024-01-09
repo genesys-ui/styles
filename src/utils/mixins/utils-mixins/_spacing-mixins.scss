@@ -1,0 +1,30 @@
+// ------------------------ SPACING - UTILS - MIXINS ------------------------ //
+
+
+// COMPONENT AND LAYOUT SPACING - UTILS - MIXINS ---------------------------- //
+
+@mixin spacing(
+  $property: margin, // margin, padding or gap
+  $side: all,
+  $size: sm,
+  $type: component,
+  $isNegative: false
+) {
+  $property-value: map-deep-get($spacing-size-map, $size, $type);
+
+  @if ($isNegative) {
+    $property-value: calc(#{$property-value} * -1);
+  }
+
+  @if ($side == all or $property == gap) {
+    #{$property}: $property-value;
+  } @else if ($side == hor) {
+    #{$property}-left: $property-value;
+    #{$property}-right: $property-value;
+  } @else if ($side == ver) {
+    #{$property}-top: $property-value;
+    #{$property}-bottom: $property-value;
+  } @else {
+    #{$property}-#{$side}: $property-value;
+  }
+}

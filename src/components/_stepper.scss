@@ -1,0 +1,82 @@
+// -------------------------- STEPPER - COMPONENTS -------------------------- //
+
+
+.stepper {
+  $parent: &;
+
+  @include flex(null, center);
+  gap: $cmp-stepper-container-space-gap;
+  padding: 0 $cmp-stepper-container-space-padding;
+  background-color: $cmp-stepper-container-color-background;
+  box-shadow: inset 0 $cmp-stepper-container-shape-border-size 0 $cmp-stepper-container-color-border,
+    inset 0 (-$cmp-stepper-container-shape-border-size) 0 $cmp-stepper-container-color-border;
+  height: $cmp-stepper-container-size-height-sm;
+
+  &--sm {
+    height: $cmp-stepper-container-size-height-sm;
+
+    #{$parent}__label {
+      @include typography($type: action, $size: sm);
+    }
+  }
+
+  &--md {
+    height: $cmp-stepper-container-size-height-md;
+
+    #{$parent}__label {
+      @include typography($type: action, $size: md);
+    }
+  }
+
+  &--lg {
+    height: $cmp-stepper-container-size-height-lg;
+
+    #{$parent}__label {
+      @include typography($type: action, $size: lg);
+    }
+  }
+
+  &__item {
+    @include flex(null, center);
+    gap: $cmp-stepper-item-space-gap;
+
+    &--active {
+      transition: all .3s;
+
+      #{$parent}__label {
+        @include text-color($color: stronger);
+      }
+    }
+
+    &--disabled {
+      .badge {
+        opacity: 0.4;
+      }
+
+      #{$parent}__label {
+        @include text-color($color: weakest);
+      }
+    }
+  }
+
+  &__label {
+    @include typography($type: action, $size: sm);
+    @include text-color($color: base);
+    white-space: nowrap;
+  }
+
+  &__separator {
+    @include icon-font;
+    font-size: 1.6rem;
+    color: $cmp-stepper-separator-color-background;
+    margin-right: $cmp-stepper-separator-space-margin-hor;
+
+    &::before {
+      content: $gi-arrow_right;
+    }
+  }
+
+  &__hidden-status {
+    @include sr-only;
+  }
+}
