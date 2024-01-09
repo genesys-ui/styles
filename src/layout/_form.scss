@@ -38,9 +38,10 @@
   // Group - Element - Form
 
   &__group {
+    $gap-compensation: calc(#{$form-spacing} / 2);
+
     display: flex;
     gap: $form-spacing;
-    $gap-compensation: calc(#{$form-spacing} / 2);
 
     &:not(:first-child) {
       #{$parent}__legend:not(legend):not(#{$parent}__legend--label) {
@@ -69,6 +70,16 @@
 
         &-bottom {
           align-items: flex-end;
+        }
+      }
+
+      &#{$parent}__group--align-hor {
+        &-center {
+          justify-content: center;
+        }
+
+        &-end {
+          justify-content: flex-end;
         }
       }
     }
@@ -109,7 +120,6 @@
     }
 
     &--hor {
-      @include spacing($property: gap, $size: xs, $type: component);
       flex-direction: row;
       align-items: center;
     }

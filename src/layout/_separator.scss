@@ -13,6 +13,7 @@
 
   @each $size in $separator-size-list {
     &--#{$size} {
+      &,
       &#{$parent}--ver {
         @include separator-size(ver, $size);
       }
@@ -26,6 +27,7 @@
 
   @each $spacing in $spacing-size-list {
     &--spacing-#{$spacing} {
+      &,
       &#{$parent}--ver {
         @include separator-spacing(ver, $spacing);
       }

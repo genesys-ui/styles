@@ -2,6 +2,11 @@
 
 
 .panel {
+  /// Header, content and footer must be direct child
+  /// (for example: > #{$parent}__header {}}) to not affect panels inside panels
+  /// However this is not possible because this HTML structure is not possible
+  /// in some parts of the webApp like Satellite Windows in Loxcope.
+
   @import "./variables-panel";
   @import "./mixins-panel";
 
@@ -84,22 +89,15 @@
       @include flex(null, center);
       flex-shrink: 0;
 
-      .separator {
-        height: 100%;
-        margin-right: 0;
-      }
-
-      &#{$parent}__actions--left-side {
-        align-self: stretch;
-
-        > .icon-button {
-          align-self: flex-start;
-        }
-      }
-
       &.hide {
         display: none;
       }
+    }
+
+    > .separator {
+      flex-shrink: 0;
+      height: 100%;
+      margin-left: 0;
     }
 
     &--has-actions {
@@ -110,10 +108,6 @@
       #{$parent}__heading {
         flex: 1 1 auto;
         min-width: 0;
-      }
-
-      #{$parent}__actions#{$parent}__actions--left-side > .icon-button {
-        align-self: center;
       }
     }
 
@@ -175,15 +169,8 @@
 
   @each $elevation in $elevation-list {
     &--#{$elevation} {
-      z-index: map-deep-get($elevation-map, $elevation, z-index);
-      box-shadow: map-deep-get($elevation-map, $elevation, box-shadow);
+      @include elevation($elevation);
     }
-  }
-
-  &--ground {
-    z-index: inherit;
-    box-shadow: inherit;
-    border-radius: 0;
   }
 
   // Has Scroll - Modifier - Panel
@@ -238,12 +225,52 @@
       transition: background-color ease .3s;
 
       &:hover {
-        background-color: rgba($alias-color-background-action-quiet-hovered, .2);
+        background-color: $alias-color-background-surface-backdrop-base-hovered;
       }
     }
 
     #{$parent}__footer {
       background-color: $cmp-modal-footer-color-background;
     }
+  }
+
+  // Clickable - Modifier - Panel
+
+  &--clickable {
+    $hovered-selector: get-selector($parent, hovered);
+    $selected-selector: get-selector($parent, selected);
+
+    @include backdrop;
+    cursor: pointer;
+
+    #{$hovered-selector} {
+      &::before {
+        background-color: $alias-color-background-surface-backdrop-base-hovered;
+      }
+    }
+
+    #{$selected-selector} {
+      background-color: $alias-color-background-surface-base-selected;
+    }
+
+    &#{$parent}--activated {
+      background-color: $alias-color-background-surface-base-activated;
+    }
+  }
+
+  // Bordered - Modifier - Panel
+  /// Used in Time interval history in Loxcope.
+
+  &--bordered {
+    border: 1px solid $alias-color-border-surface-base-weak;
+    border-radius: $alias-shape-border-radius-elevated;
+  }
+
+  // Hide if it appears detached from its reference element - Panel
+
+  &[data-popper-reference-hidden] {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
   }
 }
