@@ -1,0 +1,84 @@
+// ---------------------- CONTENT SWITCHER - COMPONENTS --------------------- //
+
+
+.content-switcher {
+  @import "./variables-content-switcher";
+  @import "./mixins-content-switcher";
+
+  $parent: &;
+
+  @include flex(null, center);
+  @include content-switcher-size;
+  @include content-switcher-type;
+  gap: $cmp-content-switcher-space-gap;
+  padding: $cmp-content-switcher-space-padding;
+  border-radius: $cmp-content-switcher-shape-border-radius;
+
+
+  // ELEMENTS - CONTENT SWITCHER -------------------------------------------- //
+
+  &__item {
+    flex: 1 0 0;
+  }
+
+  &__button {
+    $parent-button: &;
+    $not-disabled-selector: get-selector(&, not-disabled);
+
+    @include button-reset;
+    @include get-button-base-styles($parent: &);
+    @include get-button-size-styles($size: map-deep-get($content-switcher-size-map, md, button-size));
+    @include get-button-type-styles($parent: &, $type: quiet);
+    width: 100%;
+
+    #{$not-disabled-selector} {
+      &#{$parent-button}--activated {
+        box-shadow: $cmp-content-switcher-button-elevation-box-shadow-activated;
+        background-color: $cmp-content-switcher-button-color-background-activated;
+        color: $cmp-content-switcher-button-color-text-activated;
+      }
+    }
+  }
+
+  &__text {
+    position: relative;
+    pointer-events: none;
+  }
+
+  &__icon {
+    @include get-button-icon-element-size-styles;
+
+    &--bold {
+      font-weight: bold;
+    }
+  }
+
+
+  // MODIFIERS - CONTENT SWITCHER ------------------------------------------- //
+
+  // Size - Modifier - Content Switcher
+
+  @each $size in $content-switcher-size-list {
+    $button-size: map-deep-get($content-switcher-size-map, $size, button-size);
+
+    &--#{$size} {
+      @include content-switcher-size($size);
+
+      #{$parent}__button {
+        @include get-button-size-styles($button-size);
+      }
+
+      #{$parent}__icon {
+        @include get-button-icon-element-size-styles($button-size);
+      }
+    }
+  }
+
+  // Type - Modifier - Content Switcher
+
+  @each $type in $content-switcher-type-list {
+    &--#{$type} {
+      @include content-switcher-type($type);
+    }
+  }
+}

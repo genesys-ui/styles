@@ -2,6 +2,8 @@
 
 
 .decorator-bar {
+  flex-shrink: 0;
+
   &--hor {
     @include size($cmp-decorator-bar-shape-stroke, 100%);
     background-image: linear-gradient(to right, $cmp-decorator-bar-color-background);

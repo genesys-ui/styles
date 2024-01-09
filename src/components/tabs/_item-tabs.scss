@@ -6,7 +6,7 @@
   // ITEM - TAB ------------------------------------------------------------- //
 
   &__item {
-    @include inline-flex(row, center);
+    @include flex(row, center);
     margin: 0 $alias-space-cmp-xxs;
     height: $cmp-tabs-container-size-height-md;
 
@@ -24,7 +24,6 @@
     }
 
     &--wide {
-      display: flex;
       flex: 1 1 1px;
     }
   }

@@ -1,0 +1,48 @@
+// ------------------------- COLLAPSE - COMPONENT --------------------------- //
+
+
+// This component has been built using Panel component and is currently used in
+// Custom tables in Loxcope.
+
+.collapse {
+  $parent: &;
+
+  @include flex(column);
+  @include border-separator(all);
+  @include scrollbars;
+  border-radius: $alias-shape-border-radius-lg;
+  overflow-y: auto;
+
+  &__item {
+    flex-grow: 1;
+
+    .panel__header {
+      box-shadow: inherit;
+
+      &:hover {
+        background-color: inherit;
+      }
+    }
+
+    &--expanded {
+      min-height: 30rem;
+
+      &:not(:last-child) {
+        @include border-separator;
+      }
+
+      .panel__header,
+      .panel__header:hover {
+        background-color: $alias-color-background-surface-base-expanded;
+      }
+    }
+
+    &:not(&--expanded) {
+      flex-shrink: 0;
+
+      &:last-child .panel__header {
+        border-bottom: none;
+      }
+    }
+  }
+}

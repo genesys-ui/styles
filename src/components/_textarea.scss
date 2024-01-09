@@ -2,8 +2,11 @@
 
 
 .textarea {
-  @include field-control-textarea;
+  $parent: &;
+
+  @include field-control-textarea($parent: $parent);
   @include scrollbars($size: sm, $track-radius: 0);
+  overflow-y: auto;
 
 
   // MODIFIERS - TEXTAREA --------------------------------------------------- //
@@ -12,7 +15,7 @@
 
   @each $size in $field-control-size-list {
     &--#{$size} {
-      @include field-control-textarea($size);
+      @include field-control-textarea-size($size);
     }
   }
 
@@ -24,7 +27,7 @@
 
   @each $status in $field-control-color-list {
     &--#{$status} {
-      @include field-control-color($status);
+      @include field-control-color($parent: $parent, $status: $status);
     }
   }
 }

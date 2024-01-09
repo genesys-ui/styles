@@ -141,7 +141,6 @@
   &--scroll {
     #{$parent}__header {
       @include elevation(sticky-bottom);
-      border: none;
     }
 
     #{$parent}__content {
@@ -233,17 +232,6 @@
     &[style*="display: inline-block"] {
       display: inherit !important;
     }
-  }
-
-  // Expired Domain - Case of use - Modal
-
-  &--expired-domain ul,
-  .other-auths__methods-list {
-    @include spacing(padding, ver, md, component);
-  }
-
-  .other-auths__methods-list li:not(:only-child) {
-    @include spacing(padding, bottom, xs, component);
   }
 }
 

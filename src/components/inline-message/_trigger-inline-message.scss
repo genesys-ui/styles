@@ -5,6 +5,7 @@
   @import "./variables-inline-message";
 
   $parent: &;
+  flex-shrink: 0;
 
   &-wrapper {
     @include inline-flex(null, center);
@@ -42,14 +43,5 @@
         @include typography($type: body, $size: $size, $ignore-props: font-weight);
       }
     }
-  }
-
-
-  // CASES OF USE - TRIGGER - INLINE MESSAGE -------------------------------- //
-
-  &--linq {
-    @include spacing(margin, left, xs, component);
-    font-weight: bold;
-    flex-shrink: 0;
   }
 }

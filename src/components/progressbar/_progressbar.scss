@@ -1,0 +1,73 @@
+// -------------------- NEW - PROGRESSBAR - COMPONENTS ---------------------- //
+
+
+.progressbar {
+  @import "./variables-progressbar";
+
+  $parent: &;
+
+  position: relative;
+  overflow: hidden;
+  height: $cmp-progress-bar-size-height-md;
+  border-radius: $cmp-progress-bar-shape-border-radius;
+
+
+  // ELEMENTS - PROGRESSBAR ------------------------------------------------- //
+
+  // Track - Element - Progressbar
+
+  &::before {
+    @include size(100%);
+    content: "";
+    display: block;
+    background-color: $alias-color-background-track-base;
+  }
+
+  // Progress - Element - Progressbar
+
+  &__progress {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $cmp-progress-bar-progress-color-background-base;
+  }
+
+
+  // MODIFIERS - PROGRESSBAR ------------------------------------------------ //
+
+  // Color scheme - Modifier - Progressbar
+
+  @each $color in $progressbar-color-scheme-list {
+    &--#{$color} {
+      &::before {
+        background-color: map-deep-get($progressbar-color-scheme-map, $color, track);
+      }
+
+      #{$parent}__value {
+        background-color: map-deep-get($progressbar-color-scheme-map, $color, progress);
+      }
+    }
+  }
+
+  // Size - Modifier - Progressbar
+
+  @each $size in $progressbar-size-list {
+    &--#{$size} {
+      height: map-get($progressbar-color-scheme-map, $size);
+    }
+  }
+
+  // Gradient - Modifier - Progressbar
+  /// Gradient modifier used in Time interval history in Loxcope
+
+  &--gradient {
+    #{$parent}__progress {
+      background: linear-gradient(
+        to left,
+        rgba($cmp-progress-bar-progress-color-background-base, 0.1),
+        $cmp-progress-bar-progress-color-background-base
+      );
+    }
+  }
+}

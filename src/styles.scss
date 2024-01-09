@@ -47,12 +47,17 @@
 
 // -------------------------------- COMPONENTS ------------------------------ //
 
+@import "components/avatar";
 @import "components/badge";
 @import "components/box-message";
 @import "components/button";
 @import "components/checkbox";
 @import "components/chip";
+@import "components/collapse";
+@import "components/color-picker";
+@import "components/content-switcher";
 @import "components/decorator-bar";
+@import "components/dropdown";
 @import "components/helper";
 @import "components/icon-button";
 @import "components/inline-message";
@@ -61,13 +66,16 @@
 @import "components/link";
 @import "components/loader";
 @import "components/modal";
+@import "components/option";
 @import "components/overlay";
+@import "components/placeholder";
+@import "components/progressbar";
 @import "components/radio";
 @import "components/select";
 @import "components/stepper";
 @import "components/table";
 @import "components/tabs";
-@import "components/tags";
+@import "src/components/tag";
 @import "components/textarea";
 @import "components/toast";
 @import "components/upload-files";

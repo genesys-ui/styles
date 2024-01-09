@@ -1,0 +1,33 @@
+// -------------------------- AVATAR - COMPONENTS --------------------------- //
+
+
+.avatar {
+  display: block;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  overflow: hidden;
+
+  &--xs {
+    @include size(2rem);
+  }
+
+  &--sm {
+    @include size(3rem);
+  }
+
+  &,
+  &--md {
+    @include size(4rem);
+  }
+
+  &--lg {
+    @include size(5rem);
+  }
+
+  &--xl {
+    @include size(6rem);
+  }
+}

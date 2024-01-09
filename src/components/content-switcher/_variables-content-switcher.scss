@@ -1,0 +1,35 @@
+// ---------------- VARIABLES - CONTENT SWITCHER - COMPONENTS --------------- //
+
+
+// SIZE - CONTENT SWITCHER - COMPONENTS - VARIABLES ------------------------- //
+
+$content-switcher-size-list: sm, md, lg;
+
+$content-switcher-size-map: (
+  sm: (
+    height: $cmp-content-switcher-size-height-sm,
+    button-size: xs,
+  ),
+  md: (
+    height: $cmp-content-switcher-size-height-md,
+    button-size: sm,
+  ),
+  lg: (
+    height: $cmp-content-switcher-size-height-lg,
+    button-size: md,
+  ),
+);
+
+
+// TYPE - CONTENT SWITCHER - COMPONENTS - VARIABLES ------------------------- //
+
+$content-switcher-type-list: neutral, blend-base;
+
+$content-switcher-type-map: (
+  blend-base: (
+    background: $cmp-content-switcher-color-background-blend-base,
+  ),
+  neutral: (
+    background: $cmp-content-switcher-color-background-neutral,
+  ),
+);
