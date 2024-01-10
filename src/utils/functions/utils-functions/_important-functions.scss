@@ -1,0 +1,8 @@
+// --------------------- IMPORTANT - UTILS - FUNCTIONS ---------------------- //
+
+
+// GET IMPORTANT - UTILS - FUNCTIONS ---------------------------------------- //
+
+@function get-important($is-important) {
+  @return #{if($is-important, !important, null)};
+}
