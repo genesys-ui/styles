@@ -1,5 +1,5 @@
 //----------------------------------------------------------------------------//
-//                                    DALI                                    //
+//                               GENESYS STYLES                               //
 //----------------------------------------------------------------------------//
 
 /**
@@ -11,41 +11,34 @@
 */
 
 
-// ---------------------------------- GENESYS ------------------------------- //
+// --------------------------------- TOKENS --------------------------------- //
 
 @import "../node_modules/@devoinc/genesys-brand-devo/dist/light/scss/tokens.sass.alias.scss";
 @import "../node_modules/@devoinc/genesys-brand-devo/dist/light/scss/tokens.sass.cmp.scss";
 
 
-// ---------------------------- UTILS OR ABSTRACTS -------------------------- //
+// --------------------------- UTILS OR ABSTRACTS --------------------------- //
 
 @import "utils/variables";
 @import "utils/functions";
 @import "utils/mixins";
-@import "utils/spacing"; // TODO Where is this?
+@import "utils/spacing";
 
 
-// --------------------------------- VENDORS -------------------------------- //
+// -------------------------------- VENDORS --------------------------------- //
 
 @import "vendors/animate";
 @import "vendors/bootstrap-grid";
 @import "vendors/select2";
-@import "vendors/custom-vendors/select2-custom";
+@import "vendors/custom-vendors";
 
 
-// ----------------------------------- BASE --------------------------------- //
+// ---------------------------------- BASE ---------------------------------- //
 
-// The following styles exist in the Dali project. It is commented here to avoid
-// the problem with the routes in Dali's storybook.
-
-//@import "../base/reset";
-//@import "../base/fonts";
-//@import "../base/icons";
-//@import "../base/typography";
-//@import "../base/base";
+// The reset, fonts and typography base styles are obtained from genesys-base-styles.
 
 
-// -------------------------------- COMPONENTS ------------------------------ //
+// ------------------------------- COMPONENTS ------------------------------- //
 
 @import "components/avatar";
 @import "components/badge";
@@ -60,6 +53,7 @@
 @import "components/dropdown";
 @import "components/helper";
 @import "components/icon-button";
+@import "components/icons";
 @import "components/inline-message";
 @import "components/input";
 @import "components/label";
@@ -75,14 +69,15 @@
 @import "components/stepper";
 @import "components/table";
 @import "components/tabs";
-@import "src/components/tag";
+@import "components/tag";
 @import "components/textarea";
 @import "components/toast";
+@import "components/typography";
 @import "components/upload-files";
 @import "components/validation";
 
 
-// ---------------------------------- LAYOUT -------------------------------- //
+// --------------------------------- LAYOUT --------------------------------- //
 
 @import "layout/app-bar";
 @import "layout/field-combiner";
