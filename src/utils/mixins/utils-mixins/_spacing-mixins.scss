@@ -8,23 +8,29 @@
   $side: all,
   $size: sm,
   $type: component,
-  $isNegative: false
+  $is-negative: false,
+  $is-important: false
 ) {
-  $property-value: map-deep-get($spacing-size-map, $size, $type);
+  $value: map-deep-get($spacing-size-map, $size, $type);
+  $important-value: get-important($is-important);
 
-  @if ($isNegative) {
-    $property-value: calc(#{$property-value} * -1);
+  @if ($is-negative) {
+    $value: calc(#{$value} * -1);
+  }
+
+  @if ($is-important) {
+    $value: $value $important-value;
   }
 
   @if ($side == all or $property == gap) {
-    #{$property}: $property-value;
+    #{$property}: $value;
   } @else if ($side == hor) {
-    #{$property}-left: $property-value;
-    #{$property}-right: $property-value;
+    #{$property}-left: $value;
+    #{$property}-right: $value;
   } @else if ($side == ver) {
-    #{$property}-top: $property-value;
-    #{$property}-bottom: $property-value;
+    #{$property}-top: $value;
+    #{$property}-bottom: $value;
   } @else {
-    #{$property}-#{$side}: $property-value;
+    #{$property}-#{$side}: $value;
   }
 }

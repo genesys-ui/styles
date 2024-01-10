@@ -2,7 +2,9 @@
 
 
 .checkbox {
-  @include field-control-checkbox;
+  $parent: &;
+
+  @include field-control-checkbox($parent);
 
   // Size - Modifier - Checkbox
 
@@ -16,7 +18,7 @@
 
   @each $status in $field-control-color-list {
     &--#{$status} {
-      @include field-control-checkbox-color($status);
+      @include field-control-checkbox-color($parent, $status);
     }
   }
 }

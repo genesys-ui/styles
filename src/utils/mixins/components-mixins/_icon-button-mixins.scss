@@ -55,7 +55,8 @@
   $has-before-icon: false,
 ) {
   @include get-button-base-styles($parent, $is-circular, $has-before-icon, $has-bold-icon);
-  @include get-icon-button-size-styles($parent, $size);
   @include get-button-type-styles($parent, $type, $has-before-icon);
+  @include get-icon-button-size-styles($parent, $size);
+  font-weight: normal;
 }
 

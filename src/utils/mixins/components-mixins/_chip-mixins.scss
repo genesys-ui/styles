@@ -1,30 +1,31 @@
 // ----------------------- CHIP - COMPONENTS - MIXINS ----------------------- //
 
 
-// BASE STYLES - CHIP - COMPONENTS - MIXINS --------------------------------- //
+// STYLES - CHIP - COMPONENTS - MIXINS -------------------------------------- //
+
+// Base - Styles - Chip - Component - Mixin
 
 @mixin get-chip-base-styles {
   @include inline-flex(null, center, center);
   position: relative;
-  animation: background-color ease $cmp-chip-mutation-transition-duration,
-    color ease $cmp-chip-mutation-transition-duration,
-    box-shadow ease $cmp-chip-mutation-transition-duration;
+  flex-shrink: 0;
   border-radius: $cmp-chip-shape-border-radius;
   font-weight: $cmp-chip-label-typo-font-weight;
   letter-spacing: $cmp-chip-label-typo-letter-spacing;
   text-transform: $cmp-chip-label-typo-text-transform;
+  animation: background-color ease $cmp-chip-mutation-transition-duration,
+    color ease $cmp-chip-mutation-transition-duration,
+    box-shadow ease $cmp-chip-mutation-transition-duration;
 }
 
-
-// COLOR STYLES - CHIP - COMPONENTS - MIXINS -------------------------------- //
+// Color - Styles - Chip - Component - Mixin
 
 @mixin get-chip-color-styles($state: enabled) {
   background-color: map-deep-get($chip-color-map, bg, $state);
   color: map-deep-get($chip-color-map, text, $state);
 }
 
-
-// SIZE STYLES - CHIP - COMPONENTS - MIXINS --------------------------------- //
+// Size - Styles - Chip - Component - Mixin
 
 @mixin get-chip-size-styles($size: md) {
   height: map-deep-get($chip-size-map, $size, "height");
@@ -32,18 +33,32 @@
   padding: 0 map-deep-get($chip-size-map, $size, "padding");
 }
 
+// All - Styles - Chip - Component - Mixin
+
+@mixin get-chip-styles($size: md, $state: enabled) {
+  @include get-chip-base-styles;
+  @include get-chip-size-styles($size);
+  @include get-chip-color-styles($state);
+}
+
 
 // ELEMENT STYLES - CHIP - COMPONENTS - MIXINS ------------------------------ //
+
+// Label - Element - Chip - Component - Mixin
 
 @mixin get-chip-label-styles($size: md) {
   font-size: map-deep-get($chip-size-map, $size, "font-size");
   line-height: map-deep-get($chip-size-map, $size, "line-height");
 }
 
+// Remove button - Element - Chip - Component - Mixin
+
 @mixin get-chip-remove-button-styles($size: md) {
   margin-right: calc((#{map-deep-get($chip-size-map, $size, "padding")} - 0.4rem) * -1);
   margin-left: map-deep-get($chip-size-map, $size, "icon-spacing");
 }
+
+// Icon - Element - Chip - Component - Mixin
 
 @mixin get-chip-icon-styles($size: "md") {
   font-size: map-deep-get($chip-size-map, $size, "icon-font-size");

@@ -1,0 +1,39 @@
+// ------------------- VARIABLES - PROGRESSBAR - COMPONENTS ----------------- //
+
+
+// COLOR SCHEME - VARIABLES - PROGRESSBAR ----------------------------------- //
+
+$progressbar-color-scheme-list: base, success, warning, error, info;
+
+$progressbar-color-scheme-map: (
+  base: (
+    progress: $cmp-progress-bar-progress-color-background-base,
+    track: $cmp-progress-bar-track-color-background-base,
+  ),
+  success: (
+    progress: $cmp-progress-bar-progress-color-background-success,
+    track: $cmp-progress-bar-track-color-background-success,
+  ),
+  warning: (
+    progress: $cmp-progress-bar-progress-color-background-warning,
+    track: $cmp-progress-bar-track-color-background-warning,
+  ),
+  error: (
+    progress: $cmp-progress-bar-progress-color-background-error,
+    track: $cmp-progress-bar-track-color-background-error,
+  ),
+  info: (
+    progress: $cmp-progress-bar-progress-color-background-info,
+    track: $cmp-progress-bar-track-color-background-info,
+  )
+);
+
+
+// SIZE - VARIABLES - PROGRESSBAR ------------------------------------------- //
+
+$progressbar-size-list: sm, md;
+
+$progressbar-size-map: (
+  sm: $cmp-progress-bar-size-height-sm,
+  md: $cmp-progress-bar-size-height-md,
+);

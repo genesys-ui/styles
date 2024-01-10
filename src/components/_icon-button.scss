@@ -17,9 +17,7 @@
 
   // Default styles - Icon Button
 
-  @include get-button-base-styles($parent);
-  @include get-button-type-styles($parent); // neutral type
-  @include get-icon-button-size-styles($parent); // md size
+  @include get-icon-button-all-styles($parent); // md and neutral
 
 
   // ELEMENTS - ICON BUTTON ------------------------------------------------- //
@@ -57,12 +55,6 @@
     &--#{$size} {
       @include get-icon-button-size-styles($parent, $size);
     }
-  }
-
-  // Wide - Modifier - Icon Button
-
-  &--wide {
-    width: 100%;
   }
 
   // Circular - Modifier - Icon Button
@@ -141,7 +133,7 @@
     &::after {
       @include icon-font;
       position: relative;
-      content: $gi-exit_close;
+      content: $lticon-exit_close;
       font-weight: bold;
     }
   }
@@ -160,7 +152,7 @@
     &::after {
       @include icon-font;
       position: relative;
-      content: $gi-exit_close;
+      content: $lticon-exit_close;
       font-weight: bold;
     }
   }
@@ -178,12 +170,12 @@
     &::after {
       @include icon-font;
       position: relative;
-      content: $gi-arrow_down;
+      content: $lticon-arrow_down_fat;
       font-weight: bold;
     }
 
     &#{$parent}--expanded::after {
-      content: $gi-arrow_up;
+      content: $lticon-arrow_up_fat;
     }
   }
 
@@ -194,7 +186,7 @@
 
     &::after {
       @include icon-font;
-      content: $gi-arrow_down_fat;
+      content: $lticon-arrow_down_fat;
       position: absolute;
       bottom: 4px;
       right: 4px;
@@ -219,11 +211,11 @@
       }
 
       &::before {
-        content: $gi-sort_asc_carets;
+        content: $lticon-sort_asc_carets;
       }
 
       &::after {
-        content: $gi-sort_desc_carets;
+        content: $lticon-sort_desc_carets;
       }
     }
 

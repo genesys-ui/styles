@@ -6,46 +6,40 @@
 $badge-size-list: sm, md, lg;
 
 $badge-size-map: (
-  common: (
-    sm: (
-      font-size: $cmp-badge-typo-font-size-sm,
-      icon-font-size: $cmp-badge-icon-size-square-sm,
+  sm:(
+    font-size: $cmp-badge-typo-font-size-sm,
+    icon-font-size: $cmp-badge-icon-size-square-sm,
+    height: (
+      is-empty: $cmp-badge-size-square-is-empty-sm,
+      has-content: $cmp-badge-size-square-has-content-sm,
     ),
-    md: (
-      font-size: $cmp-badge-typo-font-size-md,
-      icon-font-size: $cmp-badge-icon-size-square-md,
-    ),
-    lg: (
-      font-size: $cmp-badge-typo-font-size-lg,
-      icon-font-size: $cmp-badge-icon-size-square-lg,
+    width: (
+      is-empty: $cmp-badge-size-square-is-empty-sm,
+      has-content: $cmp-badge-size-square-has-content-sm,
     ),
   ),
-  is-empty: (
-    sm: (
-      min-width: $cmp-badge-size-square-is-empty-sm,
-      height: $cmp-badge-size-square-is-empty-sm,
+  md:(
+    font-size: $cmp-badge-typo-font-size-md,
+    icon-font-size: $cmp-badge-icon-size-square-md,
+    height: (
+      is-empty: $cmp-badge-size-square-is-empty-md,
+      has-content: $cmp-badge-size-square-has-content-md,
     ),
-    md: (
-      min-width: $cmp-badge-size-square-is-empty-md,
-      height: $cmp-badge-size-square-is-empty-md,
-    ),
-    lg: (
-      min-width: $cmp-badge-size-square-is-empty-lg,
-      height: $cmp-badge-size-square-is-empty-lg,
+    width: (
+      is-empty: $cmp-badge-size-square-is-empty-md,
+      has-content: $cmp-badge-size-square-has-content-md,
     ),
   ),
-  has-content: (
-    sm: (
-      min-width: $cmp-badge-size-square-has-content-sm,
-      height: $cmp-badge-size-square-has-content-sm,
+  lg:(
+    font-size: $cmp-badge-typo-font-size-lg,
+    icon-font-size: $cmp-badge-icon-size-square-lg,
+    height: (
+      is-empty: $cmp-badge-size-square-is-empty-lg,
+      has-content: $cmp-badge-size-square-has-content-lg,
     ),
-    md: (
-      min-width: $cmp-badge-size-square-has-content-md,
-      height: $cmp-badge-size-square-has-content-md,
-    ),
-    lg: (
-      min-width: $cmp-badge-size-square-has-content-lg,
-      height: $cmp-badge-size-square-has-content-lg,
+    width: (
+      is-empty: $cmp-badge-size-square-is-empty-lg,
+      has-content: $cmp-badge-size-square-has-content-lg,
     ),
   ),
 );
@@ -55,199 +49,241 @@ $badge-size-map: (
 
 $badge-color-scheme-list:
   primary, secondary,
-  neutral, blend-inverse, blend-base,
+  neutral, blend-base, blend-inverse,
   error, help, info, success, warning,
   data-blue, data-bronze, data-dusk, data-green, data-indigo, data-magenta,
   data-purple, data-red, data-sky, data-slate, data-teal;
 
 $badge-color-scheme-type-map: (
   primary: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-primary,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-primary,
+      is-empty: $cmp-badge-color-background-is-empty-primary,
+      inverse: $cmp-badge-color-text-primary,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-primary,
+    color: (
+      default: $cmp-badge-color-text-primary,
+      inverse: $cmp-badge-color-background-has-content-primary,
     ),
-    color: $cmp-badge-color-text-primary,
   ),
   secondary: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-secondary,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-secondary,
+      is-empty: $cmp-badge-color-background-is-empty-secondary,
+      inverse: $cmp-badge-color-text-secondary,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-secondary,
+    color: (
+      default: $cmp-badge-color-text-secondary,
+      inverse: $cmp-badge-color-background-has-content-secondary,
     ),
-    color: $cmp-badge-color-text-secondary,
   ),
   neutral: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-neutral,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-neutral,
+      is-empty: $cmp-badge-color-background-is-empty-neutral,
+      inverse: $cmp-badge-color-text-neutral,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-neutral,
+    color: (
+      default: $cmp-badge-color-text-neutral,
+      inverse: $alias-color-text-body-inverse,
     ),
-    color: $cmp-badge-color-text-neutral,
   ),
   blend-base: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-blend-base,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-blend-base,
+      is-empty: $cmp-badge-color-background-is-empty-blend-base,
+      inverse: $cmp-badge-color-text-neutral,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-blend-base,
+    color: (
+      default: $cmp-badge-color-text-blend-base,
+      inverse: $alias-color-text-body-inverse,
     ),
-    color: $cmp-badge-color-text-blend-base,
   ),
   blend-inverse: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-blend-inverse,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-blend-inverse,
+      is-empty: $cmp-badge-color-background-is-empty-blend-inverse,
+      inverse: $cmp-badge-color-text-blend-inverse,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-blend-inverse,
+    color: (
+      default: $cmp-badge-color-text-blend-inverse,
+      inverse: $alias-color-text-body-base,
     ),
-    color: $cmp-badge-color-text-blend-inverse,
   ),
   error: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-error,
+    bg:(
+      has-content: $cmp-badge-color-background-has-content-error,
+      is-empty: $cmp-badge-color-background-is-empty-error,
+      inverse: $cmp-badge-color-text-error,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-error,
+    color: (
+      default: $cmp-badge-color-text-error,
+      inverse: $cmp-badge-color-background-has-content-error,
     ),
-    color: $cmp-badge-color-text-error,
   ),
   success: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-success,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-success,
+      is-empty: $cmp-badge-color-background-is-empty-success,
+      inverse: $cmp-badge-color-text-success,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-success,
+    color: (
+      default: $cmp-badge-color-text-success,
+      inverse: $cmp-badge-color-background-has-content-success,
     ),
-    color: $cmp-badge-color-text-success,
   ),
   warning: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-warning,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-warning,
+      is-empty: $cmp-badge-color-background-is-empty-warning,
+      inverse: $cmp-badge-color-text-warning,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-warning,
+    color: (
+      default: $cmp-badge-color-text-warning,
+      inverse: $cmp-badge-color-background-has-content-warning,
     ),
-    color: $cmp-badge-color-text-warning,
   ),
   help: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-help,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-help,
+      is-empty: $cmp-badge-color-background-is-empty-help,
+      inverse: $cmp-badge-color-text-help,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-help,
+    color: (
+      default: $cmp-badge-color-text-help,
+      inverse: $cmp-badge-color-background-has-content-help,
     ),
-    color: $cmp-badge-color-text-help,
   ),
   info: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-info,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-info,
+      is-empty: $cmp-badge-color-background-is-empty-info,
+      inverse: $cmp-badge-color-text-info,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-info,
+    color: (
+      default: $cmp-badge-color-text-info,
+      inverse: $cmp-badge-color-background-has-content-info,
     ),
-    color: $cmp-badge-color-text-info,
   ),
   data-blue: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-blue,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-blue,
+      is-empty: $cmp-badge-color-background-is-empty-data-blue,
+      inverse: $cmp-badge-color-text-data-blue,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-blue,
+    color: (
+      default: $cmp-badge-color-text-data-blue,
+      inverse: $cmp-badge-color-background-has-content-data-blue,
     ),
-    color: $cmp-badge-color-text-data-blue,
   ),
   data-bronze: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-bronze,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-bronze,
+      is-empty: $cmp-badge-color-background-is-empty-data-bronze,
+      inverse: $cmp-badge-color-text-data-bronze,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-bronze,
+    color: (
+      default: $cmp-badge-color-text-data-bronze,
+      inverse: $cmp-badge-color-background-has-content-data-bronze,
     ),
-    color: $cmp-badge-color-text-data-bronze,
   ),
   data-dusk: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-dusk,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-dusk,
+      is-empty: $cmp-badge-color-background-is-empty-data-dusk,
+      inverse: $cmp-badge-color-text-data-dusk,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-dusk,
+    color: (
+      default: $cmp-badge-color-text-data-dusk,
+      inverse: $cmp-badge-color-background-has-content-data-dusk,
     ),
-    color: $cmp-badge-color-text-data-dusk,
   ),
   data-green: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-green,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-green,
+      is-empty: $cmp-badge-color-background-is-empty-data-green,
+      inverse: $cmp-badge-color-text-data-green,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-green,
+    color: (
+      default: $cmp-badge-color-text-data-green,
+      inverse: $cmp-badge-color-background-has-content-data-green,
     ),
-    color: $cmp-badge-color-text-data-green,
   ),
   data-indigo: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-indigo,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-indigo,
+      is-empty: $cmp-badge-color-background-is-empty-data-indigo,
+      inverse: $cmp-badge-color-text-data-indigo,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-indigo,
+    color: (
+      default: $cmp-badge-color-text-data-indigo,
+      inverse: $cmp-badge-color-background-has-content-data-indigo,
     ),
-    color: $cmp-badge-color-text-data-indigo,
   ),
   data-magenta: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-magenta,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-magenta,
+      is-empty: $cmp-badge-color-background-is-empty-data-magenta,
+      inverse: $cmp-badge-color-text-data-magenta,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-magenta,
+    color: (
+      default: $cmp-badge-color-text-data-magenta,
+      inverse: $cmp-badge-color-background-has-content-data-magenta,
     ),
-    color: $cmp-badge-color-text-data-magenta,
   ),
   data-purple: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-purple,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-purple,
+      is-empty: $cmp-badge-color-background-is-empty-data-purple,
+      inverse: $cmp-badge-color-text-data-purple,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-purple,
+    color: (
+      default: $cmp-badge-color-text-data-purple,
+      inverse: $cmp-badge-color-background-has-content-data-purple,
     ),
-    color: $cmp-badge-color-text-data-purple,
   ),
   data-red: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-red,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-red,
+      is-empty: $cmp-badge-color-background-is-empty-data-red,
+      inverse: $cmp-badge-color-text-data-red,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-red,
+    color: (
+      default: $cmp-badge-color-text-data-red,
+      inverse: $cmp-badge-color-background-has-content-data-red,
     ),
-    color: $cmp-badge-color-text-data-red,
   ),
   data-sky: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-sky,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-sky,
+      is-empty: $cmp-badge-color-background-is-empty-data-sky,
+      inverse: $cmp-badge-color-text-data-sky,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-sky,
+    color: (
+      default: $cmp-badge-color-text-data-sky,
+      inverse: $cmp-badge-color-background-has-content-data-sky,
     ),
-    color: $cmp-badge-color-text-data-sky,
   ),
   data-slate: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-slate,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-slate,
+      is-empty: $cmp-badge-color-background-is-empty-data-slate,
+      inverse: $cmp-badge-color-text-data-slate,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-slate,
+    color: (
+      default: $cmp-badge-color-text-data-slate,
+      inverse: $cmp-badge-color-background-has-content-data-slate,
     ),
-    color: $cmp-badge-color-text-data-slate,
   ),
   data-teal: (
-    is-empty: (
-      bg: $cmp-badge-color-background-is-empty-data-teal,
+    bg: (
+      has-content: $cmp-badge-color-background-has-content-data-teal,
+      is-empty: $cmp-badge-color-background-is-empty-data-teal,
+      inverse: $cmp-badge-color-text-data-teal,
     ),
-    has-content: (
-      bg: $cmp-badge-color-background-has-content-data-teal,
+    color: (
+      default: $cmp-badge-color-text-data-teal,
+      inverse: $cmp-badge-color-background-has-content-data-teal,
     ),
-    color: $cmp-badge-color-text-data-teal,
   ),
 );

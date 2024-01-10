@@ -7,51 +7,76 @@
 
   // DEFAULT STYLES - BADGE ------------------------------------------------- //
 
-  @include badge-base;
-  @include badge-size;
-  @include badge-color;
+  @include badge;
 
 
   // MODIFIERS - BADGE ------------------------------------------------------ //
 
   @each $size in $badge-size-list {
     &--#{$size} {
-      @include badge-size($size, false, false);
+      @include badge-size($size);
     }
   }
 
   @each $color-scheme in $badge-color-scheme-list {
     &--#{$color-scheme} {
-      @include badge-color($color-scheme, false);
+      @include badge-color($color-scheme);
 
       &#{$parent}--is-inverse {
-        @include badge-color-inverse($color-scheme, false);
+        @include badge-color($color-scheme: $color-scheme, $is-inverse: true);
       }
     }
   }
 
-  &--is-empty {
-    @include badge-size($is-empty: true);
+  &--is-inverse {
+    @include badge-color($is-inverse: true);
+  }
+
+  &--empty {
+    @include badge-size-square($is-empty: true);
     @include badge-color($is-empty: true);
+    min-width: unset;
     padding: 0;
 
     @each $size in $badge-size-list {
       &#{$parent}--#{$size} {
-        @include badge-size($size, false, true);
+        @include badge-size-square($size: $size, $is-empty: true);
       }
     }
 
     @each $color-scheme in $badge-color-scheme-list {
       &#{$parent}--#{$color-scheme} {
-        @include badge-color($color-scheme, true);
+        @include badge-color($color-scheme: $color-scheme, $is-empty: true);
+
+        &#{$parent}--is-inverse {
+          @include badge-color($color-scheme: $color-scheme, $is-empty: true, $is-inverse: true);
+        }
+      }
+    }
+
+    &#{$parent}--is-inverse {
+      @include badge-color($is-empty: true, $is-inverse: true);
+    }
+  }
+
+  &--circular {
+    @include badge-size-square($is-circular: true);
+    min-width: unset;
+    padding: 0;
+
+    @each $size in $badge-size-list {
+      &#{$parent}--#{$size} {
+        @include badge-size-square($size: $size, $is-circular: true);
       }
     }
   }
 
   &--has-icon {
+    font-size: map-deep-get($badge-size-map, md, icon-font-size);
+
     @each $size in $badge-size-list {
       &#{$parent}--#{$size} {
-        @include badge-size($size, true, false);
+        font-size: map-deep-get($badge-size-map, $size, icon-font-size);
       }
     }
   }

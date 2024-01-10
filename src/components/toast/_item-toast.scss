@@ -7,6 +7,7 @@
   $parent: &;
 
   @include elevation(pop-out);
+  position: relative;
   width: 50rem;
   background-color: $cmp-toast-color-background-default;
 

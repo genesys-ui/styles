@@ -11,7 +11,7 @@
 }
 
 @mixin menu-list(
-  $height: calc(#{$alias-size-height-surface-xxs} * 7 + #{$alias-size-height-surface-xxs} / 2 + #{$alias-space-cmp-xxs}),
+  $height: calc(#{$alias-size-height-surface-xxs} * 8 + #{$alias-size-height-surface-xxs} / 2 + #{$alias-space-cmp-xxs}),
   $height-prop: max-height,
 ) {
   @include scrollbars($size: sm);
@@ -30,14 +30,15 @@
   $selected-selector: '#{if($parent, #{get-selector($parent, selected)}, '&.selected')}';
   $highlighted-selector: '#{if($parent, '&#{$parent}--highlighted', '&.highlighted')}';
 
-  @include truncate;
   @include typography($ignore-props: line-height);
+  @include truncate;
   position: relative;
   transition: background-color $cmp-button-mutation-transition-duration ease,
               color $cmp-button-mutation-transition-duration ease;
   border-radius: $alias-shape-border-radius-md;
   min-height: $height;
   padding: 0 $hor-padding;
+  text-align: left;
   cursor: pointer;
 
   @if $has-complex-content {
@@ -52,9 +53,12 @@
     background-color: transparent;
   }
 
-  &-icon {
-    margin-right: $alias-space-cmp-xs;
-    font-size: $alias-size-square-icon-base-sm;
+  @if($parent) {
+    #{$parent}-icon {
+      @include spacing(margin, right, xs, component);
+      font-size: $alias-size-square-icon-base-xs;
+      vertical-align: middle;
+    }
   }
 
   &,
@@ -64,7 +68,7 @@
     color: $alias-color-text-action-neutral-enabled;
 
     @if($parent) {
-      &#{$parent}-icon {
+      #{$parent}-icon {
         color: inherit;
       }
     }
@@ -134,7 +138,7 @@
   }
 
   &:not(:first-child) {
-    margin-top: $alias-space-cmp-sm;
+    @include spacing(margin, top, sm, component);
   }
 
   #{$group-parent} {
@@ -152,25 +156,8 @@
 
 // DROPDOWN MENU - COMPONENTS - MIXINS -------------------------------------- //
 
-@mixin dropdown-menu-container {
+@mixin dropdown-menu-panel {
   @include elevation(activated);
   overflow: hidden;
-  border: none;
   background-color: $alias-color-background-surface-base-base;
-}
-
-@mixin dropdown-menu(
-  $parent: '.dropdown-menu',
-  $height: calc(#{$alias-size-height-surface-xxs} * 7 + #{$alias-size-height-surface-xxs} / 2 + #{$alias-space-cmp-xxs}),
-  $spacing: $alias-space-cmp-xxs,
-) {
-  @include dropdown-menu-container;
-
-  &#{$parent}__wrapper {
-    @include menu-wrapper($spacing);
-  }
-
-  &#{$parent}__list {
-    @include menu-list($height);
-  }
 }

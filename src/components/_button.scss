@@ -19,6 +19,7 @@
 
   &__text {
     position: relative;
+    pointer-events: none;
   }
 
   &__icon {
@@ -31,12 +32,6 @@
 
 
   // MODIFIERS - BUTTON ----------------------------------------------------- //
-
-  // Wide - Modifier - Icon Button
-
-  &--wide {
-    width: 100%;
-  }
 
   // Type - Modifier - Button
 

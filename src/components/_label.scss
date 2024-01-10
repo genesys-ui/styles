@@ -36,7 +36,6 @@
   &--wrapper {
     @include spacing($property: gap, $size: xxs, $type: component);
     display: flex;
-    min-width: 0;
     margin: 0;
 
     &#{$parent}--top {
@@ -66,8 +65,11 @@
     @include truncate;
   }
 
-  &--truncate {
-    display: block;
+  // Disabled - Modifier - Label
+
+  &--disabled,
+  &--disabled[for] {
+    cursor: not-allowed;
   }
 
   // Hide - Modifier - Label

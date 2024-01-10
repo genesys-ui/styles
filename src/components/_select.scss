@@ -1,63 +1,23 @@
-// ----------------------- NEW - SELECT - COMPONENTS ------------------------ //
+// -------------------------- SELECT - COMPONENTS --------------------------- //
 
 
 .select {
+  $parent: &;
 
   // Default styles - Select
 
-  @include field-control-select;
+  @include field-control-select($parent);
 
 
-  // ELEMENTS - SELECT ------------------------------------------------------ //
-
-  // Dropdown - Element - Select
-
-  &__dropdown {
-    @include dropdown-menu-container;
-    display: none;
-    position: absolute;
-    top: calc(100% + calc(#{$alias-space-cmp-xxs} / 2));
-    left: 0;
-    padding: $alias-space-cmp-xxs;
-
-    ul {
-      @include menu-list($height: 16rem);
-      @include scrollbars($size: sm);
-      min-width: 100%;
-
-      li {
-        @include menu-item;
-      }
-    }
-  }
-
-
-  // MODIFIERS - SELECT ------------------------------------------------------ //
+  // MODIFIERS - SELECT ----------------------------------------------------- //
 
   // Size - Modifier - Select
 
   @each $size in $field-control-size-list {
     &--#{$size} {
       @include field-control-size($size);
-
-      $spacing: null;
-      $arrow-position: null;
-      @if($size == sm) {
-        $spacing: 2.2rem;
-        $arrow-position: .4rem;
-      } @else if($size == md) {
-        $spacing: 2.6rem;
-        $arrow-position: .6rem;
-      } @else {
-        $spacing: 3rem;
-        $arrow-position: .8rem;
-      }
-
-      padding-right: $spacing;
-
-      &::before {
-        right: $arrow-position;
-      }
+      padding-right: map-deep-get($select-size-map, $size, arrow-width);
+      background-size: map-deep-get($field-control-size-map, $size, height);
     }
   }
 
@@ -73,7 +33,45 @@
 
   @each $status in $field-control-color-list {
     &--#{$status} {
-      @include field-control-color($status);
+      @include field-control-color($parent: $parent, $status: $status);
+    }
+  }
+
+  // Multiple - Modifier - Select
+  /// This is a mix between default select styles, chip group and select2
+  /// dropdown
+
+  &--multiple {
+    height: inherit;
+    min-height: map-deep-get($field-control-size-map, md, height);
+
+    #{$parent}__chip-group {
+      @include scrollbars($size: sm);
+      @include spacing(margin, ver, xxs, component);
+      overflow-y: auto;
+      width: 100%;
+      max-height: 6.4rem;
+      z-index: 1;
+    }
+
+    #{$parent}__select2-wrapper {
+      position: absolute;
+      inset: 0 0 0 0;
+
+      > select {
+        @include size(100%);
+      }
+
+      > .select2-container,
+      .select2-selection {
+        height: 100%;
+      }
+    }
+
+    @each $size in $field-control-size-list {
+      &#{$parent}--#{$size} {
+        min-height: map-deep-get($field-control-size-map, $size, height);
+      }
     }
   }
 }

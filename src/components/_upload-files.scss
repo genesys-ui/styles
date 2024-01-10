@@ -1,5 +1,6 @@
 // ----------------------- UPLOAD FILES - COMPONENT ------------------------- //
 
+
 .upload-files {
   $parent: &;
 
@@ -20,12 +21,13 @@
     transition: border-color .3s ease;
 
     #{$parent}:not(#{$parent}--readonly):not(#{$parent}--error):not(#{$parent}--warning):not(#{$parent}--success) &:hover {
-      border-color: darken($cmp-upload-files-color-border, 15%);
+      border-color: $upload-files-color-border-hovered;
     }
   }
 
   &__placeholder {
-    @include text-color;
+    @include typography(body, md, $props: font-size);
+    color: map-deep-get($field-control-color-map, text, base, placeholder);
     position: absolute;
     top: 50%;
     left: 50%;

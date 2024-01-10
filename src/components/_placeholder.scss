@@ -1,0 +1,20 @@
+// ------------------------ PLACEHOLDER - COMPONENTS ------------------------ //
+
+
+.placeholder {
+  @include typography(body, md);
+  color: map-deep-get($field-control-color-map, text, base, placeholder);
+
+
+  @each $size in $field-control-size-list {
+    &--#{$size} {
+      @include typography(body, $size);
+    }
+  }
+
+  @each $color-scheme in $field-control-color-list {
+    &--#{$color-scheme} {
+      color: map-deep-get($field-control-color-map, text, $color-scheme, placeholder);
+    }
+  }
+}

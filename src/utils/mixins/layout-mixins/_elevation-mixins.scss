@@ -3,8 +3,24 @@
 
 // STYLES - ELEVATION - LAYOUT - MIXINS ------------------------------------- //
 
-@mixin elevation($elevation: 'raised') {
-  z-index: map-deep-get($elevation-map, $elevation, "z-index");
-  box-shadow: map-deep-get($elevation-map, $elevation, "box-shadow");
-  border-radius: map-deep-get($elevation-map, $elevation, "border-radius");
+@mixin elevation($type: raised, $is-important: false) {
+  $important-value: get-important($is-important);
+  $border-prop: border;
+
+  @if($type == sticky-top) {
+    $border-prop: border-top;
+  } @else if($type == sticky-right) {
+    $border-prop: border-right;
+  } @else if($type == sticky-bottom) {
+    $border-prop: border-bottom;
+  } @else if($type == sticky-left){
+    $border-prop: border-left;
+  } @else {
+    $border-prop: border;
+  }
+
+  z-index: map-deep-get($elevation-map, $type, z-index) $important-value;
+  box-shadow: map-deep-get($elevation-map, $type, box-shadow) $important-value;
+  border-radius: map-deep-get($elevation-map, $type, border-radius) $important-value;
+  #{$border-prop}: if($type == ground, unset, 0.1rem solid map-deep-get($elevation-map, $type, border-color)) $important-value;
 }

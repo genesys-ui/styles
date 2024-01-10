@@ -1,0 +1,18 @@
+// --------------------------- OPTION - COMPONENT --------------------------- //
+
+
+.option {
+  &__list {
+    @include menu-list;
+  }
+
+  &__item {
+    @include menu-item($parent: &);
+    @include flex(null, center);
+  }
+
+  &--boxed {
+    @include menu-wrapper($spacing-prop: padding);
+    @include border-separator($side: all, $radius-size: lg);
+  }
+}

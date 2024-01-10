@@ -2,7 +2,9 @@
 
 
 .radio {
-  @include field-control-radio;
+  $parent: &;
+
+  @include field-control-radio($parent);
 
   // Size - Modifier - Checkbox
 
@@ -16,7 +18,7 @@
 
   @each $status in $field-control-color-list {
     &--#{$status} {
-      @include field-control-radio-color($status);
+      @include field-control-radio-color($parent, $status);
     }
   }
 }

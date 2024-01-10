@@ -3,53 +3,68 @@
 
 // TYPE - ELEVATION - LAYOUT - VARIABLES ------------------------------------ //
 
-$elevation-list: raised, sticky-top, sticky-right, sticky-bottom,
+$elevation-list: ground, raised, sticky-top, sticky-right, sticky-bottom,
 sticky-left, activated, draggable, overlay, pop-out;
 
 $elevation-map: (
+  ground: (
+    z-index: $alias-elevation-z-index-depth-ground,
+    box-shadow: $alias-elevation-box-shadow-depth-ground,
+    border-radius: 0,
+    border-color: $alias-color-border-elevation-ground,
+  ),
   raised: (
     z-index: $alias-elevation-z-index-depth-raised,
     box-shadow: $alias-elevation-box-shadow-depth-raised,
     border-radius: $alias-shape-border-radius-elevated,
+    border-color: $alias-color-border-elevation-raised,
   ),
   sticky-top: (
     z-index: $alias-elevation-z-index-depth-sticky-top,
     box-shadow: $alias-elevation-box-shadow-depth-sticky-top,
-    border-radius: unset
+    border-radius: unset,
+    border-color: $alias-color-border-elevation-sticky-top,
   ),
   sticky-right: (
     z-index: $alias-elevation-z-index-depth-sticky-right,
     box-shadow: $alias-elevation-box-shadow-depth-sticky-right,
-    border-radius: unset
+    border-radius: unset,
+    border-color: $alias-color-border-elevation-sticky-right,
   ),
   sticky-bottom: (
     z-index: $alias-elevation-z-index-depth-sticky-bottom,
     box-shadow: $alias-elevation-box-shadow-depth-sticky-bottom,
-    border-radius: unset
+    border-radius: unset,
+    border-color: $alias-color-border-elevation-sticky-bottom,
   ),
   sticky-left: (
     z-index: $alias-elevation-z-index-depth-sticky-left,
     box-shadow: $alias-elevation-box-shadow-depth-sticky-left,
-    border-radius: unset
+    border-radius: unset,
+    border-color: $alias-color-border-elevation-sticky-left,
   ),
   activated: (
     z-index: $alias-elevation-z-index-depth-activated,
     box-shadow: $alias-elevation-box-shadow-depth-activated,
     border-radius: $alias-shape-border-radius-elevated,
+    border-color: $alias-color-border-elevation-activated,
   ),
   draggable: (
     z-index: $alias-elevation-z-index-depth-draggable,
     box-shadow: $alias-elevation-box-shadow-depth-draggable,
     border-radius: $alias-shape-border-radius-elevated,
+    border-color: $alias-color-border-elevation-draggable,
   ),
   overlay: (
     z-index: $alias-elevation-z-index-depth-overlay,
     box-shadow: $alias-elevation-box-shadow-depth-overlay,
     border-radius: $alias-shape-border-radius-elevated,
+    border-color: $alias-color-border-elevation-overlay,
   ),
   pop-out: (
     z-index: $alias-elevation-z-index-depth-pop-out,
     box-shadow: $alias-elevation-box-shadow-depth-pop-out,
     border-radius: $alias-shape-border-radius-elevated,
+    border-color: $alias-color-border-elevation-pop-out,
   ),
 );

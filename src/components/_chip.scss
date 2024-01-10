@@ -4,9 +4,7 @@
 .chip {
   $parent: &;
 
-  @include get-chip-base-styles;
-  @include get-chip-size-styles;
-  @include get-chip-color-styles;
+  @include get-chip-styles;
 
   &-group {
     @include flex(null, null, null, wrap);
@@ -107,6 +105,7 @@
     #{$parent}__text {
       position: relative;
       user-select: none;
+      pointer-events: none;
     }
   }
 }

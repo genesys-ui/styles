@@ -8,14 +8,18 @@
 
 @function get-selector($parent: null, $state) {
   $selectors-map: (
+    checked: '&:checked, &[checked="true"], &[aria-checked="true"]#{if($parent, ', &#{$parent}--checked', '')}',
     disabled: '&:disabled, &[disabled], &[aria-disabled="true"]#{if($parent, ', &#{$parent}--disabled', '')}',
-    not-disabled: '&:not(:disabled):not([disabled]):not([aria-disabled="true"])#{if($parent, ':not(#{$parent}--disabled)', '')}',
-    hovered: '&:hover#{if($parent, ', &#{$parent}--hovered', '')}',
+    expanded: '&[aria-expanded="true"]#{if($parent, ', &#{$parent}--expanded', '')}',
     focused: '&:focus, &:focus-within#{if($parent, ', &#{$parent}--focused', '')}',
     focused-visible: '&:focus-visible#{if($parent, ', &#{$parent}--focused-visible', '')}',
+    hovered: '&:hover#{if($parent, ', &#{$parent}--hovered', '')}',
+    not-checked: '&:not(:checked), &:not([checked="true"]), &:not([aria-checked="true"])#{if($parent, ', &:not(#{$parent}--checked)', '')}',
+    not-disabled: '&:not(:disabled):not([disabled]):not([aria-disabled="true"])#{if($parent, ':not(#{$parent}--disabled)', '')}',
+    not-readonly: '&:not([readonly])#{if($parent, ':not(#{$parent}--readonly)', '')}',
     pressed: '&:active#{if($parent, ', &#{$parent}--pressed', '')}',
+    readonly: '&[readonly]#{if($parent, ', &#{$parent}--readonly', '')}',
     selected: '&[aria-selected="true"]#{if($parent, ', &#{$parent}--selected', '')}',
-    expanded: '&[aria-expanded="true"]#{if($parent, ', &#{$parent}--expanded', '')}',
   );
 
   @return map-get($selectors-map, $state);

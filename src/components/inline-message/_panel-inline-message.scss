@@ -85,7 +85,6 @@
     visibility: hidden;
     opacity: 0;
     pointer-events: none;
-    transition: opacity .3s ease;
   }
 
   // Has Scroll Bar - Modifier - Inline Message
@@ -334,16 +333,10 @@
   // Linq - Case of use - Inline Message
 
   &--linq {
-    max-width: 40rem;
+    @include width(48rem, null, 48rem);
 
     #{$parent}__content {
-      @include flex(null, center);
       @include spacing(padding, all, xs, component);
-
-      .icon-button {
-        @include spacing(margin, left, xs, component);
-        flex-shrink: 0;
-      }
     }
   }
 
@@ -353,7 +346,30 @@
     &::before {
       content: '';
       position: absolute;
-      inset: -1rem -1rem -1rem -1rem;
+    }
+
+    &[data-popper-placement^='top']::before {
+      height: 1.2rem;
+      width: 100%;
+      top: 100%;
+    }
+
+    &[data-popper-placement^='bottom']::before {
+      height: 1.2rem;
+      width: 100%;
+      bottom: 100%;
+    }
+
+    &[data-popper-placement^='left']::before {
+      width: 1.2rem;
+      height: 100%;
+      left: 100%;
+    }
+
+    &[data-popper-placement^='right']::before {
+      width: 1.2rem;
+      height: 100%;
+      right: 100%;
     }
   }
 
@@ -361,15 +377,5 @@
 
   &--balloon {
     z-index: 10000 !important;
-  }
-
-  // Data source (modal) - Case of use - Inline Message
-
-  &--data-source-modal {
-    &[data-popper-reference-hidden] {
-      visibility: inherit;
-      opacity: inherit;
-      pointer-events: inherit;
-    }
   }
 }

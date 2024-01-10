@@ -328,6 +328,17 @@ $typography-map: (
   ),
 );
 
+// Map - Size - Body legible width - Typography
+
+$legible-width-scale-factor: 42;
+$body-legible-width-map: (
+  xxs: $alias-typo-font-size-body-xxs * $legible-width-scale-factor,
+  xs: $alias-typo-font-size-body-xs * $legible-width-scale-factor,
+  sm: $alias-typo-font-size-body-sm * $legible-width-scale-factor,
+  md: $alias-typo-font-size-body-md * $legible-width-scale-factor,
+  lg: $alias-typo-font-size-body-lg * $legible-width-scale-factor,
+  xl: $alias-typo-font-size-body-xl * $legible-width-scale-factor,
+);
 
 // TEXT COLOR - TYPOGRAPHY - BASE - VARIABLES ------------------------------- //
 

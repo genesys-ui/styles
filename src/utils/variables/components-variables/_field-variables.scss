@@ -134,6 +134,18 @@ $field-control-color-map: (
 );
 
 
+// COLOR - FIELD TRACK - COMPONENTS - VARIABLES ----------------------------- //
+
+$field-track-color-list: base, error, success, warning;
+
+$field-track-bg-color-map: (
+  base: $alias-color-background-track-base,
+  error: $alias-color-background-track-error,
+  success: $alias-color-background-track-success,
+  warning: $alias-color-background-track-warning,
+);
+
+
 // SIZE - CHECKBOX & RADIO - FIELD CONTROL - COMPONENTS - VARIABLES --------- //
 
 $check-radio-size-map: (

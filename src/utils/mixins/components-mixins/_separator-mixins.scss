@@ -62,6 +62,7 @@
   @include separator-spacing($dir);
   @include separator-size($dir);
   @include separator-color;
+  flex-shrink: 0;
   border: none;
 }
 

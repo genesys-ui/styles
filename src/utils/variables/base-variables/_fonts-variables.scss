@@ -12,8 +12,10 @@ $mono-font: "Mono Font", monospace;
 
 // Icons - Fonts
 
-$icon-font: "gi", sans-serif;
+$icon-font: "lt-iconfont", sans-serif;
+$lt-app-icon-font: "LtAppFont", sans-serif;
 
 // Prefixes - Icons - Fonts
 
-$icon-class-prefix: "gi-";
+$icon-class-prefix: "lticon-";
+$icon-old-class-prefix: "LtAppIcon-";

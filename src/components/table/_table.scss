@@ -1,4 +1,4 @@
-// ------------------------ NEW - TABLE - COMPONENTS ------------------------ //
+// --------------------------- TABLE - COMPONENTS --------------------------- //
 
 
 .table {
@@ -6,21 +6,26 @@
 
   $parent: &;
 
+  width: 100%;
+
 
   // ELEMENTS - TABLE ------------------------------------------------------- //
 
   // Header - Element - Table
 
   &__header {
-    @include flex(null, stretch);
     border-bottom: solid $cmp-table-head-row-shape-border-size-md
       $cmp-table-head-row-color-background-after-base;
     background-color: $cmp-table-head-color-background;
 
     #{$parent}__cell {
-      @include flex(null, center);
       @include text-color(heading);
+      text-align: left;
       font-weight: 700;
+
+      &::before {
+        content: unset;
+      }
     }
   }
 
@@ -28,99 +33,142 @@
 
   &__body {
     background-color: $cmp-table-body-color-background;
+
+    #{$parent}__row {
+      background-color: $cmp-table-row-color-background-odd-base;
+
+      &:not(#{$parent}__row--selected):hover #{$parent}__cell--actions {
+        opacity: 1;
+      }
+
+      &--selected {
+        background-color: $cmp-table-row-color-background-odd-selected;
+      }
+
+      &--modified {
+        background-color: $cmp-table-row-color-background-modified-blink;
+      }
+
+      &--highlighted {
+        background-color: $cmp-table-row-color-background-even-highlighted;
+      }
+    }
   }
 
   // Row - Element - Table
 
   &__row {
-    @include flex(null, center);
-    position: relative;
     border-radius: $cmp-table-row-shape-border-radius-default;
-    background-color: $cmp-table-row-color-background-odd-base;
 
-    &::before {
-      @include pseudo-overlay;
-      border-radius: $cmp-table-row-shape-border-radius-default;
+    &--no-data-message {
+      #{$parent}__cell {
+        @include spacing(padding, all, sm, component);
+        @include typography;
+        @include text-color($color: weak);
+      }
+
+      #{$parent}--rows-draggable #{$parent}__body & {
+        cursor: default !important;
+        padding-left: 0 !important;
+
+        &::after {
+          content: unset !important;
+        }
+      }
+    }
+
+    &--dragging {
+      @include elevation(draggable);
+      @include spacing(padding, all, xs, component);
       pointer-events: none;
+      position: fixed;
+      background-color: $cmp-table-row-color-background-odd-base;
+
+      &::before {
+        @include icon-font;
+        @include text-color($color: weak);
+        position: relative;
+        left: calc(map-deep-get($spacing-size-map, xs, component) * -1);
+        content: $lticon-row_drag_drop;
+        font-size: 1.8rem;
+        transition: all .3s ease;
+      }
+
+      &:is(:not(tr)) {
+        @include flex(null, center);
+
+        #{$parent}__cell {
+          @include flex(null, center);
+        }
+      }
     }
 
-    &:hover::before {
-      background-color: $cmp-table-cell-color-background-backdrop-hovered-strong;
-    }
-
-    &:not(#{$parent}__row--selected):hover #{$parent}__cell--actions {
-      opacity: 1;
-    }
-
-    &--selected {
-      background-color: $cmp-table-row-color-background-odd-selected;
-    }
-
-    &--align-ver-top {
-      align-items: flex-start;
+    &--drag-origin #{$parent}__cell {
+      opacity: .25;
     }
   }
 
   // Cell - Element - Table
 
   &__cell {
+    @include typography($ignore-props: font-size);
     @include text-color;
-    flex-shrink: 0;
+    position: relative;
     font-size: $cmp-table-cell-wrapper-typo-font-size-md;
 
-    &--align {
-      &-hor-center {
-        text-align: center;
-      }
-
-      &-ver-center {
-        @include flex(null, center);
-      }
+    &::before {
+      @include pseudo-overlay;
+      pointer-events: none;
     }
 
-    &--children-space-between {
-      @include flex(null, center);
-      @include spacing($property: gap, $size: xs, $type: component);
-
-      >:first-child {
-        flex: 1;
-      }
-
-      >:last-child {
-        flex-shrink: 0;
-      }
-
-      &#{$parent}__cell--truncate {
-        min-width: 0;
-
-        #{$parent}__cell-text {
-          @include truncate;
-        }
-      }
+    &:first-child::before {
+      border-top-left-radius: $cmp-table-row-shape-border-radius-default;
+      border-bottom-left-radius: $cmp-table-row-shape-border-radius-default;
     }
 
-    &--grow {
-      flex: 1;
+    &:last-child::before {
+      border-top-right-radius: $cmp-table-row-shape-border-radius-default;
+      border-bottom-right-radius: $cmp-table-row-shape-border-radius-default;
     }
 
-    &--truncate:not(#{$parent}__cell--children-space-between) {
-      @include truncate;
+    #{$parent}__row:hover &::before {
+      background-color: $cmp-table-cell-color-background-backdrop-hovered-strong;
+    }
+
+    &,
+    &--align-ver-center {
+      vertical-align: middle;
+    }
+
+    &--align-hor-center {
+      text-align: center;
+    }
+
+    &--align-hor-right {
+      text-align: right;
     }
 
     &--actions {
-      @include flex(null, center, flex-end);
-      @include spacing($property: gap, $size: xs, $type: component);
-      flex: 0 0 auto;
-      margin-left: auto;
+      text-align: right;
 
       #{$parent}__row:not(#{$parent}__row--selected) & {
         opacity: $cmp-table-cell-quick-actions-shape-opacity;
       }
 
-      .icon-button:not(:disabled):hover::before,
-      .icon-button:not(:disabled).icon-button--hovered::before {
-        background-color: transparent;
+      .icon-button {
+        &:not(:first-child) {
+          @include spacing(margin, left, xs, component);
+        }
+
+        &:not(:disabled):hover::before,
+        &:not(:disabled).icon-button--hovered::before {
+          background-color: transparent;
+        }
       }
+    }
+
+    &--truncate {
+      @include truncate;
     }
 
     @each $size in $table-cell-size-width-list {
@@ -138,6 +186,13 @@
     }
   }
 
+  &__drop-target {
+    @include spacing(margin, ver, xs, component);
+    height: .2rem;
+    border-radius: $cmp-table-row-shape-border-radius-default;
+    background-color: $alias-color-background-feedback-data-blue-stronger;
+  }
+
 
   // MODIFIERS - TABLE ------------------------------------------------------ //
 
@@ -145,14 +200,6 @@
 
   &,
   &--default {
-    #{$parent}__header {
-      height: $cmp-table-head-size-height-default;
-    }
-
-    #{$parent}__row:not(#{$parent}__row--no-height) {
-      height: $cmp-table-row-size-height-default-md;
-    }
-
     #{$parent}__cell {
       padding: $cmp-table-cell-space-padding-ver-default-base
         $cmp-table-cell-space-padding-hor-default;
@@ -160,14 +207,6 @@
   }
 
   &--compact {
-    #{$parent}__header {
-      height: $cmp-table-head-size-height-compact;
-    }
-
-    #{$parent}__row:not(#{$parent}__row--no-height) {
-      height: $cmp-table-row-size-height-compact-md;
-    }
-
     #{$parent}__cell {
       padding: $cmp-table-cell-space-padding-ver-compact-base
         $cmp-table-cell-space-padding-hor-compact;
@@ -175,14 +214,6 @@
   }
 
   &--comfortable {
-    #{$parent}__header {
-      height: $cmp-table-head-size-height-comfortable;
-    }
-
-    #{$parent}__row:not(#{$parent}__row--no-height) {
-      height: $cmp-table-row-size-height-comfortable-md;
-    }
-
     #{$parent}__cell {
       padding: $cmp-table-cell-space-padding-ver-comfortable-base
         $cmp-table-cell-space-padding-hor-comfortable;
@@ -192,12 +223,14 @@
   // Striped - Modifier - Table
 
   &--striped #{$parent}__row {
-    &:nth-child(even) {
-      background-color: $cmp-table-row-color-background-even-base;
-    }
-
+    &#{$parent}__row--odd,
     &:nth-child(odd) {
       background-color: $cmp-table-row-color-background-odd-base;
+    }
+
+    &#{$parent}__row--even,
+    &:nth-child(even) {
+      background-color: $cmp-table-row-color-background-even-base;
     }
 
     &--selected {
@@ -211,10 +244,50 @@
     }
   }
 
-  // Cells grow - Modifier - Table
+  // Rows bordered - Modifier - Table
 
-  &--cells-grow #{$parent}__cell {
-    flex: 1;
+  &--rows-bordered #{$parent}__row:not(:last-child) {
+    border-bottom: $cmp-table-row-shape-border-size-after solid $cmp-table-row-color-background-after;
+  }
+
+  // Rows have fixed height - Modifier - Table
+
+  &--rows-fixed-height {
+    #{$parent}__row #{$parent}__cell {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+
+    &,
+    &#{$parent}--default {
+      #{$parent}__header {
+        height: $cmp-table-head-size-height-default;
+      }
+
+      #{$parent}__row {
+        height: $cmp-table-row-size-height-default-md;
+      }
+    }
+
+    &#{$parent}--compact {
+      #{$parent}__header {
+        height: $cmp-table-head-size-height-compact;
+      }
+
+      #{$parent}__row {
+        height: $cmp-table-row-size-height-compact-md;
+      }
+    }
+
+    &#{$parent}--comfortable {
+      #{$parent}__header {
+        height: $cmp-table-head-size-height-comfortable;
+      }
+
+       #{$parent}__row {
+        height: $cmp-table-row-size-height-comfortable-md;
+      }
+    }
   }
 
   // Rows draggable - Modifier - Table
@@ -222,13 +295,12 @@
   &--rows-draggable {
     $draggable-icon-width: .4rem;
 
-    #{$parent}__header::after {
-      content: "";
-      order: -1;
-      width: $draggable-icon-width;
+    #{$parent}__header {
+      padding-left: $draggable-icon-width;
     }
 
-    #{$parent}__row {
+    #{$parent}__body #{$parent}__row {
+      position: relative;
       padding-left: $draggable-icon-width;
       cursor: move;
 
@@ -236,9 +308,10 @@
         @include icon-font;
         @include text-color($color: weak);
         position: absolute;
-        left: 0;
-        align-self: center;
-        content: $gi-row_drag_drop;
+        top: 50%;
+        left: calc(#{$draggable-icon-width} * -1);
+        transform: translateY(-50%);
+        content: $lticon-row_drag_drop;
         width: $draggable-icon-width;
         font-size: 1.8rem;
         visibility: hidden;
@@ -249,6 +322,103 @@
       &:hover::after {
         visibility: visible;
         opacity: 1;
+      }
+    }
+  }
+
+  // Flex - Modifier - Table
+
+  &--flex {
+    #{$parent}__header {
+      @include flex(null, center);
+    }
+
+    #{$parent}__row {
+      @include flex(null, center);
+      position: relative;
+
+      &::before {
+        @include pseudo-overlay;
+        border-radius: $cmp-table-row-shape-border-radius-default;
+        pointer-events: none;
+      }
+
+      &:hover::before {
+        background-color: $cmp-table-cell-color-background-backdrop-hovered-strong;
+      }
+
+      &:not(#{$parent}__row--selected):hover #{$parent}__cell--actions {
+        opacity: 1;
+      }
+
+      &--align-ver {
+        &-top {
+          align-items: flex-start;
+        }
+
+        &-bottom {
+          align-items: flex-end;
+        }
+      }
+
+      &--selected {
+        background-color: $cmp-table-row-color-background-odd-selected;
+      }
+
+      &--no-data-message {
+        &::before {
+          content: none;
+        }
+
+        #{$parent}__cell {
+          @include spacing(padding, all, sm, component);
+          width: 100%;
+        }
+      }
+    }
+
+    #{$parent}__cell {
+      flex-shrink: 0;
+      vertical-align: unset;
+
+      &::before {
+        content: unset;
+      }
+
+      &--grow {
+        flex: 1;
+      }
+
+      &--align-ver-center {
+        @include flex(null, center);
+        vertical-align: unset;
+      }
+
+      &--actions {
+        @include flex(null, center, flex-end);
+        @include spacing($property: gap, $size: xs, $type: component);
+        flex: 0 0 auto;
+        margin-left: auto;
+        text-align: inherit;
+
+        .icon-button {
+          margin: 0;
+        }
+      }
+    }
+
+    &#{$parent}--cells-grow #{$parent}__cell:not(#{$parent}__cell--actions) {
+      flex: 1;
+    }
+
+    &#{$parent}--rows-draggable {
+      #{$parent}__row {
+        &::after {
+          align-self: center;
+          left: 0;
+          top: unset;
+          transform: unset;
+        }
       }
     }
   }

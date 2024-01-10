@@ -1,0 +1,60 @@
+// ----------------------- SWITCH - COMPONENTS - MIXINS --------------------- //
+
+
+@mixin switch-track-base {
+  @include inline-flex(row, center);
+  position: relative;
+  overflow: hidden;
+  transition: background $cmp-switch-control-track-mutation-transition-duration;
+  outline: none;
+  border-radius: $cmp-switch-control-track-shape-border-radius;
+  padding: 0;
+  background-color: $cmp-switch-control-track-color-background-unchecked-base;
+  cursor: pointer;
+  user-select: none;
+}
+
+@mixin switch-track-size($size: md) {
+  @include size(
+      map-deep-get($switch-size-map, $size, track, height),
+      map-deep-get($switch-size-map, $size, track, width)
+  );
+}
+
+@mixin switch-track-color($state: enabled) {
+  background-color: map-get($switch-track-bg-color-map, $state);
+}
+
+@mixin switch-track($size: md, $state: enabled) {
+  @include switch-track-base;
+  @include switch-track-size($size);
+  @include switch-track-color($state);
+}
+
+@mixin switch-handler-base {
+  content: "";
+  position: absolute;
+  top: auto;
+  bottom: auto;
+  transition: left $cmp-switch-control-handler-mutation-transition-duration;
+  margin: 0;
+  box-shadow: $cmp-switch-control-handler-elevation-box-shadow-enabled;
+  border-radius: $cmp-switch-control-handler-shape-border-radius;
+  background-color: $cmp-switch-control-handler-color-background;
+}
+
+@mixin switch-handler-size($size: md) {
+  @include size(map-deep-get($switch-size-map, $size, handler, square));
+}
+
+@mixin switch-handler-position($state: unchecked, $size: md) {
+  left: map-deep-get($switch-size-map, $size, handler, position, $state);
+}
+
+@mixin switch-handler($size: md, $state: unchecked) {
+  @include switch-handler-base;
+  @include switch-handler-size($size);
+  @include switch-handler-position($state);
+}
+
+

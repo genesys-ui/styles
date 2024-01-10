@@ -2,11 +2,17 @@
 
 
 .app-bar {
+  $parent: &;
+
   @include flex(row, center);
   height: $cmp-tabs-container-size-height-lg;
   padding: 0 1.6rem;
   background-color: $cmp-app-bar-color-background;
 
+
+  &:not(#{$parent}--has-lead-nav) {
+    border-bottom: .1rem solid map-deep-get($elevation-map, "sticky-bottom", "border-color");
+  }
 
   // ELEMENTS - APP BAR ----------------------------------------------------- //
 
@@ -33,6 +39,6 @@
   // MODIFIERS - APP BAR ---------------------------------------------------- //
 
   &--sticky {
-    @include elevation("sticky-bottom");
+    @include elevation(sticky-bottom);
   }
 }
