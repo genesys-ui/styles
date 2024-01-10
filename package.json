@@ -31,5 +31,16 @@
     "@devoinc/genesys-base-styles": "^1.2.1",
     "@devoinc/genesys-brand-devo": "^6.2.0",
     "@devoinc/genesys-icons": "^3.6.0"
+  },
+  "engines": {
+    "node": ">=18",
+    "npm": ">=7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DevoInc/genesys-styles.git"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
