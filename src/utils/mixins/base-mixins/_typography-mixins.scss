@@ -49,12 +49,20 @@
 
 // TEXT COLOR SCHEME - TYPOGRAPHY - BASE - MIXINS --------------------------- //
 
-@mixin text-color($type: body, $color: base) {
-  color: map-deep-get($text-color-map, $type, $color);
+@mixin text-color($type: body, $color: base, $is-svg: false, $is-important: false) {
+  $prop: if($is-svg, fill, color);
+  $color-value: map-deep-get($text-color-map, $type, $color);
+  $important-value: get-important($is-important);
+
+  #{$prop}: $color-value $important-value;
 }
 
-@mixin text-color-status($color-status: success) {
-  color: map-get($text-color-status-map, $color-status);
+@mixin text-color-status($color-status: success, $is-svg: false, $is-important: false) {
+  $prop: if($is-svg, fill, color);
+  $color-value: map-get($text-color-status-map, $color-status);
+  $important-value: get-important($is-important);
+
+  #{$prop}: $color-value $important-value;
 }
 
 
@@ -70,13 +78,15 @@
 /// line-height... etc. (Use spaces instead of commas as separators).
 /// @output Typographic styles based in the props list
 
-@mixin typography($type: body, $size: md, $props: null, $ignore-props: null) {
+@mixin typography($type: body, $size: md, $props: null, $ignore-props: null, $is-important: false) {
+  $important-value: get-important($is-important);
+
   @each $prop in $typography-prop-list {
     @if (($ignore-props and index($ignore-props, $prop) == null) or ($props and index($props, $prop) != null)) {
-      #{$prop}: map-deep-get($typography-map, $type, $size, $prop);
+      #{$prop}: map-deep-get($typography-map, $type, $size, $prop) $important-value;
     }
     @if (not $props and not $ignore-props) {
-      #{$prop}: map-deep-get($typography-map, $type, $size, $prop);
+      #{$prop}: map-deep-get($typography-map, $type, $size, $prop) $important-value;
     }
   }
 }

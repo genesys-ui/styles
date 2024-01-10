@@ -1,25 +1,26 @@
 // --------------------------- VARIABLES - UTILS ---------------------------- //
 
 
-// Icons - Variables
+$theme: light !default;
 
-// TODO What is for?
-// @import "../../../node_modules/@devo/genesys/lib/assets/scss/base/icons/lt-icon/lt-icon-variables";
-@import "../../../node_modules/@devoinc/genesys-icons/dist/gi-variables";
-@import "../../../node_modules/@devoinc/genesys-icons/dist/gi-styles";
-// @import "../../../node_modules/@devo/genesys/lib/assets/scss/utils/variables";
+// Genesys - Variables
+
+@import "node_modules/@devo/genesys/lib/assets/scss/base/icons/lt-icon/lt-icon-variables";
+@import "node_modules/@devo/genesys/lib/assets/scss/utils/variables";
+//@import "../../../node_modules/@devoinc/genesys-icons/dist/gi-variables";
+//@import "../../../node_modules/@devoinc/genesys-icons/dist/gi-styles";
 
 // Base - Variables
 
 @import "./base-variables/color-variables";
 @import "./base-variables/fonts-variables";
 @import "./base-variables/icons-variables";
+@import "./base-variables/images-variables";
 @import "./base-variables/typography-variables";
 
 // Utils - Variables
 
 @import "./utils-variables/breakpoints-variables";
-@import "./utils-variables/paths-variables";
 @import "./utils-variables/spacing-variables";
 
 // Components - Variables
@@ -32,8 +33,10 @@
 @import "./components-variables/icon-button-variables";
 @import "./components-variables/link-variables";
 @import "./components-variables/overlay-variables";
+@import "./components-variables/select-variables";
 @import "./components-variables/separator-variables";
 @import "./components-variables/tag-variables";
+@import "./components-variables/upload-files-variables";
 
 // Layout - Variables
 

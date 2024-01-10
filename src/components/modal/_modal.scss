@@ -245,14 +245,4 @@
     @include overlay-color-type;
     opacity: 1;
   }
-
-  .fancybox-content {
-    .lt-form-column-wrapper {
-      flex-direction: column;
-
-      @include respond-above(xl) {
-        flex-direction: row;
-      }
-    }
-  }
 }

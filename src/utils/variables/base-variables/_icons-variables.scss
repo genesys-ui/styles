@@ -7,29 +7,29 @@ $icon-status-list: error, help, info, success, warning;
 
 $icon-status-map: (
   error: (
-    bordered: $gi-error_warning_danger_stop,
-    filled: $gi-error_warning_danger_stop_filled,
+    bordered: $lticon-error_warning_danger_stop,
+    filled: $lticon-error_warning_danger_stop_filled,
   ),
   help: (
-    bordered: $gi-about_question_faq_help,
-    filled: $gi-about_question_faq_help_filled,
+    bordered: $lticon-about_question_faq_help,
+    filled: $lticon-about_question_faq_help_filled,
   ),
   info: (
-    bordered: $gi-info_round,
-    filled: $gi-info_round_filled,
+    bordered: $lticon-info_about_round_bold,
+    filled: $lticon-info_about_round_filled,
   ),
   success: (
-    bordered: $gi-check_ok_rounded,
-    filled: $gi-check_ok_rounded_filled,
+    bordered: $lticon-ok_successful_check_bold,
+    filled: $lticon-ok_successful_check_filled,
   ),
   warning: (
-    bordered: $gi-attention_error_alert_caution,
-    filled: $gi-attention_error_alert_caution_filled,
+    bordered: $lticon-attention_error_alert_caution,
+    filled: $lticon-attention_error_alert_caution_filled,
   ),
 );
 
 
-// SIZE - ICONS - BASE - VARIABLES ------------------------------------------ //```
+// SIZE - ICONS - BASE - VARIABLES ------------------------------------------ //
 
 $icon-size-list: xxxs, xxxs, xxs, xs, sm, md, lg, xl, xxl, xxxl, xxxxl;
 

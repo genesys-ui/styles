@@ -82,7 +82,6 @@
 ) {
   @include inline-flex(null, center, center, null);
   $border-radius: $cmp-button-shape-border-radius-medium;
-
   @if $is-circular {
     $border-radius: $cmp-button-shape-border-radius-full;
   }
@@ -122,6 +121,7 @@
 
 @mixin get-button-icon-element-size-styles($size: "md") {
   font-size: map-deep-get($button-size-map, $size, "icon-font-size");
+  transition: rotate ease $cmp-button-mutation-transition-duration;
 
   &,
   &--left {
@@ -155,6 +155,12 @@
   @if $type == quiet and $has-before-icon == false {
     &::before {
       display: none;
+    }
+  }
+
+  @if $parent {
+    #{$parent}__icon {
+      transition: rotate $cmp-button-mutation-transition-duration ease 0s;
     }
   }
 
@@ -198,6 +204,12 @@
       background-color: map-deep-get($button-color-bg-type-map, $type, "expanded");
       color: map-deep-get($button-color-text-type-map, $type, "expanded");
       fill: map-deep-get($button-color-text-type-map, $type, "expanded");
+
+      @if $parent {
+        #{$parent}__icon:not(#{$parent}__icon--no-rotate) {
+          rotate: 180deg;
+        }
+      }
     }
 
     #{$selected-selector} {
@@ -225,4 +237,22 @@
     color: map-deep-get($button-color-text-type-map, $type, "disabled");
     fill: map-deep-get($button-color-text-type-map, $type, "disabled");
   }
+}
+
+
+// ALL BUTTON STYLES - COMPONENTS - MIXINS --------------------------------- //
+
+@mixin get-button-all-styles(
+  $parent: ".button",
+  $size: "md",
+  $type: neutral,
+  $is-circular: false,
+  $has-before-icon: false,
+  $has-bold-icon: false,
+) {
+  @include button-reset;
+  @include get-button-base-styles($parent, $is-circular, $has-before-icon, $has-bold-icon);
+  @include get-button-size-styles($size);
+  @include get-button-type-styles($parent, $type, $has-before-icon);
+  @include button-pseudo-backdrop($parent, $has-before-icon);
 }

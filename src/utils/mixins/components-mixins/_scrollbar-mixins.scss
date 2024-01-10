@@ -11,6 +11,7 @@
   $thumb-color: $alias-scrollbars-thumb-color-backdrop-base,
   $thumb-hover-color: $alias-scrollbars-thumb-color-backdrop-hovered,
   $thumb-radius: $alias-scrollbars-thumb-shape-border-radius,
+  $corner-color: transparent
 ) {
   $size-value: $alias-scrollbars-size-square-md;
 
@@ -39,17 +40,25 @@
   }
 
   &::-webkit-scrollbar-track {
-    background-color: $track-color;
+    box-shadow: unset;
+    border: unset;
     border-radius: $track-radius;
+    background-color: $track-color;
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: $thumb-color;
+    box-shadow: unset;
+    border: unset;
     border-radius: $thumb-radius;
+    background-color: $thumb-color;
     transition: $alias-scrollbars-thumb-mutation-transition;
 
     &:hover {
       background-color: $thumb-hover-color;
     }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: $corner-color;
   }
 }

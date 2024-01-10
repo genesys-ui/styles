@@ -4,11 +4,9 @@
 // BADGE BASE STYLES - COMPONENTS - MIXINS ---------------------------------- //
 
 @mixin badge-base {
-  position: relative;
+  @include inline-flex(null, center, center);
   flex: 0 0 auto;
-  justify-content: center;
-  align-items: center;
-  display: inline-flex;
+  position: relative;
   overflow: hidden;
   border-radius: $cmp-badge-shape-border-radius;
   padding: 0 $cmp-badge-space-padding-hor;
@@ -18,43 +16,63 @@
 
 // BADGE SIZE STYLES - COMPONENTS - MIXINS ---------------------------------- //
 
-@mixin badge-size($size: md, $has-icon: false, $is-empty: false) {
-  $content-eval: has-content;
-  $fs-eval: font-size;
+@mixin badge-size-square(
+  $size: md,
+  $has-icon: false,
+  $is-empty: false,
+  $is-circular: false
+) {
+  $content-eval: if($is-empty and not $has-icon, is-empty, has-content);
+  $width-prop: if($is-circular or $is-empty, width, min-width);
 
-  @if ($is-empty and not $has-icon) {
-    $content-eval: is-empty;
-  }
-  @if ($has-icon) {
-    $fs-eval: icon-font-size;
-  }
+  #{$width-prop}: map-deep-get($badge-size-map, $size, width, $content-eval);
+  height: map-deep-get($badge-size-map, $size, height, $content-eval);
+}
 
-  min-width: map-deep-get($badge-size-map, $content-eval, $size, min-width);
-  height: map-deep-get($badge-size-map, $content-eval, $size, height);
-  font-size: map-deep-get($badge-size-map, common, $size, $fs-eval);
+@mixin badge-size(
+  $size: md,
+  $has-icon: false,
+  $is-empty: false,
+  $is-circular: false
+) {
+  @include badge-size-square($size, $has-icon, $is-empty, $is-circular);
+  font-size: map-deep-get(
+    $badge-size-map,
+    $size,
+    if($has-icon, icon-font-size, font-size)
+  );
 }
 
 
 // BADGE COLOR STYLES - COMPONENTS - MIXINS --------------------------------- //
 
-@mixin badge-color($color-scheme: neutral, $is-empty: false) {
-  $content-eval: has-content;
-
-  @if ($is-empty) {
-    $content-eval: is-empty;
-  }
-
-  background-color: map-deep-get($badge-color-scheme-type-map, $color-scheme, $content-eval, bg);
-  color: map-deep-get($badge-color-scheme-type-map, $color-scheme, color);
+@mixin badge-color($color-scheme: neutral, $is-empty: false, $is-inverse: false) {
+  background-color: map-deep-get(
+    $badge-color-scheme-type-map,
+    $color-scheme,
+    bg,
+    if($is-inverse, inverse, if($is-empty, is-empty, has-content))
+  );
+  color: map-deep-get(
+    $badge-color-scheme-type-map,
+    $color-scheme,
+    color,
+    if($is-inverse, inverse, default)
+  );
 }
 
-@mixin badge-color-inverse($color-scheme: neutral, $is-empty: false) {
-  $content-eval: has-content;
 
-  @if ($is-empty) {
-    $content-eval: is-empty;
-  }
+// ALL STYLES - BADGE - COMPONENTS - MIXINS --------------------------------- //
 
-  background-color: map-deep-get($badge-color-scheme-type-map, $color-scheme, color);
-  color: map-deep-get($badge-color-scheme-type-map, $color-scheme, $content-eval, bg);
-}
+@mixin badge(
+  $size: md,
+  $color-scheme: neutral,
+  $has-icon: false,
+  $is-circular: false,
+  $is-empty: false,
+  $is-inverse: false,
+) {
+  @include badge-base;
+  @include badge-size($size, $has-icon, $is-empty, $is-circular);
+  @include badge-color($color-scheme, $is-empty, $is-inverse);
+};
