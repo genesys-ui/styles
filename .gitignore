@@ -32,9 +32,11 @@ dist/assets/aliases/*/img
 *.DS_Store
 
 # NodeJS
-node_modules/
+node_modules
 
 # Sonar
 /coverage
 .scannerwork/
 
+# SB
+storybook-static
