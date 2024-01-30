@@ -515,7 +515,7 @@
 
   &::after {
     @include icon-font;
-    content: $lticon-check_thick;
+    content: $gi-check_thick;
     transition: color ease-in-out $alias-fields-mutation-transition-duration;
     font-weight: bold;
     color: transparent;

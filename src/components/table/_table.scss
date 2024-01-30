@@ -89,7 +89,7 @@
         @include text-color($color: weak);
         position: relative;
         left: calc(map-deep-get($spacing-size-map, xs, component) * -1);
-        content: $lticon-row_drag_drop;
+        content: $gi-row_drag_drop;
         font-size: 1.8rem;
         transition: all .3s ease;
       }
@@ -311,7 +311,7 @@
         top: 50%;
         left: calc(#{$draggable-icon-width} * -1);
         transform: translateY(-50%);
-        content: $lticon-row_drag_drop;
+        content: $gi-row_drag_drop;
         width: $draggable-icon-width;
         font-size: 1.8rem;
         visibility: hidden;

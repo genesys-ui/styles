@@ -133,7 +133,7 @@
     &::after {
       @include icon-font;
       position: relative;
-      content: $lticon-exit_close;
+      content: $gi-exit_close;
       font-weight: bold;
     }
   }
@@ -152,7 +152,7 @@
     &::after {
       @include icon-font;
       position: relative;
-      content: $lticon-exit_close;
+      content: $gi-exit_close;
       font-weight: bold;
     }
   }
@@ -170,12 +170,12 @@
     &::after {
       @include icon-font;
       position: relative;
-      content: $lticon-arrow_down_fat;
+      content: $gi-arrow_down_fat;
       font-weight: bold;
     }
 
     &#{$parent}--expanded::after {
-      content: $lticon-arrow_up_fat;
+      content: $gi-arrow_up;
     }
   }
 
@@ -186,7 +186,7 @@
 
     &::after {
       @include icon-font;
-      content: $lticon-arrow_down_fat;
+      content: $gi-arrow_down_fat;
       position: absolute;
       bottom: 4px;
       right: 4px;
@@ -211,11 +211,11 @@
       }
 
       &::before {
-        content: $lticon-sort_asc_carets;
+        content: $gi-sort_asc_carets;
       }
 
       &::after {
-        content: $lticon-sort_desc_carets;
+        content: $gi-sort_desc_carets;
       }
     }
 

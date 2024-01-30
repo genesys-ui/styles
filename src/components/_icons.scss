@@ -5,7 +5,7 @@
   @include text-color(body, base);
   font-size: map-get($icon-size-map, md);
 
-  &:not([class*="lticon"]) {
+  &:not([class*="gi"]) {
     @include icon-font;
   }
 

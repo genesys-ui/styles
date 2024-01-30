@@ -1,33 +1,31 @@
 // ------------------------ ICONS - BASE - VARIABLES ------------------------ //
 
-
 // STATUS - ICONS - BASE - VARIABLES ---------------------------------------- //
 
 $icon-status-list: error, help, info, success, warning;
 
 $icon-status-map: (
   error: (
-    bordered: $lticon-error_warning_danger_stop,
-    filled: $lticon-error_warning_danger_stop_filled,
+    bordered: $gi-error_warning_danger_stop,
+    filled: $gi-error_warning_danger_stop_filled,
   ),
   help: (
-    bordered: $lticon-about_question_faq_help,
-    filled: $lticon-about_question_faq_help_filled,
+    bordered: $gi-about_question_faq_help,
+    filled: $gi-about_question_faq_help_filled,
   ),
   info: (
-    bordered: $lticon-info_about_round_bold,
-    filled: $lticon-info_about_round_filled,
+    bordered: $gi-info_round,
+    filled: $gi-info_round_filled,
   ),
   success: (
-    bordered: $lticon-ok_successful_check_bold,
-    filled: $lticon-ok_successful_check_filled,
+    bordered: $gi-check_ok_rounded,
+    filled: $gi-check_ok_rounded_filled,
   ),
   warning: (
-    bordered: $lticon-attention_error_alert_caution,
-    filled: $lticon-attention_error_alert_caution_filled,
+    bordered: $gi-attention_error_alert_caution,
+    filled: $gi-attention_error_alert_caution_filled,
   ),
 );
-
 
 // SIZE - ICONS - BASE - VARIABLES ------------------------------------------ //
 

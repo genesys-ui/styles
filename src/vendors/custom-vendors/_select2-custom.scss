@@ -78,7 +78,7 @@
       &::before {
         @include icon-font;
         @include field-control-typo($props: font-size);
-        content: $lticon-arrow_down_fat;
+        content: $gi-arrow_down_fat;
         font-weight: bold;
       }
 
