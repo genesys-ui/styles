@@ -4,21 +4,7 @@
 *.iws
 
 # General
-dist/*.*
-!dist/empty
-dist/assets/css
-!dist/assets/icons/**
-dist/assets/icons/lt-icon
-!dist/assets/fonts
-dist/assets/fonts/jet-brains-mono-font
-dist/assets/fonts/museo-sans-font
-dist/assets/fonts/poppins-font
-dist/assets/img
-!dist/assets/msg
-!dist/assets/aliases
-dist/assets/aliases/*/css
-dist/assets/aliases/*/img
-
+dist/
 
 # Vim
 *.swp
