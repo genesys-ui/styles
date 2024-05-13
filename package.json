@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "build": "ts-node build.ts",
+    "release": "release-it --dry-run",
+    "release:ci": "release-it --ci",
     "start": "npm run storybook",
     "storybook": "storybook dev -p 6006 --docs",
     "build-storybook": "storybook build --docs"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
+    "@release-it/conventional-changelog": "^8.0.1",
     "@storybook/addon-essentials": "^8.0.8",
     "@storybook/addon-interactions": "^8.0.8",
     "@storybook/addon-links": "^8.0.8",
@@ -23,6 +26,7 @@
     "@types/styled-components": "^5.1.34",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "release-it": "^17.2.1",
     "sass": "^1.75.0",
     "storybook": "^8.0.8",
     "ts-node": "^10.9.2"
