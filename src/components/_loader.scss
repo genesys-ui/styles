@@ -45,7 +45,7 @@
       spinner-circle-stroke-animated: $cmp-loader-spinner-animated-stroke-color-background-light,
       logo-even-path-fill: $cmp-loader-logo-even-path-color-background-light,
       logo-odd-path-fill: $cmp-loader-logo-odd-path-color-background-light,
-      custom-icon: $light-color
+      custom-icon: #FFFFFF
     ),
     dark: (
       spinner-circle-stroke: $cmp-loader-spinner-color-background-dark,
@@ -280,7 +280,7 @@
         left: 34.9%;
         width: 9px;
         height: 3.5px;
-        background-color: $light-color;
+        background-color: #FFFFFF;
         filter: blur(2.75px) opacity(80%);
         animation: bounce-dot-shadow-animation ease 0.5s alternate infinite;
         transform-origin: 50% center;
