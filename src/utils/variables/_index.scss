@@ -5,12 +5,10 @@ $theme: light !default;
 
 // Genesys - Variables
 
-@import "../../../node_modules/@devoinc/genesys-icons/dist/gi-variables";
-@import "../../../node_modules/@devoinc/genesys-icons/dist/gi-styles";
+@import "node_modules/@devoinc/genesys-icons/dist/gi-variables";
 
 // Base - Variables
 
-@import "./base-variables/color-variables";
 @import "./base-variables/fonts-variables";
 @import "./base-variables/icons-variables";
 @import "./base-variables/images-variables";
@@ -18,7 +16,6 @@ $theme: light !default;
 
 // Utils - Variables
 
-@import "./utils-variables/breakpoints-variables";
 @import "./utils-variables/spacing-variables";
 
 // Components - Variables
@@ -33,6 +30,7 @@ $theme: light !default;
 @import "./components-variables/overlay-variables";
 @import "./components-variables/select-variables";
 @import "./components-variables/separator-variables";
+@import "./components-variables/switch-variables";
 @import "./components-variables/tag-variables";
 @import "./components-variables/upload-files-variables";
 

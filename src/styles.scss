@@ -13,8 +13,8 @@
 
 // --------------------------------- TOKENS --------------------------------- //
 
-@import "../node_modules/@devoinc/genesys-brand-devo/dist/light/scss/tokens.sass.alias.scss";
-@import "../node_modules/@devoinc/genesys-brand-devo/dist/light/scss/tokens.sass.cmp.scss";
+@import "node_modules/@devoinc/genesys-brand-devo/dist/light/scss/tokens.sass.alias.scss";
+@import "node_modules/@devoinc/genesys-brand-devo/dist/light/scss/tokens.sass.cmp.scss";
 
 
 // --------------------------- UTILS OR ABSTRACTS --------------------------- //
@@ -36,6 +36,7 @@
 // ---------------------------------- BASE ---------------------------------- //
 
 // The reset, fonts and typography base styles are obtained from genesys-base-styles.
+@import "node_modules/@devoinc/genesys-icons/dist/gi-styles.scss";
 
 
 // ------------------------------- COMPONENTS ------------------------------- //
