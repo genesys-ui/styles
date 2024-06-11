@@ -113,7 +113,7 @@
   // Close - Element - Modal
 
   &__close {
-    position: absolute;
+    position: absolute !important;
     z-index: inherit;
     top: calc((#{$modal-header-height}
       - #{$cmp-button-size-height-sm}) / 2);
