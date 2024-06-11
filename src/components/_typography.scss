@@ -137,3 +137,14 @@
 .underlined {
   text-decoration: underline;
 }
+
+
+// TEXT LEGIBLE - TYPOGRAPHY ------------------------------------------------ //
+
+.body-legible--max-width {
+  @each $size in $typography-body-size-list {
+    &-#{$size} {
+      max-width: map-get($body-legible-width-map, $size);
+    }
+  }
+}
