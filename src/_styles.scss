@@ -1,0 +1,18 @@
+//----------------------------------------------------------------------------//
+//                               GENESYS STYLES                               //
+//----------------------------------------------------------------------------//
+
+/**
+* 7-1 PATTERN: 7 FOLDERS, 1 FILE.
+* Basically, you have all your partials stuffed into 7 different folders, and a
+* single file at the root level (usually named main.scss) which imports them all
+* to be compiled into a CSS stylesheet.
+* More info: https://sass-guidelin.es/#the-7-1-pattern
+*/
+
+
+@import "./utils";
+@import "./vendors";
+@import "./base";
+@import "./components";
+@import "./layout";
