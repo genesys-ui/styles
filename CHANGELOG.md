@@ -1,5 +1,7 @@
 # Changelog
 
+## [2.0.0](https://github.com/DevoInc/genesys-styles/compare/1.1.0...2.0.0) (2024-06-18)
+
 ## 1.1.0 (2024-05-13)
 
 
