@@ -1,6 +1,8 @@
 // -------------------------- MODAL - COMPONENTS ---------------------------- //
 
 
+// These styles depend on the fancybox library
+
 .modal {
   @import './variables-modal';
   @import './mixins-modal';
@@ -113,7 +115,7 @@
   // Close - Element - Modal
 
   &__close {
-    position: absolute;
+    position: absolute !important;
     z-index: inherit;
     top: calc((#{$modal-header-height}
       - #{$cmp-button-size-height-sm}) / 2);
@@ -203,46 +205,6 @@
       }
     }
   }
-
-
-  // CASE OF USE - MODAL ---------------------------------------------------- //
-
-  // Dashboard - Case of use - Modal
-
-  &#{$parent}--dashboard {
-    overflow: hidden;
-
-    .empty-state span,
-    .empty-state h3,
-    .empty-state p {
-      @include text-color($color: inverse);
-      opacity: .8;
-    }
-
-    #{$parent}__close {
-      @include get-button-type-styles($parent: &, $type: blend-inverse);
-      top: 1.2rem;
-      right: 1.2rem;
-    }
-
-    &.gridster > * {
-      margin: inherit;
-    }
-
-    &[style*="display: inline-block"] {
-      display: inherit !important;
-    }
-  }
 }
 
 
-// FANCYBOX CONTAINER - MODAL ----------------------------------------------- //
-
-.fancybox-container {
-  z-index: map-deep-get($elevation-map, overlay, z-index);
-
-  .fancybox-bg {
-    @include overlay-color-type;
-    opacity: 1;
-  }
-}

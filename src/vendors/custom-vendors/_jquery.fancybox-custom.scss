@@ -1,0 +1,11 @@
+// ---------------------- FANCYBOX - CUSTOM - VENDORS ----------------------- //
+
+
+.fancybox-container {
+  z-index: map-deep-get($elevation-map, overlay, z-index);
+
+  .fancybox-bg {
+    @include overlay-color-type;
+    opacity: 1;
+  }
+}
