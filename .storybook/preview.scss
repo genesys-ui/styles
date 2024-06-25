@@ -2,7 +2,7 @@
 @import "assets/styles/preview/preview.scss";
 
 // The genesys-styles scss. We need to wrap these styles to avoid doc styles affect to the components
-@import "../src/light";
+@import "../light";
 
 // because the storybook source code is rendered using the same class name 'tag'
 pre .tag {

@@ -51,6 +51,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Generate dist
+        run: npm run build
+
   deploy:
     needs: [build]
     if: github.ref == 'refs/heads/master'
