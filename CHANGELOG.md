@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/DevoInc/genesys-styles/compare/2.1.0...2.1.1) (2024-06-25)
+
+
+### Bug Fixes
+
+* **QUV-2366:** node modules imports paths have change to the root node modules ([#5](https://github.com/DevoInc/genesys-styles/issues/5)) ([9d500d9](https://github.com/DevoInc/genesys-styles/commit/9d500d9745c42d0998ec35bb8b8f3c51f7ec2bf2))
+
 ## [2.1.0](https://github.com/DevoInc/genesys-styles/compare/2.0.1...2.1.0) (2024-06-21)
 
 ## [2.0.1](https://github.com/DevoInc/genesys-styles/compare/2.0.0...2.0.1) (2024-06-18)
