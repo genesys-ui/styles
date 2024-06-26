@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/DevoInc/genesys-styles/compare/2.1.2...2.2.0) (2024-06-26)
+
+
+### Features
+
+* extract base src ([90286cd](https://github.com/DevoInc/genesys-styles/commit/90286cdacd55cfe75d83d241b5598f6ff9c5fc60))
+
 ## [2.1.2](https://github.com/DevoInc/genesys-styles/compare/2.1.1...2.1.2) (2024-06-26)
 
 ## [2.1.1](https://github.com/DevoInc/genesys-styles/compare/2.1.0...2.1.1) (2024-06-25)
