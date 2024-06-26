@@ -2,7 +2,7 @@ import * as React from "react";
 import { Preview } from "@storybook/html";
 import { create } from "@storybook/theming";
 
-import "@devoinc/genesys-base-styles/dist/styles.min.css";
+import "@devoinc/genesys-base-styles/dist/css/styles.min.css";
 import "./preview.scss";
 
 type ComponentsMap = {
