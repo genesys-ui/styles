@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/DevoInc/genesys-styles/compare/2.2.0...2.2.1) (2024-06-26)
+
+
+### Bug Fixes
+
+* add base in ligth and dark ([a126c21](https://github.com/DevoInc/genesys-styles/commit/a126c2196365915ab190c3bb757ec45fa15211d0))
+
 ## [2.2.0](https://github.com/DevoInc/genesys-styles/compare/2.1.2...2.2.0) (2024-06-26)
 
 
