@@ -132,8 +132,8 @@
 
     &::after {
       @include icon-font;
-      position: relative;
       content: $gi-exit_close;
+      position: relative;
       font-weight: bold;
     }
   }
@@ -151,8 +151,8 @@
 
     &::after {
       @include icon-font;
-      position: relative;
       content: $gi-exit_close;
+      position: relative;
       font-weight: bold;
     }
   }
@@ -169,8 +169,8 @@
 
     &::after {
       @include icon-font;
-      position: relative;
       content: $gi-arrow_down_fat;
+      position: relative;
       font-weight: bold;
     }
 

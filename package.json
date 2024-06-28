@@ -35,7 +35,7 @@
     "ts-node": "^10.9.2"
   },
   "peerDependencies": {
-    "@devoinc/genesys-base-styles": "^2.0.0",
+    "@devoinc/genesys-base-styles": "^2.0.1",
     "@devoinc/genesys-brand-devo": "^6.5.0",
     "@devoinc/genesys-icons": "^5.0.0"
   },

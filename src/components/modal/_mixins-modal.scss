@@ -7,8 +7,9 @@
 
     #{$parent}__icon {
       &::before {
-        content: icon-status($status);
+        @include icon-status($status);
       }
+
       color: map-deep-get($modal-status-map, $status, icon-bg-color);
     }
   }

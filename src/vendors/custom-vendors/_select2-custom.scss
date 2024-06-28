@@ -76,8 +76,8 @@
       width: map-deep-get($select-size-map, md, arrow-width);
 
       &::before {
-        @include icon-font;
         @include field-control-typo($props: font-size);
+        @include icon-font;
         content: $gi-arrow_down_fat;
         font-weight: bold;
       }
@@ -372,7 +372,7 @@
       font-weight: 500;
 
       &::before {
-        content: icon-status(success);
+        @include icon-status(success);
         color: $alias-color-text-feedback-success-weak;
       }
     }
@@ -382,7 +382,7 @@
       font-weight: 500;
 
       &::before {
-        content: icon-status(warning);
+        @include icon-status(warning);
         color: $alias-color-text-feedback-warning-base;
       }
     }

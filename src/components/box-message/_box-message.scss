@@ -18,7 +18,6 @@
   border-radius: 0.4rem;
 
   &::before {
-    @include icon-font;
     @include position(1.2rem, null, null, 1.2rem);
     position: absolute;
     font-size: 1.6rem;
@@ -109,7 +108,7 @@
       background-color: map-deep-get($box-message-status-map, $status, bg-color);
 
       &::before {
-        content: icon-status($status);
+        @include icon-status($status);
         color: map-deep-get($box-message-status-map, $status, icon-color);
       }
     }

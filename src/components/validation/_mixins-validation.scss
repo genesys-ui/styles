@@ -23,7 +23,7 @@
 
     &::before {
       @include text-color-status($status);
-      content: icon-status($status);
+      @include icon-status($status);
 
       @if ($status == warning) {
         @include text-color-status(warning-weak);

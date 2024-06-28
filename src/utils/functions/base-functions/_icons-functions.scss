@@ -3,7 +3,7 @@
 
 // STATUS - ICONS - BASE - FUNCTIONS ---------------------------------------- //
 
-@function icon-status($status, $filled: true) {
+@function get-icon-status($status, $filled: true) {
   $type: filled;
 
   @if ($filled == false) {

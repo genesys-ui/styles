@@ -206,7 +206,8 @@
 
       &::before {
         @include spacing(margin, right, sm, component);
-        font-family: $icon-font;
+        // TODO: lt-icon font because lt-icon classes are used in InlineMessage jQuery component
+        @include icon-font("lt-iconfont, sans-serif");
         font-size: 1.8rem;
         font-weight: 500;
       }

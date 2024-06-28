@@ -3,8 +3,8 @@
 
 // ICON FONT - ICONS - BASE - MIXINS ---------------------------------------- //
 
-@mixin icon-font($font: $icon-font) {
-  font-family: $font, sans-serif;
+@mixin icon-font($font-family: $gi-icon-font-family) {
+  font-family: $font-family;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -13,4 +13,12 @@
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+
+// ICON STATUS - ICONS - BASE - MIXINS -------------------------------------- //
+
+@mixin icon-status($status, $filled: true) {
+  @include icon-font;
+  content: get-icon-status($status);
 }

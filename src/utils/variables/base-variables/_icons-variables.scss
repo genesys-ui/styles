@@ -1,5 +1,13 @@
 // ------------------------ ICONS - BASE - VARIABLES ------------------------ //
 
+
+// FONT FAMILIES - ICONS - BASE - VARIABLES --------------------------------- //
+
+$gi-icon-font-name: "gi";
+$gi-icon-font-family: $gi-icon-font-name, sans-serif;
+$gi-icon-class-prefix: "gi-";
+
+
 // STATUS - ICONS - BASE - VARIABLES ---------------------------------------- //
 
 $icon-status-list: error, help, info, success, warning;
@@ -26,6 +34,7 @@ $icon-status-map: (
     filled: $gi-attention_error_alert_caution_filled,
   ),
 );
+
 
 // SIZE - ICONS - BASE - VARIABLES ------------------------------------------ //
 

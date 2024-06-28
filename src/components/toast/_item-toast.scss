@@ -29,10 +29,6 @@
       flex-shrink: 0;
       margin-right: $cmp-toast-header-icon-space-margin-right;
       font-size: $cmp-toast-header-icon-typo-font-size-md;
-
-      &::before {
-        @include icon-font;
-      }
     }
 
     #{$toast}__heading {
@@ -190,7 +186,7 @@
         color: map-deep-get($toast-status-map, $status, icon-text-color);
 
         &::before {
-          content: icon-status($status);
+          @include icon-status($status);
         }
       }
 

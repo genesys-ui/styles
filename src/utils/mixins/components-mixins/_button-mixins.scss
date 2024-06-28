@@ -101,7 +101,7 @@
 
   @if $has-bold-icon {
     &::before,
-    [class*=#{$icon-class-prefix}] {
+    [class*=#{$gi-icon-class-prefix}] {
       font-weight: bold;
     }
   }
