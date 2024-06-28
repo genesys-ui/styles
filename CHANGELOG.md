@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.0](https://github.com/DevoInc/genesys-styles/compare/2.2.1...2.3.0) (2024-06-28)
+
+
+### Features
+
+* **QUV-2366:** icon variables and mixins styles improvements ([#6](https://github.com/DevoInc/genesys-styles/issues/6)) ([a001554](https://github.com/DevoInc/genesys-styles/commit/a0015549db8e5ae523e33908c5b8d6bd5a016575))
+
 ## [2.2.1](https://github.com/DevoInc/genesys-styles/compare/2.2.0...2.2.1) (2024-06-26)
 
 
