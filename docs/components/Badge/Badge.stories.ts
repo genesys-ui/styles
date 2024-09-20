@@ -16,8 +16,8 @@ export const Sizes = {
 
 export const Icon = {
   render: () => `
-<span class="badge badge--has-icon badge--sm gi-info_about_alt"></span>
-<span class="badge badge--has-icon badge--md gi-bell_solid"></span>
+<span class="badge badge--has-icon badge--sm gi-info"></span>
+<span class="badge badge--has-icon badge--md gi-bell_ringer_alarm_sound_solid"></span>
 <span class="badge badge--has-icon badge--lg gi-check_thick"></span>
   `,
 };
