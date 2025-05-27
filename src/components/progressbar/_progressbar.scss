@@ -44,7 +44,7 @@
         background-color: map-deep-get($progressbar-color-scheme-map, $color, track);
       }
 
-      #{$parent}__value {
+      #{$parent}__progress {
         background-color: map-deep-get($progressbar-color-scheme-map, $color, progress);
       }
     }
