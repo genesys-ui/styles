@@ -1,0 +1,64 @@
+// ------------------- SCROLLBARS - COMPONENTS - MIXINS --------------------- //
+
+
+// STYLES - SCROLLBARS - COMPONENTS - MIXINS -------------------------------- //
+
+@mixin scrollbars(
+  $size: md,
+  $is-inverse: false,
+  $track-color: $alias-scrollbars-track-color-backdrop,
+  $track-radius: $alias-scrollbars-track-shape-border-radius,
+  $thumb-color: $alias-scrollbars-thumb-color-backdrop-base,
+  $thumb-hover-color: $alias-scrollbars-thumb-color-backdrop-hovered,
+  $thumb-radius: $alias-scrollbars-thumb-shape-border-radius,
+  $corner-color: transparent
+) {
+  $size-value: $alias-scrollbars-size-square-md;
+
+  @if ($size == sm) {
+    $size-value: $alias-scrollbars-size-square-sm;
+  } @else if ($size == md) {
+    $size-value: $alias-scrollbars-size-square-md;
+  } @else if ($size == lg) {
+    $size-value: $alias-scrollbars-size-square-lg;
+  }
+
+  @if ($is-inverse) {
+    $track-color: rgba(255, 255, 255, .16);
+    $thumb-color: rgba(255, 255, 255, .24);
+    $thumb-hover-color: rgba(255, 255, 255, .36);
+  }
+
+  // For Google Chrome
+
+  &::-webkit-scrollbar {
+    width: $size-value;
+  }
+
+  &::-webkit-scrollbar:horizontal {
+    height: $size-value;
+  }
+
+  &::-webkit-scrollbar-track {
+    box-shadow: unset;
+    border: unset;
+    border-radius: $track-radius;
+    background-color: $track-color;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    box-shadow: unset;
+    border: unset;
+    border-radius: $thumb-radius;
+    background-color: $thumb-color;
+    transition: $alias-scrollbars-thumb-mutation-transition;
+
+    &:hover {
+      background-color: $thumb-hover-color;
+    }
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: $corner-color;
+  }
+}

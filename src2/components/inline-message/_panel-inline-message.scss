@@ -1,0 +1,382 @@
+// ------------------ PANEL - INLINE MESSAGE - COMPONENTS ------------------- //
+
+
+#{$inline-message} {
+  @import "./variables-inline-message";
+  @import "./mixins-inline-message";
+
+  $parent: &;
+  $sidebar-size: 0.6rem;
+  $arrow-size: 0.8rem;
+
+  @include elevation(activated);
+  @include font-smoothing;
+  @include width(fit-content, 26rem, 36rem);
+  text-rendering: optimizeLegibility;
+  background-color: $cmp-inline-message-color-background;
+  outline: 0;
+  visibility: hidden;
+
+
+  // ELEMENTS - INLINE MESSAGE ---------------------------------------------- //
+
+  &__inner-wrapper {
+    position: relative;
+    border-radius: map-deep-get($elevation-map, activated, border-radius);
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: 1;
+    }
+  }
+
+  &__header {
+    padding: $cmp-inline-message-header-space-padding-no-has-scroll;
+  }
+
+  &__title {
+    @include flex(null, center);
+    @include typography(heading, h5);
+    @include text-color(heading);
+  }
+
+  &__content {
+    @include scrollbars;
+    @include typography;
+    @include text-color;
+    padding: $cmp-inline-message-content-space-padding-no-has-scroll;
+    max-height: 36rem;
+    overflow-y: auto;
+  }
+
+  &__footer {
+    @include flex(null, center, flex-end);
+    @include spacing($property: gap, $size: xs, $type: component);
+    padding: $cmp-inline-message-footer-space-padding-no-has-scroll;
+  }
+
+  &__close {
+    @include position(.8rem, .8rem);
+    position: absolute;
+  }
+
+  &__arrow {
+    @include size($arrow-size);
+    position: absolute;
+    border-color: transparent;
+    border-style: solid;
+  }
+
+
+  // MODIFIERS - INLINE MESSAGE --------------------------------------------- //
+
+  // Visible - Modifier - Inline Message
+
+  &--show,
+  &--hide {
+    visibility: visible;
+  }
+
+  // Hide if it appears detached from its reference element - Inline Message
+
+  &[data-popper-reference-hidden] {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  // Has Scroll Bar - Modifier - Inline Message
+
+  &--has-scroll {
+    #{$parent}__header {
+      @include elevation(sticky-bottom);
+      padding: $cmp-inline-message-header-space-padding-has-scroll;
+    }
+
+    #{$parent}__content {
+      padding: $cmp-inline-message-content-space-padding-has-scroll;
+      margin: $cmp-panel-content-space-margin-sm;
+    }
+
+    #{$parent}__footer {
+      @include elevation(sticky-top);
+      padding: $cmp-inline-message-footer-space-padding-has-scroll;
+    }
+  }
+
+  // Positions - Modifier - Inline Message
+
+  &[data-popper-placement^='top'] {
+    #{$parent}__inner-wrapper {
+      padding-bottom: $sidebar-size;
+
+      &::before {
+        @include position(null, 0, 0, 0);
+        height: $sidebar-size;
+      }
+    }
+
+    #{$parent}__arrow {
+      bottom: calc(-#{$arrow-size} + 0.1rem);
+      border-width: $arrow-size $arrow-size 0;
+    }
+  }
+
+  &[data-popper-placement^='bottom'] {
+    #{$parent}__inner-wrapper {
+      padding-top: $sidebar-size;
+
+      &::before {
+        @include position(0, 0, null, 0);
+        height: $sidebar-size;
+      }
+    }
+
+    #{$parent}__arrow {
+      top: calc(-#{$arrow-size} + 0.1rem);
+      border-width: 0 $arrow-size $arrow-size;
+    }
+  }
+
+  &[data-popper-placement^='left'] {
+    #{$parent}__inner-wrapper::before {
+      @include position(0, 0, 0);
+      padding-right: $sidebar-size;
+      width: $sidebar-size;
+    }
+
+    #{$parent}__arrow {
+      right: calc(-#{$arrow-size} + 0.1rem);
+      border-width: $arrow-size 0 $arrow-size $arrow-size;
+    }
+  }
+
+  &[data-popper-placement^='right'] {
+    #{$parent}__inner-wrapper {
+      padding-left: $sidebar-size;
+
+      &::before {
+        @include position(0, null, 0, 0);
+        width: $sidebar-size;
+      }
+    }
+
+    #{$parent}__arrow {
+      left: calc(-#{$arrow-size} + 0.1rem);
+      border-width: $arrow-size  $arrow-size $arrow-size 0;
+    }
+  }
+
+  // Status - Modifier - Inline Message
+
+  @each $status in $inline-message-panel-status-list {
+    &--#{$status} {
+      @include get-inline-message-panel-status-styles($status, $parent);
+    }
+  }
+
+  // Draggable - Modifier - Inline Message
+
+  &--draggable {
+    @include position(3rem, 3rem);
+    position: fixed;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+    #{$parent}__inner-wrapper {
+      padding-left: $sidebar-size;
+
+      &::before {
+        @include position(0, null, 0, 0);
+        width: $sidebar-size;
+      }
+    }
+
+    #{$parent}__header {
+      cursor: grab;
+
+      &:active {
+        cursor: grabbing;
+      }
+    }
+
+    #{$parent}__title {
+      @include flex(null, center);
+
+      &::before {
+        @include spacing(margin, right, sm, component);
+        // TODO: lt-icon font because lt-icon classes are used in InlineMessage jQuery component
+        @include icon-font("lt-iconfont");
+        font-size: 1.8rem;
+        font-weight: 500;
+      }
+    }
+
+    &#{$parent}--hover-header:not(.any) {
+      &:hover {
+        @include elevation(draggable);
+        transform: scale(1.01);
+      }
+    }
+  }
+
+  // Effects - Modifier - Inline Message
+
+  &#{$parent}--bounce {
+    &#{$parent}--show {
+      animation: bounceIn linear 0.8s;
+    }
+
+    &#{$parent}--hide {
+      animation: bounceOut linear 0.4s forwards;
+    }
+  }
+
+  &#{$parent}--fade {
+    &#{$parent}--show {
+      animation: fadeIn ease-out 0.2s;
+    }
+
+    &#{$parent}--hide {
+      animation: fadeOut ease-in 0.15s forwards;
+    }
+  }
+
+  &#{$parent}--zoom {
+    &#{$parent}--show {
+      animation: zoomIn ease-out 0.2s;
+    }
+
+    &#{$parent}--hide {
+      animation: zoomOut ease-in 0.2s forwards;
+    }
+  }
+
+  // Draggable Effects - Modifier - Inline Message
+
+  &--draggable {
+    &#{$parent}--bounce {
+      &#{$parent}--show {
+        animation: bounceInDown linear 1s;
+      }
+
+      &#{$parent}--hide {
+        animation: bounceOutUp linear 1s forwards;
+      }
+    }
+
+    &#{$parent}--fade {
+      &#{$parent}--show {
+        animation: fadeInDown ease-out 0.4s;
+      }
+
+      &#{$parent}--hide {
+        animation: fadeOutUp ease-in 0.3s forwards;
+      }
+    }
+
+    &#{$parent}--slide {
+      &#{$parent}--show {
+        animation: slideInDown ease-out 0.4s;
+      }
+
+      &#{$parent}--hide {
+        animation: slideOutUp ease-in 0.3s forwards;
+      }
+    }
+
+    &#{$parent}--zoom {
+      &#{$parent}--show {
+        animation: zoomInDown linear 1s;
+      }
+
+      &#{$parent}--hide {
+        animation: zoomOutUp linear 0.5s forwards;
+      }
+    }
+
+    // Behind - Modifier - Inline Message
+
+    &#{$parent}--behind {
+      #{$parent}__inner-wrapper {
+        filter: blur(0.4px);
+        transition: filter 0.3s ease;
+
+        &::after {
+          @include position(0, 0, 0, 0);
+          position: absolute;
+          content: "";
+          background-color: rgba(31, 31, 31, 0.1);
+          z-index: 2;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+      }
+
+      &:hover {
+        transform: scale(1.01);
+
+        #{$parent}__inner-wrapper {
+          filter: blur(0.4px);
+
+          &::after {
+            background-color: rgba(31, 31, 31, 0.025);
+          }
+        }
+      }
+    }
+  }
+
+
+  // CASES OF USE - PANEL - INLINE MESSAGE ---------------------------------- //
+
+  // Linq - Case of use - Inline Message
+
+  &--linq {
+    @include width(48rem, null, 48rem);
+
+    #{$parent}__content {
+      @include spacing(padding, all, xs, component);
+    }
+  }
+
+  // Union finder - Case of use - Inline Message
+
+  &--union-finder {
+    &::before {
+      content: '';
+      position: absolute;
+    }
+
+    &[data-popper-placement^='top']::before {
+      height: 1.2rem;
+      width: 100%;
+      top: 100%;
+    }
+
+    &[data-popper-placement^='bottom']::before {
+      height: 1.2rem;
+      width: 100%;
+      bottom: 100%;
+    }
+
+    &[data-popper-placement^='left']::before {
+      width: 1.2rem;
+      height: 100%;
+      left: 100%;
+    }
+
+    &[data-popper-placement^='right']::before {
+      width: 1.2rem;
+      height: 100%;
+      right: 100%;
+    }
+  }
+
+  // Balloon (Loxcope) - Case of use - Inline Message
+
+  &--balloon {
+    z-index: 10000 !important;
+  }
+}

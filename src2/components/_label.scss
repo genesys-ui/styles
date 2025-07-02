@@ -1,0 +1,80 @@
+// --------------------------- LABEL - COMPONENT ---------------------------- //
+
+
+.label {
+  $parent: &;
+  $label-size-list: xxs, xs, sm, md, lg, xl;
+
+  // Default styles - Label
+
+  @include label;
+
+  &[for] {
+    cursor: pointer;
+  }
+
+
+  // MODIFIERS - LABEL ------------------------------------------------------ //
+
+  // Required - Modifier - Label
+
+  &--required {
+    @include label-required;
+  }
+
+  // Size - Modifier - Label
+
+  @each $size in $label-size-list {
+    &--#{$size} {
+      @include label($size);
+    }
+  }
+
+  // Wrapper - Modifier - Label
+  // This works as wrapper for associating labels implicity
+
+  &--wrapper {
+    @include spacing($property: gap, $size: xxs, $type: component);
+    display: flex;
+    margin: 0;
+
+    &#{$parent}--top {
+      flex-direction: column;
+    }
+
+    &,
+    &#{$parent}--left {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    &#{$parent}--right {
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+
+    &#{$parent}--gap-xs {
+      @include spacing($property: gap, $size: xs, $type: component);
+    }
+  }
+
+  // Truncate - Modifier - Label
+
+  &,
+  &--truncate {
+    @include truncate;
+  }
+
+  // Disabled - Modifier - Label
+
+  &--disabled,
+  &--disabled[for] {
+    cursor: not-allowed;
+  }
+
+  // Hide - Modifier - Label
+
+  &--hide {
+    @include sr-only;
+  }
+}

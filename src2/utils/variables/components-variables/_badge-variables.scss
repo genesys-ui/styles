@@ -1,0 +1,289 @@
+// ---------------------- BADGE - COMPONENTS - VARIABLES -------------------- //
+
+
+// SIZE - BADGE - COMPONENTS - VARIABLES ------------------------------------ //
+
+$badge-size-list: sm, md, lg;
+
+$badge-size-map: (
+  sm:(
+    font-size: var(--cmp-badge-typo-font-size-sm),
+    icon-font-size: var(--cmp-badge-icon-size-square-sm),
+    height: (
+      is-empty: var(--cmp-badge-size-square-is-empty-sm),
+      has-content: var(--cmp-badge-size-square-has-content-sm),
+    ),
+    width: (
+      is-empty: var(--cmp-badge-size-square-is-empty-sm),
+      has-content: var(--cmp-badge-size-square-has-content-sm),
+    ),
+  ),
+  md:(
+    font-size: var(--cmp-badge-typo-font-size-md),
+    icon-font-size: var(--cmp-badge-icon-size-square-md),
+    height: (
+      is-empty: var(--cmp-badge-size-square-is-empty-md),
+      has-content: var(--cmp-badge-size-square-has-content-md),
+    ),
+    width: (
+      is-empty: var(--cmp-badge-size-square-is-empty-md),
+      has-content: var(--cmp-badge-size-square-has-content-md),
+    ),
+  ),
+  lg:(
+    font-size: var(--cmp-badge-typo-font-size-lg),
+    icon-font-size: var(--cmp-badge-icon-size-square-lg),
+    height: (
+      is-empty: var(--cmp-badge-size-square-is-empty-lg),
+      has-content: var(--cmp-badge-size-square-has-content-lg),
+    ),
+    width: (
+      is-empty: var(--cmp-badge-size-square-is-empty-lg),
+      has-content: var(--cmp-badge-size-square-has-content-lg),
+    ),
+  ),
+);
+
+
+// COLOR SCHEME TYPE - BADGE - COMPONENTES - VARIABLES ---------------------- //
+
+$badge-color-scheme-list:
+  primary, secondary,
+  neutral, blend-base, blend-inverse,
+  error, help, info, success, warning,
+  data-blue, data-bronze, data-dusk, data-green, data-indigo, data-magenta,
+  data-purple, data-red, data-sky, data-slate, data-teal;
+
+$badge-color-scheme-type-map: (
+  primary: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-primary),
+      is-empty: var(--cmp-badge-color-background-is-empty-primary),
+      inverse: var(--cmp-badge-color-text-primary),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-primary),
+      inverse: var(--cmp-badge-color-background-has-content-primary),
+    ),
+  ),
+  secondary: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-secondary),
+      is-empty: var(--cmp-badge-color-background-is-empty-secondary),
+      inverse: var(--cmp-badge-color-text-secondary),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-secondary),
+      inverse: var(--cmp-badge-color-background-has-content-secondary),
+    ),
+  ),
+  neutral: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-neutral),
+      is-empty: var(--cmp-badge-color-background-is-empty-neutral),
+      inverse: var(--cmp-badge-color-text-neutral),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-neutral),
+      inverse: var(--alias-color-text-body-inverse),
+    ),
+  ),
+  blend-base: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-blend-base),
+      is-empty: var(--cmp-badge-color-background-is-empty-blend-base),
+      inverse: var(--cmp-badge-color-text-neutral),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-blend-base),
+      inverse: var(--alias-color-text-body-inverse),
+    ),
+  ),
+  blend-inverse: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-blend-inverse),
+      is-empty: var(--cmp-badge-color-background-is-empty-blend-inverse),
+      inverse: var(--cmp-badge-color-text-blend-inverse),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-blend-inverse),
+      inverse: var(--alias-color-text-body-base),
+    ),
+  ),
+  error: (
+    bg:(
+      has-content: var(--cmp-badge-color-background-has-content-error),
+      is-empty: var(--cmp-badge-color-background-is-empty-error),
+      inverse: var(--cmp-badge-color-text-error),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-error),
+      inverse: var(--cmp-badge-color-background-has-content-error),
+    ),
+  ),
+  success: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-success),
+      is-empty: var(--cmp-badge-color-background-is-empty-success),
+      inverse: var(--cmp-badge-color-text-success),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-success),
+      inverse: var(--cmp-badge-color-background-has-content-success),
+    ),
+  ),
+  warning: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-warning),
+      is-empty: var(--cmp-badge-color-background-is-empty-warning),
+      inverse: var(--cmp-badge-color-text-warning),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-warning),
+      inverse: var(--cmp-badge-color-background-has-content-warning),
+    ),
+  ),
+  help: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-help),
+      is-empty: var(--cmp-badge-color-background-is-empty-help),
+      inverse: var(--cmp-badge-color-text-help),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-help),
+      inverse: var(--cmp-badge-color-background-has-content-help),
+    ),
+  ),
+  info: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-info),
+      is-empty: var(--cmp-badge-color-background-is-empty-info),
+      inverse: var(--cmp-badge-color-text-info),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-info),
+      inverse: var(--cmp-badge-color-background-has-content-info),
+    ),
+  ),
+  data-blue: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-blue),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-blue),
+      inverse: var(--cmp-badge-color-text-data-blue),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-blue),
+      inverse: var(--cmp-badge-color-background-has-content-data-blue),
+    ),
+  ),
+  data-bronze: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-bronze),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-bronze),
+      inverse: var(--cmp-badge-color-text-data-bronze),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-bronze),
+      inverse: var(--cmp-badge-color-background-has-content-data-bronze),
+    ),
+  ),
+  data-dusk: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-dusk),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-dusk),
+      inverse: var(--cmp-badge-color-text-data-dusk),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-dusk),
+      inverse: var(--cmp-badge-color-background-has-content-data-dusk),
+    ),
+  ),
+  data-green: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-green),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-green),
+      inverse: var(--cmp-badge-color-text-data-green),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-green),
+      inverse: var(--cmp-badge-color-background-has-content-data-green),
+    ),
+  ),
+  data-indigo: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-indigo),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-indigo),
+      inverse: var(--cmp-badge-color-text-data-indigo),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-indigo),
+      inverse: var(--cmp-badge-color-background-has-content-data-indigo),
+    ),
+  ),
+  data-magenta: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-magenta),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-magenta),
+      inverse: var(--cmp-badge-color-text-data-magenta),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-magenta),
+      inverse: var(--cmp-badge-color-background-has-content-data-magenta),
+    ),
+  ),
+  data-purple: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-purple),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-purple),
+      inverse: var(--cmp-badge-color-text-data-purple),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-purple),
+      inverse: var(--cmp-badge-color-background-has-content-data-purple),
+    ),
+  ),
+  data-red: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-red),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-red),
+      inverse: var(--cmp-badge-color-text-data-red),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-red),
+      inverse: var(--cmp-badge-color-background-has-content-data-red),
+    ),
+  ),
+  data-sky: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-sky),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-sky),
+      inverse: var(--cmp-badge-color-text-data-sky),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-sky),
+      inverse: var(--cmp-badge-color-background-has-content-data-sky),
+    ),
+  ),
+  data-slate: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-slate),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-slate),
+      inverse: var(--cmp-badge-color-text-data-slate),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-slate),
+      inverse: var(--cmp-badge-color-background-has-content-data-slate),
+    ),
+  ),
+  data-teal: (
+    bg: (
+      has-content: var(--cmp-badge-color-background-has-content-data-teal),
+      is-empty: var(--cmp-badge-color-background-is-empty-data-teal),
+      inverse: var(--cmp-badge-color-text-data-teal),
+    ),
+    color: (
+      default: var(--cmp-badge-color-text-data-teal),
+      inverse: var(--cmp-badge-color-background-has-content-data-teal),
+    ),
+  ),
+);

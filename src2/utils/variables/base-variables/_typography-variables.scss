@@ -1,0 +1,429 @@
+// --------------------- TYPOGRAPHY - BASE - VARIABLES ---------------------- //
+
+
+// TYPE AND SIZE - TYPOGRAPHY - BASE - VARIABLES ---------------------------- //
+
+// List - Type and Prop - Typography
+
+$typography-type-list: action, body, heading, hero, lead, link, mono, overline;
+$typography-prop-list: font-size, line-height, font-family, font-weight, letter-spacing, text-transform;
+
+// List - Size - Typography
+
+$typography-action-size-list: xxs, xs, sm, md, lg, xl;
+$typography-body-size-list: xxs, xs, sm, md, lg, xl;
+$typography-heading-size-list: h1, h2, h3, h4, h5, h6;
+$typography-hero-size-list: sm, md, lg;
+$typography-lead-size-list: sm, md, lg;
+$typography-link-size-list: xxs, xs, sm, md, lg, xl;
+$typography-mono-size-list: sm, md, lg;
+$typography-overline-size-list: sm, md, lg;
+
+// Map - Type and Size - Typography
+
+$typography-map: (
+  action: (
+    xxs: (
+      font-size: $alias-typo-font-size-action-xxs,
+      line-height: $alias-typo-line-height-action-xxs,
+      font-family: $alias-typo-font-family-action-font-face-name,
+      font-weight: $alias-typo-font-weight-action,
+      letter-spacing: $alias-typo-letter-spacing-action-em,
+      text-transform: inherit,
+    ),
+    xs: (
+      font-size: $alias-typo-font-size-action-xs,
+      line-height: $alias-typo-line-height-action-xs,
+      font-family: $alias-typo-font-family-action-font-face-name,
+      font-weight: $alias-typo-font-weight-action,
+      letter-spacing: $alias-typo-letter-spacing-action-em,
+      text-transform: inherit,
+    ),
+    sm: (
+      font-size: $alias-typo-font-size-action-sm,
+      line-height: $alias-typo-line-height-action-sm,
+      font-family: $alias-typo-font-family-action-font-face-name,
+      font-weight: $alias-typo-font-weight-action,
+      letter-spacing: $alias-typo-letter-spacing-action-em,
+      text-transform: inherit,
+    ),
+    md: (
+      font-size: $alias-typo-font-size-action-md,
+      line-height: $alias-typo-line-height-action-md,
+      font-family: $alias-typo-font-family-action-font-face-name,
+      font-weight: $alias-typo-font-weight-action,
+      letter-spacing: $alias-typo-letter-spacing-action-em,
+      text-transform: inherit,
+    ),
+    lg: (
+      font-size: $alias-typo-font-size-action-lg,
+      line-height: $alias-typo-line-height-action-lg,
+      font-family: $alias-typo-font-family-action-font-face-name,
+      font-weight: $alias-typo-font-weight-action,
+      letter-spacing: $alias-typo-letter-spacing-action-em,
+      text-transform: inherit,
+    ),
+    xl: (
+      font-size: $alias-typo-font-size-action-xl,
+      line-height: $alias-typo-line-height-action-xl,
+      font-family: $alias-typo-font-family-action-font-face-name,
+      font-weight: $alias-typo-font-weight-action,
+      letter-spacing: $alias-typo-letter-spacing-action-em,
+      text-transform: inherit,
+    )
+  ),
+  body: (
+    xxs: (
+      font-size: $alias-typo-font-size-body-xxs,
+      line-height: $alias-typo-line-height-body-xxs,
+      font-family: $alias-typo-font-family-body-font-face-name,
+      font-weight: $alias-typo-font-weight-body,
+      letter-spacing: $alias-typo-letter-spacing-body-em,
+      text-transform: inherit,
+    ),
+    xs: (
+      font-size: $alias-typo-font-size-body-xs,
+      line-height: $alias-typo-line-height-body-xs,
+      font-family: $alias-typo-font-family-body-font-face-name,
+      font-weight: $alias-typo-font-weight-body,
+      letter-spacing: $alias-typo-letter-spacing-body-em,
+      text-transform: inherit,
+    ),
+    sm: (
+      font-size: $alias-typo-font-size-body-sm,
+      line-height: $alias-typo-line-height-body-sm,
+      font-family: $alias-typo-font-family-body-font-face-name,
+      font-weight: $alias-typo-font-weight-body,
+      letter-spacing: $alias-typo-letter-spacing-body-em,
+      text-transform: inherit,
+    ),
+    md: (
+      font-size: $alias-typo-font-size-body-md,
+      line-height: $alias-typo-line-height-body-md,
+      font-family: $alias-typo-font-family-body-font-face-name,
+      font-weight: $alias-typo-font-weight-body,
+      letter-spacing: $alias-typo-letter-spacing-body-em,
+      text-transform: inherit,
+    ),
+    lg: (
+      font-size: $alias-typo-font-size-body-lg,
+      line-height: $alias-typo-line-height-body-lg,
+      font-family: $alias-typo-font-family-body-font-face-name,
+      font-weight: $alias-typo-font-weight-body,
+      letter-spacing: $alias-typo-letter-spacing-body-em,
+      text-transform: inherit,
+    ),
+    xl: (
+      font-size: $alias-typo-font-size-body-xl,
+      line-height: $alias-typo-line-height-body-xl,
+      font-family: $alias-typo-font-family-body-font-face-name,
+      font-weight: $alias-typo-font-weight-body,
+      letter-spacing: $alias-typo-letter-spacing-body-em,
+      text-transform: inherit,
+    )
+  ),
+  heading: (
+    h1: (
+      font-size: $alias-typo-font-size-heading-h1,
+      line-height: $alias-typo-line-height-heading-h1,
+      font-family: $alias-typo-font-family-heading-font-face-name,
+      font-weight: $alias-typo-font-weight-heading,
+      letter-spacing: $alias-typo-letter-spacing-heading-em,
+      text-transform: inherit,
+    ),
+    h2: (
+      font-size: $alias-typo-font-size-heading-h2,
+      line-height: $alias-typo-line-height-heading-h2,
+      font-family: $alias-typo-font-family-heading-font-face-name,
+      font-weight: $alias-typo-font-weight-heading,
+      letter-spacing: $alias-typo-letter-spacing-heading-em,
+      text-transform: inherit,
+    ),
+    h3: (
+      font-size: $alias-typo-font-size-heading-h3,
+      line-height: $alias-typo-line-height-heading-h3,
+      font-family: $alias-typo-font-family-heading-font-face-name,
+      font-weight: $alias-typo-font-weight-heading,
+      letter-spacing: $alias-typo-letter-spacing-heading-em,
+      text-transform: inherit,
+    ),
+    h4: (
+      font-size: $alias-typo-font-size-heading-h4,
+      line-height: $alias-typo-line-height-heading-h4,
+      font-family: $alias-typo-font-family-heading-font-face-name,
+      font-weight: $alias-typo-font-weight-heading,
+      letter-spacing: $alias-typo-letter-spacing-heading-em,
+      text-transform: inherit,
+    ),
+    h5: (
+      font-size: $alias-typo-font-size-heading-h5,
+      line-height: $alias-typo-line-height-heading-h5,
+      font-family: $alias-typo-font-family-heading-font-face-name,
+      font-weight: $alias-typo-font-weight-heading,
+      letter-spacing: $alias-typo-letter-spacing-heading-em,
+      text-transform: inherit,
+    ),
+    h6: (
+      font-size: $alias-typo-font-size-heading-h6,
+      line-height: $alias-typo-line-height-heading-h6,
+      font-family: $alias-typo-font-family-heading-font-face-name,
+      font-weight: $alias-typo-font-weight-heading,
+      letter-spacing: $alias-typo-letter-spacing-heading-em,
+      text-transform: inherit,
+    ),
+  ),
+  hero: (
+    sm: (
+      font-size: $alias-typo-font-size-hero-sm,
+      line-height: $alias-typo-line-height-hero-sm,
+      font-family: $alias-typo-font-family-hero-font-face-name,
+      font-weight: $alias-typo-font-weight-hero,
+      letter-spacing: $alias-typo-letter-spacing-hero-em,
+      text-transform: inherit,
+    ),
+    md: (
+      font-size: $alias-typo-font-size-hero-md,
+      line-height: $alias-typo-line-height-hero-md,
+      font-family: $alias-typo-font-family-hero-font-face-name,
+      font-weight: $alias-typo-font-weight-hero,
+      letter-spacing: $alias-typo-letter-spacing-hero-em,
+      text-transform: inherit,
+    ),
+    lg: (
+      font-size: $alias-typo-font-size-hero-lg,
+      line-height: $alias-typo-line-height-hero-lg,
+      font-family: $alias-typo-font-family-hero-font-face-name,
+      font-weight: $alias-typo-font-weight-hero,
+      letter-spacing: $alias-typo-letter-spacing-hero-em,
+      text-transform: inherit,
+    ),
+  ),
+  lead: (
+    sm: (
+      font-size: $alias-typo-font-size-lead-sm,
+      line-height: $alias-typo-line-height-lead-sm,
+      font-family: $alias-typo-font-family-lead-font-face-name,
+      font-weight: $alias-typo-font-weight-lead,
+      letter-spacing: $alias-typo-letter-spacing-lead-em,
+      text-transform: inherit,
+    ),
+    md: (
+      font-size: $alias-typo-font-size-lead-md,
+      line-height: $alias-typo-line-height-lead-md,
+      font-family: $alias-typo-font-family-lead-font-face-name,
+      font-weight: $alias-typo-font-weight-lead,
+      letter-spacing: $alias-typo-letter-spacing-lead-em,
+      text-transform: inherit,
+    ),
+    lg: (
+      font-size: $alias-typo-font-size-lead-lg,
+      line-height: $alias-typo-line-height-lead-lg,
+      font-family: $alias-typo-font-family-lead-font-face-name,
+      font-weight: $alias-typo-font-weight-lead,
+      letter-spacing: $alias-typo-letter-spacing-lead-em,
+      text-transform: inherit,
+    ),
+  ),
+  link: (
+    xxs: (
+      font-size: $alias-typo-font-size-link-xxs,
+      line-height: $alias-typo-line-height-link-xxs,
+      font-family: $alias-typo-font-family-link-font-face-name,
+      font-weight: $alias-typo-font-weight-link,
+      letter-spacing: $alias-typo-letter-spacing-link-em,
+      text-transform: inherit,
+    ),
+    xs: (
+      font-size: $alias-typo-font-size-link-xs,
+      line-height: $alias-typo-line-height-link-xs,
+      font-family: $alias-typo-font-family-link-font-face-name,
+      font-weight: $alias-typo-font-weight-link,
+      letter-spacing: $alias-typo-letter-spacing-link-em,
+      text-transform: inherit,
+    ),
+    sm: (
+      font-size: $alias-typo-font-size-link-sm,
+      line-height: $alias-typo-line-height-link-sm,
+      font-family: $alias-typo-font-family-link-font-face-name,
+      font-weight: $alias-typo-font-weight-link,
+      letter-spacing: $alias-typo-letter-spacing-link-em,
+      text-transform: inherit,
+    ),
+    md: (
+      font-size: $alias-typo-font-size-link-md,
+      line-height: $alias-typo-line-height-link-md,
+      font-family: $alias-typo-font-family-link-font-face-name,
+      font-weight: $alias-typo-font-weight-link,
+      letter-spacing: $alias-typo-letter-spacing-link-em,
+      text-transform: inherit,
+    ),
+    lg: (
+      font-size: $alias-typo-font-size-link-lg,
+      line-height: $alias-typo-line-height-link-lg,
+      font-family: $alias-typo-font-family-link-font-face-name,
+      font-weight: $alias-typo-font-weight-link,
+      letter-spacing: $alias-typo-letter-spacing-link-em,
+      text-transform: inherit,
+    ),
+    xl: (
+      font-size: $alias-typo-font-size-link-xl,
+      line-height: $alias-typo-line-height-link-xl,
+      font-family: $alias-typo-font-family-link-font-face-name,
+      font-weight: $alias-typo-font-weight-link,
+      letter-spacing: $alias-typo-letter-spacing-link-em,
+      text-transform: inherit,
+    )
+  ),
+  mono: (
+    sm: (
+      font-size: $alias-typo-font-size-mono-sm,
+      line-height: $alias-typo-line-height-mono-sm,
+      font-family: $alias-typo-font-family-mono-font-face-name,
+      font-weight: $alias-typo-font-weight-mono,
+      letter-spacing: $alias-typo-letter-spacing-mono-em,
+      text-transform: inherit,
+    ),
+    md: (
+      font-size: $alias-typo-font-size-mono-md,
+      line-height: $alias-typo-line-height-mono-md,
+      font-family: $alias-typo-font-family-mono-font-face-name,
+      font-weight: $alias-typo-font-weight-mono,
+      letter-spacing: $alias-typo-letter-spacing-mono-em,
+      text-transform: inherit,
+    ),
+    lg: (
+      font-size: $alias-typo-font-size-mono-lg,
+      line-height: $alias-typo-line-height-mono-lg,
+      font-family: $alias-typo-font-family-mono-font-face-name,
+      font-weight: $alias-typo-font-weight-mono,
+      letter-spacing: $alias-typo-letter-spacing-mono-em,
+      text-transform: inherit,
+    ),
+  ),
+  overline: (
+    sm: (
+      font-size: $alias-typo-font-size-overline-sm,
+      line-height: $alias-typo-line-height-overline-sm,
+      font-family: $alias-typo-font-family-overline-font-face-name,
+      font-weight: $alias-typo-font-weight-overline,
+      letter-spacing: $alias-typo-letter-spacing-overline-em,
+      text-transform: uppercase,
+    ),
+    md: (
+      font-size: $alias-typo-font-size-overline-md,
+      line-height: $alias-typo-line-height-overline-md,
+      font-family: $alias-typo-font-family-overline-font-face-name,
+      font-weight: $alias-typo-font-weight-overline,
+      letter-spacing: $alias-typo-letter-spacing-overline-em,
+      text-transform: uppercase,
+    ),
+    lg: (
+      font-size: $alias-typo-font-size-overline-lg,
+      line-height: $alias-typo-line-height-overline-lg,
+      font-family: $alias-typo-font-family-overline-font-face-name,
+      font-weight: $alias-typo-font-weight-overline,
+      letter-spacing: $alias-typo-letter-spacing-overline-em,
+      text-transform: uppercase,
+    ),
+  ),
+);
+
+// Map - Size - Body legible width - Typography
+
+$legible-width-scale-factor: 42;
+$body-legible-width-map: (
+  xxs: $alias-typo-font-size-body-xxs * $legible-width-scale-factor,
+  xs: $alias-typo-font-size-body-xs * $legible-width-scale-factor,
+  sm: $alias-typo-font-size-body-sm * $legible-width-scale-factor,
+  md: $alias-typo-font-size-body-md * $legible-width-scale-factor,
+  lg: $alias-typo-font-size-body-lg * $legible-width-scale-factor,
+  xl: $alias-typo-font-size-body-xl * $legible-width-scale-factor,
+);
+
+// TEXT COLOR - TYPOGRAPHY - BASE - VARIABLES ------------------------------- //
+
+$text-color-list: base, inverse, strong, weak, weaker, weakest;
+
+$text-color-map: (
+  body: (
+    base: $alias-color-text-body-base,
+    inverse: $alias-color-text-body-inverse,
+    strong: $alias-color-text-body-strong,
+    stronger: $alias-color-text-body-stronger,
+    weak: $alias-color-text-body-weak,
+    weaker: $alias-color-text-body-weaker,
+    weakest: $alias-color-text-body-weakest,
+  ),
+  heading: (
+    base: $alias-color-text-body-stronger,
+    inverse: $alias-color-text-body-inverse,
+    strong: $alias-color-text-body-stronger,
+    weak: $alias-color-text-body-base,
+    weaker: $alias-color-text-body-weak,
+    weakest: $alias-color-text-body-weaker,
+  ),
+  hero: (
+    base: $alias-color-text-body-stronger,
+    inverse: $alias-color-text-body-inverse,
+    strong: $alias-color-text-body-stronger,
+    weak: $alias-color-text-body-base,
+    weaker: $alias-color-text-body-weak,
+    weakest: $alias-color-text-body-weaker,
+  ),
+  lead: (
+    base: $alias-color-text-body-base,
+    inverse: $alias-color-text-body-inverse,
+    strong: $alias-color-text-body-strong,
+    weak: $alias-color-text-body-weak,
+    weaker: $alias-color-text-body-weaker,
+    weakest: $alias-color-text-body-weakest,
+  ),
+  mono: (
+    base: $alias-color-text-body-base,
+    inverse: $alias-color-text-body-inverse,
+    strong: $alias-color-text-body-strong,
+    weak: $alias-color-text-body-weak,
+    weaker: $alias-color-text-body-weaker,
+    weakest: $alias-color-text-body-weakest,
+  ),
+  overline: (
+    base: $alias-color-text-body-base,
+    inverse: $alias-color-text-body-inverse,
+    strong: $alias-color-text-body-strong,
+    weak: $alias-color-text-body-weak,
+    weaker: $alias-color-text-body-weaker,
+    weakest: $alias-color-text-body-weakest,
+  ),
+);
+
+
+// TEXT COLOR STATUS - TYPOGRAPHY - BASE - VARIABLES ------------------------ //
+
+$text-color-status-list: success, success-strong, success-weak,
+                         warning, warning-strong, warning-weak,
+                         error, error-strong, error-weak,
+                         help, help-strong, help-weak,
+                         info, info-strong, info-weak;
+
+$text-color-status-map: (
+  success: $alias-color-text-surface-success-base,
+  success-strong: $alias-color-text-surface-success-base,
+  success-weak: $alias-color-text-surface-success-weak,
+  warning: $alias-color-text-surface-warning-base,
+  warning-strong: $alias-color-text-surface-warning-base,
+  warning-weak: $alias-color-text-surface-warning-weak,
+  error: $alias-color-text-surface-error-base,
+  error-strong: $alias-color-text-surface-error-base,
+  error-weak: $alias-color-text-surface-error-weak,
+  help: $alias-color-text-surface-help-base,
+  help-strong: $alias-color-text-surface-help-base,
+  help-weak: $alias-color-text-surface-help-weak,
+  info: $alias-color-text-surface-info-base,
+  info-strong: $alias-color-text-surface-info-base,
+  info-weak: $alias-color-text-surface-info-weak,
+);
+
+
+// SELECTION - TYPOGRAPHY - BASE - VARIABLES -------------------------------- //
+
+$selection-color: $alias-color-background-feedback-secondary-base;

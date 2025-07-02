@@ -1,0 +1,16 @@
+// ---------------------- MODAL - MIXINS - COMPONENTS ----------------------- //
+
+
+@mixin modal-dialog-status($parent, $status) {
+  #{$parent}__header {
+    background-color: map-deep-get($modal-status-map, $status, header-bg-color);
+
+    #{$parent}__icon {
+      &::before {
+        @include icon-status($status);
+      }
+
+      color: map-deep-get($modal-status-map, $status, icon-bg-color);
+    }
+  }
+}

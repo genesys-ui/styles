@@ -1,0 +1,26 @@
+// --------------------- SELECTORS - UTILS - FUNCTIONS ---------------------- //
+
+
+/// Returns the typical selector of a state depending on whether it has a parent
+//  or not
+/// @param {Selector} $parent - Optional - The parent selector
+/// @return {String} $state - The state selector
+
+@function get-selector($parent: null, $state) {
+  $selectors-map: (
+    checked: '&:checked, &[checked="true"], &[aria-checked="true"]#{if($parent, ', &#{$parent}--checked', '')}',
+    disabled: '&:disabled, &[disabled], &[aria-disabled="true"]#{if($parent, ', &#{$parent}--disabled', '')}',
+    expanded: '&[aria-expanded="true"]#{if($parent, ', &#{$parent}--expanded', '')}',
+    focused: '&:focus, &:focus-within#{if($parent, ', &#{$parent}--focused', '')}',
+    focused-visible: '&:focus-visible#{if($parent, ', &#{$parent}--focused-visible', '')}',
+    hovered: '&:hover#{if($parent, ', &#{$parent}--hovered', '')}',
+    not-checked: '&:not(:checked, [checked="true"], [aria-checked="true"]#{if($parent, ', #{$parent}--checked', '')})',
+    not-disabled: '&:not(:disabled):not([disabled]):not([aria-disabled="true"])#{if($parent, ':not(#{$parent}--disabled)', '')}',
+    not-readonly: '&:not([readonly])#{if($parent, ':not(#{$parent}--readonly)', '')}',
+    pressed: '&:active#{if($parent, ', &#{$parent}--pressed', '')}',
+    readonly: '&[readonly]#{if($parent, ', &#{$parent}--readonly', '')}',
+    selected: '&[aria-selected="true"]#{if($parent, ', &#{$parent}--selected', '')}',
+  );
+
+  @return map-get($selectors-map, $state);
+}

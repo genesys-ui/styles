@@ -1,0 +1,157 @@
+// ----------------------- TYPOGRAPHY - BASE - MIXINS ----------------------- //
+
+
+// TRUNCATE - TYPOGRAPHY - BASE - MIXINS ------------------------------------ //
+
+@mixin truncate($line-clamp: 1) {
+  max-width: 100%;
+  overflow: hidden;
+  @if type-of($line-clamp) == number and $line-clamp > 1 {
+    display: -webkit-box;
+    -webkit-line-clamp: $line-clamp;
+    -webkit-box-orient: vertical;
+  } @else {
+    white-space: nowrap;
+    word-wrap: normal;
+    text-overflow: ellipsis;
+  }
+}
+
+
+// FONT SMOOTHING - TYPOGRAPHY - BASE - MIXINS ------------------------------ //
+
+@mixin font-smoothing($webkit: antialiased, $moz: grayscale) {
+  -webkit-font-smoothing: $webkit;
+  -moz-osx-font-smoothing: $moz;
+}
+
+
+// SELECTION - TYPOGRAPHY - BASE - MIXINS ----------------------------------- //
+
+@mixin selection($bg-color: $selection-color, $color: null, $is-parent: false) {
+  $selector: null;
+
+  @if($is-parent == true) {
+    $selector: '&::selection';
+  } @else {
+    $selector: '::selection';
+  }
+
+  #{$selector} {
+    @if $color != null {
+      color: $color;
+      -webkit-text-fill-color: $color;
+    }
+    background-color: $bg-color;
+  }
+}
+
+
+// TEXT COLOR SCHEME - TYPOGRAPHY - BASE - MIXINS --------------------------- //
+
+@mixin text-color($type: body, $color: base, $is-svg: false, $is-important: false) {
+  $prop: if($is-svg, fill, color);
+  $color-value: map-deep-get($text-color-map, $type, $color);
+  $important-value: get-important($is-important);
+
+  #{$prop}: $color-value $important-value;
+}
+
+@mixin text-color-status($color-status: success, $is-svg: false, $is-important: false) {
+  $prop: if($is-svg, fill, color);
+  $color-value: map-get($text-color-status-map, $color-status);
+  $important-value: get-important($is-important);
+
+  #{$prop}: $color-value $important-value;
+}
+
+
+// TYPOGRAPHY - BASE - MIXINS ----------------------------------------------- //
+
+/// Get the css of basic typographic props: font-size, line-height,
+/// letter-spacing... etc.
+/// @param {String} $type - If it's a body text, heading, lead... etc.
+/// @param {String} $size - If it's sm, md, h2, h3... etc.
+/// @param {List} $props - The list of desired properties: font-size,
+/// line-height... etc. (Use spaces instead of commas as separators).
+/// @param {List} $ignore-props - The list of ignored properties: font-size,
+/// line-height... etc. (Use spaces instead of commas as separators).
+/// @output Typographic styles based in the props list
+
+@mixin typography($type: body, $size: md, $props: null, $ignore-props: null, $is-important: false) {
+  $important-value: get-important($is-important);
+
+  @each $prop in $typography-prop-list {
+    @if (($ignore-props and index($ignore-props, $prop) == null) or ($props and index($props, $prop) != null)) {
+      #{$prop}: map-deep-get($typography-map, $type, $size, $prop) $important-value;
+    }
+    @if (not $props and not $ignore-props) {
+      #{$prop}: map-deep-get($typography-map, $type, $size, $prop) $important-value;
+    }
+  }
+}
+
+
+// TYPOGRAPHY STYLES - BASE - MIXINS ---------------------------------------- //
+
+@mixin typography-styles($type: body) {
+  $default-size: md;
+  $size-list: $typography-body-size-list;
+  @if $type == heading {
+    $size-list: $typography-heading-size-list;
+    $default-size: h6;
+  } @else if $type == hero {
+    $size-list: $typography-hero-size-list;
+  } @else if $type == lead {
+    $size-list: $typography-lead-size-list;
+  } @else if $type == mono {
+    $size-list: $typography-mono-size-list;
+  } @else if $type == overline {
+    $size-list: $typography-overline-size-list;
+  }
+
+  // Default values - Heading
+
+  @include typography($type, $default-size); // default type
+  @include text-color($type); // Base color
+
+  // MODIFIERS - TYPOGRAPHY
+
+  // Type - Modifier - Typography
+
+  @each $size in $size-list {
+    &--#{$size} {
+      @include typography($type, $size);
+    }
+  }
+
+  // Color scheme - Modifier - Typography
+
+  @each $color in $text-color-list {
+    &--#{$color} {
+      @include text-color($type, $color);
+    }
+  }
+
+  // Color scheme status - Modifier - Typography
+
+  @each $color-status in $text-color-status-list {
+    &--#{$color-status} {
+      @include text-color-status($color-status);
+    }
+  }
+
+  // Color scheme status - Modifier - Typography
+
+  &--truncated {
+    @include truncate;
+
+    &-2 {
+      @include truncate(2);
+    }
+
+    &-3 {
+      @include truncate(3);
+    }
+  }
+}

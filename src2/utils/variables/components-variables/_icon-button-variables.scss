@@ -1,0 +1,141 @@
+// ----------------- ICON BUTTON - COMPONENTS - VARIABLES ------------------- //
+
+
+// SIZE - ICON BUTTON - COMPONENTS - VARIABLES ------------------------------ //
+
+$icon-button-size-list: xxs, xs, sm, md, lg;
+
+$icon-button-size-map: (
+  xxs: (
+    width: $cmp-button-size-height-xxs,
+    font-size: $cmp-button-icon-typo-font-size-xxs,
+    arrow-font-size: $cmp-icon-button-go-to-docs-marker-typo-font-size-xxs,
+    arrow-position: $cmp-icon-button-go-to-docs-marker-size-offset-enabled-xxs,
+    arrow-position-hover: $cmp-icon-button-go-to-docs-marker-size-offset-hovered-xxs
+  ),
+  xs: (
+    width: $cmp-button-size-height-xs,
+    font-size: $cmp-button-icon-typo-font-size-xs,
+    arrow-font-size: $cmp-icon-button-go-to-docs-marker-typo-font-size-xs,
+    arrow-position: $cmp-icon-button-go-to-docs-marker-size-offset-enabled-xs,
+    arrow-position-hover: $cmp-icon-button-go-to-docs-marker-size-offset-hovered-xs
+  ),
+  sm: (
+    width: $cmp-button-size-height-sm,
+    font-size: $cmp-button-icon-typo-font-size-sm,
+    arrow-font-size: $cmp-icon-button-go-to-docs-marker-typo-font-size-sm,
+    arrow-position: $cmp-icon-button-go-to-docs-marker-size-offset-enabled-sm,
+    arrow-position-hover: $cmp-icon-button-go-to-docs-marker-size-offset-hovered-sm
+  ),
+  md: (
+    width: $cmp-button-size-height-md,
+    font-size: $cmp-button-icon-typo-font-size-md,
+    arrow-font-size: $cmp-icon-button-go-to-docs-marker-typo-font-size-md,
+    arrow-position: $cmp-icon-button-go-to-docs-marker-size-offset-enabled-md,
+    arrow-position-hover: $cmp-icon-button-go-to-docs-marker-size-offset-hovered-md
+  ),
+  lg: (
+    width: $cmp-button-size-height-lg,
+    font-size: $cmp-button-icon-typo-font-size-lg,
+    arrow-font-size: $cmp-icon-button-go-to-docs-marker-typo-font-size-md,
+    arrow-position: $cmp-icon-button-go-to-docs-marker-size-offset-enabled-md,
+    arrow-position-hover: $cmp-icon-button-go-to-docs-marker-size-offset-hovered-md
+  ),
+);
+
+
+// -------------- ICON BUTTON STATUS - COMPONENTS - VARIABLES --------------- //
+
+
+// TYPE - ICON BUTTON STATUS - COMPONENTS - VARIABLES ----------------------- //
+
+$icon-button-status-type-list: error, help, info, success, warning;
+
+$icon-button-status-color-bg-type-map: (
+  success: (
+    disabled: $cmp-icon-button-status-color-background-success-disabled,
+    enabled: $cmp-icon-button-status-color-background-success-enabled,
+    hovered: $cmp-icon-button-status-color-background-success-hovered,
+    focused: $cmp-icon-button-status-color-background-success-focused,
+    pressed: $cmp-icon-button-status-color-background-success-pressed,
+    expanded: $cmp-icon-button-status-color-background-success-expanded,
+  ),
+  warning: (
+    enabled: $cmp-icon-button-status-color-background-warning-enabled,
+    disabled: $cmp-icon-button-status-color-background-warning-disabled,
+    hovered: $cmp-icon-button-status-color-background-warning-hovered,
+    focused: $cmp-icon-button-status-color-background-warning-focused,
+    pressed: $cmp-icon-button-status-color-background-warning-pressed,
+    expanded: $cmp-icon-button-status-color-background-warning-expanded,
+  ),
+  error: (
+    disabled: $cmp-icon-button-status-color-background-error-disabled,
+    enabled: $cmp-icon-button-status-color-background-error-enabled,
+    hovered: $cmp-icon-button-status-color-background-error-hovered,
+    focused: $cmp-icon-button-status-color-background-error-focused,
+    pressed: $cmp-icon-button-status-color-background-error-pressed,
+    expanded: $cmp-icon-button-status-color-background-error-expanded,
+  ),
+  help: (
+    disabled: $cmp-icon-button-status-color-background-help-disabled,
+    enabled: $cmp-icon-button-status-color-background-help-enabled,
+    hovered: $cmp-icon-button-status-color-background-help-hovered,
+    focused: $cmp-icon-button-status-color-background-help-focused,
+    pressed: $cmp-icon-button-status-color-background-help-pressed,
+    expanded: $cmp-icon-button-status-color-background-help-expanded,
+  ),
+  info: (
+    disabled: $cmp-icon-button-status-color-background-info-disabled,
+    enabled: $cmp-icon-button-status-color-background-info-enabled,
+    hovered: $cmp-icon-button-status-color-background-info-hovered,
+    focused: $cmp-icon-button-status-color-background-info-focused,
+    pressed: $cmp-icon-button-status-color-background-info-pressed,
+    expanded: $cmp-icon-button-status-color-background-info-expanded,
+  ),
+);
+
+
+// TEXT COLOR TYPE - ICON BUTTON STATUS - COMPONENTS - VARIABLES ------------ //
+
+$icon-button-status-color-text-type-map: (
+  success: (
+    disabled: $cmp-icon-button-status-color-text-success-disabled,
+    enabled: $cmp-icon-button-status-color-text-success-enabled,
+    hovered: $cmp-icon-button-status-color-text-success-hovered,
+    focused: $cmp-icon-button-status-color-text-success-focused,
+    pressed: $cmp-icon-button-status-color-text-success-pressed,
+    expanded: $cmp-icon-button-status-color-text-success-expanded,
+  ),
+  warning: (
+    disabled: $cmp-icon-button-status-color-text-warning-disabled,
+    enabled: $cmp-icon-button-status-color-text-warning-enabled,
+    hovered: $cmp-icon-button-status-color-text-warning-hovered,
+    focused: $cmp-icon-button-status-color-text-warning-focused,
+    pressed: $cmp-icon-button-status-color-text-warning-pressed,
+    expanded: $cmp-icon-button-status-color-text-warning-expanded,
+  ),
+  error: (
+    disabled: $cmp-icon-button-status-color-text-error-disabled,
+    enabled: $cmp-icon-button-status-color-text-error-enabled,
+    hovered: $cmp-icon-button-status-color-text-error-hovered,
+    focused: $cmp-icon-button-status-color-text-error-focused,
+    pressed: $cmp-icon-button-status-color-text-error-pressed,
+    expanded: $cmp-icon-button-status-color-text-error-expanded,
+  ),
+  help: (
+    disabled: $cmp-icon-button-status-color-text-help-disabled,
+    enabled: $cmp-icon-button-status-color-text-help-enabled,
+    hovered: $cmp-icon-button-status-color-text-help-hovered,
+    focused: $cmp-icon-button-status-color-text-help-focused,
+    pressed: $cmp-icon-button-status-color-text-help-pressed,
+    expanded: $cmp-icon-button-status-color-text-help-expanded,
+  ),
+  info: (
+    disabled: $cmp-icon-button-status-color-text-info-disabled,
+    enabled: $cmp-icon-button-status-color-text-info-enabled,
+    hovered: $cmp-icon-button-status-color-text-info-hovered,
+    focused: $cmp-icon-button-status-color-text-info-focused,
+    pressed: $cmp-icon-button-status-color-text-info-pressed,
+    expanded: $cmp-icon-button-status-color-text-info-expanded,
+  ),
+);

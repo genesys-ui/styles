@@ -1,0 +1,62 @@
+// ------------------- ICON BUTTON - COMPONENTS - MIXINS -------------------- //
+
+
+// SIZE STYLES - ICON BUTTON - COMPONENTS - MIXINS -------------------------- //
+
+@mixin get-icon-button-size-styles(
+  $parent: '.icon-button',
+  $size: md,
+  $is-bold: false
+) {
+  $focused-selector: get-selector($parent, focused);
+  $focused-visible-selector: get-selector($parent, focused-visible);
+  $hovered-selector: get-selector($parent, hovered);
+  $not-disabled-selector: get-selector($parent, not-disabled);
+  $pressed-selector: get-selector($parent, pressed);
+
+  @include get-button-size-styles($size);
+  width: map-deep-get($icon-button-size-map, $size, "width");
+  min-width: unset;
+  padding: 0;
+
+  &,
+  #{$parent}__icon {
+    font-size: map_deep-get($icon-button-size-map, $size, "font-size");
+  }
+
+  #{$parent}__arrow {
+    top: map-deep-get($icon-button-size-map, $size, "arrow-position");
+    right: map-deep-get($icon-button-size-map, $size, "arrow-position");
+    font-size: map-deep-get($icon-button-size-map, $size, "arrow-font-size");
+  }
+
+  #{$not-disabled-selector} {
+    #{$hovered-selector},
+    #{$focused-selector},
+    #{$focused-visible-selector},
+    #{$pressed-selector} {
+      #{$parent}__arrow {
+        top: map-deep-get($icon-button-size-map, $size, "arrow-position-hover");
+        right: map-deep-get($icon-button-size-map, $size, "arrow-position-hover");
+      }
+    }
+  }
+}
+
+
+// ALL THE STYLES - ICON BUTTON - COMPONENTS - MIXINS ----------------------- //
+
+@mixin get-icon-button-all-styles(
+  $parent: null,
+  $size: md,
+  $type: neutral,
+  $has-bold-icon: false,
+  $is-circular: false,
+  $has-before-icon: false,
+) {
+  @include get-button-base-styles($parent, $is-circular, $has-before-icon, $has-bold-icon);
+  @include get-button-type-styles($parent, $type, $has-before-icon);
+  @include get-icon-button-size-styles($parent, $size);
+  font-weight: normal;
+}
+

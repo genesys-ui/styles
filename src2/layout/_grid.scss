@@ -1,0 +1,114 @@
+// ----------------------------- GRID - LAYOUT ------------------------------ //
+
+
+.grid {
+  $parent: &;
+
+  display: grid;
+
+
+  // MODIFIERS - GRID ------------------------------------------------------- //
+
+  &--inline {
+    display: inline-grid;
+  }
+
+  // Global - Grid
+
+  &--global {
+    grid-template-areas: "global-nav global-content";
+    grid-template-columns: min-content auto;
+    height: 100vh;
+  }
+
+  // App - Grid
+
+  &--app {
+    grid-template-areas: "app-bar" "app-main";
+    grid-template-rows: $app-bar-height calc(100vh - #{$app-bar-height});
+  }
+
+  // Lead - Grid
+
+  &--lead {
+    grid-template-areas: "lead-nav" "lead-content";
+    grid-template-columns: minmax(0px, auto);
+    grid-template-rows: $lead-nav-height calc(100vh - #{$app-bar-height} - #{$lead-nav-height});
+    height: 100%;
+  }
+
+  // Full screen - Grid
+
+  &--full-screen {
+    display: inherit;
+    grid-template-areas: inherit;
+    grid-template-columns: inherit;
+    width: inherit;
+    height: inherit;
+  }
+
+
+  // ELEMENTS - GRID -------------------------------------------------------- //
+
+  &__item {
+
+    // App - Grid Items
+
+    &--global {
+      &-nav {
+        grid-area: global-nav;
+        grid-column: 1 / 2;
+        transition: $cmp-main-menu-mutation-transition;
+        width: $cmp-main-menu-size-width-collapsed;
+
+        &-fixed {
+          width: $cmp-main-menu-size-width-expanded;
+        }
+      }
+
+      &-content {
+        grid-area: global-content;
+        grid-column: 2 / 3;
+      }
+    }
+
+    // App - Grid Items
+
+    &--app {
+      &-bar {
+        grid-area: app-bar;
+        grid-row: 1 / 2;
+        z-index: map-deep-get($elevation-map, "sticky-bottom", "z-index");
+      }
+
+      &-main {
+        @include scrollbars($track-radius: 0);
+        @include spacing(padding, all, xxs, layout);
+        grid-area: app-main;
+        grid-row: 2 / 3;
+        overflow: auto;
+      }
+    }
+
+    // Lead - Grid Item
+
+    &--lead {
+      &-nav {
+        grid-area: lead-nav;
+        grid-row: 1 / 2;
+      }
+
+      &-content {
+        @include spacing(padding, all, xxs,layout);
+        grid-area: lead-content;
+        grid-row: 2 / 3;
+      }
+    }
+
+    // Remove space - Grid Item
+
+    &--no-space {
+      padding: 0;
+    }
+  }
+}

@@ -1,0 +1,10 @@
+// ----------------- MIXINS - CONTENT SWITCHER - COMPONENTS ----------------- //
+
+
+@mixin content-switcher-size($size: md) {
+  height: map-deep-get($content-switcher-size-map, $size, height);
+}
+
+@mixin content-switcher-type($type: neutral) {
+  background-color: map-deep-get($content-switcher-type-map, $type, background);
+}

@@ -1,0 +1,104 @@
+// ------------------------ COLOR PICKER - COMPONENT ------------------------ //
+
+
+.color-picker {
+  $parent: &;
+  $inner-spacing: .2rem;
+  $not-disabled-selector: get-selector($parent, not-disabled);
+  $not-readonly-selector: get-selector($parent, not-readonly);
+
+  @mixin color-picker-size($size: md) {
+    @include field-control-size($size);
+    width: map-deep-get($field-control-size-map, $size, height);
+
+    &:not([type="color"]) {
+      padding: $inner-spacing;
+    }
+
+    &[type="color"] {
+      padding: 0;
+    }
+  }
+
+  @include field-control-base($parent);
+  @include field-control-color($parent: $parent, $status: base);
+  @include color-picker-size;
+
+  #{$not-disabled-selector} {
+    #{$not-readonly-selector} {
+      cursor: pointer;
+    }
+  }
+
+  &:not([type="color"]) {
+    @include inline-flex(null, center, center);
+    background-color: map-deep-get($field-control-color-map, background, base, enabled);
+
+    #{$parent}__swatch {
+      @include size(100%);
+      flex: 1;
+      border-radius: $alias-fields-shape-border-radius;
+    }
+  }
+
+  &[type="color"] {
+    position: relative;
+
+    &::-webkit-color-swatch-wrapper,
+    &::-webkit-color-swatch {
+      border-radius: $alias-fields-shape-border-radius;
+    }
+
+    &::-webkit-color-swatch {
+      border: none;
+      position: absolute;
+      inset: $inner-spacing;
+    }
+  }
+
+
+  // MODIFIERS - COLOR PICKER ----------------------------------------------- //
+
+  // Status - Modifier - Input
+
+  @each $status in $field-control-color-list {
+    &--#{$status} {
+      @include field-control-color($parent: $parent, $status: $status);
+    }
+  }
+
+  // Size - Modifiers - Color picker
+
+  @each $size in $field-control-size-list {
+    &--#{$size} {
+      @include color-picker-size($size);
+    }
+  }
+
+  // Shape - Modifiers - Color picker
+
+  &--circle {
+    border-radius: $alias-shape-border-radius-full;
+
+    &:not([type="color"]) #{$parent}__swatch {
+      border-radius: $alias-shape-border-radius-full;
+    }
+
+    &[type="color"] {
+      &::-webkit-color-swatch-wrapper,
+      &::-webkit-color-swatch {
+        border-radius: $alias-shape-border-radius-full;
+      }
+    }
+  }
+
+  &--rectangle {
+    width: calc(map-deep-get($field-control-size-map, md, height) * 2);
+
+    @each $size in $field-control-size-list {
+      &--#{$size} {
+        width: calc(map-deep-get($field-control-size-map, $size, height) * 2);
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+// --------------------------- VARIABLES - UTILS ---------------------------- //
+
+
+$theme: light !default;
+
+// Utils - Variables
+
+@import "./utils-variables/spacing-variables";
+
+// Base - Variables
+
+@import "./base-variables/icons-variables";
+@import "./base-variables/images-variables";
+@import "./base-variables/typography-variables";
+
+// Components - Variables
+
+@import "./components-variables/badge-variables";
+@import "./components-variables/button-variables";
+@import "./components-variables/chip-variables";
+@import "./components-variables/decorator-bar-variables";
+@import "./components-variables/field-variables";
+@import "./components-variables/icon-button-variables";
+@import "./components-variables/link-variables";
+@import "./components-variables/overlay-variables";
+@import "./components-variables/select-variables";
+@import "./components-variables/separator-variables";
+@import "./components-variables/switch-variables";
+@import "./components-variables/tag-variables";
+@import "./components-variables/upload-files-variables";
+
+// Layout - Variables
+
+@import "./layout-variables/elevation-variables";
+@import "./layout-variables/grid-variables";

@@ -1,0 +1,14 @@
+// ------------------------- PROPS - UTILS - MIXINS ------------------------- //
+
+
+// APPLY PROPS - UTILS - MIXINS --------------------------------------------- //
+
+@mixin _apply-props($args, $props...) {
+  @for $i from 1 through length($args) {
+    $val: nth($args, $i);
+
+    @if ($val != null) {
+      #{nth($props, $i)}: $val;
+    }
+  }
+}

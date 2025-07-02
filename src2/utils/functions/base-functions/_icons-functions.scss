@@ -1,0 +1,14 @@
+// ----------------------- ICONS - BASE - FUNCTIONS ------------------------- //
+
+
+// STATUS - ICONS - BASE - FUNCTIONS ---------------------------------------- //
+
+@function get-icon-status($status, $filled: true) {
+  $type: filled;
+
+  @if ($filled == false) {
+    $type: bordered;
+  }
+
+  @return map-deep-get($icon-status-map, $status, $type);
+}

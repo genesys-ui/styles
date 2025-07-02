@@ -1,0 +1,117 @@
+// --------------------------- INPUT - COMPONENT ---------------------------- //
+
+
+.input {
+  $parent: &;
+  $input-size-map: (
+    sm: (
+      password-space: map-deep-get($spacing-size-map, lg, component), // 2.4rem
+    ),
+    md: (
+      password-space: calc(#{map-deep-get($spacing-size-map, lg, component)}
+      + #{map-deep-get($spacing-size-map, xxs, component)}), // 2.8rem
+    ),
+    lg: (
+      password-space: map-deep-get($spacing-size-map, xl, component), // 3.2rem
+    ),
+  );
+
+
+  @include field-control-input($parent);
+
+
+  // TYPES - INPUT ---------------------------------------------------------- //
+
+  // Search - Types - Input
+
+  &[type="search"] {
+    @include field-control-input-search-button;
+  }
+
+
+  // ELEMENTS - INPUT ------------------------------------------------------- //
+
+  // Wrapper - Input
+
+  &-wrapper {
+    @include flex(null, center);
+    position: relative;
+
+    // Password - Wrapper - Input
+
+    &--password {
+      .input {
+        width: 100%;
+        padding-right: map-deep-get($input-size-map, md, password-space);
+
+        @each $size in $field-control-size-list {
+          &#{$parent}--#{$size} {
+            @include field-control-size($size);
+            padding-right: map-deep-get($input-size-map, $size, password-space);
+          }
+        }
+
+        // To avoid LastPass extension overlapping
+
+        &[type="password"][style*="background-image"] {
+          @mixin input-password-bg-position($size: md) {
+            background-position: calc(100%
+            - #{map-deep-get($input-size-map, $size, password-space)}) !important;
+          }
+
+          @include input-password-bg-position; // Default value
+
+          @each $size in $field-control-size-list {
+            &#{$parent}--#{$size} {
+              @include input-password-bg-position($size);
+            }
+          }
+        }
+      }
+
+      .icon-button {
+        // input--sm : icon-button--xxs,
+        // input--md : icon-button--xs,
+        // input--lg : icon-button--sm
+        position: absolute;
+        right: map-deep-get($spacing-size-map, xxs, component);
+      }
+    }
+  }
+
+
+  // MODIFIERS - INPUT ------------------------------------------------------ //
+
+  // Search - Modifier - Input
+
+  &--search {
+    @include field-control-input-search-base;
+    @include field-control-input-search-size(md);
+
+    @each $size in $field-control-size-list {
+      &#{$parent}--#{$size} {
+        @include field-control-input-search-size($size);
+      }
+    }
+  }
+
+  // Size - Modifier - Input
+
+  @each $size in $field-control-size-list {
+    &--#{$size} {
+      @include field-control-size($size);
+    }
+  }
+
+  // Size width - Modifier - Input
+
+  @include field-control-size-width;
+
+  // Status - Modifier - Input
+
+  @each $status in $field-control-color-list {
+    &--#{$status} {
+      @include field-control-color($parent: $parent, $status: $status);
+    }
+  }
+}

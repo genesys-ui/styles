@@ -1,0 +1,77 @@
+// -------------------------- SELECT - COMPONENTS --------------------------- //
+
+
+.select {
+  $parent: &;
+
+  // Default styles - Select
+
+  @include field-control-select($parent);
+
+
+  // MODIFIERS - SELECT ----------------------------------------------------- //
+
+  // Size - Modifier - Select
+
+  @each $size in $field-control-size-list {
+    &--#{$size} {
+      @include field-control-size($size);
+      padding-right: map-deep-get($select-size-map, $size, arrow-width);
+      background-size: map-deep-get($field-control-size-map, $size, height);
+    }
+  }
+
+  // Size width - Modifier - Select
+  // Examples:
+  // select--width-xl
+  // select--min-width-xs
+  // select--max-width-sm
+
+  @include field-control-size-width($is-select: true);
+
+  // Status - Modifier - Select
+
+  @each $status in $field-control-color-list {
+    &--#{$status} {
+      @include field-control-color($parent: $parent, $status: $status);
+    }
+  }
+
+  // Multiple - Modifier - Select
+  /// This is a mix between default select styles, chip group and select2
+  /// dropdown
+
+  &--multiple {
+    height: inherit;
+    min-height: map-deep-get($field-control-size-map, md, height);
+
+    #{$parent}__chip-group {
+      @include scrollbars($size: sm);
+      @include spacing(margin, ver, xxs, component);
+      overflow-y: auto;
+      width: 100%;
+      max-height: 6.4rem;
+      z-index: 1;
+    }
+
+    #{$parent}__select2-wrapper {
+      position: absolute;
+      inset: 0 0 0 0;
+
+      > select {
+        @include size(100%);
+      }
+
+      > .select2-container,
+      .select2-selection {
+        height: 100%;
+      }
+    }
+
+    @each $size in $field-control-size-list {
+      &#{$parent}--#{$size} {
+        min-height: map-deep-get($field-control-size-map, $size, height);
+      }
+    }
+  }
+}

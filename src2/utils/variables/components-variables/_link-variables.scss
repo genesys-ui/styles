@@ -1,0 +1,30 @@
+// --------------------- LINK - COMPONENTS - VARIABLES ---------------------- //
+
+
+// COLOR SCHEME - LINK - COMPONENTS - VARIABLES ----------------------------- //
+
+$link-color-scheme-list: base, inverse, error, help, info, success, warning;
+
+$link-color-scheme-map: (
+  base: (
+    color: $cmp-link-color-text-base
+  ),
+  inverse: (
+    color: $cmp-link-color-text-inverse,
+  ),
+  error: (
+    color: $cmp-link-color-text-error,
+  ),
+  help: (
+    color: $cmp-link-color-text-help,
+  ),
+  info: (
+    color: $cmp-link-color-text-info,
+  ),
+  success: (
+    color: $cmp-link-color-text-success,
+  ),
+  warning: (
+    color: $cmp-link-color-text-warning,
+  )
+);

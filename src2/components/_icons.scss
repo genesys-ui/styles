@@ -1,0 +1,41 @@
+// ----------------------- STYLES - ICONS - COMPONENTS ---------------------- //
+
+
+.icon {
+  @include text-color(body, base);
+  font-size: map-get($icon-size-map, md);
+
+  // Bold - Modifier - Icons
+
+  &--bold {
+    font-weight: bold;
+  }
+
+  // Size - Modifier - Icons
+
+  @each $size in $icon-size-list {
+    &--#{$size} {
+      font-size: map-get($icon-size-map, $size);
+    }
+
+    &--square-#{$size} {
+      @include size(map-get($icon-size-map, $size), map-get($icon-size-map, $size));
+    }
+  }
+
+  // Color scheme - Modifier - Icons
+
+  @each $color in $text-color-list {
+    &--#{$color} {
+      @include text-color(body, $color);
+    }
+  }
+
+  // Color scheme status - Modifier - Icons
+
+  @each $status in $text-color-status-list {
+    &--#{$status} {
+      @include text-color-status($status);
+    }
+  }
+}

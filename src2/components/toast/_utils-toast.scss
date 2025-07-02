@@ -1,0 +1,52 @@
+// ----------------------- UTILS - TOAST - COMPONENTS ----------------------- //
+
+
+// VARIABLES - UTILS - TOAST ------------------------------------------------ //
+
+$toast-status-list: success, warning, error, help, info;
+
+$toast-status-map: (
+  error: (
+    bg-color: $cmp-toast-color-background-error,
+    icon-text-color: $cmp-toast-header-icon-color-text-error,
+    progress-bar-bg-color: $cmp-toast-progress-bar-color-background-error,
+  ),
+  help: (
+    bg-color: $cmp-toast-color-background-help,
+    icon-text-color: $cmp-toast-header-icon-color-text-help,
+    progress-bar-bg-color: $cmp-toast-progress-bar-color-background-help,
+  ),
+  info: (
+    bg-color: $cmp-toast-color-background-info,
+    icon-text-color: $cmp-toast-header-icon-color-text-info,
+    progress-bar-bg-color: $cmp-toast-progress-bar-color-background-info,
+  ),
+  success: (
+    bg-color: $cmp-toast-color-background-success,
+    icon-text-color: $cmp-toast-header-icon-color-text-success,
+    progress-bar-bg-color: $cmp-toast-progress-bar-color-background-success,
+  ),
+  warning: (
+    bg-color: $cmp-toast-color-background-warning,
+    icon-text-color: $cmp-toast-header-icon-color-text-warning,
+    progress-bar-bg-color: $cmp-toast-progress-bar-color-background-warning,
+  ),
+);
+
+
+// ANIMATIONS - UTILS - TOAST ----------------------------------------------- //
+
+@keyframes showCounterAnimation {
+  0%   {
+    transform: translate(2rem, 2rem);
+    z-index: -1;
+  }
+  50% {
+    transform: translate(-1.5rem, -1.5rem);
+    z-index: -1;
+  }
+  100% {
+    transform: translate(0, 0);
+    z-index: 1;
+  }
+}

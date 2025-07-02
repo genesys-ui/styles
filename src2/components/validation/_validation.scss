@@ -1,0 +1,38 @@
+// ------------------------- VALIDATION - COMPONENTS ------------------------ //
+
+
+.validation {
+  @import "./variables-validation";
+  @import "./mixins-validation";
+
+  @include validation-size(md);
+  @include validation-status(error);
+  display: flex;
+
+  &::before {
+    @include inline-flex(null, center, center);
+  }
+
+  &:empty {
+    display: none;
+  }
+
+
+  // MODIFIERS - VALIDATION ------------------------------------------------- //
+
+  // Size - Modifier - Validation
+
+  @each $size in $validation-size-list {
+    &--#{$size} {
+      @include validation-size($size);
+    }
+  }
+
+  // Status - Modifier - Validation
+
+  @each $status in $validation-status-list {
+    &--#{$status} {
+      @include validation-status($status);
+    }
+  }
+}

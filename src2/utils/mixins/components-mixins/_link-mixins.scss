@@ -1,0 +1,68 @@
+// ---------------------- LINK - COMPONENTS - MIXINS ------------------------ //
+
+
+// LINK BASE STYLES - COMPONENTS - MIXINS ----------------------------------- //
+
+@mixin link-base($parent: null) {
+  $disabled-selector: get-selector($parent, disabled);
+  $not-disabled-selector: get-selector($parent, not-disabled);
+  $hovered-selector: get-selector($parent, hovered);
+  $pressed-selector: get-selector($parent, pressed);
+  $focused-visible-selector: get-selector($parent, focused-visible);
+
+  transition: $cmp-link-mutation-transition;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+
+  #{$disabled-selector} {
+    opacity: $cmp-link-shape-opacity-disabled;
+    cursor: not-allowed;
+  }
+
+  #{$not-disabled-selector} {
+    #{$hovered-selector},
+    #{$pressed-selector} {
+      text-decoration: underline;
+    }
+
+    #{$focused-visible-selector} {
+      box-shadow: $cmp-link-elevation-box-shadow-focused;
+    }
+  }
+}
+
+
+// LINK COLOR SCHEME STYLES - COMPONENTS - MIXINS --------------------------- //
+
+@mixin link-color($parent: null, $color-scheme: base) {
+  $not-disabled-selector: get-selector($parent, not-disabled);
+  $hovered-selector: get-selector($parent, hovered);
+  $focused-selector: get-selector($parent, focused);
+  $pressed-selector: get-selector($parent, pressed);
+  $link-color: map-deep-get($link-color-scheme-map, $color-scheme, color);
+
+  color: $link-color;
+
+  #{$not-disabled-selector} {
+    #{$hovered-selector} {
+      color: darken($link-color, 8%);
+    }
+
+    #{$focused-selector} {
+      color: darken($link-color, 12%);
+    }
+
+    #{$pressed-selector} {
+      color: darken($link-color, 16%);
+    }
+  }
+}
+
+
+// LINK ALL STYLES - COMPONENTS - MIXINS ------------------------------------ //
+
+@mixin link($parent: null, $color-scheme: base) {
+  @include link-base($parent);
+  @include link-color($parent, $color-scheme);
+}

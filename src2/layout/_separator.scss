@@ -1,0 +1,53 @@
+// ------------------------ SEPARATOR - COMPONENTS -------------------------- //
+
+
+.separator {
+  $parent: &;
+  @include separator;
+
+  &--hor {
+    @include separator(hor);
+  }
+
+  // Size - Modifier - Separator
+
+  @each $size in $separator-size-list {
+    &--#{$size} {
+      &,
+      &#{$parent}--ver {
+        @include separator-size(ver, $size);
+      }
+      &#{$parent}--hor {
+        @include separator-size(hor, $size);
+      }
+    }
+  }
+
+  // Spacing - Modifier - Separator
+
+  @each $spacing in $spacing-size-list {
+    &--spacing-#{$spacing} {
+      &,
+      &#{$parent}--ver {
+        @include separator-spacing(ver, $spacing);
+      }
+      &#{$parent}--hor {
+        @include separator-spacing(hor, $spacing);
+      }
+    }
+  }
+
+  // Color - Modifier - Separator
+
+  @each $color-scheme in $separator-color-scheme-list {
+    &--#{$color-scheme} {
+      @include separator-color($color-scheme, base);
+
+      @each $contrast in $separator-contrast-list {
+        &-#{$contrast} {
+          @include separator-color($color-scheme, $contrast);
+        }
+      }
+    }
+  }
+}

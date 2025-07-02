@@ -1,0 +1,71 @@
+// ----------------------- UPLOAD FILES - COMPONENT ------------------------- //
+
+
+.upload-files {
+  $parent: &;
+
+  @include flex(column);
+
+
+  // ELEMENTS - UPLOAD FILES ------------------------------------------------ //
+
+  &__area {
+    @include spacing(padding, all, xs, component);
+    position: relative;
+    min-height: 12rem;
+    border-width: $cmp-upload-files-shape-border;
+    border-style: dashed;
+    border-color: $cmp-upload-files-color-border;
+    border-radius: $cmp-upload-files-shape-border-radius;
+    background-color: $cmp-upload-files-color-background;
+    transition: border-color .3s ease;
+
+    #{$parent}:not(#{$parent}--readonly):not(#{$parent}--error):not(#{$parent}--warning):not(#{$parent}--success) &:hover {
+      border-color: $upload-files-color-border-hovered;
+    }
+  }
+
+  &__placeholder {
+    @include typography(body, md, $props: font-size);
+    color: map-deep-get($field-control-color-map, text, base, placeholder);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__content {
+    @include scrollbars(sm);
+    height: 100%;
+    overflow-y: auto;
+
+    &:empty {
+      display: none;
+    }
+
+    &--chip-group {
+      align-content: flex-start;
+    }
+  }
+
+
+  // MODIFIERS - UPLOAD FILES ----------------------------------------------- //
+
+  // Status - Modifier - Upload Files
+
+  @each $status in $field-control-color-list {
+    &--#{$status} {
+      #{$parent}__area {
+        border-color: map-deep-get($field-control-color-map, border, $status, enabled);
+
+        &:hover {
+          border-color: map-deep-get($field-control-color-map, border, $status, hovered);
+        }
+      }
+
+      #{$parent}__placeholder {
+        color: map-deep-get($field-control-color-map, text, $status, placeholder);
+      }
+    }
+  }
+}

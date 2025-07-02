@@ -31,6 +31,12 @@ Choose between icons, text, or empty. Is not expected to use with mixed content.
 
 <Canvas of={Stories.IsEmpty} />
 
+### Is circular
+
+The format is restricted to square (same width and height), even with long content.
+
+<Canvas of={Stories.IsCircular} />
+
 ### Color scheme
 
 Each Badge color scheme is for a specific purpose, there are a hierarchy and usage
@@ -57,7 +63,7 @@ colored surface as background.
 
 #### Status
 
-There are five status: `error`, `help`, `info`, `success` and `warning`.
+There are five statuses: `error`, `help`, `info`, `success` and `warning`.
 
 <Canvas of={Stories.Status} />
 
@@ -88,6 +94,13 @@ This modifier swaps background colors.
 
 <Canvas of={Stories.InverseDataVisualization} />
 
+## Truncated text
+
+If you need to truncate the text of the badge, you'll have to wrap the
+text content and use the `truncated` class in that wrapper.
+
+<Canvas of={Stories.TruncatedText} />
+
 ## Overview of CSS classes
 
 <ClassesTable
@@ -112,7 +125,7 @@ This modifier swaps background colors.
       restrictions: "span, div",
     },
     {
-      selector: "badge--is-empty",
+      selector: "badge--empty",
       description: "Adjust any other variation when content is empty",
       type: "modifier",
       restrictions: "span, div",
@@ -127,6 +140,18 @@ This modifier swaps background colors.
     {
       selector: "badge--is-inverse",
       description: "Swaps background colors",
+      type: "modifier",
+      restrictions: "span, div",
+    },
+    {
+      selector: "badge--absolute",
+      description: "If the badge is used as a child overlapping another component",
+      type: "modifier",
+      restrictions: "span, div",
+    },
+    {
+      selector: "badge--circular",
+      description: "To remove the padding and min-width, so the format is restricted to square",
       type: "modifier",
       restrictions: "span, div",
     },

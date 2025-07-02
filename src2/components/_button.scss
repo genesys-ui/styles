@@ -1,0 +1,55 @@
+// ------------------------- BUTTON - COMPONENTS ---------------------------- //
+
+
+.button {
+  $parent: &;
+
+  // Reset - Button
+
+  @include button-reset;
+
+  // Default values - Button
+
+  @include get-button-base-styles;
+  @include get-button-type-styles($parent); // neutral type
+  @include get-button-size-styles; // md size
+
+
+  // ELEMENTS - BUTTON ------------------------------------------------------ //
+
+  &__text {
+    position: relative;
+    pointer-events: none;
+  }
+
+  &__icon {
+    @include get-button-icon-element-size-styles; // md size
+
+    &--bold {
+      font-weight: bold;
+    }
+  }
+
+
+  // MODIFIERS - BUTTON ----------------------------------------------------- //
+
+  // Type - Modifier - Button
+
+  @each $type in $button-type-list {
+    &--#{$type} {
+      @include get-button-type-styles($parent, $type);
+    }
+  }
+
+  // Size - Modifier - Button
+
+  @each $size in $button-size-list {
+    &--#{$size} {
+      @include get-button-size-styles($size);
+
+      #{$parent}__icon {
+        @include get-button-icon-element-size-styles($size);
+      }
+    }
+  }
+}

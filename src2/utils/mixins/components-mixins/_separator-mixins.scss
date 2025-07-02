@@ -1,0 +1,90 @@
+// --------------------- SEPARATOR - COMPONENTS - MIXINS -------------------- //
+
+
+// SEPARATOR - COMPONENTS - MIXINS ------------------------------------------ //
+
+// Size - Separator - Components - Mixins
+
+@mixin separator-size($dir: ver, $size: md) {
+  $size-value: map-get($separator-size-map, $size);
+
+  @if ($dir == hor) {
+    height: $size-value;
+    width: 100%;
+  } @else {
+    width: $size-value;
+    align-self: stretch;
+    height: auto;
+  }
+}
+
+// Spacing - Separator - Components - Mixins
+
+@mixin separator-spacing($dir: ver, $spacing: null) {
+  @if ($spacing == null) {
+    @if ($dir == hor) {
+      $spacing: md;
+    } @else {
+      $spacing: sm;
+    }
+  }
+
+  @if ($dir == ver) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @if ($dir == hor) {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  @include spacing(
+    margin,
+    map-get($separator-dir-spacing-map, $dir),
+    $spacing,
+    component
+  );
+}
+
+// Color - Separator - Components - Mixins
+
+@mixin separator-color(
+  $color-scheme: base,
+  $contrast: base
+) {
+  background-color: map-deep-get($separator-color-scheme-map, $color-scheme, $contrast);
+}
+
+// Styles - Separator - Components - Mixins
+
+@mixin separator($dir: ver) {
+  @include separator-spacing($dir);
+  @include separator-size($dir);
+  @include separator-color;
+  flex-shrink: 0;
+  border: none;
+}
+
+
+// BORDER SEPARATOR - COMPONENTS - MIXINS ----------------------------------- //
+
+@mixin border-separator(
+  $side: bottom,
+  $size: md,
+  $type: base,
+  $contrast: base,
+  $radius-size: null
+) {
+  $side-modifier: -#{$side};
+  @if $side == all {
+    $side-modifier: null;
+  }
+  $size-value: map-get($separator-size-map, $size);
+  $color-value: map-deep-get($separator-color-scheme-map, $type, $contrast);
+
+  border#{$side-modifier}: solid $size-value $color-value;
+  @if ($radius-size) {
+    border-radius: map-get($separator-radius-size-map, $radius-size);
+  }
+}

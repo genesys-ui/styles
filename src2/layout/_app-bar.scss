@@ -1,0 +1,44 @@
+// -------------------------- APP BAR - COMONENTS --------------------------- //
+
+
+.app-bar {
+  $parent: &;
+
+  @include flex(row, center);
+  height: $cmp-tabs-container-size-height-lg;
+  padding: 0 1.6rem;
+  background-color: $cmp-app-bar-color-background;
+
+
+  &:not(#{$parent}--has-lead-nav) {
+    border-bottom: .1rem solid map-deep-get($elevation-map, "sticky-bottom", "border-color");
+  }
+
+  // ELEMENTS - APP BAR ----------------------------------------------------- //
+
+  &__divider {
+    margin: 0 1.6rem;
+    border: none;
+    width: 0.1rem;
+    height: $cmp-app-bar-divider-size-height;
+    background-color: $cmp-app-bar-divider-color-background;
+  }
+
+  &__menu {
+    flex: 1 0 auto;
+    margin-left: -($cmp-tabs-item-space-padding + $cmp-tabs-content-space-padding);
+  }
+
+  &__actions {
+    align-items: center;
+    display: flex;
+    margin-left: auto;
+  }
+
+
+  // MODIFIERS - APP BAR ---------------------------------------------------- //
+
+  &--sticky {
+    @include elevation(sticky-bottom);
+  }
+}

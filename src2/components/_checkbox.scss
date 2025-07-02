@@ -1,0 +1,24 @@
+// -------------------------- CHECKBOX - COMPONENT -------------------------- //
+
+
+.checkbox {
+  $parent: &;
+
+  @include field-control-checkbox($parent);
+
+  // Size - Modifier - Checkbox
+
+  @each $size in $field-control-size-list {
+    &--#{$size} {
+      @include field-control-checkbox-size($size);
+    }
+  }
+
+  // Status - Modifier - Checkbox
+
+  @each $status in $field-control-color-list {
+    &--#{$status} {
+      @include field-control-checkbox-color($parent, $status);
+    }
+  }
+}

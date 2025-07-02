@@ -1,0 +1,50 @@
+// ---------------------------- TAG - COMPONENTS ---------------------------- //
+
+
+.tag {
+  $parent: &;
+
+  // Default styles - Tags
+
+  @include tag($parent: $parent);
+
+  &:empty {
+    display: none;
+  }
+
+  // ELEMENTS - TAGS -------------------------------------------------------- //
+
+  &-group {
+    @include flex(null, null, null, wrap);
+    @include spacing($property: gap, $size: xs, $type: component);
+
+    &:empty {
+      display: none;
+    }
+  }
+
+
+  // MODIFIERS - TAGS ------------------------------------------------------- //
+
+  // Bold - Modifier - Tags
+
+  &--bold {
+    font-weight: bold;
+  }
+
+  // Size - Modifier - Tags
+
+  @each $size in $tag-size-list {
+    &--#{$size} {
+      @include tag-size($parent: $parent, $size: $size);
+    }
+  }
+
+  // Color Scheme - Modifier - Tags
+
+  @each $color-scheme in $tag-color-scheme-list {
+    &--#{$color-scheme} {
+      @include tag-color($color-scheme);
+    }
+  }
+}

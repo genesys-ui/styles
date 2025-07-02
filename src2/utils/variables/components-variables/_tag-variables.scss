@@ -1,0 +1,127 @@
+// ------------------------ TAG - COMPONENTS - VARIABLES -------------------- //
+
+
+// SIZE - TAG - COMPONENTS - VARIABLES -------------------------------------- //
+
+$tag-size-list: sm, md, lg;
+
+$tag-size-map: (
+  sm: (
+    height: $cmp-tag-size-height-sm,
+    padding: 0 $cmp-tag-space-padding-hor-sm,
+    font-size: $alias-typo-font-size-body-sm,
+    icon-size: $cmp-tag-icon-size-square-sm,
+    icon-spacing: $cmp-tag-icon-space-margin-right-sm,
+  ),
+  md: (
+    height: $cmp-tag-size-height-md,
+    padding: 0 $cmp-tag-space-padding-hor-md,
+    font-size: $alias-typo-font-size-body-md,
+    icon-size: $cmp-tag-icon-size-square-md,
+    icon-spacing: $cmp-tag-icon-space-margin-right-md,
+  ),
+  lg: (
+    height: $cmp-tag-size-height-lg,
+    padding: 0 $cmp-tag-space-padding-hor-lg,
+    font-size: $alias-typo-font-size-body-lg,
+    icon-size: $cmp-tag-icon-size-square-lg,
+    icon-spacing: $cmp-tag-icon-space-margin-right-lg,
+  ),
+);
+
+
+// COLOR SCHEME - TAG - COMPONENTS - VARIABLES ------------------------------ //
+
+$tag-color-scheme-list:
+  primary, secondary,
+  neutral, blend-inverse, blend-base,
+  error, help, info, success, warning,
+  data-blue, data-bronze, data-dusk, data-green, data-indigo, data-magenta,
+  data-purple, data-red, data-sky, data-slate, data-teal;
+
+$tag-color-scheme-type-map: (
+  primary: (
+    bg: $cmp-tag-color-background-primary,
+    color: $cmp-tag-color-text-primary,
+  ),
+  secondary: (
+    bg: $cmp-tag-color-background-secondary,
+    color: $cmp-tag-color-text-secondary,
+  ),
+  neutral: (
+    bg: $cmp-tag-color-background-neutral,
+    color: $cmp-tag-color-text-neutral,
+  ),
+  blend-base: (
+    bg: $cmp-tag-color-background-blend-base,
+    color: $cmp-tag-color-text-blend-base,
+  ),
+  blend-inverse: (
+    bg: $cmp-tag-color-background-blend-inverse,
+    color: $cmp-tag-color-text-blend-inverse,
+  ),
+  error: (
+    bg: $cmp-tag-color-background-error,
+    color: $cmp-tag-color-text-error,
+  ),
+  success: (
+    bg: $cmp-tag-color-background-success,
+    color: $cmp-tag-color-text-success,
+  ),
+  warning: (
+    bg: $cmp-tag-color-background-warning,
+    color: $cmp-tag-color-text-warning,
+  ),
+  help: (
+    bg: $cmp-tag-color-background-help,
+    color: $cmp-tag-color-text-help,
+  ),
+  info: (
+    bg: $cmp-tag-color-background-info,
+    color: $cmp-tag-color-text-info,
+  ),
+  data-blue: (
+    bg: $cmp-tag-color-background-data-blue,
+    color: $cmp-tag-color-text-data-blue,
+  ),
+  data-bronze: (
+    bg: $cmp-tag-color-background-data-bronze,
+    color: $cmp-tag-color-text-data-bronze,
+  ),
+  data-dusk: (
+    bg: $cmp-tag-color-background-data-dusk,
+    color: $cmp-tag-color-text-data-dusk,
+  ),
+  data-green: (
+    bg: $cmp-tag-color-background-data-green,
+    color: $cmp-tag-color-text-data-green,
+  ),
+  data-indigo: (
+    bg: $cmp-tag-color-background-data-indigo,
+    color: $cmp-tag-color-text-data-indigo,
+  ),
+  data-magenta: (
+    bg: $cmp-tag-color-background-data-magenta,
+    color: $cmp-tag-color-text-data-magenta,
+  ),
+  data-purple: (
+    bg: $cmp-tag-color-background-data-purple,
+    color: $cmp-tag-color-text-data-purple,
+  ),
+  data-red: (
+    bg: $cmp-tag-color-background-data-red,
+    color: $cmp-tag-color-text-data-red,
+  ),
+  data-sky: (
+    bg: $cmp-tag-color-background-data-sky,
+    color: $cmp-tag-color-text-data-sky,
+  ),
+  data-slate: (
+    bg: $cmp-tag-color-background-data-slate,
+    color: $cmp-tag-color-text-data-slate,
+  ),
+  data-teal: (
+    bg: $cmp-tag-color-background-data-teal,
+    color: $cmp-tag-color-text-data-teal,
+  ),
+);

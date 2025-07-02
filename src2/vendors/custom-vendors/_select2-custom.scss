@@ -1,0 +1,517 @@
+// ----------------------- SELECT 2 - CUSTOM - VENDORS ---------------------- //
+
+
+// ------------------- LOGTRUST THEME - SELECT 2 - CUSTOM ------------------- //
+
+[class*=select2-container--logtrust] {
+  $field-bg-color: map-deep-get($field-control-color-map, background, base, enabled);
+  $field-bg-color-readonly: map-deep-get($field-control-color-map, background, base, readonly);
+  $field-border-color-enabled: map-deep-get($field-control-color-map, border, base, enabled);
+  $field-border-color-hovered: map-deep-get($field-control-color-map, border, base, hovered);
+  $field-border-color-readonly: map-deep-get($field-control-color-map, border, base, readonly);
+  $field-color-placeholder: map-deep-get($field-control-color-map, text, base, placeholder);
+  $field-color-enabled: map-deep-get($field-control-color-map, text, base, enabled);
+  $field-color-hovered: map-deep-get($field-control-color-map, text, base, hovered);
+  $field-color-focused: map-deep-get($field-control-color-map, text, base, focused);
+  $field-color-readonly: map-deep-get($field-control-color-map, text, base, readonly);
+
+  // The following is added because of the case where the select is into a modal
+  &:not(.select2) {
+    z-index: calc(#{map-deep-get($elevation-map, overlay, z-index)} + 1);
+  }
+
+  .selection {
+    @include size(100%);
+    display: block;
+    border: 0;
+  }
+
+  .select2-selection {
+    @include field-control-typo;
+    @include flex(null, center);
+    transition: all $alias-fields-mutation-transition-duration ease-in-out;
+    border: solid $alias-fields-shape-border-size-base $field-border-color-enabled;
+    border-radius: $alias-shape-border-radius-md;
+    background-color: $field-bg-color;
+    color: $field-color-enabled;
+
+    &__placeholder {
+      color: $field-color-placeholder;
+    }
+  }
+
+  .select2-search--inline .select2-search__field {
+    background: transparent;
+    border: none;
+    outline: 0;
+    box-shadow: none;
+    appearance: none;
+  }
+
+
+  // SINGLE - SELECT 2 ------------------------------------------------------ //
+
+  .select2-selection--single {
+    height: map-deep-get($field-control-size-map, md, "height");
+
+    .select2-selection__rendered {
+      @include spacing(padding, right, lg, component);
+      padding-left: map-deep-get($field-control-size-map, md, "padding-hor");
+      color: inherit;
+    }
+
+    .select2-selection__clear {
+      cursor: pointer;
+      float: right;
+      font-weight: bold;
+    }
+
+    // Arrow - Single - Select2
+
+    .select2-selection__arrow {
+      @include inline-flex(null, center, center);
+      @include position(0, 0, 0, null);
+      position: absolute;
+      transition: $cmp-select-indicator-mutation-transition-duration;
+      width: map-deep-get($select-size-map, md, arrow-width);
+
+      &::before {
+        @include field-control-typo($props: font-size);
+        @include icon-font;
+        content: $gi-arrow_down_fat;
+        font-weight: bold;
+      }
+
+      b {
+        display: none;
+      }
+    }
+  }
+
+
+  // SINGLE - SELECT 2 ------------------------------------------------------ //
+
+  .form__field &[style^="width:"] {
+    width: 100% !important;
+  }
+
+
+  // DROPDOWN - SELECT 2 ---------------------------------------------------- //
+
+  .select2-dropdown {
+    $hor-padding: map-deep-get($field-control-size-map, md, "padding-hor");
+
+    @include dropdown-menu-panel;
+
+    &--below {
+      margin-top: calc(#{$alias-space-cmp-xxs} / 2);
+    }
+
+    &--above {
+      margin-top: calc(calc(#{$alias-space-cmp-xxs} / 2) * -1);
+    }
+
+    // Search box - Dropdown - Select2
+
+    .select2-search--dropdown {
+      padding: $hor-padding;
+      border-bottom: solid #{$alias-shape-border-size-separator-md} #{$alias-color-border-separator-base-weaker};
+
+      input {
+        @include field-control-input($size: md);
+        width: 100%;
+      }
+    }
+
+    // Results - Dropdown - Select2
+
+    .select2-results {
+      @include menu-wrapper;
+
+      > .select2-results__options {
+        @include menu-list;
+      }
+
+      .select2-results__option {
+        @include menu-item($parent: ".select2-results__option", $hor-padding: $hor-padding);
+
+        i {
+          margin-right: $alias-space-cmp-xs;
+          font-size: $alias-size-square-icon-base-sm;
+        }
+
+        &[role="group"] {
+          @include menu-item-group('.select2-results__group', $hor-padding);
+        }
+
+        .select2-results__option .select2-results__option {
+          margin-left: -1em;
+          padding-left: 2em;
+        }
+
+        .select2-results__option .select2-results__option .select2-results__option {
+          margin-left: -2em;
+          padding-left: 3em;
+        }
+
+        .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+          margin-left: -3em;
+          padding-left: 4em;
+        }
+
+        .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+          margin-left: -4em;
+          padding-left: 5em;
+        }
+
+        .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option .select2-results__option {
+          margin-left: -5em;
+          padding-left: 6em;
+        }
+      }
+    }
+  }
+
+
+  // STATES - SELECT 2 ------------------------------------------------------ //
+
+  // Select2 - States - Select2
+
+  &.select2-container--disabled {
+    @include disabled-field;
+
+    .select2-selection {
+      cursor: not-allowed;
+
+      &--single .select2-selection__clear {
+        display: none;
+      }
+    }
+  }
+
+  // Hover - States - Select2
+
+  &.select2-container:not(.select2-container--disabled):hover {
+    .select2-selection {
+      border-color: $field-border-color-hovered;
+    }
+  }
+
+  // Focus - States - Select2
+
+  &.select2-container--focus,
+  &:focus,
+  .selection:focus,
+  .select2-selection--single:focus {
+    outline: none;
+  }
+
+  &.select2-container--focus:not(.select2-container--disabled),
+  &.select2-container--open:not(.select2-container--disabled) {
+    .select2-selection {
+      box-shadow: $alias-elevation-box-shadow-base-focused;
+      color: $field-color-focused;
+    }
+  }
+
+  // Open - States - Select2
+
+  &.select2-container--open {
+    .select2-selection--single .select2-selection__arrow {
+      transform: rotate(180deg);
+
+      b {
+        border-color: transparent transparent #888 transparent;
+        border-width: 0 4px 5px 4px;
+      }
+    }
+  }
+
+  // Text direction - States - Select2
+
+  &[dir="rtl"] .select2-selection--single {
+    .select2-selection__clear {
+      float: left;
+    }
+
+    .select2-selection__arrow {
+      left: 1px;
+      right: auto;
+      background-position: left center;
+    }
+  }
+
+
+  // STATUS - SELECT 2 ------------------------------------------------------ //
+
+  @each $status in $field-control-color-list {
+    .select--#{$status} + & {
+      .select2-selection {
+        border-color: map-deep-get($field-control-color-map, border, $status, enabled);
+
+        &__placeholder {
+          color: map-deep-get($field-control-color-map, text, $status, placeholder);
+        }
+      }
+
+      &.select2-container:not(.select2-container--disabled):hover {
+        .select2-selection {
+          border-color: map-deep-get($field-control-color-map, border, $status, hovered);
+        }
+      }
+    }
+  }
+
+
+  // MULTIPLE - SELECT 2 ---------------------------------------------------- //
+
+  .select2-selection--multiple {
+    $field-control-height: map-deep-get($field-control-size-map, md, "height");
+    $field-control-lh: map-deep-get($typography-map, body, sm, line-height);;
+    $ver-padding: calc((#{$field-control-height} - #{$field-control-lh}) / 2);
+    min-height: map-deep-get($field-control-size-map, md, "height");
+    height: auto;
+    padding-top: $ver-padding;
+    padding-bottom: $ver-padding;
+
+    .select2-selection__rendered {
+      list-style: none;
+      margin: 0;
+      width: 100%;
+    }
+
+    .select2-selection__placeholder {
+      float: left;
+    }
+
+    .select2-selection__clear {
+      cursor: pointer;
+      float: right;
+      font-weight: bold;
+      margin-top: 5px;
+      margin-right: 10px;
+    }
+
+    .select2-selection__choice {
+      cursor: default;
+      float: left;
+      margin-right: 0.4rem;
+      margin-top: 0.4rem;
+      padding: 0 5px;
+
+      &__remove {
+        color: #999;
+        cursor: pointer;
+        display: inline-block;
+        font-weight: bold;
+        margin-right: 2px;
+
+        &:hover {
+          color: #333;
+        }
+      }
+    }
+  }
+
+
+  // TEXT DIRECTION - SELECT 2 ---------------------------------------------- //
+
+  &[dir="rtl"] .select2-selection--multiple .select2-selection__choice,
+  &[dir="rtl"] .select2-selection--multiple .select2-selection__placeholder,
+  &[dir="rtl"] .select2-selection--multiple .select2-search--inline {
+    float: right;
+  }
+
+  &[dir="rtl"] .select2-selection--multiple .select2-selection__choice {
+    margin-left: 5px;
+    margin-right: auto;
+
+    &__remove {
+      margin-left: 2px;
+      margin-right: auto;
+    }
+  }
+
+  &.select2-container--disabled .select2-selection__choice__remove {
+    display: none;
+  }
+}
+
+
+// --------------- LOGTRUST EXTENDED THEME - SELECT 2 - CUSTOM -------------- //
+
+.select2-container[class*="logtrust-extended"] {
+  flex-grow: 2;
+
+  .select2-dropdown .select2-results .select2-results__option {
+    padding: 0;
+
+    &::before {
+      content: none;
+    }
+
+    .primary-text {
+      @include typography($size: xl, $props: line-height);
+      @include truncate;
+      display: block;
+
+      &::before {
+        @include icon-font;
+        @include spacing(margin, right, xxs, component);
+        position: relative;
+        top: 1px;
+      }
+    }
+
+    &[role="group"] strong .primary-text {
+      line-height: $alias-size-height-surface-xxs;
+    }
+
+    .applicable .primary-text {
+      @include text-color-status(success);
+      font-weight: 500;
+
+      &::before {
+        @include icon-status(success);
+        color: $alias-color-text-feedback-success-weak;
+      }
+    }
+
+    .non-applicable .primary-text {
+      @include text-color-status(warning);
+      font-weight: 500;
+
+      &::before {
+        @include icon-status(warning);
+        color: $alias-color-text-feedback-warning-base;
+      }
+    }
+
+    .operation-item:not(.non-applicable):not(.applicable) span.primary-text {
+      display: block;
+    }
+
+    &--highlighted {
+      &[aria-selected] {
+        background: none;
+      }
+
+      .operation-item.applicable {
+        background-color: $alias-color-background-feedback-success-weaker;
+
+        .primary-text,
+        .primary-text::before {
+          color: $alias-color-text-feedback-success-strong;
+        }
+      }
+
+      .operation-item.non-applicable {
+        background-color: $alias-color-background-feedback-warning-weaker;
+
+        .primary-text,
+        .primary-text::before {
+          color: $alias-color-text-feedback-warning-strong;
+        }
+      }
+    }
+
+    .operation-item {
+      overflow: hidden;
+    }
+
+    &[role=group] {
+      padding: 0;
+    }
+
+    &[aria-selected=true] {
+      background: none;
+    }
+
+    &[aria-selected=true] .operation-item {
+      background-color: $alias-color-background-surface-base-activated;
+
+      .primary-text,
+      .primary-text::before {
+        color: $alias-color-text-action-neutral-activated
+      }
+    }
+
+    .operation-item.non-applicable,
+    .operation-item.applicable  {
+      padding: map-deep-get($spacing-size-map, xxs, component) map-deep-get($field-control-size-map, md, padding-hor);
+    }
+
+    .secondary-text:not(:empty) {
+      @include tag($size: sm, $color: blend-base);
+      bottom: 0.2rem;
+      float: right;
+    }
+
+    .tertiary-text:not(:empty) {
+      @include field-control-typo($size: sm);
+      @include text-color;
+      display: block;
+      white-space: pre-wrap;
+    }
+
+    .secondary-text:not(:empty) + .tertiary-text {
+      @include truncate;
+    }
+  }
+}
+
+
+// ------------------------ SIZE - SELECT 2 - CUSTOM ------------------------ //
+
+
+@each $size in $field-control-size-list {
+  .select--#{$size} + .select2-container {
+    .select2-selection {
+      @include field-control-size($size);
+      padding: unset;
+
+      &__arrow {
+        width: map-deep-get($select-size-map, $size, arrow-width);
+      }
+    }
+  }
+}
+
+
+// ----------------------- HEADING - SELECT 2 - CUSTOM ---------------------- //
+
+.select2--heading + .select2-container.select2-container--logtrust {
+  .select2-selection {
+    @include get-button-type-styles($type: quiet);
+    @include spacing(margin, left, xs, component, true);
+    @include spacing(padding, left, xs, component);
+  }
+
+  &.select2-container--open .select2-selection::before {
+    background-color: $alias-color-background-action-quiet-expanded;
+  }
+
+  &.select2-container--focus:not(.select2-container--disabled) .select2-selection,
+  &.select2-container--open:not(.select2-container--disabled) .select2-selection {
+    box-shadow: none;
+  }
+
+  .select2-selection--single {
+    border: none;
+    background-color: inherit;
+    line-height: $alias-typo-line-height-heading-h4;
+
+    .select2-selection__rendered {
+      @include typography(heading, h4);
+      @include text-color(heading, strong);
+      @include spacing(padding, right, xl, component);
+      position: relative;
+      padding-left: 0;
+    }
+  }
+
+  .select2-selection__rendered:empty::before {
+    content: 'Loading...';
+    display: block;
+  }
+}

@@ -1,0 +1,21 @@
+// -------------------- OVERLAY - COMPONENTS - VARIABLES -------------------- //
+
+
+// LISTS - OVERLAY - COMPONENTS - VARIABLES --------------------------------- //
+
+$overlay-color-list: dark, light;
+$overlay-type-list: opacity, opaque;
+
+
+// MAP SIZE - OVERLAY - COMPONENTS - VARIABLES ------------------------------ //
+
+$overlay-color-scheme-map: (
+  dark: (
+    opacity: $cmp-overlay-color-background-dark-opacity,
+    opaque: $cmp-overlay-color-background-dark-opaque,
+  ),
+  light: (
+    opacity: $cmp-overlay-color-background-light-opacity,
+    opaque: $cmp-overlay-color-background-light-opaque,
+  )
+)

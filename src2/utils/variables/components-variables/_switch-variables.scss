@@ -1,0 +1,65 @@
+// ---------------- SWITCH - COMPONENTS - VARIABLES ------------------ //
+
+
+// SIZE - SWITCH -COMPONENTS - VARIABLES ---------------------------- //
+
+$switch-size-list: sm, md, lg;
+
+$switch-size-map: (
+  sm: (
+    track: (
+      width: $cmp-switch-control-track-size-width-sm,
+      height: $cmp-switch-control-track-size-height-sm,
+    ),
+    handler: (
+      square: $cmp-switch-control-handler-size-square-sm,
+      offset: calc((#{$cmp-switch-control-track-size-height-sm} - #{$cmp-switch-control-handler-size-square-sm}) / 2),
+      position: (
+        unchecked: calc((#{$cmp-switch-control-track-size-height-sm} - #{$cmp-switch-control-handler-size-square-sm}) / 2),
+        intermediate: calc(50% - (#{$cmp-switch-control-handler-size-square-sm} /2)),
+        checked: calc(100% - (#{$cmp-switch-control-handler-size-square-sm} + #{calc((#{$cmp-switch-control-track-size-height-sm} - #{$cmp-switch-control-handler-size-square-sm}) / 2)})),
+      ),
+    )
+  ),
+  md: (
+    track: (
+      width: $cmp-switch-control-track-size-width-md,
+      height: $cmp-switch-control-track-size-height-md,
+    ),
+    handler: (
+      square: $cmp-switch-control-handler-size-square-md,
+      offset: calc((#{$cmp-switch-control-track-size-height-md} - #{$cmp-switch-control-handler-size-square-md}) / 2),
+      position: (
+        unchecked: calc((#{$cmp-switch-control-track-size-height-md} - #{$cmp-switch-control-handler-size-square-md}) / 2),
+        intermediate: calc(50% - (#{$cmp-switch-control-handler-size-square-md} /2)),
+        checked: calc(100% - (#{$cmp-switch-control-handler-size-square-md} + #{calc((#{$cmp-switch-control-track-size-height-md} - #{$cmp-switch-control-handler-size-square-md}) / 2)})),
+      ),
+    )
+  ),
+  lg: (
+    track: (
+      width: $cmp-switch-control-track-size-width-lg,
+      height: $cmp-switch-control-track-size-height-lg,
+    ),
+    handler: (
+      square: $cmp-switch-control-handler-size-square-lg,
+      offset: calc((#{$cmp-switch-control-track-size-height-lg} - #{$cmp-switch-control-handler-size-square-lg}) / 2),
+      position: (
+        unchecked: calc((#{$cmp-switch-control-track-size-height-lg} - #{$cmp-switch-control-handler-size-square-lg}) / 2),
+        intermediate: calc(50% - (#{$cmp-switch-control-handler-size-square-lg} /2)),
+        checked: calc(100% - (#{$cmp-switch-control-handler-size-square-lg} + #{calc((#{$cmp-switch-control-track-size-height-lg} - #{$cmp-switch-control-handler-size-square-lg}) / 2)})),
+      ),
+    )
+  ),
+);
+
+
+// COLOR - SWITCH - COMPONENTS - VARIABLES --------------------------- //
+
+$switch-states-list: enabled, checked, intermediate;
+
+$switch-track-bg-color-map: (
+  enabled: $cmp-switch-control-track-color-background-unchecked-base,
+  checked: $cmp-switch-control-track-color-background-checked-base,
+  intermediate: darken($cmp-switch-control-track-color-background-unchecked-base, 20%),
+);

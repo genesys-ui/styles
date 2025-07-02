@@ -1,0 +1,19 @@
+// ---------------------------- TYPO - UTILS ----------------------------- //
+
+// Typo - Truncated
+
+.truncated {
+  @include truncate();
+
+  &--2x {
+    @include truncate(2);
+  }
+
+  &--3x {
+    @include truncate(3);
+  }
+
+  &--4x {
+    @include truncate(4);
+  }
+}

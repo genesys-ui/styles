@@ -1,0 +1,24 @@
+// --------------------------- RADIO - COMPONENT ---------------------------- //
+
+
+.radio {
+  $parent: &;
+
+  @include field-control-radio($parent);
+
+  // Size - Modifier - Checkbox
+
+  @each $size in $field-control-size-list {
+    &--#{$size} {
+      @include field-control-radio-size($size);
+    }
+  }
+
+  // Status - Modifier - Checkbox
+
+  @each $status in $field-control-color-list {
+    &--#{$status} {
+      @include field-control-radio-color($parent, $status);
+    }
+  }
+}

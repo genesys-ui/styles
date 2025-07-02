@@ -1,0 +1,76 @@
+// ------------------- SEPARATOR - COMPONENTS - VARIABLES ------------------- //
+
+
+// DIRECTION SPACING - SEPARATOR - COMPONENTS - VARIABLES ------------------- //
+
+$separator-dir-spacing-map: (
+  ver: hor,
+  hor: ver,
+);
+
+
+// SIZE - SEPARATOR - COMPONENTS - VARIABLES -------------------------------- //
+
+$separator-size-list: md, lg, xl;
+
+$separator-size-map: (
+  md: $alias-shape-border-size-separator-md,
+  lg: $alias-shape-border-size-separator-lg,
+  xl: $alias-shape-border-size-separator-xl,
+);
+
+
+// RADIUS - SIZE - SEPARATOR - COMPONENTS - VARIABLES ----------------------- //
+
+$separator-radius-size-list: sm, md, lg;
+
+$separator-radius-size-map: (
+  sm: $alias-shape-border-radius-sm,
+  md: $alias-shape-border-radius-md,
+  lg: $alias-shape-border-radius-lg,
+);
+
+
+// COLOR - SEPARATOR - COMPONENTS - VARIABLES ------------------------------- //
+
+$separator-color-scheme-list: base, inverse, blend-base, blend-inverse;
+$separator-contrast-list: weakest, weaker, weak, base, strong, stronger, strongest;
+
+$separator-color-scheme-map: (
+  base: (
+    weakest: $alias-color-border-separator-base-weakest,
+    weaker: $alias-color-border-separator-base-weaker,
+    weak: $alias-color-border-separator-base-weak,
+    base: $alias-color-border-separator-base-base,
+    strong: $alias-color-border-separator-base-strong,
+    stronger: $alias-color-border-separator-base-stronger,
+    strongest: $alias-color-border-separator-base-strongest,
+  ),
+  inverse: (
+    weakest: $alias-color-border-separator-inverse-weakest,
+    weaker: $alias-color-border-separator-inverse-weaker,
+    weak: $alias-color-border-separator-inverse-weak,
+    base: $alias-color-border-separator-inverse-base,
+    strong: $alias-color-border-separator-inverse-strong,
+    stronger: $alias-color-border-separator-inverse-stronger,
+    strongest: $alias-color-border-separator-inverse-strongest,
+  ),
+  blend-base: (
+    weakest: $alias-color-border-separator-blend-base-weakest,
+    weaker: $alias-color-border-separator-blend-base-weaker,
+    weak: $alias-color-border-separator-blend-base-weak,
+    base: $alias-color-border-separator-blend-base-base,
+    strong: $alias-color-border-separator-blend-base-strong,
+    stronger: $alias-color-border-separator-blend-base-stronger,
+    strongest: $alias-color-border-separator-blend-base-strongest,
+  ),
+  blend-inverse: (
+    weakest: $alias-color-border-separator-blend-inverse-weakest,
+    weaker: $alias-color-border-separator-blend-inverse-weaker,
+    weak: $alias-color-border-separator-blend-inverse-weak,
+    base: $alias-color-border-separator-blend-inverse-base,
+    strong: $alias-color-border-separator-blend-inverse-strong,
+    stronger: $alias-color-border-separator-blend-inverse-stronger,
+    strongest: $alias-color-border-separator-blend-inverse-strongest,
+  ),
+);

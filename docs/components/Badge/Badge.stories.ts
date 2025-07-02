@@ -24,9 +24,25 @@ export const Icon = {
 
 export const IsEmpty = {
   render: () => `
-<span class="badge badge--is-empty badge--sm"></span>
-<span class="badge badge--is-empty badge--md"></span>
-<span class="badge badge--is-empty badge--lg"></span>
+<span class="badge badge--empty badge--sm"></span>
+<span class="badge badge--empty badge--md"></span>
+<span class="badge badge--empty badge--lg"></span>
+  `,
+};
+
+export const IsCircular = {
+  render: () => `
+<span class="badge badge--circular badge--sm">42</span>
+<span class="badge badge--circular badge--md">42</span>
+<span class="badge badge--circular badge--lg">42</span>
+  `,
+};
+
+export const TruncatedText = {
+  render: () => `
+<span class="badge badge--error" style="max-width: 5.4rem">
+  <span class="truncated" title="Long text to be truncated">Long text to be truncated</span>
+</span>
   `,
 };
 

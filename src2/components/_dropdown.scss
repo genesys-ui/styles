@@ -1,0 +1,97 @@
+// -------------------------- DROPDOWN- COMPONENTS -------------------------- //
+
+
+/// TODO: This component needs to be tokenized with specific component tokens.
+
+.dropdown {
+  $parent: &;
+  $dropdown-size-width-list: sm, md, lg;
+  $dropdown-size-width-map: (
+    sm: 20rem,
+    md: 24rem,
+    lg: 28rem,
+  );
+
+  position: relative;
+
+
+  // ELEMENTS - DROPDOWN ---------------------------------------------------- //
+
+  &__trigger {
+    cursor: pointer;
+  }
+
+  &__panel {
+    @include dropdown-menu-panel;
+    @include menu-wrapper($spacing-prop: padding);
+
+    &,
+    &--absolute {
+      display: none;
+      position: absolute;
+
+      &,
+      &#{$parent}__panel--position-top {
+        top: 100%;
+        bottom: unset;
+      }
+
+      &#{$parent}__panel--position-right {
+        right: 0;
+        left: unset;
+      }
+
+      &#{$parent}__panel--position-bottom {
+        top: unset;
+        bottom: 100%;
+      }
+
+      &,
+      &#{$parent}__panel--position-left {
+        right: unset;
+        left: 0;
+      }
+    }
+
+    &--static {
+      display: unset;
+      position: unset;
+      top: unset;
+      left: unset;
+    }
+
+    @each $size in $dropdown-size-width-list {
+      &--width-#{$size} {
+        width: map-deep-get($dropdown-size-width-map, $size);
+      }
+    }
+  }
+
+  &__list {
+    @include menu-list;
+  }
+
+  &__item {
+    @include menu-item($parent: &);
+  }
+
+
+  // MODIFIERS - DROPDOWN --------------------------------------------------- //
+
+  // Show on focus - Modifier - Dropdown
+
+  &--show-on-focus {
+    #{$parent}__panel {
+      display: block;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0s ease 0.2s, visibility 0s ease 0.2s;
+    }
+
+    #{$parent}__trigger:focus + #{$parent}__panel {
+      visibility: visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+  }
+}

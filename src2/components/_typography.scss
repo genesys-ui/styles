@@ -1,0 +1,150 @@
+// ------------------------- TYPOGRAPHY - COMPONENTS ------------------------ //
+
+
+// BLOCK - TYPOGRAPHY ------------------------------------------------------- //
+
+.code { // <pre> HTML tag
+  $code-padding-bottom: calc(#{map-deep-get($spacing-size-map, sm, component)} / 2);
+
+  @include typography(mono);
+  @include spacing(padding, hor, md, component);
+  padding-top: map-deep-get($spacing-size-map, sm, component);
+  padding-bottom: $code-padding-bottom;
+  background-color: $alias-color-background-surface-base-raised;
+  white-space: normal;
+
+  &__text { // <code> HTML tag
+    @include scrollbars(sm);
+    padding-bottom: $code-padding-bottom;
+    display: block;
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  &--sm {
+    @include typography(mono, $size: sm);
+  }
+
+  &--lg {
+    @include typography(mono, $size: lg);
+  }
+}
+
+.heading {
+  @include typography-styles(heading);
+}
+
+.hero {
+  @include typography-styles(hero);
+}
+
+.lead {
+  @include typography-styles(lead);
+}
+
+.list {
+  @include typography-styles(body);
+  @include spacing(padding, left, md, component);
+
+  &__item:not(:first-child) {
+    @include spacing(margin, top, xxs, component);
+  }
+
+  &,
+  &--unordered {
+    list-style-type: disc;
+  }
+
+  &--ordered {
+    list-style-type: decimal;
+  }
+}
+
+.mono {
+  @include typography-styles(mono);
+}
+
+.overline {
+  @include typography-styles(overline);
+}
+
+.paragraph {
+  @include typography-styles(body);
+}
+
+
+// INLINE - TYPOGRAPHY ------------------------------------------------------ //
+
+.code-inline {
+  @include typography(mono);
+  @include spacing(padding, hor, xxs, component);
+  border-radius: 0 $cmp-code-inline-shape-border-radius;
+  border: $cmp-code-inline-shape-border solid $cmp-code-inline-color-border;
+  background-color: $cmp-code-inline-color-background;
+
+  &--sm {
+    @include typography(mono, $size: sm);
+  }
+
+  &--lg {
+    @include typography(mono, $size: lg);
+  }
+}
+
+.deleted {
+  text-decoration: line-through;
+}
+
+.highlighted {
+  background-color: $cmp-highlighted-color-background;
+  color: inherit;
+}
+
+.inserted {
+  background-color: $cmp-inserted-color-background;
+  color: inherit;
+  text-decoration: none;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.small {
+  font-size: 75%;
+}
+
+.strong {
+  font-weight: 700;
+
+  &--bold {
+    font-weight: 900;
+  }
+}
+
+.sub {
+  line-height: 1;
+  vertical-align: sub;
+  font-size: 70%;
+}
+
+.sup {
+  line-height: 1;
+  vertical-align: super;
+  font-size: 70%;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+
+// TEXT LEGIBLE - TYPOGRAPHY ------------------------------------------------ //
+
+.body-legible--max-width {
+  @each $size in $typography-body-size-list {
+    &-#{$size} {
+      max-width: map-get($body-legible-width-map, $size);
+    }
+  }
+}

@@ -1,0 +1,210 @@
+// -------------------------- MODAL - COMPONENTS ---------------------------- //
+
+
+// These styles depend on the fancybox library
+
+.modal {
+  @import './variables-modal';
+  @import './mixins-modal';
+
+  $parent: &;
+  $modal-header-height: calc(#{$cmp-modal-header-space-padding-ver}
+    * 2 + #{$cmp-modal-header-decorator-bar-size-height});
+
+  %modal-header-styles {
+    @include flex(row, center);
+    padding: $cmp-modal-header-space-padding-ver
+      $cmp-modal-header-space-padding-right
+      $cmp-modal-header-space-padding-ver
+      $cmp-modal-header-space-padding-left;
+  }
+
+  @include inline-flex(column);
+  @include elevation(overlay);
+  position: relative;
+  overflow: hidden;
+  width: calc(#{$cmp-modal-size-width}
+    - (#{$cmp-modal-space-padding} * 2));
+  max-width: map-deep-get($modal-size-map, md, max-width); // md as default
+  min-height: map-deep-get($modal-size-map, md, min-height); // md as default
+  max-height: calc(#{$cmp-modal-size-max-height}
+    - (#{$cmp-modal-space-padding} * 2));
+  padding: 0;
+  background-color: $alias-color-background-surface-base-base;
+
+  &[style*="display: block"],
+  &[style*="display: inline-block"] {
+    display: inline-flex !important;
+  }
+
+
+  // ELEMENTS - MODAL ------------------------------------------------------- //
+
+  // Header - Element - Modal
+
+  &__header {
+    flex-shrink: 0;
+    border-bottom: $cmp-modal-header-shape-border;
+
+    &:not(&--has-bottom) {
+      @extend %modal-header-styles;
+    }
+
+    .decorator-bar {
+      margin-right: $cmp-modal-header-decorator-bar-space-margin-right;
+      height: $cmp-modal-header-decorator-bar-size-height;
+    }
+
+    #{$parent}__icon {
+      margin-right: $cmp-modal-header-icon-space-margin-right;
+      font-size: $cmp-modal-header-icon-typo-font-size;
+    }
+
+    #{$parent}__title {
+      @include typography(heading, h4);
+      @include text-color(heading, strong);
+      @include truncate;
+    }
+
+    &--has-bottom {
+      #{$parent}__header {
+        &-main {
+          @extend %modal-header-styles;
+        }
+
+        &-bottom {
+          border-top: $cmp-modal-header-bottom-shape-border;
+          padding: $cmp-modal-header-bottom-size-spacing-padding-ver
+            $cmp-modal-header-bottom-size-spacing-padding-hor;
+          background-color: $cmp-modal-header-bottom-color-background;
+        }
+      }
+    }
+  }
+
+  // Content - Element - Modal
+
+  &__content {
+    @include scrollbars;
+    flex: 1;
+    overflow: auto;
+    padding: $cmp-modal-content-space-padding-ver
+      $cmp-modal-content-space-padding-hor;
+
+    &--no-padding {
+      padding: 0;
+    }
+  }
+
+  // Footer - Element - Modal
+
+  &__footer {
+    @include flex(row, null, space-between);
+    flex-shrink: 0;
+    padding: $cmp-modal-footer-space-padding-ver
+      $cmp-modal-footer-space-padding-hor;
+    background-color: $cmp-modal-footer-color-background;
+
+    &-buttons {
+      @include flex(row);
+      gap: $cmp-modal-footer-buttons-space-gap;
+      margin-left: $cmp-modal-footer-buttons-space-margin-left;
+    }
+  }
+
+  // Close - Element - Modal
+
+  &__close {
+    position: absolute !important;
+    z-index: inherit;
+    top: calc((#{$modal-header-height}
+      - #{$cmp-button-size-height-sm}) / 2);
+    right: map-deep-get($spacing-size-map, sm, component);
+  }
+
+
+  // MODIFIERS - MODAL ------------------------------------------------------ //
+
+  // Size - Modifier - Modal
+
+  @each $size in $modal-size-list {
+    &--#{$size} {
+      max-width: map-deep-get($modal-size-map, $size, max-width);
+      min-height: map-deep-get($modal-size-map, $size, min-height);
+
+      @if $size == full {
+        height: map-deep-get($modal-size-map, full , height);
+      }
+    }
+  }
+
+  // Scroll - Modifier - Modal
+
+  &--scroll {
+    #{$parent}__header {
+      @include elevation(sticky-bottom);
+    }
+
+    #{$parent}__content {
+      @include spacing(margin, ver, md, component);
+      @include spacing(margin, right, sm, component);
+    }
+
+    #{$parent}__footer {
+      @include elevation(sticky-top);
+    }
+  }
+
+  // Dialog - Modifier - Modal
+
+  &--dialog {
+    $dialog-header-height: calc(
+      #{$cmp-modal-header-space-padding-ver} * 2
+      + #{$cmp-dialog-header-icon-typo-line-height}
+    );
+
+    max-width: $cmp-dialog-size-max-width;
+    min-height: $cmp-dialog-size-min-height;
+
+    #{$parent}__header {
+      border: unset;
+
+      #{$parent}__icon {
+        @include inline-flex(null, center, center);
+        height: $cmp-dialog-header-icon-typo-line-height;
+        font-size: $cmp-dialog-header-icon-typo-font-size;
+      }
+    }
+
+    #{$parent}__title {
+      @include typography(heading, h5);
+      @include text-color(heading);
+    }
+
+    #{$parent}__content {
+      @include typography;
+      @include text-color;
+    }
+
+    #{$parent}__footer {
+      background-color: unset;
+    }
+
+    #{$parent}__close {
+      top: calc((#{$dialog-header-height}
+        - #{$cmp-button-size-height-sm}) / 2);
+    }
+
+    // Status Dialog - Modifier - Modal
+
+    @include modal-dialog-status($parent, warning); // Warning as default
+
+    @each $status in $modal-status-list {
+      &#{$parent}--#{$status} {
+        @include modal-dialog-status($parent, $status);
+      }
+    }
+  }
+}
+
+

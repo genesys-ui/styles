@@ -1,0 +1,15 @@
+// --------------------- BACKDROP - COMPONENTS - MIXINS --------------------- //
+
+
+// BACKDROP STYLES - COMPONENTS - MIXINS ----------------------------------- //
+
+@mixin backdrop($position: relative, $border-radius: 0) {
+  position: $position;
+  overflow: hidden;
+
+  &::before {
+    @include pseudo-overlay;
+    transition: all .15s ease-in-out;
+    border-radius: $border-radius;
+  }
+}

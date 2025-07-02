@@ -1,0 +1,29 @@
+// -------------------------- OVERLAY - COMPONENTS -------------------------- //
+
+
+.overlay {
+  $parent: &;
+
+  // Default Styles - Overlay
+
+  @include flex(null, center, center);
+  @include overlay-color-type;
+  position: absolute;
+  inset: 0 0 0 0;
+  transition: opacity .3s ease;
+
+  // Color and Type - Modifiers - Overlay
+
+  // Examples:
+  // overlay--dark overlay--opacity
+  // overlay--light overlay--opaque
+  @each $color in $overlay-color-list {
+    &--#{$color} {
+      @each $type in $overlay-type-list {
+        &#{$parent}--#{$type} {
+          @include overlay-color-type($color, $type);
+        }
+      }
+    }
+  }
+}

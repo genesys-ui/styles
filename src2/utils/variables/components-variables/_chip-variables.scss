@@ -1,0 +1,83 @@
+// -------------------- CHIP - COMPONENTS - VARIABLES ----------------------- //
+
+
+// SIZE - CHIP - COMPONENTS - VARIABLES ------------------------------------- //
+
+$chip-size-list: xxs, xs, sm, md, lg;
+
+$chip-size-map: (
+  xxs: (
+    min-width: $cmp-chip-size-min-width-xxs,
+    height: $cmp-chip-size-height-xxs,
+    padding: $cmp-chip-space-padding-hor-xxs,
+    font-size: $cmp-chip-label-typo-font-size-xxs,
+    line-height: $cmp-chip-label-typo-line-height-xxs,
+    icon-font-size: $cmp-chip-icon-typo-font-size-xxs,
+    icon-spacing: $cmp-chip-icon-space-margin-xxs,
+    icon-offset: $cmp-chip-icon-space-offset-xxs,
+  ),
+  xs: (
+    min-width: $cmp-chip-size-min-width-xs,
+    height: $cmp-chip-size-height-xs,
+    padding: $cmp-chip-space-padding-hor-xs,
+    font-size: $cmp-chip-label-typo-font-size-xs,
+    line-height: $cmp-chip-label-typo-line-height-xs,
+    icon-font-size: $cmp-chip-icon-typo-font-size-xs,
+    icon-spacing: $cmp-chip-icon-space-margin-xs,
+    icon-offset: $cmp-chip-icon-space-offset-xs,
+  ),
+  sm: (
+    min-width: $cmp-chip-size-min-width-sm,
+    height: $cmp-chip-size-height-sm,
+    padding: $cmp-chip-space-padding-hor-sm,
+    font-size: $cmp-chip-label-typo-font-size-sm,
+    line-height: $cmp-chip-label-typo-line-height-sm,
+    icon-font-size: $cmp-chip-icon-typo-font-size-sm,
+    icon-spacing: $cmp-chip-icon-space-margin-sm,
+    icon-offset: $cmp-chip-icon-space-offset-sm,
+  ),
+  md: (
+    min-width: $cmp-chip-size-min-width-md,
+    height: $cmp-chip-size-height-md,
+    padding: $cmp-chip-space-padding-hor-md,
+    font-size: $cmp-chip-label-typo-font-size-md,
+    line-height: $cmp-chip-label-typo-line-height-md,
+    icon-font-size: $cmp-chip-icon-typo-font-size-md,
+    icon-spacing: $cmp-chip-icon-space-margin-md,
+    icon-offset: $cmp-chip-icon-space-offset-md,
+  ),
+  lg: (
+    min-width: $cmp-chip-size-min-width-lg,
+    height: $cmp-chip-size-height-lg,
+    padding: $cmp-chip-space-padding-hor-lg,
+    font-size: $cmp-chip-label-typo-font-size-lg,
+    line-height: $cmp-chip-label-typo-line-height-lg,
+    icon-font-size: $cmp-chip-icon-typo-font-size-lg,
+    icon-spacing: $cmp-chip-icon-space-margin-lg,
+    icon-offset: $cmp-chip-icon-space-offset-lg,
+  ),
+);
+
+
+// COLOR - CHIP - COMPONENTS - VARIABLES ------------------------------------ //
+
+$chip-color-map: (
+  bg: (
+    disabled: $cmp-chip-color-background-disabled,
+    enabled: $cmp-chip-color-background-enabled,
+    hovered: $cmp-chip-color-background-hovered,
+    focused: $cmp-chip-color-background-focused,
+    pressed: $cmp-chip-color-background-pressed,
+    selected: $cmp-chip-color-background-activated,
+    activated: $cmp-chip-color-background-activated,
+  ),
+  text: (
+    disabled: $cmp-chip-color-text-disabled,
+    enabled: $cmp-chip-color-text-enabled,
+    hovered: $cmp-chip-color-text-hovered,
+    focused: $cmp-chip-color-text-focused,
+    pressed: $cmp-chip-color-text-pressed,
+    selected: $cmp-chip-color-text-activated,
+    activated: $cmp-chip-color-text-activated,
+  ),
+);

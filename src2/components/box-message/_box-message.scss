@@ -1,0 +1,116 @@
+// ----------------------- BOX MESSAGE - COMPONENTS ------------------------- //
+
+
+.box-message {
+  @import "./variables-box-message";
+
+  $parent: &;
+
+  // Styles - Box Message
+
+  @include spacing(padding, ver, sm, component);
+  @include spacing(padding, right, sm, component);
+  @include spacing(padding, left, xxl, component);
+  position: relative;
+  flex-shrink: 0;
+  border-width: 0.1rem;
+  border-style: solid;
+  border-radius: 0.4rem;
+
+  &::before {
+    @include position(1.2rem, null, null, 1.2rem);
+    position: absolute;
+    font-size: 1.6rem;
+  }
+
+
+  // ELEMENTS - BOX MESSAGE ------------------------------------------------- //
+
+  // Title - Element - Box Message
+
+  &__title {
+    @include spacing(padding, right, lg, component);
+    @include typography(heading, h5);
+    @include text-color($color: strong);
+
+    & + #{$parent}__content {
+      @include spacing(margin, top, sm, component);
+      padding-right: 0;
+    }
+  }
+
+  // Content - Element - Box Message
+
+  &__content {
+    @include scrollbars;
+    @include spacing(padding, right, lg, component);
+    @include typography;
+    @include text-color;
+    max-height: 20rem;
+    overflow-y: auto;
+
+    // TODO: The following styles must be removed. The content of the
+    //  BoxMessage must have its own classes for paragraph, strong, link, etc.
+
+    p:not(.paragraph) {
+      @include typography;
+      @include text-color;
+
+      & + p {
+        @include spacing(margin, top, xs, component);
+      }
+    }
+
+
+    b,
+    strong {
+      font-weight: 700;
+    }
+
+    ul {
+      @include spacing(margin, left, md, component);
+      list-style: disc;
+      line-height: 2rem;
+    }
+
+    // TODO: END TODO
+  }
+
+  // Buttons - Element - Box Message
+
+  &__buttons {
+    @include flex(null, center, flex-end);
+    @include spacing(margin, top, sm, component);
+    @include spacing($property: gap, $size: xs, $type: component);
+  }
+
+  // Remove Button - Box Message
+
+  #{$parent}__remove-button {
+    @include position(1rem, 1.2rem);
+    position: absolute;
+  }
+
+
+  // MODIFIERS - BOX MESSAGE ------------------------------------------------ //
+
+  // Hide - Modifier - Box Message
+
+  &--hide {
+    display: none;
+  }
+
+  // Status - Modifier - Box Message
+
+  @each $status in $box-message-status-list {
+    &--#{$status} {
+      border-color: map-deep-get($box-message-status-map, $status, border-color);
+      background-color: map-deep-get($box-message-status-map, $status, bg-color);
+
+      &::before {
+        @include icon-status($status);
+        color: map-deep-get($box-message-status-map, $status, icon-color);
+      }
+    }
+  }
+}

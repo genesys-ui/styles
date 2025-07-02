@@ -1,0 +1,163 @@
+// --------------------- MENU - COMPONENTS - MIXINS ------------------------- //
+
+
+// MENU - COMPONENTS - MIXINS ----------------------------------------------- //
+
+@mixin menu-wrapper(
+  $spacing-size: $alias-space-cmp-xxs,
+  $spacing-prop: margin
+) {
+  #{$spacing-prop}: $spacing-size;
+}
+
+@mixin menu-list(
+  $height: calc(#{$alias-size-height-surface-xxs} * 8 + #{$alias-size-height-surface-xxs} / 2 + #{$alias-space-cmp-xxs}),
+  $height-prop: max-height,
+) {
+  @include scrollbars($size: sm);
+  #{$height-prop}: $height;
+  overflow-y: auto;
+}
+
+@mixin menu-item(
+  $parent: null,
+  $hor-padding: $alias-space-cmp-xs,
+  $height: $alias-size-height-surface-xxs,
+  $has-complex-content: false,
+) {
+  $disabled-selector: '#{if($parent, #{get-selector($parent, disabled)}, '&.disabled')}';
+  $not-disabled-selector: get-selector($parent, not-disabled);
+  $selected-selector: '#{if($parent, #{get-selector($parent, selected)}, '&.selected')}';
+  $highlighted-selector: '#{if($parent, '&#{$parent}--highlighted', '&.highlighted')}';
+
+  @include typography($ignore-props: line-height);
+  @include truncate;
+  position: relative;
+  transition: background-color $cmp-button-mutation-transition-duration ease,
+              color $cmp-button-mutation-transition-duration ease;
+  border-radius: $alias-shape-border-radius-md;
+  min-height: $height;
+  padding: 0 $hor-padding;
+  text-align: left;
+  cursor: pointer;
+
+  @if $has-complex-content {
+    @include typography($props: line-height);
+  } @else {
+    line-height: $height;
+  }
+
+  &::before {
+    @include pseudo-overlay;
+    pointer-events: none;
+    background-color: transparent;
+  }
+
+  @if($parent) {
+    #{$parent}-icon {
+      @include spacing(margin, right, xs, component);
+      font-size: $alias-size-square-icon-base-xs;
+      vertical-align: middle;
+    }
+  }
+
+  &,
+  &[aria-disabled="true"],
+  #{$highlighted-selector} {
+    background-color: $alias-color-background-surface-base-base;
+    color: $alias-color-text-action-neutral-enabled;
+
+    @if($parent) {
+      #{$parent}-icon {
+        color: inherit;
+      }
+    }
+  }
+
+  #{$not-disabled-selector} {
+    &:hover,
+    #{$highlighted-selector} {
+      color: $alias-color-text-action-neutral-hovered;
+
+      &::before {
+        background-color: $alias-color-background-surface-backdrop-base-hovered;
+      }
+    }
+
+    &:focus-visible {
+      box-shadow: $alias-elevation-box-shadow-base-focused;
+    }
+  }
+
+  #{$selected-selector} {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: $alias-color-background-surface-base-activated;
+      color: $alias-color-text-action-neutral-activated;
+    }
+
+    &::before {
+      content: none;
+    }
+  }
+
+  #{$disabled-selector} {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      @include disabled-field;
+      background-color: $alias-color-background-surface-base-base;
+      color: $alias-color-text-action-neutral-enabled;
+    }
+
+    &::before {
+      content: none;
+    }
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+@mixin menu-item-group(
+  $group-parent: null,
+  $hor-padding: $alias-space-cmp-xs,
+  $height: $alias-size-height-surface-xxs,
+) {
+  display: block;
+  height: auto;
+  padding: 0;
+
+  &::before {
+    content: none;
+  }
+
+  &:not(:first-child) {
+    @include spacing(margin, top, sm, component);
+  }
+
+  #{$group-parent} {
+    @include truncate;
+    @include typography(overline, md);
+    @include text-color(heading, weakest);
+    display: block;
+    height: $alias-size-height-surface-xxs;
+    padding: 0 $hor-padding;
+    cursor: default;
+    line-height: $alias-size-height-surface-xxs;
+  }
+}
+
+
+// DROPDOWN MENU - COMPONENTS - MIXINS -------------------------------------- //
+
+@mixin dropdown-menu-panel {
+  @include elevation(activated);
+  overflow: hidden;
+  background-color: $alias-color-background-surface-base-base;
+}

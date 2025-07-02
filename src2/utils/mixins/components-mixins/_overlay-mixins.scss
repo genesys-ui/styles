@@ -1,0 +1,8 @@
+// --------------------- OVERLAY - COMPONENTS - MIXINS ---------------------- //
+
+
+// COLOR TYPE STYLES - OVERLAY - MIXINS ------------------------------------- //
+
+@mixin overlay-color-type($color-scheme: dark, $type: opacity) {
+  background-color: map-deep-get($overlay-color-scheme-map, $color-scheme, $type);
+}

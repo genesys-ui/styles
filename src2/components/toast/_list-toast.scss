@@ -1,0 +1,61 @@
+// ----------------------- LIST - TOAST - COMPONENTS ------------------------ //
+
+
+#{$toast}__list {
+  @include flex(column);
+  position: fixed;
+  gap: $cmp-toast-space-gap;
+  margin: 0 $cmp-toast-list-space;
+  width: fit-content;
+  z-index: 99999999;
+
+
+  // MODIFIERS - LIST - TOAST ----------------------------------------------- //
+
+  // Positions - Modifier - List - Toast
+
+  &--top-left,
+  &--top-center,
+  &--top-right {
+    top: $cmp-toast-list-space;
+  }
+
+  &--top-left {
+    align-items: flex-start;
+    left: 0;
+  }
+
+  &--top-center {
+    align-items: center;
+    left: 50%;
+    transform: translateX(calc(-50% - #{$cmp-toast-list-space}));
+  }
+
+  &--top-right {
+    align-items: flex-end;
+    right: 0;
+  }
+
+  &--bottom-left,
+  &--bottom-center,
+  &--bottom-right {
+    flex-direction: column-reverse;
+    bottom: $cmp-toast-list-space;
+  }
+
+  &--bottom-left {
+    align-items: flex-start;
+    left: 0;
+  }
+
+  &--bottom-center {
+    align-items: center;
+    left: 50%;
+    transform: translateX(calc(-50% - #{$cmp-toast-list-space}));
+  }
+
+  &--bottom-right {
+    align-items: flex-end;
+    right: 0;
+  }
+}

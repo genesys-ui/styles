@@ -1,0 +1,37 @@
+// ------------------ VARIABLES - BOX MESSAGE - COMPONENTS ------------------ //
+
+
+// LIST STATUS - VARIABLES - BOX MESSAGE ------------------------------------ //
+
+$box-message-status-list: success, warning, error, help, info;
+
+
+// MAP STATUS - VARIABLES - BOX MESSAGE ------------------------------------- //
+
+$box-message-status-map: (
+  success: (
+    bg-color: $cmp-box-message-color-background-success,
+    border-color: $cmp-box-message-color-border-success,
+    icon-color: $cmp-box-message-icon-color-text-success,
+  ),
+  warning: (
+    bg-color: $cmp-box-message-color-background-warning,
+    border-color: $cmp-box-message-color-border-warning,
+    icon-color: $cmp-box-message-icon-color-text-warning,
+  ),
+  error: (
+    bg-color: $cmp-box-message-color-background-error,
+    border-color: $cmp-box-message-color-border-error,
+    icon-color: $cmp-box-message-icon-color-text-error,
+  ),
+  help: (
+    bg-color: $cmp-box-message-color-background-help,
+    border-color: $cmp-box-message-color-border-help,
+    icon-color: $cmp-box-message-icon-color-text-help,
+  ),
+  info: (
+    bg-color: $cmp-box-message-color-background-info,
+    border-color: $cmp-box-message-color-border-info,
+    icon-color: $cmp-box-message-icon-color-text-info,
+  ),
+);

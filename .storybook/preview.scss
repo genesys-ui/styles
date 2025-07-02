@@ -1,8 +1,12 @@
 // The specific styles for docs
 @import "assets/styles/preview/preview.scss";
 
+// the theme based in custom properties
+@import "@devoinc/genesys-brand-devo/dist/light/css/tokens.css.alias";
+@import "@devoinc/genesys-brand-devo/dist/light/css/tokens.css.cmp";
+
 // The genesys-styles scss. We need to wrap these styles to avoid doc styles affect to the components
-@import "../light";
+@import "../global";
 
 // because the storybook source code is rendered using the same class name 'tag'
 pre .tag {

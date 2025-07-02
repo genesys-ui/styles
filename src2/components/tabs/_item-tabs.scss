@@ -1,0 +1,86 @@
+// ------------------------ ITEM - TABS - COMPONENTS ------------------------ //
+
+
+#{$tabs} {
+
+  // ITEM - TAB ------------------------------------------------------------- //
+
+  &__item {
+    @include flex(row, center);
+    margin: 0 $alias-space-cmp-xxs;
+    height: $cmp-tabs-container-size-height-md;
+
+    &--sm {
+      align-items: flex-end;
+      height: $cmp-tabs-container-size-height-sm;
+    }
+
+    &--md {
+      height: $cmp-tabs-container-size-height-md;
+    }
+
+    &--lg {
+      height: $cmp-tabs-container-size-height-lg;
+    }
+
+    &--wide {
+      flex: 1 1 1px;
+    }
+  }
+
+
+  // LINK - ITEM -TAB ------------------------------------------------------- //
+
+  &__link {
+    @include flex(row, center, center);
+    @include typography($type: action, $props: font-size);
+    width: 100%;
+    height: $cmp-tabs-item-size-height-md;
+    transition: all ease-in-out 0.3s;
+    border-radius: $cmp-tabs-item-shape-border-radius;
+    padding: 0 $cmp-tabs-item-space-padding;
+    text-decoration: none;
+    white-space: nowrap;
+    color: $cmp-tabs-item-color-text-enabled;
+    font-weight: 500;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $cmp-tabs-item-color-background-hover;
+      text-decoration: none;
+      color: $cmp-tabs-item-color-text-enabled;
+    }
+
+    &:focus-visible {
+      box-shadow: $cmp-main-menu-field-elevation-box-shadow-focused;
+    }
+
+    &--sm {
+      border-radius: $cmp-tabs-item-shape-border-radius $cmp-tabs-item-shape-border-radius 0 0;
+      height: $cmp-tabs-item-size-height-sm;
+      font-size: 1.2rem;
+    }
+
+    &--md {
+      height: $cmp-tabs-item-size-height-md;
+      font-size: 1.3rem;
+    }
+
+    &--lg {
+      height: $cmp-tabs-item-size-height-lg;
+      font-size: 1.4rem;
+    }
+
+    &--active {
+      color: $cmp-tabs-item-color-text-selected !important;
+    }
+
+    &--disabled {
+      opacity: .4;
+      background: none !important;
+      cursor: not-allowed;
+      user-select: none;
+      color: $cmp-tabs-item-color-text-disabled !important;
+    }
+  }
+}

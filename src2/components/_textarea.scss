@@ -1,0 +1,33 @@
+// ------------------------- TEXTAREA - COMPONENTS -------------------------- //
+
+
+.textarea {
+  $parent: &;
+
+  @include field-control-textarea($parent: $parent);
+  @include scrollbars($size: sm, $track-radius: 0);
+  overflow-y: auto;
+
+
+  // MODIFIERS - TEXTAREA --------------------------------------------------- //
+
+  // Size - Modifier - Input
+
+  @each $size in $field-control-size-list {
+    &--#{$size} {
+      @include field-control-textarea-size($size);
+    }
+  }
+
+  // Size width - Modifier - Textarea
+
+  @include field-control-size-width;
+
+  // Status - Modifier - Select
+
+  @each $status in $field-control-color-list {
+    &--#{$status} {
+      @include field-control-color($parent: $parent, $status: $status);
+    }
+  }
+}

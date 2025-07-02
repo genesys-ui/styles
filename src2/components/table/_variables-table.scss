@@ -1,0 +1,19 @@
+// --------------------- VARIABLES - TABLE - COMPONENTS --------------------- //
+
+
+// CELL SIZE - VARIABLES - TABLE -------------------------------------------- //
+
+$table-cell-size-width-list: xxxs, xxs, xs, sm, md, lg, xl, xxl, xxxl, wide;
+
+$table-cell-size-width-map: (
+  xxxs: 4rem,
+  xxs: 6rem,
+  xs: 8rem,
+  sm: 10rem,
+  md: 12rem,
+  lg: 14rem,
+  xl: 16rem,
+  xxl: 18rem,
+  xxxl: 20rem,
+  wide: 100%,
+);

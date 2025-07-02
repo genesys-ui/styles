@@ -1,0 +1,111 @@
+// --------------------------- CHIP - COMPONENT ----------------------------- //
+
+
+.chip {
+  $parent: &;
+
+  @include get-chip-styles;
+
+  &-group {
+    @include flex(null, null, null, wrap);
+    @include spacing($property: gap, $size: xs, $type: component);
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__text {
+    @include get-chip-label-styles;
+  }
+
+  &__icon {
+    @include get-chip-icon-styles;
+  }
+
+  &__remove-button {
+    @include get-chip-remove-button-styles;
+  }
+
+
+  // MODIFIERS - CHIP ------------------------------------------------------- //
+
+  // Size - Modifier - Chip
+
+  @each $size in $chip-size-list {
+    &--#{$size} {
+      @include get-chip-size-styles($size);
+
+      #{$parent}__icon {
+        @include get-chip-icon-styles($size);
+      }
+
+      #{$parent}__text {
+        @include get-chip-label-styles($size);
+      }
+
+      #{$parent}__remove-button {
+        @include get-chip-remove-button-styles($size);
+      }
+    }
+  }
+
+  // Clickable - Modifier - Chip
+
+  &--clickable {
+    $disabled-selector: get-selector($parent, disabled);
+    $hovered-selector: get-selector($parent, hovered);
+    $focused-visible-selector: get-selector($state: focused-visible);
+    $pressed-selector: get-selector($parent, pressed);
+    $selected-selector: get-selector($parent, selected);
+
+    @include button-pseudo-backdrop(
+      $parent: $parent,
+      $border-radius: $cmp-chip-shape-border-radius,
+      $apply-states: true,
+    );
+    cursor: pointer;
+
+    #{$hovered-selector} {
+      @include get-chip-color-styles(hovered);
+    }
+
+    #{$pressed-selector} {
+      @include get-chip-color-styles(pressed);
+    }
+
+    #{$focused-visible-selector},
+    [type="checkbox"]:focus-visible + &,
+    [type="radio"]:focus-visible + & {
+      @include get-chip-color-styles(focused);
+      box-shadow: $cmp-chip-elevation-box-shadow-focused;
+    }
+
+    #{$selected-selector},
+    [type="checkbox"]:checked + &,
+    [type="radio"]:checked + & {
+      @include get-chip-color-styles(selected);
+    }
+
+    #{$disabled-selector},
+    [type="checkbox"]:disabled + &,
+    [type="radio"]:disabled + & {
+      @include disabled-field;
+
+      &::before {
+        content: none;
+      }
+
+      &:hover #{$parent}__text,
+      &:active #{$parent}__text {
+        color: inherit;
+      }
+    }
+
+    #{$parent}__text {
+      position: relative;
+      user-select: none;
+      pointer-events: none;
+    }
+  }
+}

@@ -1,0 +1,276 @@
+// ----------------------------- PANEL - LAYOUT ----------------------------- //
+
+
+.panel {
+  /// Header, content and footer must be direct child
+  /// (for example: > #{$parent}__header {}}) to not affect panels inside panels
+  /// However this is not possible because this HTML structure is not possible
+  /// in some parts of the webApp like Satellite Windows in Loxcope.
+
+  @import "./variables-panel";
+  @import "./mixins-panel";
+
+  $parent: &;
+
+  @include flex(column, null, space-between);
+  @include elevation;
+  @include panel-size($parent, md);
+  overflow: hidden;
+  background-color: $cmp-panel-color-background;
+
+
+  // HEADER - ELEMENTS - PANEL ---------------------------------------------- //
+
+  &__header {
+    flex-shrink: 0;
+    z-index: 1;
+    border-bottom: 1px solid $cmp-panel-header-color-border;
+
+    #{$parent}__heading {
+      #{$parent}__icon {
+        @include inline-flex(null, center, center);
+        flex-shrink: 0;
+        align-self: flex-start;
+        color: $cmp-panel-header-icon-color-text;
+      }
+
+      #{$parent}__title {
+        @include inline-flex(null, center);
+        width: 100%;
+        max-width: $cmp-panel-header-title-size-max-width;
+
+        &-text {
+          @include text-color(heading);
+          @include truncate(2);
+          word-break: break-all;
+          max-width: 100%;
+        }
+
+        &-selector {
+          @include flex(null, center);
+          height: $alias-typo-line-height-heading-h4;
+
+          .select2-container {
+            @include spacing(margin, right, xxs, layout);
+          }
+
+          &-actions {
+            @include inline-flex(null, center, center);
+            @include spacing($property: gap, $size: xs, $type: component);
+          }
+
+          & + #{$parent}__title-legend {
+            margin-left: 0;
+          }
+        }
+
+        &-legend {
+          @include inline-flex(null, center, center);
+        }
+      }
+
+      #{$parent}__subtitle {
+        @include text-color($color: weak);
+        @include truncate(3);
+        margin-top: $cmp-panel-header-subtitle-space-margin-top;
+        max-width: $cmp-panel-header-subtitle-size-max-width;
+      }
+
+      &-actions {
+        flex-shrink: 0;
+      }
+
+      &--has-icon {
+        @include flex(null, center);
+      }
+    }
+
+    #{$parent}__actions {
+      @include flex(null, center);
+      flex-shrink: 0;
+
+      &.hide {
+        display: none;
+      }
+    }
+
+    > .separator {
+      flex-shrink: 0;
+      height: 100%;
+      margin-left: 0;
+    }
+
+    &--has-actions {
+      &:not(#{$parent}__header--no-subtitle) {
+        @include flex(null, flex-start, space-between);
+      }
+
+      #{$parent}__heading {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+    }
+
+    &--no-subtitle {
+      @include flex(null, center, space-between);
+
+      #{$parent}__heading #{$parent}__icon {
+        align-self: center;
+      }
+    }
+
+    &--no-border {
+      border-bottom: none;
+    }
+  }
+
+
+  // CONTENT - ELEMENTS - PANEL --------------------------------------------- //
+
+  &__content {
+    @include scrollbars;
+    position: relative;
+    flex: 1 1 100%;
+    overflow: auto;
+  }
+
+
+  // FOOTER - ELEMENTS - PANEL ---------------------------------------------- //
+
+  &__footer {
+    @include flex(null, center, space-between);
+    flex-shrink: 0;
+    z-index: 1;
+    border-top: 1px solid $cmp-panel-footer-color-border;
+
+    #{$parent}__actions {
+      @include flex(null, center);
+      flex-shrink: 0;
+      margin-left: auto;
+    }
+
+    &--no-border {
+      border-top: none;
+    }
+  }
+
+
+  // MODIFIERS - ELEMENTS - PANEL ------------------------------------------- //
+
+  // Size - Modifier - Panel
+
+  @each $size in $panel-size-list {
+    &--#{$size} {
+      @include panel-size($parent, $size);
+    }
+  }
+
+  // Elevation - Modifier - Panel
+
+  @each $elevation in $elevation-list {
+    &--#{$elevation} {
+      @include elevation($elevation);
+    }
+  }
+
+  // Has Scroll - Modifier - Panel
+
+  &--has-scroll {
+    > #{$parent}__header {
+      box-shadow: $cmp-panel-header-elevation-box-shadow;
+    }
+
+    > #{$parent}__footer {
+      box-shadow: $cmp-panel-footer-elevation-box-shadow;
+    }
+  }
+
+  // Section - Modifier - Panel
+
+  &--section {
+    height: 100%;
+
+    > #{$parent}__header {
+      padding: $cmp-panel-section-header-space-padding;
+    }
+
+    > #{$parent}__content {
+      margin: $cmp-panel-section-content-space-margin-no-has-scroll;
+      padding: $cmp-panel-section-content-space-padding-no-has-scroll;
+
+      &--no-spacing {
+        margin: $cmp-panel-section-content-space-margin-remove-space;
+        padding: $cmp-panel-section-content-space-padding-remove-space;
+      }
+    }
+
+    &#{$parent}--has-scroll {
+      > #{$parent}__content {
+        margin: $cmp-panel-section-content-space-margin-has-scroll;
+        padding: $cmp-panel-section-content-space-padding-has-scroll;
+
+        &--no-spacing {
+          @include scrollbars($track-radius: 0);
+          margin: $cmp-panel-section-content-space-margin-remove-space-has-scroll;
+          padding: $cmp-panel-section-content-space-padding-remove-space-has-scroll;
+        }
+      }
+    }
+  }
+
+  // Draggable - Modifier - Panel
+
+  &--draggable {
+    #{$parent}__header {
+      transition: background-color ease .3s;
+
+      &:hover {
+        background-color: $alias-color-background-surface-backdrop-base-hovered;
+      }
+    }
+
+    #{$parent}__footer {
+      background-color: $cmp-modal-footer-color-background;
+    }
+  }
+
+  // Clickable - Modifier - Panel
+
+  &--clickable {
+    $hovered-selector: get-selector($parent, hovered);
+    $selected-selector: get-selector($parent, selected);
+
+    @include backdrop;
+    cursor: pointer;
+
+    #{$hovered-selector} {
+      &::before {
+        background-color: $alias-color-background-surface-backdrop-base-hovered;
+      }
+    }
+
+    #{$selected-selector} {
+      background-color: $alias-color-background-surface-base-selected;
+    }
+
+    &#{$parent}--activated {
+      background-color: $alias-color-background-surface-base-activated;
+    }
+  }
+
+  // Bordered - Modifier - Panel
+  /// Used in Time interval history in Loxcope.
+
+  &--bordered {
+    border: 1px solid $alias-color-border-surface-base-weak;
+    border-radius: $alias-shape-border-radius-elevated;
+  }
+
+  // Hide if it appears detached from its reference element - Panel
+
+  &[data-popper-reference-hidden] {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
