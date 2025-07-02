@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.2](https://github.com/DevoInc/genesys-styles/compare/2.3.1...2.3.2) (2025-05-27)
+
+
+### Bug Fixes
+
+* **UXW-1123:** progressbar progress status has been fixed ([b4a9988](https://github.com/DevoInc/genesys-styles/commit/b4a99881bd0f2cac51781ecfcaa16bcf3f5fe7e7))
+
 ## [2.3.1](https://github.com/DevoInc/genesys-styles/compare/2.3.0...2.3.1) (2024-06-28)
 
 ## [2.3.0](https://github.com/DevoInc/genesys-styles/compare/2.2.1...2.3.0) (2024-06-28)
