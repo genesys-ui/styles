@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.5.0](https://github.com/DevoInc/genesys-styles/compare/2.4.0...2.5.0) (2025-07-02)
+
+
+### Features
+
+* Updated to the last version of genesys-icons. ([ff90cdb](https://github.com/DevoInc/genesys-styles/commit/ff90cdb31a8fcfee2730fdc7b9ff02a3bb05fc04))
+
 ## [2.4.0](https://github.com/DevoInc/genesys-styles/compare/2.3.2...2.4.0) (2025-07-02)
 
 
