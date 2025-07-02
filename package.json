@@ -37,7 +37,7 @@
   "peerDependencies": {
     "@devoinc/genesys-base-styles": "^2.0.1",
     "@devoinc/genesys-brand-devo": "^8.12.0",
-    "@devoinc/genesys-icons": "^5.0.0"
+    "@devoinc/genesys-icons": "^8.0.0"
   },
   "engines": {
     "node": ">=18",
