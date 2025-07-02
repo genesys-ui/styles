@@ -13,7 +13,7 @@
     @include spacing(padding, all, xs, component);
     position: relative;
     min-height: 12rem;
-    border-width: $cmp-upload-files-shape-border;
+    border-width: $cmp-upload-files-shape-border-size;
     border-style: dashed;
     border-color: $cmp-upload-files-color-border;
     border-radius: $cmp-upload-files-shape-border-radius;

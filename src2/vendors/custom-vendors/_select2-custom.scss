@@ -72,7 +72,7 @@
       @include inline-flex(null, center, center);
       @include position(0, 0, 0, null);
       position: absolute;
-      transition: $cmp-select-indicator-mutation-transition-duration;
+      transition: $cmp-select-control-indicator-mutation-transition-duration;
       width: map-deep-get($select-size-map, md, arrow-width);
 
       &::before {

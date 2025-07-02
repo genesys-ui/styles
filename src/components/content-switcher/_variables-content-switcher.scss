@@ -27,9 +27,9 @@ $content-switcher-type-list: neutral, blend-base;
 
 $content-switcher-type-map: (
   blend-base: (
-    background: $cmp-content-switcher-color-background-blend-base,
+    background: $cmp-content-switcher-color-background-blend,
   ),
   neutral: (
-    background: $cmp-content-switcher-color-background-neutral,
+    background: $cmp-content-switcher-color-background-base,
   ),
 );
