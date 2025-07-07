@@ -32,6 +32,22 @@
     font-weight: bold;
   }
 
+  // Wide - Modifier - Tags
+
+  &--wide {
+    display: flex;
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  // Wide - Modifier - Tags
+
+  &--quiet {
+    padding: 0;
+    background-color: transparent;
+    color: var(--cmp-tag-color-text-neutral);
+  }
+
   // Size - Modifier - Tags
 
   @each $size in $tag-size-list {
@@ -46,5 +62,12 @@
     &--#{$color-scheme} {
       @include tag-color($color-scheme);
     }
+  }
+
+
+  // ELEMENTS - BADGE ------------------------------------------------------ //
+
+  &__text {
+    @include truncate();
   }
 }

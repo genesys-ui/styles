@@ -8,9 +8,21 @@ $spacing-side-list: top, right, bottom, left, hor, ver, all;
 
 // SIZE - SPACING - UTILS - VARIABLES --------------------------------------- //
 
-$spacing-size-list: xxs, xs, sm, md, lg, xl;
+$spacing-size-list: none, inherit, auto, xxs, xs, sm, md, lg, xl, xxl, xxxl;
 
 $spacing-size-map: (
+  none: (
+    component: 0,
+    layout: 0,
+  ),
+  inherit: (
+    component: inherit,
+    layout: inherit,
+  ),
+  auto: (
+    component: auto,
+    layout: auto,
+  ),
   xxs: (
     component: $alias-space-cmp-xxs,
     layout: $alias-space-layout-xxs,

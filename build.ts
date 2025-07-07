@@ -6,7 +6,7 @@ rmSync('dist', { recursive: true, force: true });
 mkdirSync('dist');
 mkdirSync('dist/css');
 
-// Create css
+// Create CSS
 const lightResult = sass.compile("./light.scss");
 writeFileSync("dist/css/light.css", lightResult.css);
 
@@ -14,7 +14,7 @@ const darkResult = sass.compile("./dark.scss");
 writeFileSync("dist/css/dark.css", darkResult.css);
 
 const globalResult = sass.compile("./global.scss");
-writeFileSync("dist/css/global.css", globalResult.css);
+writeFileSync("dist/css/styles.css", globalResult.css);
 
 // Copy SCSS files
 cpSync("src/_styles.scss", "dist/scss/_styles.scss");

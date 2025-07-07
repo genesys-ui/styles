@@ -3,6 +3,8 @@
 
 // TYPE - ELEVATION - LAYOUT - VARIABLES ------------------------------------ //
 
+
+$elevation-prop-list: z-index, box-shadow, border-radius, border;
 $elevation-list: ground, raised, sticky-top, sticky-right, sticky-bottom,
 sticky-left, activated, draggable, overlay, pop-out;
 

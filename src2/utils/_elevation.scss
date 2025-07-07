@@ -1,0 +1,30 @@
+// -------------------------- ELEVATION - UTILS ----------------------------- //
+
+
+// Elevation - Utils
+
+.elevation {
+  @each $elevation in $elevation-list {
+    &--#{$elevation} {
+      @include elevation($type: $elevation);
+    }
+  }
+
+  @each $elevation in $elevation-list {
+    &--#{$elevation} {
+      @each $elevation-prop in $elevation-prop-list {
+        &-#{$elevation-prop} {
+          @if ($elevation-prop == z-index) {
+            @include elevation-z-index($type: $elevation);
+          } @else if ($elevation-prop == box-shadow) {
+            @include elevation-box-shadow($type: $elevation);
+          } @else if ($elevation-prop == border-radius) {
+            @include elevation-border-radius($type: $elevation);
+          } @else {
+            @include elevation-border($type: $elevation);
+          }
+        }
+      }
+    }
+  }
+}

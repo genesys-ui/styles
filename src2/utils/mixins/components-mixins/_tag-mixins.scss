@@ -35,6 +35,8 @@
     #{$parent}__icon {
       margin-right: map-deep-get($tag-size-map, $size, icon-spacing);
       font-size: map-deep-get($tag-size-map, $size, icon-size);
+      width: map-deep-get($tag-size-map, $size, icon-size);
+      height: map-deep-get($tag-size-map, $size, icon-size);
     }
   }
 }
