@@ -3,62 +3,16 @@
 // Property value applied based in the css variable --box-width, --box-opacity
 // The user can override the value in a custom css file or using the attribute style
 
-.w-\[var\(--box-width\)\] {
-  width: var(--box-width);
-}
+$variables-based-props-list: translate, flex, height, inset, max-height,
+max-width, min-height, min-width, opacity, position-bottom, position-left,
+position-right, position-top, width, z-index;
 
-.max-w-\[var\(--box-max-width\)\] {
-  width: var(--box-max-width);
-}
-
-.min-w-\[var\(--box-min-width\)\] {
-  width: var(--box-min-width);
-}
-
-.h-\[var\(--box-height\)\] {
-  width: var(--box-height);
-}
-
-.max-h-\[var\(--box-max-height\)\] {
-  width: var(--box-max-height);
-}
-
-.min-h-\[var\(--box-min-height\)\] {
-  width: var(--box-min-height);
-}
-
-.opacity-\[var\(--box-opacity\)\] {
-  opacity: var(--box-opacity);
-}
-
-.z-index-\[var\(--box-z-index\)\] {
-  z-index: var(--box-z-index);
-}
-
-.inset-\[var\(--box-inset\)\] {
-  inset: var(--box-inset);
-}
-
-.top-\[var\(--box-top\)\] {
-  top: var(--box-top);
-}
-
-.right-\[var\(--box-right\)\] {
-  right: var(--box-right);
-}
-
-.bottom-\[var\(--box-bottom\)\] {
-  bottom: var(--box-bottom);
-}
-
-.left-\[var\(--box-left\)\] {
-  left: var(--box-left);
-}
-
-.flex-\[var\(--box-flex\)\] {
-  flex: var(--box-flex);
-}
-
-.translate-\[var\(--box-translate\)\] {
-  transform: translate(var(--box-translate));
+@each $prop in $variables-based-props-list {
+  #{$prop}-\[var\(--box-#{$prop}\)\] {
+    @if $prop == translate {
+      transform: #{$prop}(var(--box-#{$prop}));
+    } @else {
+      #{$prop}: var(--box-#{$prop});
+    }
+  }
 }
