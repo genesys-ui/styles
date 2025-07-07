@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/DevoInc/genesys-styles/compare/2.5.0...2.6.0) (2025-07-07)
+
+
+### Features
+
+* New 'src2' directory to get the migrated sass based in css custom properties instead of sass variables. Added layout variables based styles and elevation mixins. ([b3dbdee](https://github.com/DevoInc/genesys-styles/commit/b3dbdee93af39221f2c1560c9d47ca0cc3c49b30))
+
 ## [2.5.0](https://github.com/DevoInc/genesys-styles/compare/2.4.0...2.5.0) (2025-07-02)
 
 
