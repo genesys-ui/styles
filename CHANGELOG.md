@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/DevoInc/genesys-styles/compare/2.6.0...2.7.0) (2025-07-07)
+
+
+### Features
+
+* Optimized the definition of styles and selectors: ([b9b0923](https://github.com/DevoInc/genesys-styles/commit/b9b09230abc67a72df51fc696d958aa2c29c0b84))
+
 ## [2.6.0](https://github.com/DevoInc/genesys-styles/compare/2.5.0...2.6.0) (2025-07-07)
 
 
