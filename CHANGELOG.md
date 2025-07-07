@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.1](https://github.com/DevoInc/genesys-styles/compare/2.7.0...2.7.1) (2025-07-07)
+
+
+### Bug Fixes
+
+* Added a '.' to get the correct selector. ([4e403c2](https://github.com/DevoInc/genesys-styles/commit/4e403c25055cbad266b8b3e0fe21bfac460a5648))
+
 ## [2.7.0](https://github.com/DevoInc/genesys-styles/compare/2.6.0...2.7.0) (2025-07-07)
 
 
