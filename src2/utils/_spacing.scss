@@ -28,11 +28,13 @@
   }
 }
 
+
 // Padding - Modifier - CMP (Component)
 // Examples:
 // Padding Left MD: padding-cmp--left-md
 // Padding vertical (both sides) XS: padding-cmp--ver-xs
 // Padding (all sides) XL: padding-cmp--xl
+
 .padding-cmp {
   @each $side in $spacing-side-list {
     @each $size in $spacing-size-list{
@@ -43,6 +45,7 @@
   }
 }
 
+
 // Gap - Modifier - CMP (Component)
 // Examples:
 // Gap md: gap-cmp--md
@@ -51,6 +54,32 @@
   @each $size in $spacing-size-list{
     &--#{$size} {
       @include spacing($property: gap, $size: $size, $type: component);
+    }
+  }
+}
+
+
+// Row-gap - Modifier - CMP (Component)
+// Examples:
+// Gap md: row-gap-cmp--md
+
+.row-gap-cmp {
+  @each $size in $spacing-size-list{
+    &--#{$size} {
+      @include spacing($property: row-gap, $size: $size, $type: component);
+    }
+  }
+}
+
+
+// Column-gap - Modifier - CMP (Component)
+// Examples:
+// Gap md: row-gap-cmp--md
+
+.column-gap-cmp {
+  @each $size in $spacing-size-list{
+    &--#{$size} {
+      @include spacing($property: column-gap, $size: $size, $type: component);
     }
   }
 }
