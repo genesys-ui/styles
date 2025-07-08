@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.2](https://github.com/DevoInc/genesys-styles/compare/2.7.1...2.7.2) (2025-07-07)
+
+
+### Bug Fixes
+
+* Fixed the name of the variables. ([ebcae59](https://github.com/DevoInc/genesys-styles/commit/ebcae594b06e53e5a9e28748e5315434cf41048d))
+
 ## [2.7.1](https://github.com/DevoInc/genesys-styles/compare/2.7.0...2.7.1) (2025-07-07)
 
 
