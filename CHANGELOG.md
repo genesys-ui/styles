@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/DevoInc/genesys-styles/compare/2.7.2...2.8.0) (2025-07-08)
+
+
+### Features
+
+* Added column and row gap utils styles. ([bc4e6f4](https://github.com/DevoInc/genesys-styles/commit/bc4e6f41fcaad6ff516ad4f76e8d5620f03d822d))
+
 ## [2.7.2](https://github.com/DevoInc/genesys-styles/compare/2.7.1...2.7.2) (2025-07-07)
 
 
