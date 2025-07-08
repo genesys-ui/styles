@@ -5,7 +5,9 @@
 
 $variables-based-props-list: translate, flex, height, inset, max-height,
 max-width, min-height, min-width, opacity, order, bottom, left, right, top, width,
-z-index, children-flex;
+z-index, children-flex, grid-area, grid-column, grid-column-end,
+grid-column-start, grid-row, grid-row-end, grid-row-start, grid-template-areas,
+grid-template-columns, grid-template-rows;
 
 @each $prop in $variables-based-props-list {
   .#{$prop}-\[var\(--box-#{$prop}\)\] {
