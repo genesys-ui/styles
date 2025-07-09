@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://github.com/DevoInc/genesys-styles/compare/2.8.0...2.9.0) (2025-07-08)
+
+
+### Features
+
+* Added grid styles based in variables and in pre-defined values. ([1c77e6c](https://github.com/DevoInc/genesys-styles/commit/1c77e6cbb0e1ff57b8079b2844bb3c4e650e20e5))
+
 ## [2.8.0](https://github.com/DevoInc/genesys-styles/compare/2.7.2...2.8.0) (2025-07-08)
 
 
