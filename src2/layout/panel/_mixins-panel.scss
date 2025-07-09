@@ -5,64 +5,19 @@
 
 @mixin panel-size($parent, $size: md) {
   #{$parent}__header {
-    padding: map-deep-get($panel-size-map, $size, header-padding);
-
-    #{$parent}__heading {
-      #{$parent}__icon {
-        margin-right: map-deep-get($panel-size-map, $size, header-icon-spacing);
-        height: map-deep-get($panel-size-map, $size, header-icon-height);
-        font-size: map-deep-get($panel-size-map, $size, header-icon-font-size);
-      }
-
-      #{$parent}__title {
-        &-text {
-          @include typography(heading, map-deep-get($panel-size-map, $size, header-title))
-        }
-
-        &-legend {
-          margin-left: map-deep-get($panel-size-map, $size, header-legend-spacing);
-          height: map-deep-get($panel-size-map, $size, header-legend-height);
-        }
-      }
-
-      #{$parent}__subtitle {
-        @include typography($size: map-deep-get($panel-size-map, $size, header-subtitle))
-      }
-    }
-
-    > .separator {
-      margin-right: map-deep-get($panel-size-map, $size, header-append-spacing);
-    }
-
-    #{$parent}__actions {
-      gap: map-deep-get($panel-size-map, $size, header-action-spacing);
-      margin-left: map-deep-get($panel-size-map, $size, header-append-spacing);
-
-
-      &--left-side {
-        margin-left: 0;
-        margin-right: map-deep-get($panel-size-map, $size, header-append-spacing);
-      }
-    }
+    @include panel-header-size($parent, $size);
   }
 
-  #{$parent}__content {
-    padding: map-deep-get($panel-size-map, $size, content-padding);
+  #{$parent}__body {
+    $parent: &;
+    @include panel-body-size($parent, $size);
   }
 
   #{$parent}__footer {
-    padding: map-deep-get($panel-size-map, $size, footer-padding);
-
-    #{$parent}__actions {
-      gap: map-deep-get($panel-size-map, $size, footer-action-spacing);
-
-      > *:first-child {
-        margin-left: map-deep-get($panel-size-map, $size, footer-append-spacing);
-      }
-    }
+    @include panel-footer-size($parent, $size);
   }
 
-  &#{$parent}--has-scroll #{$parent}__content {
+  &#{$parent}--has-scroll #{$parent}__body {
     margin: map-deep-get($panel-size-map, $size, content-margin);
   }
 }
@@ -71,9 +26,69 @@
 // SIZE - MIXIN - PANEL BODY ------------------------------------------------ //
 
 @mixin panel-body-size($parent, $size: md) {
-    padding: map-deep-get($panel-size-map, $size, content-padding);
+  padding: map-deep-get($panel-size-map, $size, content-padding);
 
-    &#{$parent}--has-scroll {
-      margin: map-deep-get($panel-size-map, $size, content-margin);
+  &#{$parent}--has-scroll {
+    margin: map-deep-get($panel-size-map, $size, content-margin);
+  }
+}
+
+
+// SIZE - MIXIN - PANEL HEADER ---------------------------------------------- //
+
+@mixin panel-header-size($parent, $size: md) {
+  padding: map-deep-get($panel-size-map, $size, header-padding);
+
+  #{$parent}__heading {
+    #{$parent}__icon {
+      margin-right: map-deep-get($panel-size-map, $size, header-icon-spacing);
+      height: map-deep-get($panel-size-map, $size, header-icon-height);
+      font-size: map-deep-get($panel-size-map, $size, header-icon-font-size);
     }
+
+    #{$parent}__title {
+      &-text {
+        @include typography(heading, map-deep-get($panel-size-map, $size, header-title))
+      }
+
+      &-legend {
+        margin-left: map-deep-get($panel-size-map, $size, header-legend-spacing);
+        height: map-deep-get($panel-size-map, $size, header-legend-height);
+      }
+    }
+
+    #{$parent}__subtitle {
+      @include typography($size: map-deep-get($panel-size-map, $size, header-subtitle))
+    }
+  }
+
+  > .separator {
+    margin-right: map-deep-get($panel-size-map, $size, header-append-spacing);
+  }
+
+  #{$parent}__actions {
+    gap: map-deep-get($panel-size-map, $size, header-action-spacing);
+    margin-left: map-deep-get($panel-size-map, $size, header-append-spacing);
+
+
+    &--left-side {
+      margin-left: 0;
+      margin-right: map-deep-get($panel-size-map, $size, header-append-spacing);
+    }
+  }
+}
+
+
+// SIZE - MIXIN - PANEL FOOTER ---------------------------------------------- //
+
+@mixin panel-footer-size($parent, $size: md) {
+  padding: map-deep-get($panel-size-map, $size, footer-padding);
+
+  #{$parent}__actions {
+    gap: map-deep-get($panel-size-map, $size, footer-action-spacing);
+
+    > *:first-child {
+      margin-left: map-deep-get($panel-size-map, $size, footer-append-spacing);
+    }
+  }
 }
