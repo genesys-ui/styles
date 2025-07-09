@@ -125,13 +125,28 @@
   }
 
 
-  // CONTENT - ELEMENTS - PANEL --------------------------------------------- //
+  // BODY - ELEMENTS - PANEL --------------------------------------------- //
 
-  &__content {
-    @include scrollbars;
+  &__body {
+    $parent-body: &;
+    --track-radius: var(--alias-scrollbars-thumb-shape-border-radius);
     position: relative;
     flex: 1 1 100%;
     overflow: auto;
+
+    #{$parent}--no-scroll-spacing {
+      --track-radius: 0;
+    }
+
+    @include scrollbars($track-radius: var(--track-radius));
+
+    // Size - Modifier - Panel body
+
+    @each $size in $panel-size-list {
+      &--#{$size} {
+        @include panel-body-size($parent-body, $size);
+      }
+    }
   }
 
 

@@ -1,13 +1,25 @@
 // ------------------------ VARIABLES BASED - UTILS ------------------------ //
 
 // Property value applied based in the css variable --box-width, --box-opacity
+// Open-value CSS properties: width, opacity, border-width, grid-area... etc.
 // The user can override the value in a custom css file or using the attribute style
 
-$variables-based-props-list: translate, flex, height, inset, max-height,
-max-width, min-height, min-width, opacity, order, bottom, left, right, top, width,
-z-index, children-flex, grid-area, grid-column, grid-column-end,
-grid-column-start, grid-row, grid-row-end, grid-row-start, grid-template-areas,
-grid-template-columns, grid-template-rows;
+$variables-based-props-list: width, height, min-width, max-width, min-height,
+max-height, margin, margin-top, margin-right, margin-bottom,
+margin-left, padding, padding-top, padding-right, padding-bottom,
+padding-left, top, right, bottom, left, inset,
+border-width, border-top-width, border-right-width, border-bottom-width,
+border-left-width, border-radius, outline-width, outline-offset, box-shadow,
+text-shadow, opacity, z-index, flex, flex-grow, flex-shrink,
+flex-basis, order, gap, row-gap, column-gap, font-size,
+font-weight, line-height, letter-spacing, word-spacing, text-indent,
+translate, rotate, scale, transform-origin, perspective, transform,
+perspective-origin, background-size, background-position, background-position-x,
+background-position-y, background-origin, background-clip, object-position,
+grid-template-columns, grid-template-rows, grid-auto-columns, grid-auto-rows,
+grid-column, grid-row, grid-column-start, grid-column-end, grid-row-start,
+grid-row-end, grid-area;
+
 
 @each $prop in $variables-based-props-list {
   .#{$prop}-\[var\(--box-#{$prop}\)\] {

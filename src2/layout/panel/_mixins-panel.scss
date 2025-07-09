@@ -66,3 +66,14 @@
     margin: map-deep-get($panel-size-map, $size, content-margin);
   }
 }
+
+
+// SIZE - MIXIN - PANEL BODY ------------------------------------------------ //
+
+@mixin panel-body-size($parent, $size: md) {
+    padding: map-deep-get($panel-size-map, $size, content-padding);
+
+    &#{$parent}--has-scroll {
+      margin: map-deep-get($panel-size-map, $size, content-margin);
+    }
+}
