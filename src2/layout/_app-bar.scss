@@ -1,18 +1,18 @@
-// -------------------------- APP BAR - COMONENTS --------------------------- //
-
+// -------------------------- APP BAR - COMPONENTS --------------------------- //
 
 .app-bar {
   $parent: &;
-
+  --height: var(--cmp-tabs-container-size-height-lg);
   @include flex(row, center);
-  height: $cmp-tabs-container-size-height-lg;
+  height: var(--height);
   padding: 0 1.6rem;
-  background-color: $cmp-app-bar-color-background;
+  background-color: var(--cmp-app-bar-color-background);
 
-
-  &:not(#{$parent}--has-lead-nav) {
-    border-bottom: .1rem solid map-deep-get($elevation-map, "sticky-bottom", "border-color");
+  &:not(#{$parent}--has-lead-nav),
+  &--bordered {
+    border-bottom: solid var(--cmp-app-bar-shape-border-size) var(--cmp-app-bar-color-border);
   }
+
 
   // ELEMENTS - APP BAR ----------------------------------------------------- //
 
@@ -20,13 +20,13 @@
     margin: 0 1.6rem;
     border: none;
     width: 0.1rem;
-    height: $cmp-app-bar-divider-size-height;
-    background-color: $cmp-app-bar-divider-color-background;
+    height: var(--cmp-app-bar-divider-size-height);
+    background-color: var(--cmp-app-bar-divider-color-background);
   }
 
   &__menu {
     flex: 1 0 auto;
-    margin-left: -($cmp-tabs-item-space-padding + $cmp-tabs-content-space-padding);
+    margin-left: calc(-1 * (var(--cmp-tabs-item-space-padding) + var(--cmp-tabs-content-space-padding)));
   }
 
   &__actions {
@@ -40,5 +40,9 @@
 
   &--sticky {
     @include elevation(sticky-bottom);
+  }
+
+  &--compact {
+    height: calc(var(--height) - 2rem);
   }
 }

@@ -1,0 +1,28 @@
+// ------------------------- APP MENU - COMPONENTS ---------------------------//
+
+
+.app-menu {
+  $parent: &;
+  border-right: var(--cmp-app-menu-shape-border-right);
+  background-color: var(--cmp-app-menu-color-background);
+  transition: width var(--cmp-app-menu-mutation-transition-duration-width) ease-out,
+    padding var(--cmp-app-menu-mutation-transition-duration-padding) ease;
+  width: var(--cmp-app-menu-size-width-base);
+  height: var(--cmp-app-menu-size-height);
+
+
+  // MODIFIERS - APP MENU --------------------------------------------------- //
+
+  &--collapsed {
+    width: var(--cmp-app-menu-size-width-collapsed);
+  }
+
+
+  // ELEMENTS - APP BAR ----------------------------------------------------- //
+
+  &--body {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

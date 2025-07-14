@@ -1,0 +1,42 @@
+// --------------------- BUTTON GROUP - COMPONENTS -------------------------- //
+
+@use "./button-group-variables" as v;
+
+.button-group {
+  $parent: &;
+  transition: opacity ease var(--cmp-button-mutation-transition-duration);
+  list-style: none;
+
+
+  // MODIFIERS - BUTTON GROUP ----------------------------------------------- //
+
+  &--hidden {
+    opacity: 0;
+  }
+
+  &--visibility-triggered {
+    opacity: 0;
+
+    .visibility-trigger:hover &,
+    .visibility-trigger:focus &,
+    .visibility-trigger:active & {
+      opacity: 1;
+    }
+  }
+
+
+  // ELEMENTS - BUTTON GROUP ------------------------------------------------ //
+
+  &__item {
+    $parent: &;
+    list-style: none;
+
+    &--has-quiet-child {
+      @each $size in v.$button-group-size-list {
+        &#{$parent}--#{$size} {
+          margin-left: calc((map-deep-get(v.$button-group-size-map, $size, gap) / 2) * -1);
+        }
+      }
+    }
+  }
+}

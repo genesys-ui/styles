@@ -1,0 +1,24 @@
+// ----------------- BUTTON GROUP - COMPONENT - VARIABLES ------------------- //
+
+
+// SIZE - BUTTON GROUP - COMPONENTS - VARIABLES ----------------------------- //
+
+$button-group-size-list: xxs, xs, sm, md, lg;
+
+$button-group-size-map: (
+  xxs: (
+    gap: var(--cmp-button-group-space-gap-xxs),
+  ),
+  xs: (
+    gap: var(--cmp-button-group-space-gap-xs),
+  ),
+  sm: (
+    gap: var(--cmp-button-group-space-gap-sm),
+  ),
+  md: (
+    gap: var(--cmp-button-group-space-gap-md),
+  ),
+  lg: (
+    gap: var(--cmp-button-group-space-gap-lg),
+  ),
+);

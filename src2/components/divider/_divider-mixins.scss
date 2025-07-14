@@ -1,0 +1,65 @@
+@import "../../utils/mixins/utils-mixins/spacing-mixins";
+
+// --------------------- DIVIDER - COMPONENTS - MIXINS ---------------------- //
+
+
+// DIVIDER - COMPONENTS - MIXINS -------------------------------------------- //
+
+// Size - Divider - Components - Mixins
+
+@mixin divider-border($dir: ver) {
+  @if ($dir == hor) {
+    height: var(--cmp-divider-shape-border-size);;
+    width: 100%;
+  } @else {
+    width: var(--cmp-divider-shape-border-size);
+    align-self: stretch;
+    height: auto;
+  }
+}
+
+// Spacing - Divider - Components - Mixins
+
+@mixin divider-spacing($dir: ver, $spacing: null, $type: component) {
+  @if ($spacing == null) {
+    @if ($dir == hor) {
+      margin: 0 var(--cmp-divider-space-margin-base);
+    } @else {
+      margin: 0 var(--cmp-divider-space-margin-vertical);
+    }
+  }
+
+  @include spacing(
+    margin,
+    map-get($divider-dir-spacing-map, $dir),
+    $spacing,
+    $type
+  );
+}
+
+// Color - Divider - Components - Mixins
+
+@mixin divider-color(
+  $color-scheme: base,
+) {
+  background-color: map-get($divider-color-scheme-map, $color-scheme);
+}
+
+// Styles - Divider - Components - Mixins
+
+@mixin divider($dir: ver, $color-scheme: base) {
+  border: none;
+  flex-shrink: 0;
+
+  @if ($dir == ver) {
+    display: inline-flex;
+  }
+
+  @if ($dir == hor) {
+    display: flex;
+  }
+
+  @include divider-spacing($dir);
+  @include divider-border($dir);
+  @include divider-color($color-scheme);
+}

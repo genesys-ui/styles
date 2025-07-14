@@ -28,6 +28,10 @@
 @mixin panel-body-size($parent, $size: md) {
   padding: map-deep-get($panel-size-map, $size, content-padding);
 
+  &#{$parent}--remove-space {
+    padding: 0;
+  }
+
   &#{$parent}--has-scroll {
     margin: map-deep-get($panel-size-map, $size, content-margin);
   }

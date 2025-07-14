@@ -1,0 +1,45 @@
+// ------------------------ DIVIDER - COMPONENTS ----------------------------- //
+
+
+.divider {
+  $parent: &;
+  @include divider;
+  @include divider-border(ver);
+
+  &--hor {
+    @include divider(hor);
+  }
+
+  &--ver {
+    @include divider(ver);
+  }
+
+  // Spacing - Modifier - Divider
+
+  @each $spacing in $spacing-size-list {
+    @each $type in $spacing-type-list {
+      $eval-type: component;
+      @if $type == ly {
+        $eval-type: layout;
+      }
+      &--spacing-#{$type}-#{$spacing} {
+        &,
+        &#{$parent}--ver {
+          @include divider-spacing(ver, $spacing, $eval-type);
+        }
+
+        &#{$parent}--hor {
+          @include divider-spacing(hor, $spacing, $eval-type);
+        }
+      }
+    }
+  }
+
+  // Color - Modifier - Divider
+
+  @each $color-scheme in $divider-color-scheme-list {
+    &--#{$color-scheme} {
+      @include divider-color($color-scheme);
+    }
+  }
+}

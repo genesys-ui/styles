@@ -1,0 +1,58 @@
+// ------------------- DIVIDER - COMPONENTS - VARIABLES ------------------- //
+
+
+// DIRECTION SPACING - DIVIDER - COMPONENTS - VARIABLES ------------------- //
+
+$divider-dir-spacing-map: (
+  ver: hor,
+  hor: ver,
+);
+
+
+// COLOR - DIVIDER - COMPONENTS - VARIABLES ------------------------------- //
+
+$divider-color-scheme-list: weak, weaker, weakest, base, strong, stronger,
+inverse, primary, secondary, blend-base, blend-inverse, error, error-weak,
+error-strong, success, success-weak, success-strong, waring, waring-weak,
+waring-strong, info, info-weak, info-strong, help, help-weak, help-strong,
+data-bronze, data-green, data-teal, data-sky, data-slate, data-indigo,
+data-dusk, data-purple, data-magenta, data-red;
+
+$divider-color-scheme-map: (
+  weak: var(--cmp-divider-color-fill-weak),
+  weaker: var(--cmp-divider-color-fill-weaker),
+  weakest: var(--cmp-divider-color-fill-weakest),
+  base: var(--cmp-divider-color-fill-base),
+  strong: var(--cmp-divider-color-fill-strong),
+  stronger: var(--cmp-divider-color-fill-stronger),
+  inverse: var(--cmp-divider-color-fill-inverse),
+  primary: var(--cmp-divider-color-fill-primary),
+  secondary: var(--cmp-divider-color-fill-secondary),
+  blend-base: var(--cmp-divider-color-fill-blend-base),
+  blend-inverse: var(--cmp-divider-color-fill-blend-inverse),
+  error: var(--cmp-divider-color-fill-error),
+  error-weak: var(--cmp-divider-color-fill-error-weak),
+  error-strong: var(--cmp-divider-color-fill-error-strong),
+  success: var(--cmp-divider-color-fill-success),
+  success-weak: var(--cmp-divider-color-fill-success-weak),
+  success-strong: var(--cmp-divider-color-fill-success-strong),
+  waring: var(--cmp-divider-color-fill-warning),
+  waring-weak: var(--cmp-divider-color-fill-warning-weak),
+  waring-strong: var(--cmp-divider-color-fill-warning-strong),
+  info: var(--cmp-divider-color-fill-info),
+  info-weak: var(--cmp-divider-color-fill-info-weak),
+  info-strong: var(--cmp-divider-color-fill-info-strong),
+  help: var(--cmp-divider-color-fill-help),
+  help-weak: var(--cmp-divider-color-fill-help-weak),
+  help-strong: var(--cmp-divider-color-fill-help-strong),
+  data-bronze: var(--cmp-divider-color-fill-data-bronze),
+  data-green: var(--cmp-divider-color-fill-data-green),
+  data-teal: var(--cmp-divider-color-fill-data-teal),
+  data-sky: var(--cmp-divider-color-fill-data-sky),
+  data-slate: var(--cmp-divider-color-fill-data-slate),
+  data-indigo: var(--cmp-divider-color-fill-data-indigo),
+  data-dusk: var(--cmp-divider-color-fill-data-dusk),
+  data-purple: var(--cmp-divider-color-fill-data-purple),
+  data-magenta: var(--cmp-divider-color-fill-data-magenta),
+  data-red: var(--cmp-divider-color-fill-data-red),
+);
