@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.0.0](https://github.com/DevoInc/genesys-styles/compare/2.9.0...3.0.0) (2025-07-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Modified selector for Panel body/content to panel__body.
+
+### Features
+
+* Added a mixin for each Panel child and now each child has its own styles based on size modifiers. ([f8f4825](https://github.com/DevoInc/genesys-styles/commit/f8f482524644f94a066f8f791b76f8e056087404))
+* Modified selector for Panel body/content to panel__body. ([1b13ab5](https://github.com/DevoInc/genesys-styles/commit/1b13ab5733001f7254b619f5c455a802753beb1f))
+
 ## [2.9.0](https://github.com/DevoInc/genesys-styles/compare/2.8.0...2.9.0) (2025-07-08)
 
 
