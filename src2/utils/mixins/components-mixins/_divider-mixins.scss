@@ -1,5 +1,3 @@
-@import "../../utils/mixins/utils-mixins/spacing-mixins";
-
 // --------------------- DIVIDER - COMPONENTS - MIXINS ---------------------- //
 
 
@@ -27,14 +25,14 @@
     } @else {
       margin: 0 var(--cmp-divider-space-margin-vertical);
     }
+  } @else {
+    @include spacing(
+        margin,
+        map-get($divider-dir-spacing-map, $dir),
+        $spacing,
+        $type
+    );
   }
-
-  @include spacing(
-    margin,
-    map-get($divider-dir-spacing-map, $dir),
-    $spacing,
-    $type
-  );
 }
 
 // Color - Divider - Components - Mixins

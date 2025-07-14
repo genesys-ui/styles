@@ -13,8 +13,8 @@ writeFileSync("dist/css/light.css", lightResult.css);
 const darkResult = sass.compile("./dark.scss");
 writeFileSync("dist/css/dark.css", darkResult.css);
 
-//const globalResult = sass.compile("./global.scss");
-//writeFileSync("dist/css/styles.css", globalResult.css);
+const globalResult = sass.compile("./global.scss");
+writeFileSync("dist/css/styles.css", globalResult.css);
 
 // Copy SCSS files
 cpSync("src/_styles.scss", "dist/scss/_styles.scss");
