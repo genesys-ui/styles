@@ -8,8 +8,10 @@
 @mixin divider-border($dir: ver) {
   @if ($dir == hor) {
     height: var(--cmp-divider-shape-border-size);
+    width: auto;
   } @else {
     width: var(--cmp-divider-shape-border-size);
+    height: var(--cmp-divider-size-height-vertical);
     align-self: stretch;
   }
 }
@@ -49,7 +51,6 @@
 
   @if ($dir == ver) {
     display: inline-flex;
-    height: var(--cmp-divider-size-height-vertical);
   }
 
   @if ($dir == hor) {
