@@ -6,8 +6,9 @@
 
 $variables-based-props-list: width, height, min-width, max-width, min-height,
 max-height, margin, margin-top, margin-right, margin-bottom,
-margin-left, padding, padding-top, padding-right, padding-bottom,
-padding-left, top, right, bottom, left, inset,
+margin-left, padding, padding-top, padding-right, padding-bottom, color,
+padding-left, top, right, bottom, left, inset, border-color, outline-color,
+border-top-color, border-right-color, border-bottom-color, border-left-color,
 border-width, border-top-width, border-right-width, border-bottom-width,
 border-left-width, border-radius, outline-width, outline-offset, box-shadow,
 text-shadow, opacity, z-index, flex, flex-grow, flex-shrink,
@@ -15,10 +16,10 @@ flex-basis, order, gap, row-gap, column-gap, font-size,
 font-weight, line-height, letter-spacing, word-spacing, text-indent,
 translate, rotate, scale, transform-origin, perspective, transform,
 perspective-origin, background-size, background-position, background-position-x,
-background-position-y, background-origin, background-clip, object-position,
-grid-template-columns, grid-template-rows, grid-auto-columns, grid-auto-rows,
-grid-column, grid-row, grid-column-start, grid-column-end, grid-row-start,
-grid-row-end, grid-area;
+background-position-y, background-origin, background-clip, background-color,
+object-position, grid-template-columns, grid-template-rows, grid-auto-columns,
+grid-auto-rows, grid-column, grid-row, grid-column-start, grid-column-end,
+grid-row-start, grid-row-end, grid-area;
 
 
 @each $prop in $variables-based-props-list {
