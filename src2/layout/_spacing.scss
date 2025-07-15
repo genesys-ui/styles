@@ -1,4 +1,4 @@
-// ---------------------------- SPACING - UTILS ----------------------------- //
+// ---------------------------- SPACING - LAYOUT ---------------------------- //
 
 
 @function getModifier($size, $side) {
@@ -10,18 +10,18 @@
 }
 
 
-// COMPONENT - SPACING - UTILS ---------------------------------------------- //
+// COMPONENT - SPACING - LAYOUT ---------------------------------------------- //
 
 // Margin - Modifier - CMP (Component)
 // Examples:
-// Margin Top XL: margin-cmp--top-xl
-// Margin horizontal (both sides) SM: margin-cmp--hor-sm
-// Margin (all sides) XS: margin-cmp--xs
+// Margin Top XL: margin-cmp-top-xl
+// Margin horizontal (both sides) SM: margin-cmp-hor-sm
+// Margin (all sides) XS: margin-cmp-xs
 
 .margin-cmp {
   @each $side in $spacing-side-list {
     @each $size in $spacing-size-list {
-      &--#{getModifier($size, $side)} {
+      &-#{getModifier($size, $side)} {
         @include spacing(margin, $side, $size, component);
       }
     }
@@ -31,14 +31,14 @@
 
 // Padding - Modifier - CMP (Component)
 // Examples:
-// Padding Left MD: padding-cmp--left-md
-// Padding vertical (both sides) XS: padding-cmp--ver-xs
-// Padding (all sides) XL: padding-cmp--xl
+// Padding Left MD: padding-cmp-left-md
+// Padding vertical (both sides) XS: padding-cmp-ver-xs
+// Padding (all sides) XL: padding-cmp-xl
 
 .padding-cmp {
   @each $side in $spacing-side-list {
     @each $size in $spacing-size-list{
-      &--#{getModifier($size, $side)} {
+      &-#{getModifier($size, $side)} {
         @include spacing(padding, $side, $size, component);
       }
     }
@@ -48,11 +48,11 @@
 
 // Gap - Modifier - CMP (Component)
 // Examples:
-// Gap md: gap-cmp--md
+// Gap md: gap-cmp-md
 
 .gap-cmp {
   @each $size in $spacing-size-list{
-    &--#{$size} {
+    &-#{$size} {
       @include spacing($property: gap, $size: $size, $type: component);
     }
   }
@@ -61,11 +61,11 @@
 
 // Row-gap - Modifier - CMP (Component)
 // Examples:
-// Gap md: row-gap-cmp--md
+// Gap md: row-gap-cmp-md
 
 .row-gap-cmp {
   @each $size in $spacing-size-list{
-    &--#{$size} {
+    &-#{$size} {
       @include spacing($property: row-gap, $size: $size, $type: component);
     }
   }
@@ -74,49 +74,74 @@
 
 // Column-gap - Modifier - CMP (Component)
 // Examples:
-// Gap md: row-gap-cmp--md
+// Gap md: column-gap-cmp-md
 
 .column-gap-cmp {
   @each $size in $spacing-size-list{
-    &--#{$size} {
+    &-#{$size} {
       @include spacing($property: column-gap, $size: $size, $type: component);
     }
   }
 }
 
 
-// LAYOUT - SPACING - UTILS ------------------------------------------------- //
+// LAYOUT - SPACING - LAYOUT ------------------------------------------------- //
 
-// Margin - Layout - Spacing
+// Margin - Layout - Layout
 
 .margin-ly {
   @each $side in $spacing-side-list {
     @each $size in $spacing-size-list {
-      &--#{getModifier($size, $side)} {
+      &-#{getModifier($size, $side)} {
         @include spacing(margin, $side, $size, layout);
       }
     }
   }
 }
 
-// Padding - Layout - Spacing
+// Padding - Layout - Layout
 
 .padding-ly {
   @each $side in $spacing-side-list {
     @each $size in $spacing-size-list {
-      &--#{getModifier($size, $side)} {
+      &-#{getModifier($size, $side)} {
         @include spacing(padding, $side, $size, layout);
       }
     }
   }
 }
 
-// Gap - Layout - Spacing
+// Gap - Layout - Layout
 
 .gap-ly {
   @each $size in $spacing-size-list{
-    &--#{$size} {
+    &-#{$size} {
       @include spacing($property: gap, $size: $size, $type: layout);
+    }
+  }
+}
+
+// Row-gap - Modifier - CMP (Component)
+// Examples:
+// Gap md: row-gap-ly-md
+
+.row-gap-ly {
+  @each $size in $spacing-size-list{
+    &-#{$size} {
+      @include spacing($property: row-gap, $size: $size, $type: component);
+    }
+  }
+}
+
+
+// Column-gap - Modifier - CMP (Component)
+// Examples:
+// Gap md: column-gap-ly-md
+
+.column-gap-ly {
+  @each $size in $spacing-size-list{
+    &-#{$size} {
+      @include spacing($property: column-gap, $size: $size, $type: component);
     }
   }
 }
