@@ -7,12 +7,10 @@
 
 @mixin divider-border($dir: ver) {
   @if ($dir == hor) {
-    height: var(--cmp-divider-shape-border-size);;
-    width: 100%;
+    height: var(--cmp-divider-shape-border-size);
   } @else {
     width: var(--cmp-divider-shape-border-size);
     align-self: stretch;
-    height: auto;
   }
 }
 
@@ -51,6 +49,7 @@
 
   @if ($dir == ver) {
     display: inline-flex;
+    height: var(--cmp-divider-size-height-vertical);
   }
 
   @if ($dir == hor) {
