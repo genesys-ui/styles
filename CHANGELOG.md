@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/DevoInc/genesys-styles/compare/3.4.0...4.0.0) (2025-07-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* Now the spacing selectors don't use double hyphens '---', so instead of 'padding-ly--left-sm' now we use 'padding-ly-left-sm'.
+
+### Features
+
+* Moved to a more specific style import the spacing styles from utils to layout and removed the double hyphens from spacing selectors, ([bf75cdc](https://github.com/DevoInc/genesys-styles/commit/bf75cdc91a6d639cec55b0eaf2619e7b2e02b855))
+
 ## [3.4.0](https://github.com/DevoInc/genesys-styles/compare/3.3.1...3.4.0) (2025-07-15)
 
 
