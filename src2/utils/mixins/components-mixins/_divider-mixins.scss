@@ -21,9 +21,9 @@
 @mixin divider-spacing($dir: ver, $spacing: null, $type: component) {
   @if ($spacing == null) {
     @if ($dir == hor) {
-      margin: var(--cmp-divider-space-margin-base) 0;
+      margin: var(--cmp-divider-space-margin-base);
     } @else {
-      margin: 0 var(--cmp-divider-space-margin-vertical);
+      margin: var(--cmp-divider-space-margin-vertical);
     }
   } @else {
     @include spacing(
