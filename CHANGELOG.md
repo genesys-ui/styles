@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.0](https://github.com/DevoInc/genesys-styles/compare/3.1.2...3.2.0) (2025-07-15)
+
+
+### Features
+
+* Added color properties to the variable based styles. ([fb1da25](https://github.com/DevoInc/genesys-styles/commit/fb1da254c157e922a2d1bad04901678d9749dca5))
+* Variables based styles now are part of layout, so they now have more weight than component ones. ([9bc36ff](https://github.com/DevoInc/genesys-styles/commit/9bc36ff6fe311f978c844a1604cd146f408c5b2e))
+
 ## [3.1.2](https://github.com/DevoInc/genesys-styles/compare/3.1.1...3.1.2) (2025-07-15)
 
 
