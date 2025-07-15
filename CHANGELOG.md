@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.1.0](https://github.com/DevoInc/genesys-styles/compare/3.0.0...3.1.0) (2025-07-14)
+
+
+### Features
+
+* New styles for Divider, AppMenu and ButtonGroup. ([1a6406e](https://github.com/DevoInc/genesys-styles/commit/1a6406e7175dff942b5048681b5c6ddc182b1255))
+
+
+### Bug Fixes
+
+* Fixed divider mixin. ([1f57519](https://github.com/DevoInc/genesys-styles/commit/1f57519f69c9f7356a162419a2087039816430b5))
+
 ## [3.0.0](https://github.com/DevoInc/genesys-styles/compare/2.9.0...3.0.0) (2025-07-09)
 
 
