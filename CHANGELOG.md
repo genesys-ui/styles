@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.2](https://github.com/DevoInc/genesys-styles/compare/3.1.1...3.1.2) (2025-07-15)
+
+
+### Bug Fixes
+
+* Fixed margin of Divider styles. ([04523e2](https://github.com/DevoInc/genesys-styles/commit/04523e2851822937c18b748b0f9d9f843c8ab52f))
+
 ## [3.1.1](https://github.com/DevoInc/genesys-styles/compare/3.1.0...3.1.1) (2025-07-15)
 
 
