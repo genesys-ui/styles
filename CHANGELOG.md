@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.4.0](https://github.com/DevoInc/genesys-styles/compare/3.3.1...3.4.0) (2025-07-15)
+
+
+### Features
+
+* Added ::before and ::after selectors to the based variable styles. ([31d4659](https://github.com/DevoInc/genesys-styles/commit/31d46597a37286cc85d9dfed4fba58d3e833f8ac))
+* Added new styles for Panel component. ([dafce35](https://github.com/DevoInc/genesys-styles/commit/dafce35efe7e8607a2983bf230a905893a478b18))
+
 ## [3.3.1](https://github.com/DevoInc/genesys-styles/compare/3.3.0...3.3.1) (2025-07-15)
 
 
