@@ -19,21 +19,36 @@ perspective-origin, background-size, background-position, background-position-x,
 background-position-y, background-origin, background-clip, background-color,
 object-position, grid-template-columns, grid-template-rows, grid-auto-columns,
 grid-auto-rows, grid-column, grid-row, grid-column-start, grid-column-end,
-grid-row-start, grid-row-end, grid-area;
+grid-row-start, grid-row-end, grid-area, children-flex;
 
+@mixin variables-based-props($prop) {
+  @if ($prop == translate) {
+    transform: #{$prop}(var(--box-#{$prop}));
+  }
+  @else if($prop == children-flex) {
+    > * {
+      flex: (var(--box-#{$prop}));
+    }
+  }
+  @else {
+    #{$prop}: var(--box-#{$prop});
+  }
+}
 
 @each $prop in $variables-based-props-list {
   .#{$prop}-\[var\(--box-#{$prop}\)\] {
-    @if ($prop == translate) {
-      transform: #{$prop}(var(--box-#{$prop}));
-    }
-    @else if($prop == children-flex) {
-      > * {
-        flex: (var(--box-#{$prop}));
+    @include variables-based-props($prop);
+
+    &--before {
+      &::before {
+        @include variables-based-props($prop);
       }
     }
-    @else {
-      #{$prop}: var(--box-#{$prop});
+
+    &--after {
+      &::after {
+        @include variables-based-props($prop);
+      }
     }
   }
 }
