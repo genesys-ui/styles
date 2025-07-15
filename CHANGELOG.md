@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/DevoInc/genesys-styles/compare/3.2.0...3.3.0) (2025-07-15)
+
+
+### Features
+
+* Default height for divider. ([f978137](https://github.com/DevoInc/genesys-styles/commit/f97813765af20705dee8b92c2c1ec7e4ba3c7fd8))
+
 ## [3.2.0](https://github.com/DevoInc/genesys-styles/compare/3.1.2...3.2.0) (2025-07-15)
 
 
