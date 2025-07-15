@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.1](https://github.com/DevoInc/genesys-styles/compare/3.3.0...3.3.1) (2025-07-15)
+
+
+### Bug Fixes
+
+* Fixed width and height overriding in every variant. ([f880aae](https://github.com/DevoInc/genesys-styles/commit/f880aaeb62a3c4265f867dfc323905aab69d0763))
+
 ## [3.3.0](https://github.com/DevoInc/genesys-styles/compare/3.2.0...3.3.0) (2025-07-15)
 
 
