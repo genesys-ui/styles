@@ -10,12 +10,18 @@
 
   $parent: &;
 
-  @include flex(column, null, space-between);
+  @include flex(column, null);
   @include elevation;
   @include panel-size($parent, md);
+  position: relative;
   overflow: hidden;
   // to maintain always a solid background to avoid overlapping problems
   background-color: var(--cmp-panel-color-background);
+
+  &::before {
+    @include pseudo-overlay();
+    border-radius: inherit;
+  }
 
 
   // HEADER - ELEMENTS - PANEL ---------------------------------------------- //
@@ -196,6 +202,15 @@
   }
 
 
+  // Bordered - Modifier - Panel
+  /// Used in Time interval history in Loxcope.
+
+  &--bordered {
+    border: solid var(--cmp-panel-shape-border-size) var(--cmp-panel-color-border-activated);
+    border-radius: var(--alias-shape-border-radius-elevated);
+  }
+
+
   // Elevation - Modifier - Panel
 
   @each $elevation in $elevation-list {
@@ -291,15 +306,6 @@
     &#{$parent}--activated {
       background-color: var(--alias-color-background-surface-base-activated);
     }
-  }
-
-
-  // Bordered - Modifier - Panel
-  /// Used in Time interval history in Loxcope.
-
-  &--bordered {
-    border: 1px solid var(--alias-color-border-surface-base-weak);
-    border-radius: var(--alias-shape-border-radius-elevated);
   }
 
 
