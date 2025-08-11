@@ -4,7 +4,16 @@
 // DISABLED - COMPONENTS - MIXINS ------------------------------------------- //
 
 @mixin disabled-field {
-  opacity: 0.4;
+  opacity: var(--alias-shape-opacity-disabled);
+  cursor: not-allowed;
+  user-select: none;
+}
+
+
+// DISABLED - COMPONENTS - MIXINS ------------------------------------------- //
+
+@mixin loading-field {
+  opacity: var(--alias-shape-opacity-blocked);
   cursor: not-allowed;
   user-select: none;
 }

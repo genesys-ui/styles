@@ -12,6 +12,7 @@ $panel-size-map: (
   xs: (
     header-padding: $cmp-panel-header-space-padding-xs,
     header-action-spacing: $cmp-panel-header-action-space-margin-left-xs,
+    header-collapse-spacing: $cmp-panel-header-prepend-space-margin-right-xs,
     header-append-spacing: $cmp-panel-header-append-space-margin-left-xs,
     header-icon-spacing: $cmp-panel-header-icon-space-margin-right-xs,
     header-icon-height: $cmp-panel-header-icon-size-height-xs,
@@ -25,10 +26,12 @@ $panel-size-map: (
     footer-padding: $cmp-panel-footer-space-padding-xs,
     footer-action-spacing: $cmp-panel-footer-action-space-margin-left-xs,
     footer-append-spacing: $cmp-panel-footer-append-space-margin-left-xs,
+    footer-prepend-spacing: $cmp-panel-footer-prepend-space-margin-right-xs,
   ),
   sm: (
     header-padding: $cmp-panel-header-space-padding-sm,
     header-action-spacing: $cmp-panel-header-action-space-margin-left-sm,
+    header-collapse-spacing: $cmp-panel-header-prepend-space-margin-right-sm,
     header-append-spacing: $cmp-panel-header-append-space-margin-left-sm,
     header-icon-spacing: $cmp-panel-header-icon-space-margin-right-sm,
     header-icon-height: $cmp-panel-header-icon-size-height-sm,
@@ -42,11 +45,12 @@ $panel-size-map: (
     footer-padding: $cmp-panel-footer-space-padding-sm,
     footer-action-spacing: $cmp-panel-footer-action-space-margin-left-sm,
     footer-append-spacing: $cmp-panel-footer-append-space-margin-left-sm,
-
+    footer-prepend-spacing: $cmp-panel-footer-prepend-space-margin-right-xs,
   ),
   md: (
     header-padding: $cmp-panel-header-space-padding-md,
     header-action-spacing: $cmp-panel-header-action-space-margin-left-md,
+    header-collapse-spacing: $cmp-panel-header-prepend-space-margin-right-md,
     header-append-spacing: $cmp-panel-header-append-space-margin-left-md,
     header-icon-spacing: $cmp-panel-header-icon-space-margin-right-md,
     header-icon-height: $cmp-panel-header-icon-size-height-md,
@@ -60,5 +64,6 @@ $panel-size-map: (
     footer-padding: $cmp-panel-footer-space-padding-md,
     footer-action-spacing: $cmp-panel-footer-action-space-margin-left-md,
     footer-append-spacing: $cmp-panel-footer-append-space-margin-left-md,
+    footer-prepend-spacing: $cmp-panel-footer-prepend-space-margin-right-xs,
   )
 );

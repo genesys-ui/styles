@@ -79,6 +79,8 @@
   $is-circular: false,
   $has-before-icon: false,
   $has-bold-icon: false,
+  $squared: false,
+  $has-dropdown: false,
 ) {
   @include inline-flex(null, center, center, null);
   $border-radius: $cmp-button-shape-border-radius-medium;
@@ -105,15 +107,42 @@
       font-weight: bold;
     }
   }
+
+  @if $squared and $has-dropdown {
+    padding: 0;
+  }
 }
 
 
+// OPACITY BUTTON STYLES - COMPONENTS - MIXINS --------------------------------- //
+
+@mixin get-button-opacity-styles(
+  $is-disabled: false,
+  $is-loading: false,
+) {
+  @if $is-disabled {
+    @include disabled-field;
+  } @else if $is-loading {
+    @include loading-field;
+  } @else {
+    opacity: 1;
+  }
+}
+
 // SIZE BUTTON STYLES - COMPONENTS - MIXINS --------------------------------- //
 
-@mixin get-button-size-styles($size: "md") {
+@mixin get-button-size-styles($size: "md", $squared: false) {
   height: map-deep-get($button-size-map, $size, "height");
-  min-width: map-deep-get($button-size-map, $size, "min-width");
-  padding: 0 map-deep-get($button-size-map, $size, "padding");
+
+  @if $squared {
+    min-width: 0;
+    width: map-deep-get($button-size-map, $size, "height");
+    padding: 0;
+  } @else {
+    min-width: map-deep-get($button-size-map, $size, "min-width");
+    padding: 0 map-deep-get($button-size-map, $size, "padding");
+  }
+
   font-size: map-deep-get($button-size-map, $size, "font-size");
   line-height: map-deep-get($button-size-map, $size, "line-height");
   font-weight: map-deep-get($button-size-map, $size, "font-weight");
@@ -255,4 +284,33 @@
   @include get-button-size-styles($size);
   @include get-button-type-styles($parent, $type, $has-before-icon);
   @include button-pseudo-backdrop($parent, $has-before-icon);
+}
+
+
+// BUTTON LOADING ANIMATIONS - COMPONENTS - MIXINS -------------------------- //
+
+@mixin get-button-loading-animation (
+  $type: "error",
+) {
+  @keyframes #{$type + 'Animation'} {
+  0% {
+    color: currentColor;
+  }
+  30% {
+    background-color: map-deep-get($button-color-loading-map, $type, background);
+    color:  map-deep-get($button-color-loading-map, $type, color);
+  }
+  75% {
+    background-color: map-deep-get($button-color-loading-map, $type, background);
+    color:  map-deep-get($button-color-loading-map, $type, color);
+  }
+  90% {
+    color: currentColor;
+  }
+  100% {
+    color: currentColor;
+  }
+}
+  animation: #{$type}Animation 2s ease-in-out;
+  animation-fill-mode: forwards;
 }

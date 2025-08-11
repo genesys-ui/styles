@@ -31,6 +31,10 @@
     z-index: 1;
     border-bottom: 1px solid var(--cmp-panel-header-color-border);
 
+    &:empty {
+      display: none;
+    }
+
     #{$parent}__heading {
       #{$parent}__icon {
         @include inline-flex(null, center, center);
@@ -91,7 +95,8 @@
     }
 
     #{$parent}__actions {
-      @include flex(null, center);
+      @include flex(null, flex-start);
+      align-items: stretch;
       flex-shrink: 0;
 
       &.hide {
@@ -99,10 +104,27 @@
       }
     }
 
+    #{$parent}__collapse-button {
+      @include flex(null, flex-start);
+      align-items: stretch;
+      flex: 0 0 auto;
+    }
+
+    #{$parent}__close {
+      @include flex(null, flex-start);
+      align-items: stretch;
+      flex: 0 0 auto;
+      margin-left: auto;
+    }
+
     > .separator {
       flex-shrink: 0;
       height: 100%;
       margin-left: 0;
+    }
+
+    &--shadowed {
+      box-shadow: var(--cmp-panel-header-elevation-box-shadow);
     }
 
     &--has-actions {
@@ -179,6 +201,18 @@
 
     &--no-border {
       border-top: none;
+    }
+
+    &--shadowed {
+      box-shadow: var(--cmp-panel-footer-elevation-box-shadow);
+    }
+
+    &--has-background {
+      box-shadow: var(--cmp-modal-footer-color-background);
+    }
+
+    &:empty {
+      display: none;
     }
 
     // Size - Modifier - Panel body

@@ -52,4 +52,20 @@
       }
     }
   }
+
+  // Loading - Modifier - Button
+
+  &--loading,
+  &--loading-error,
+  &--loading-success {
+    @include get-button-opacity-styles($is-loading: true);
+  }
+
+  &--loading-error {
+    @include get-button-loading-animation(error);
+  }
+
+  &--loading-success {
+    @include get-button-loading-animation(success);
+  }
 }

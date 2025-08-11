@@ -70,14 +70,19 @@
     margin-right: map-deep-get($panel-size-map, $size, header-append-spacing);
   }
 
+  #{$parent}__collapse-button {
+    margin-right: map-deep-get($panel-size-map, $size, header-collapse-spacing);
+  }
+
+  #{$parent}__close,
   #{$parent}__actions {
     gap: map-deep-get($panel-size-map, $size, header-action-spacing);
-    margin-left: map-deep-get($panel-size-map, $size, header-append-spacing);
+    padding-left: map-deep-get($panel-size-map, $size, header-append-spacing);
 
 
     &--left-side {
       margin-left: 0;
-      margin-right: map-deep-get($panel-size-map, $size, header-append-spacing);
+      padding-right: map-deep-get($panel-size-map, $size, header-append-spacing);
     }
   }
 }
@@ -94,5 +99,9 @@
     > *:first-child {
       margin-left: map-deep-get($panel-size-map, $size, footer-append-spacing);
     }
+  }
+
+  #{$parent}__footer-help {
+    margin-right: map-deep-get($panel-size-map, $size, footer-prepend-spacing);
   }
 }

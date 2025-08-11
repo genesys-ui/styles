@@ -302,3 +302,17 @@ $button-color-text-type-map: (
     activated: $alias-color-text-action-info-activated,
   ),
 );
+
+
+// LOADING - BUTTON - VARIABLES ------------------------------------- //
+
+$button-color-loading-map: (
+  error: (
+    background: var(--cmp-button-color-background-error-enabled),
+    color: var(--cmp-button-color-text-error-enabled),
+  ),
+  success: (
+    background: var(--cmp-button-color-background-success-enabled),
+    color: var(--cmp-button-color-text-success-enabled),
+  ),
+);

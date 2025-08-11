@@ -5,6 +5,15 @@ export default {
 export const Basic = {
   render: () => `<button type="button" class="button">
         <span class="button__text">Click me</span>
+    </button>
+    <button type="button" class="button button--loading-error">
+      <span class="loader-icon--spinner loader-icon--dark-trans loader-icon--xs">
+        <svg viewBox="0 0 50 50" class="spinner-svg">
+          <circle cx="25" cy="25" r="22" stroke-width="6" fill="none" class="spinner-svg__circle"></circle>
+          <circle cx="25" cy="25" r="22" stroke-width="6" fill="none" class="spinner-svg__circle--animated"></circle>
+        </svg>
+      </span>
+      <span class="button__text">Loading error...</span>
     </button>`,
 };
 
@@ -156,6 +165,17 @@ export const AdvancedStates = {
     </button>
     <button type="button" class="button" aria-selected="true">
       <span class="button__text">Selected by aria attribute</span>
+    </button>
+  `,
+};
+
+export const LoadingStates = {
+  render: () => `
+    <button type="button" class="button button--loading">
+      <span class="button__text">Loading...</span>
+    </button>
+    <button type="button" class="button button--loading-error">
+      <span class="button__text">Loading error...</span>
     </button>
   `,
 };
