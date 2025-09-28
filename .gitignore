@@ -19,6 +19,7 @@ dist/
 
 # NodeJS
 node_modules
+public
 
 # Sonar
 /coverage

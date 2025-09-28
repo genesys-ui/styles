@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Preview } from "@storybook/html";
-import { create } from "@storybook/theming";
+import { create } from 'storybook/theming';
 
 import "@devoinc/genesys-base-styles/dist/css/styles.min.css";
 import "@devoinc/genesys-icons/dist/gi-styles.css";

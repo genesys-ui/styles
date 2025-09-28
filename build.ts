@@ -1,5 +1,5 @@
 import sass from "sass";
-import { writeFileSync, cpSync, rmSync, mkdirSync } from "fs";
+import { writeFileSync, cpSync, rmSync, mkdirSync } from "node:fs";
 
 // Prepare environment
 rmSync('dist', { recursive: true, force: true });
